@@ -6,7 +6,10 @@ This project is an AI-powered e-commerce application developed using the Django 
 
 Before you begin, ensure you have met the following requirements:
 * You have installed Python 3.x.
-* You have installed MySQL.
+* You have installed MySQL.If not then use this command for MacOs:
+```bash
+brew install mysql-client
+```
 * You have a basic understanding of Python and Django.
 
 ## Setting Up Your Development Environment
