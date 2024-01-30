@@ -1,0 +1,19 @@
+<html>
+    <body>
+        {% if name %}
+        <h1>Hello {{name}}!!</h1>
+        {% else %}
+        <h1>Hello World</h1>
+        {% endif %}
+        <ul>
+            <!--  for product in products  -->
+            <!-- <li>{{product.title}} $ {{product.unit_price}} - {{product.collection.title}}</li> --> 
+            <!-- <li>{{product.title}}</li> -->
+
+            {% for order in orders %}
+            <li>{{order.id}} - {{order.customer.first_name}}</li>
+            {% endfor %}
+        </ul>
+        {{ result }}
+    </body>
+</html>
