@@ -10,6 +10,10 @@ Before you begin, ensure you have met the following requirements:
 ```bash
 brew install mysql-client
 ```
+Use this command for Windows:
+```bash
+pip install mysqlclient
+```
 * You have a basic understanding of Python and Django.
 
 ## Setting Up Your Development Environment
