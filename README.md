@@ -41,7 +41,7 @@ pipenv shell
 Start the MySQL service on your machine.
 Create a new MySQL database for the project:
 ```sql
-CREATE DATABASE store_front;
+CREATE DATABASE storefront;
 ```
 ### Update Django Settings
 Navigate to the settings file at AI-Powered-E-Commerce-App/settings.py.
