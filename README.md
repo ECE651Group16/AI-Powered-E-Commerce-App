@@ -74,6 +74,8 @@ python manage.py createsuperuser
 ```
 You can log in using page http://127.0.0.1:8000/admin/
 
+# Import SQL using Seed.sql
+
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
 
