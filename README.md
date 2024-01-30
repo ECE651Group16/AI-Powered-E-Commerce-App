@@ -24,7 +24,13 @@ For Unix and MacOS:
 ```bash
 pipenv shell
 ```
-###Configure MySQL
+### Install Django in a Virtual Environment
+```bash
+pipenv install django
+pipenv install django-debug-toolbar
+pipenv shell
+```
+### Configure MySQL
 Start the MySQL service on your machine.
 Create a new MySQL database for the project:
 ```sql
