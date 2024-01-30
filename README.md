@@ -68,6 +68,11 @@ To run the project:
 python manage.py runserver
 ```
 The project should now be running on http://127.0.0.1:8000/.
+# Create admin user
+```python
+python manage.py createsuperuser
+```
+You can log in using page http://127.0.0.1:8000/admin/
 
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
