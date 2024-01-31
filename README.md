@@ -50,8 +50,8 @@ Configure the DATABASES setting to reflect your MySQL setup:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e_commerce_db',
-        'USER': 'e_commerce_user',
+        'NAME': 'root',
+        'USER': 'storefront',
         'PASSWORD': 'yourpassword',
         'HOST': 'localhost',
         'PORT': '3306',
