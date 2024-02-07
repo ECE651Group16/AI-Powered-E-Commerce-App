@@ -7,13 +7,15 @@ class Promotion(models.Model):
     # product_set
 
 class Collection(models.Model):
-    title = models.CharField(max_length = 255)
-    featured_product = models.ForeignKey('Product', on_delete = models.SET_NULL, null=True, related_name = '+')
-    
-    def __str__(self):
+    title = models.CharField(max_length=255)
+    featured_product = models.ForeignKey(
+        'Product', on_delete=models.SET_NULL, null=True, related_name='+', blank=True)
+
+    def __str__(self) -> str:
         return self.title
+
     class Meta:
-        ordering = ["title"]
+        ordering = ['title']
 
 class Product(models.Model):
     # sku = models.CharField(max_length = 10, primary_key=True)
@@ -23,7 +25,7 @@ class Product(models.Model):
     unit_price = models.DecimalField(max_digits = 6, decimal_places = 2, validators = [MinValueValidator(0.009,message=('Ensure this value is greater than or equal to 0.01.'))])
     inventory = models.IntegerField(validators = [MinValueValidator(0)])
     last_update = models.DateTimeField(auto_now_add = True)
-    collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
+    collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
     promotions = models.ManyToManyField(Promotion,null=True, blank= True)
 
     def __str__(self):
@@ -74,7 +76,7 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete = models.PROTECT)
-    product = models.ForeignKey(Product, on_delete = models.PROTECT)
+    product = models.ForeignKey(Product, on_delete = models.PROTECT, related_name='orderitems')
     quantity = models.PositiveBigIntegerField()
     unit_price = models.DecimalField(max_digits=6, decimal_places=2)
 
