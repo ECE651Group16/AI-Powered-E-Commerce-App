@@ -47,7 +47,7 @@ class Customer(models.Model):
     last_name = models.CharField(max_length = 255)
     email = models.EmailField(unique = True)
     phone = models.CharField(max_length = 255)
-    birth_date = models.DateField(null = True)
+    birth_date = models.DateField(null = True, blank = True)
     membership = models.CharField(max_length = 1, choices = MEMBERSHIP_CHOICES, default = MEMBERSHIP_BRONZE)
     
     def __str__(self):
@@ -96,7 +96,12 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveSmallIntegerField()
     
-
+class Review(models.Model):
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='reviews')
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateField(auto_now_add=True)
 
 
 
