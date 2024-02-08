@@ -79,8 +79,11 @@ You can log in using page http://127.0.0.1:8000/admin/
 # Installing Restful API
 ```bash
 pipenv install djangorestframework
-```ch
-
+```
+# Install nested routers
+```bash
+pipenv install drf-nested-routers
+```
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
 
