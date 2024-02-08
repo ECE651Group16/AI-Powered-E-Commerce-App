@@ -74,10 +74,10 @@ python manage.py createsuperuser
 ```
 You can log in using page http://127.0.0.1:8000/admin/
 
-# Remember to import dummy data using Seed.sql in mysqlworkbench
+### Remember to import dummy data using Seed.sql in mysqlworkbench
 
-## Setting up more on pipenv
-# Installing Restful API, nested routers, Filtering
+# Setting up more on pipenv
+## Installing Restful API, nested routers, Filtering
 ```bash
 pipenv install djangorestframework
 pipenv install drf-nested-routers
