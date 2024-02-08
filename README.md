@@ -76,14 +76,14 @@ You can log in using page http://127.0.0.1:8000/admin/
 
 # Remember to import dummy data using Seed.sql in mysqlworkbench
 
-# Installing Restful API
+## Setting up more on pipenv
+# Installing Restful API, nested routers, Filtering
 ```bash
 pipenv install djangorestframework
-```
-# Install nested routers
-```bash
 pipenv install drf-nested-routers
+pipenv install django-filter # added into the installed apps in setting.py
 ```
+
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
 
