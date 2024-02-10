@@ -82,6 +82,9 @@ You can log in using page http://127.0.0.1:8000/admin/
 pipenv install djangorestframework
 pipenv install drf-nested-routers
 pipenv install django-filter # added into the installed apps in setting.py
+pipenv install djoser
+pip install djangorestframework_simplejwt
+
 ```
 
 # Contributing to AI-Powered E-Commerce App
