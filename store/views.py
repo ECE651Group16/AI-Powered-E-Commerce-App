@@ -18,15 +18,15 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
 from store.permission import IsAdminOrReadOnly, ViewCustomerHistoryPermission
-from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, Review
-from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
+from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 
 
 
 # Create your views here.
 # generic views
 class ProductViewSet(ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.prefetch_related('images').all()
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_class = ProductFilter
@@ -44,6 +44,14 @@ class ProductViewSet(ModelViewSet):
 
         return super().destroy(request, *args, **kwargs)
 
+class ProductImageViewSet(ModelViewSet):
+    serializer_class = ProductImageSerializer
+    
+    def get_serializer_context(self): # add this because if only has get_queryset then it only upload the image. This function is to extract the id from serializer
+        return {'product_id': self.kwargs['product_pk']}
+
+    def get_queryset(self): #/products/1(product_pk)/images/1(pk) 
+        return ProductImage.objects.filter(product_id = self.kwargs['product_pk'])
 
 class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(
