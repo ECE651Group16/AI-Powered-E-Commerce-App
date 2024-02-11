@@ -83,9 +83,19 @@ pipenv install djangorestframework
 pipenv install drf-nested-routers
 pipenv install django-filter # added into the installed apps in setting.py
 pipenv install djoser
+pipenv install pillow
 pip install djangorestframework_simplejwt
 
 ```
+## Install django-cors-headers:
+https://github.com/adamchainz/django-cors-headers
+
+# Setting up for Client side
+## Install NodeJS then
+
+```bash
+npm install # install dependencies
+npm start
 
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
