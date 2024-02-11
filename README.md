@@ -96,7 +96,7 @@ https://github.com/adamchainz/django-cors-headers
 ```bash
 npm install # install dependencies
 npm start
-
+```
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
 
