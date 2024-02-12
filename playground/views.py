@@ -13,19 +13,24 @@ from django.db import connection
 from django.core.mail import EmailMessage, send_mail, mail_admins, BadHeaderError
 
 from templated_mail.mail import BaseEmailMessage
+from .tasks import notify_customers
 
 
 def say_hello(request):
-    try:
-       message = BaseEmailMessage(
-           template_name='emails/hello.html',
-           context={'name': 'Mosh'}
-       )
-       message.attach_file('playground/static/images/liuliu.jpg')
-       message.send(['john@moshbuy.com'])
-    except BadHeaderError:
-        pass
+    notify_customers.delay('Hello')
     return render(request, 'hello.html', {'name': 'Mosh'})
+# 
+# def say_hello(request):
+#     try:
+#        message = BaseEmailMessage(
+#            template_name='emails/hello.html',
+#            context={'name': 'Mosh'}
+#        )
+#        message.attach_file('playground/static/images/liuliu.jpg')
+#        message.send(['john@moshbuy.com'])
+#     except BadHeaderError:
+#         pass
+#     return render(request, 'hello.html', {'name': 'Mosh'})
 # #@transaction.atomic()
 # def say_hello(request):
     # return HttpResponse("Hello World")
