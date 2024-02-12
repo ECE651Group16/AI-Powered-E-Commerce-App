@@ -10,19 +10,24 @@ from django.contrib.contenttypes.models import ContentType
 from tags.models import TaggedItem
 from django.db import transaction
 from django.db import connection
-# Create your views here.
-# request -> respnse
-# request handler
-# action
+from django.core.mail import EmailMessage, send_mail, mail_admins, BadHeaderError
 
-# def calculate():
-#     x = 1
-#     y = 2
-#     return x
+from templated_mail.mail import BaseEmailMessage
 
 
-#@transaction.atomic()
 def say_hello(request):
+    try:
+       message = BaseEmailMessage(
+           template_name='emails/hello.html',
+           context={'name': 'Mosh'}
+       )
+       message.attach_file('playground/static/images/liuliu.jpg')
+       message.send(['john@moshbuy.com'])
+    except BadHeaderError:
+        pass
+    return render(request, 'hello.html', {'name': 'Mosh'})
+# #@transaction.atomic()
+# def say_hello(request):
     # return HttpResponse("Hello World")
     # x = calculate()
     # query_set = Product.objects.all()
