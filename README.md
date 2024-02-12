@@ -93,7 +93,7 @@ https://github.com/adamchainz/django-cors-headers
 ## Install smtp4dev for email purpose
 https://github.com/rnwood/smtp4dev
 Run it using docker
-## Install redis & celery & flower
+## Install redis (Message Brokers)& celery & flower
 ```bash
 docker run -d -p 6379:6379 redis  
 pipenv install redis
@@ -118,6 +118,21 @@ celery -A storefront flower
 npm install # install dependencies
 npm start
 ```
+
+# For Testing
+## Install pytest
+```bash
+pipenv install --dev pytest
+pipenv install --dev pytest-django
+```
+## Performance testing using locust & django-silk
+```bash
+pipenv install --dev locust
+pipenv install --dev django-silk
+locust -f locustfiles/browse_products.py
+```
+
+
 
 
 
