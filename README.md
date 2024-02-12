@@ -84,19 +84,43 @@ pipenv install drf-nested-routers
 pipenv install django-filter # added into the installed apps in setting.py
 pipenv install djoser
 pipenv install pillow
+pipenv isnstall django-templated-mail
 pip install djangorestframework_simplejwt
 
 ```
-## Install django-cors-headers:
+## Install django-cors-headers for transferring files from client to server
 https://github.com/adamchainz/django-cors-headers
+## Install smtp4dev for email purpose
+https://github.com/rnwood/smtp4dev
+Run it using docker
+## Install redis & celery & flower
+```bash
+docker run -d -p 6379:6379 redis  
+pipenv install redis
+pipenv install celery
+pipenv install flower
+```
+## run celery for running bg tasks and monitor with flower
+```bash
+celery -A storefront worker --loglevel=info  
+```
+or periodic
+```bash
+celery -A storefront beat
+```
+```bash
+celery -A storefront flower
+```
 
 # Setting up for Client side
 ## Install NodeJS then
-
 ```bash
 npm install # install dependencies
 npm start
 ```
+
+
+
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
 
