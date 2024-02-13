@@ -19,6 +19,9 @@ redis = "*"
 celery = "*"
 flower = "*"
 django-redis = "*"
+whitenoise = "*"
+pytest-django = "*"
+gunicorn = "*"
 
 [dev-packages]
 pytest = "*"
