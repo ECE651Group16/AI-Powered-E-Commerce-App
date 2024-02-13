@@ -9,8 +9,31 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql", #sqlite3
         #"NAME": BASE_DIR / "db.sqlite3",
         "NAME": 'storefront',
-        'HOST': 'localhost',
+        'HOST': 'sql', # 'mysql' when use docker from localhost
         'USER': 'root',
         'PASSWORD': '12345678',
     }
+}
+
+
+CELERY_BROKER_URL = 'redis://redis:6379/1' #'redis://localhost:6379/1' 
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/2',
+        'TIMEOUT': 10 * 60,
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+EMAIL_HOST = 'smtp4dev'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 2525
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: True
 }
