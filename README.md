@@ -95,8 +95,9 @@ https://github.com/rnwood/smtp4dev
 Run it using docker
 ## Install redis (Message Brokers)& celery & flower
 ```bash
-docker run -d -p 6379:6379 redis  
-pipenv install redis
+docker run -d -p 6379:6379 redis 
+pipenv install redis 
+pipenv install django-redis
 pipenv install celery
 pipenv install flower
 ```
@@ -124,7 +125,10 @@ npm start
 ```bash
 pipenv install --dev pytest
 pipenv install --dev pytest-django
+pipenv run pytest
+pipenv run ptw # automated testing keep running
 ```
+
 ## Performance testing using locust & django-silk
 ```bash
 pipenv install --dev locust
@@ -132,9 +136,21 @@ pipenv install --dev django-silk
 locust -f locustfiles/browse_products.py
 ```
 
-
-
-
+## Monitoring cache
+```bash
+docker exec -it CONTAINER_ID redis-cli ## select 2
+...
+keys *
+del ...
+flushall
+```
+# Prepare Production
+```bash
+python manage.py collectstatic # collecting static
+pipenv install whitenoise # serving static assets
+pipenv install gunicorn
+gunicorn storefront.wsgi # web server gateway interface
+``` 
 
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
