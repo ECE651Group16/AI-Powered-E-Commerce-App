@@ -133,6 +133,7 @@ pipenv run ptw # automated testing keep running
 ```bash
 pipenv install --dev locust
 pipenv install --dev django-silk
+pipenv install django-silk
 locust -f locustfiles/browse_products.py
 ```
 
@@ -151,6 +152,46 @@ pipenv install whitenoise # serving static assets
 pipenv install gunicorn
 gunicorn storefront.wsgi # web server gateway interface
 ``` 
+
+# Deployment
+using HeroKu: https://www.heroku.com/
+```bash
+heroku login
+heroku create AI-Ecom-prod
+```
+### add the domain to the allowed host in prod.py
+### use djecrety.ir generate the SECRET_KEY
+```bash
+heroku config:set SECRET_KEY = '...'
+heroku config:set DJANGO_SETTINGS_MODULE=storefront.settings.prod
+```
+After adding SQL, HeroRedis, Mailgun in Heroku
+```bash
+heroku config # get MySQL:....
+heroku config:set DATABASE_URL=MySQL:....
+pipenv install dj-database-url
+```
+## Deploy:
+```bash
+git remote -vv
+git push heroku main
+heroku run bash # run in production environment
+```
+
+# Dockerize
+ ```bash
+docker-compose up --build
+docker-compose log web
+docker-compose log test
+docker-compose logs -f tests
+docker-compose run web bash
+
+
+## Populating the database
+```bash
+heroku run python manage.py seed_db
+heroku config:get DATABASE_URL # use it in DataGrip
+```
 
 # Contributing to AI-Powered E-Commerce App
 To contribute, follow these steps:
