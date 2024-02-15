@@ -84,8 +84,8 @@ pipenv install drf-nested-routers
 pipenv install django-filter # added into the installed apps in setting.py
 pipenv install djoser
 pipenv install pillow
-pipenv isnstall django-templated-mail
-pip install djangorestframework_simplejwt
+pipenv install django-templated-mail
+pipenv install djangorestframework_simplejwt
 
 ```
 ## Install django-cors-headers for transferring files from client to server
