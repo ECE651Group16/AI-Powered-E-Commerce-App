@@ -93,6 +93,16 @@ https://github.com/adamchainz/django-cors-headers
 ## Install smtp4dev for email purpose
 https://github.com/rnwood/smtp4dev
 Run it using docker
+
+# Setting up for Client side
+## Install NodeJS then
+```bash
+npm install # install dependencies
+npm start
+```
+
+
+# For Web Performance Improvement
 ## Install redis (Message Brokers)& celery & flower
 ```bash
 docker run -d -p 6379:6379 redis 
@@ -113,12 +123,7 @@ celery -A storefront beat
 celery -A storefront flower
 ```
 
-# Setting up for Client side
-## Install NodeJS then
-```bash
-npm install # install dependencies
-npm start
-```
+
 
 # For Testing
 ## Install pytest
