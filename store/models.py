@@ -43,7 +43,10 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='store/images', validators=[validate_file_size])
     #file = models.FileField(upload_to='store/images', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
-
+    class Meta:
+        permissions = [
+            ('upload_productimage', 'Can upload product image')
+        ]
 class Customer(models.Model):
     MEMBERSHIP_BRONZE = 'B'
     MEMBERSHIP_SLIVER = 'S'
@@ -77,8 +80,7 @@ class Customer(models.Model):
         ordering = ['user__first_name', 'user__last_name']
         # indexes = [models.Index(fields = ['last_name', 'first_name'])]
         permissions = [
-            ('view_history', 'Can view history'),
-            ('upload_productimage', 'Can upload product image')
+            ('view_history', 'Can view history')
         ]
 
 
