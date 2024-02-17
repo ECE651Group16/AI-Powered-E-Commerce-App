@@ -29,6 +29,7 @@ class Product(models.Model):
     description = models.TextField(null=True,blank = True)
     unit_price = models.DecimalField(max_digits = 6, decimal_places = 2, validators = [MinValueValidator(0.009,message=('Ensure this value is greater than or equal to 0.01.'))])
     inventory = models.IntegerField(validators = [MinValueValidator(0)])
+    total_sells = models.IntegerField(validators = [MinValueValidator(0)], default = 0)
     last_update = models.DateTimeField(auto_now_add = True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
     promotions = models.ManyToManyField(Promotion,null=True, blank= True)

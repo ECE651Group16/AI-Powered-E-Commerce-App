@@ -33,7 +33,7 @@ class ProductViewSet(ModelViewSet):
     pagination_class = DefaultPagination
     permission_classes = [IsAdminOrReadOnly]
     search_fields = ['title', 'description']
-    ordering_fields = ['unit_price', 'last_update']
+    ordering_fields = ['unit_price', 'last_update', 'total_sells']
 
     def get_serializer_context(self):
         return {'request': self.request}
