@@ -1011,6 +1011,8 @@ values  (1, 'Bread Ww Cluster', 'mus vivamus vestibulum sagittis sapien cum soci
         (999, 'Chicken - Wieners', 'eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare', 58.57, 5, '2020-08-16 00:00:00', 6, '-'),
         (1000, 'Dried Peach', 'in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin', 41.22, 39, '2020-12-12 00:00:00', 4, '-');
 
+
+/*
 insert into store_customer (id, first_name, last_name, email, phone, birth_date, membership)
 values  (1, 'Faydra', 'Corhard', 'fcorhard0@dot.gov', '897-661-9039', '2020-10-28', 'G'),
         (2, 'Mara', 'Cammack', 'mcammack1@bigcartel.com', '649-120-2330', '2020-07-16', 'G'),
@@ -3017,6 +3019,7 @@ values  (1, '2021-04-03 00:00:00', 'P', 207),
 
 insert into store_orderitem (id, quantity, unit_price, order_id, product_id)
 values  (1, 3, 81.61, 357, 751),
+
         (2, 4, 18.06, 903, 920),
         (3, 4, 38.24, 420, 62),
         (4, 3, 61.53, 767, 863),
@@ -4015,4 +4018,6 @@ values  (1, 3, 81.61, 357, 751),
         (997, 4, 29.10, 589, 867),
         (998, 4, 80.82, 725, 25),
         (999, 5, 99.80, 573, 834),
-        (1000, 4, 93.80, 380, 188);                  
+        (1000, 4, 93.80, 380, 188);
+
+*/
