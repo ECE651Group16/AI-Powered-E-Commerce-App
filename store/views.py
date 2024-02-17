@@ -17,7 +17,7 @@ from rest_framework.pagination import PageNumberPagination, LimitOffsetPaginatio
 
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
-from store.permission import IsAdminOrReadOnly, ViewCustomerHistoryPermission
+from store.permission import IsAdminOrReadOnly, UploadProductImagePermission, ViewCustomerHistoryPermission
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 
@@ -47,6 +47,7 @@ class ProductViewSet(ModelViewSet):
 class ProductImageViewSet(ModelViewSet):
     serializer_class = ProductImageSerializer
     
+    @action(detail=True, permission_classes=[UploadProductImagePermission])
     def get_serializer_context(self): # add this because if only has get_queryset then it only upload the image. This function is to extract the id from serializer
         return {'product_id': self.kwargs['product_pk']}
 

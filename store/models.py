@@ -53,17 +53,18 @@ class Customer(models.Model):
         (MEMBERSHIP_SLIVER, 'Sliver'),
         (MEMBERSHIP_GOLD, 'Gold')
     ]
-    # first_name = models.CharField(max_length = 255)
-    # last_name = models.CharField(max_length = 255)
-    # email = models.EmailField(unique = True)
-    phone = models.CharField(max_length = 255)
+    # first_name = models.CharField(max_length = 255, null = True)
+    # last_name = models.CharField(max_length = 255, null= True)
+    # email = models.EmailField(unique = True, blank = True)
+    # refering to user model so no need for those fields
+    phone = models.CharField(max_length = 255, blank = True)
     birth_date = models.DateField(null = True, blank = True)
     membership = models.CharField(max_length = 1, choices = MEMBERSHIP_CHOICES, default = MEMBERSHIP_BRONZE)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
-    @admin.display(ordering='user__first_name')
+    @admin.display(ordering='user__first_name') # referring to the customeradmin list_display
     def first_name(self):
         return self.user.first_name
     
@@ -76,7 +77,8 @@ class Customer(models.Model):
         ordering = ['user__first_name', 'user__last_name']
         # indexes = [models.Index(fields = ['last_name', 'first_name'])]
         permissions = [
-            ('view_history', 'Can view history')
+            ('view_history', 'Can view history'),
+            ('upload_productimage', 'Can upload product image')
         ]
 
 
