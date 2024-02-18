@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
@@ -18,7 +18,7 @@ from rest_framework import permissions
 
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
-from store.permission import IsAdminOrReadOnly, UploadProductImagePermission, ViewCustomerHistoryPermission
+from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, ViewCustomerHistoryPermission
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 
@@ -79,8 +79,36 @@ class CollectionViewSet(ModelViewSet):
 
 
 class ReviewViewSet(ModelViewSet):
+    http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
     serializer_class = ReviewSerializer
-
+    
+    def get_permissions(self):
+        #for posting reviews
+        if self.request.method in ['POST','PATCH','DELETE']:
+            user = self.request.user
+            bought_item = False
+            if user.is_authenticated:
+                user = self.request.user
+                customer_id = Customer.objects.only('id').get(user_id=user.id)
+                
+                product_id = int(self.kwargs.get('product_pk'))
+                orders_by_user = Order.objects.filter(customer_id = customer_id)
+                for order in orders_by_user:
+                    ordered_items = OrderItem.objects.filter(order = order)
+                    for item in ordered_items:
+                        print(type(item.product_id), type(product_id))
+                        if item.product_id == product_id:
+                            print("found",item.product_id, product_id)
+                            bought_item = True
+                if bought_item: #if user logged in and bought item, give permission
+                    return [IsAuthenticated()]
+                else: #if user logged in but did not buy item, no permission
+                    return[IsNotAuthenticated()]
+            else: #if not logged in, no permission
+                return [IsAdminOrReadOnly()]
+        #but anyone can view reviews
+        else:
+            return [AllowAny()] #don't forget need import at top
     def get_queryset(self):
         return Review.objects.filter(product_id=self.kwargs['product_pk'])
 

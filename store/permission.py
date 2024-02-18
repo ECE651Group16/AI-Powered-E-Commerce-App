@@ -19,3 +19,9 @@ class ViewCustomerHistoryPermission(permissions.BasePermission):
 class UploadProductImagePermission(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.has_perm('store.upload_productimage')
+    
+
+class IsNotAuthenticated(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return not request.user.is_authenticated
+

@@ -41,7 +41,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['id', 'date', 'name', 'description']
+        fields = ['id', 'date', 'name', 'rating','description']
 
     def create(self, validated_data):
         product_id = self.context['product_id']
