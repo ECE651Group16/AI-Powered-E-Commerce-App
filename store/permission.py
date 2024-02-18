@@ -15,3 +15,7 @@ class FullDjangoModelPermissions(permissions.DjangoModelPermissions):
 class ViewCustomerHistoryPermission(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.has_perm('store.view_history')
+    
+class UploadProductImagePermission(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user.has_perm('store.upload_productimage')

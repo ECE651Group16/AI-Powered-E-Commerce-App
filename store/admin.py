@@ -40,7 +40,7 @@ class ProductAdmin(admin.ModelAdmin):
     # exclude = ['slug'] # fields =['title'] # readonly_field
     actions = ['clear_inventory']
     inlines = [ProductImageInline]
-    list_display = ['title', 'unit_price', 'inventory', 'inventory_status','collection_title']
+    list_display = ['title', 'unit_price', 'inventory', 'inventory_status', 'total_sells', 'collection_title']
     #list_editable = ['unit_price','inventory']
     list_per_page = 30
     search_fields = ['title__istartswith']

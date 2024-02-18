@@ -9,19 +9,19 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql", #sqlite3
         #"NAME": BASE_DIR / "db.sqlite3",
         "NAME": 'storefront',
-        'HOST': 'mysql', # 'mysql' when use docker from localhost
+        'HOST': 'localhost', # 'mysql' when use docker from localhost
         'USER': 'root',
         'PASSWORD': '12345678',
     }
 }
 
 
-CELERY_BROKER_URL = 'redis://redis:6379/1' #'redis://localhost:6379/1' 
+CELERY_BROKER_URL = 'redis://localhost:6379/1' #'redis://localhost:6379/1' 
 
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://redis:6379/2',
+        'LOCATION': 'redis://localhost:6379/2',
         'TIMEOUT': 10 * 60,
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',

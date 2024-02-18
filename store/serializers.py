@@ -1,9 +1,11 @@
 from decimal import Decimal
 from django.db import transaction
 from rest_framework import serializers
+
+from store.permission import UploadProductImagePermission
 from .signals import order_created
 from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Review
-
+from rest_framework.decorators import action
 
 class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,9 +27,9 @@ class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
     class Meta:
         model = Product
-        fields = ['id', 'title', 'description', 'slug', 'inventory',
+        fields = ['id', 'title', 'description', 'slug', 'inventory', 'total_sells',
                   'unit_price', 'price_with_tax', 'collection', 'images']
-
+    
     price_with_tax = serializers.SerializerMethodField(
         method_name='calculate_tax')
 

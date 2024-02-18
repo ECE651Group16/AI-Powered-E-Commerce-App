@@ -29,6 +29,7 @@ class Product(models.Model):
     description = models.TextField(null=True,blank = True)
     unit_price = models.DecimalField(max_digits = 6, decimal_places = 2, validators = [MinValueValidator(0.009,message=('Ensure this value is greater than or equal to 0.01.'))])
     inventory = models.IntegerField(validators = [MinValueValidator(0)])
+    total_sells = models.IntegerField(validators = [MinValueValidator(0)], default = 0)
     last_update = models.DateTimeField(auto_now_add = True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
     promotions = models.ManyToManyField(Promotion,null=True, blank= True)
@@ -42,7 +43,10 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField(upload_to='store/images', validators=[validate_file_size])
     #file = models.FileField(upload_to='store/images', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
-
+    class Meta:
+        permissions = [
+            ('upload_productimage', 'Can upload product image')
+        ]
 class Customer(models.Model):
     MEMBERSHIP_BRONZE = 'B'
     MEMBERSHIP_SLIVER = 'S'
@@ -52,17 +56,18 @@ class Customer(models.Model):
         (MEMBERSHIP_SLIVER, 'Sliver'),
         (MEMBERSHIP_GOLD, 'Gold')
     ]
-    # first_name = models.CharField(max_length = 255)
-    # last_name = models.CharField(max_length = 255)
-    # email = models.EmailField(unique = True)
-    phone = models.CharField(max_length = 255)
+    # first_name = models.CharField(max_length = 255, null = True)
+    # last_name = models.CharField(max_length = 255, null= True)
+    # email = models.EmailField(unique = True, blank = True)
+    # refering to user model so no need for those fields
+    phone = models.CharField(max_length = 255, blank = True)
     birth_date = models.DateField(null = True, blank = True)
     membership = models.CharField(max_length = 1, choices = MEMBERSHIP_CHOICES, default = MEMBERSHIP_BRONZE)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name}'
     
-    @admin.display(ordering='user__first_name')
+    @admin.display(ordering='user__first_name') # referring to the customeradmin list_display
     def first_name(self):
         return self.user.first_name
     
@@ -103,7 +108,13 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete = models.PROTECT, related_name = 'items')
     product = models.ForeignKey(Product, on_delete = models.PROTECT, related_name='orderitems')
     quantity = models.PositiveBigIntegerField()
-    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2, blank = True)
+
+    def save(self, *args, **kwargs):
+        # Set unit_price from product's unit_price if it's not already set
+        if not self.unit_price:
+            self.unit_price = self.product.unit_price
+        super(OrderItem, self).save(*args, **kwargs)
 
 
 class Address(models.Model):

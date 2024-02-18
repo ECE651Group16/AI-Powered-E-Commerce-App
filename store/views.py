@@ -14,10 +14,11 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
+from rest_framework import permissions
 
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
-from store.permission import IsAdminOrReadOnly, ViewCustomerHistoryPermission
+from store.permission import IsAdminOrReadOnly, UploadProductImagePermission, ViewCustomerHistoryPermission
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 
@@ -33,7 +34,7 @@ class ProductViewSet(ModelViewSet):
     pagination_class = DefaultPagination
     permission_classes = [IsAdminOrReadOnly]
     search_fields = ['title', 'description']
-    ordering_fields = ['unit_price', 'last_update']
+    ordering_fields = ['unit_price', 'last_update', 'total_sells']
 
     def get_serializer_context(self):
         return {'request': self.request}
@@ -46,7 +47,18 @@ class ProductViewSet(ModelViewSet):
 
 class ProductImageViewSet(ModelViewSet):
     serializer_class = ProductImageSerializer
-    
+
+    def get_permissions(self):
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action in ['create', 'update', 'partial_update', 'destroy']:
+            permission_classes = [UploadProductImagePermission]
+        else:
+            # Apply default permission classes or other specific permissions based on the action
+            permission_classes = [permissions.AllowAny] # Example default
+        return [permission() for permission in permission_classes]
+    # @action(detail=True, permission_classes=[UploadProductImagePermission])
     def get_serializer_context(self): # add this because if only has get_queryset then it only upload the image. This function is to extract the id from serializer
         return {'product_id': self.kwargs['product_pk']}
 
