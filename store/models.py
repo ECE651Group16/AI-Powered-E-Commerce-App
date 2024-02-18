@@ -108,7 +108,13 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete = models.PROTECT, related_name = 'items')
     product = models.ForeignKey(Product, on_delete = models.PROTECT, related_name='orderitems')
     quantity = models.PositiveBigIntegerField()
-    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2, blank = True)
+
+    def save(self, *args, **kwargs):
+        # Set unit_price from product's unit_price if it's not already set
+        if not self.unit_price:
+            self.unit_price = self.product.unit_price
+        super(OrderItem, self).save(*args, **kwargs)
 
 
 class Address(models.Model):
