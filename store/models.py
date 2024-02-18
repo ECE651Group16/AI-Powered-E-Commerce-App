@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.conf import settings
 from django.db import models
 from django.contrib import admin
@@ -142,6 +143,17 @@ class Review(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='reviews')
     name = models.CharField(max_length=255)
+    #rating = models.PositiveSmallIntegerField(max=5)
+    RATINGS_CHOICES = [
+    (Decimal('1'), '1'), (Decimal('1.5'), '1.5'), 
+    (Decimal('2'), '2'), (Decimal('2.5'), '2.5'), 
+    (Decimal('3'), '3'), (Decimal('3.5'), '3.5'), 
+    (Decimal('4'), '4'), (Decimal('4.5'), '4.5'), 
+    (Decimal('5'), '5')
+]
+    
+    rating = models.DecimalField(max_digits=2, decimal_places=1, choices=RATINGS_CHOICES)
+    description = models.TextField()
     description = models.TextField()
     date = models.DateField(auto_now_add=True)
 
