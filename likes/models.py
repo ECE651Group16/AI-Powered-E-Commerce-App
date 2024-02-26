@@ -8,7 +8,7 @@ from store.models import Product
 # Create your models here.
 
 class Like(models.Model):
-    id = models.UUIDField(primary_key = True, default=uuid4, editable = False)
+    id = models.UUIDField(primary_key = True, default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
