@@ -2,6 +2,8 @@
 
 This project is an AI-powered e-commerce application developed using the Django framework and MySQL as the database backend. It aims to provide an intuitive and efficient online shopping experience with the integration of advanced AI features.
 
+[![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml)
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
