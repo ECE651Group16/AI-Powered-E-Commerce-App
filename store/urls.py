@@ -5,7 +5,7 @@ from . import views
 from rest_framework.routers import SimpleRouter, DefaultRouter
 from pprint import pprint
 from rest_framework_nested import routers
-
+from likes.views import LikeViewSet, LikedItemViewSet
 
 router = routers.DefaultRouter()
 # router = DefaultRouter()
@@ -15,6 +15,10 @@ router.register('carts',views.CartViewSet)
 router.register('customers', views.CustomerViewSet)
 router.register('orders', views.OrderViewSet, basename='orders')
 
+router.register('likes',LikeViewSet, basename='likes')
+likes_router = routers.NestedDefaultRouter(router,'likes',lookup='like')
+likes_router.register('items',LikedItemViewSet,basename='like-items')
+
 carts_router = routers.NestedDefaultRouter(router,'carts',lookup='cart')
 carts_router.register('items',views.CartItemViewSet,basename='cart-items')
 products_router = routers.NestedDefaultRouter(router, 'products', lookup='product')
@@ -23,7 +27,7 @@ products_router.register('images', views.ProductImageViewSet, basename='product-
 
 pprint(router.urls)
 
-urlpatterns = router.urls + products_router.urls + carts_router.urls
+urlpatterns = router.urls + products_router.urls + carts_router.urls + likes_router.urls
 
 
 
