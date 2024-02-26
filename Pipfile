@@ -24,6 +24,7 @@ pytest-django = "*"
 gunicorn = "*"
 dj-database-url = "*"
 django-silk = "*"
+model-bakery = "*"
 
 [dev-packages]
 pytest = "*"
