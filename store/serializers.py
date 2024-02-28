@@ -34,7 +34,9 @@ class ProductSerializer(serializers.ModelSerializer):
         method_name='calculate_tax')
 
     def calculate_tax(self, product: Product):
-        return product.unit_price * Decimal(1.1)
+        # price_with_tax = product.unit_price * Decimal(1.1)
+        # return "{:.2f}".format(price_with_tax)
+        return round(product.unit_price * Decimal(1.1),2)
 
 
 
