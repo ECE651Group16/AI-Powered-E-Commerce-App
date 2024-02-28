@@ -53,7 +53,7 @@ class ProductImageViewSet(ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
-            permission_classes = [UploadProductImagePermission]
+            permission_classes = [IsAdminOrReadOnly] #changed from UploadProductImagePermission
         else:
             # Apply default permission classes or other specific permissions based on the action
             permission_classes = [permissions.AllowAny] # Example default
