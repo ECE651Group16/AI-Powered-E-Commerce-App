@@ -1,123 +1,117 @@
 # AI-Powered E-Commerce App
 
-This project is an AI-powered e-commerce application developed using the Django framework and MySQL as the database backend. It aims to provide an intuitive and efficient online shopping experience with the integration of advanced AI features.
+An AI-enhanced e-commerce platform designed to offer an intuitive and efficient online shopping experience. Developed with Django and backed by MySQL, this app integrates advanced AI features to cater to both user and business needs.
 
-[![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml)
+![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main)
 
-## Prerequisites
+## 🚀 Getting Started
 
-Before you begin, ensure you have met the following requirements:
-* You have installed Python 3.x.
-* You have installed MySQL.If not then use this command for MacOs:
-```bash
-brew install mysql-client
-```
-Use this command for Windows:
-```bash
-pip install mysqlclient
-```
-* You have a basic understanding of Python and Django.
+### Prerequisites
 
-## Setting Up Your Development Environment
+Ensure you have the following installed before starting:
+- Python 3.x
+- MySQL
+- Basic understanding of Python and Django
 
-Follow these steps to set up your development environment:
+### Installation & Setup
 
-### Clone the repository
+1. **Clone the Repository**
 
-```bash
-git clone https://github.com/ECE651Group16/AI-Powered-E-Commerce-App.git
-cd AI-Powered-E-Commerce-App
-```
-### Create and Activate a Virtual Environment
-For Unix and MacOS:
-```bash
-pipenv shell
-```
-### Install Django in a Virtual Environment
-```bash
-pipenv install django
-pipenv install django-debug-toolbar
-pipenv shell
-```
-### Configure MySQL
-Start the MySQL service on your machine.
-Create a new MySQL database for the project:
-```sql
-CREATE DATABASE storefront;
-```
-### Update Django Settings
-Navigate to the settings file at AI-Powered-E-Commerce-App/settings.py.
-Configure the DATABASES setting to reflect your MySQL setup:
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'root',
-        'USER': 'storefront',
-        'PASSWORD': 'yourpassword',
-        'HOST': 'localhost',
-        'PORT': '3306',
+   ```bash
+   git clone https://github.com/ECE651Group16/AI-Powered-E-Commerce-App.git
+   cd AI-Powered-E-Commerce-App
+   ```
+2. **Create and Activate a Virtual Environment**
+
+    **For Unix and MacOS:**
+    ```bash
+    pipenv shell
+    ```
+     **Install Dependencies in a Virtual Environment**
+    ```bash
+    pipenv install django
+    pipenv install django-debug-toolbar
+    pipenv shell
+    ```
+3. **Configure MySQL**
+
+   Start the MySQL service on your machine.
+    Create a new MySQL database for the project:
+    ```sql
+    CREATE DATABASE storefront;
+    ```
+4. **Update Django Settings**
+
+    Navigate to the settings file at AI-Powered-E-Commerce-App/settings.py.
+    Configure the DATABASES setting to reflect your MySQL setup:
+    ```python
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'root',
+            'USER': 'storefront',
+            'PASSWORD': 'yourpassword',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
     }
-}
-```
-# Run Database Migrations
-```bash
-python manage.py migrate
-```
-# Running the Project
-To run the project:
-```bash
-python manage.py runserver
-```
-The project should now be running on http://127.0.0.1:8000/.
-# Create admin user
-```python
-python manage.py createsuperuser
-```
-You can log in using page http://127.0.0.1:8000/admin/
+    ```
+5. **Run Database Migrations**
+    ```bash
+    python manager.py makemigrations
+    python manage.py migrate
+    ```
+6. **Running the Project**
+    To run the project:
+    ```bash
+    python manage.py runserver
+    ```
+    The project should now be running on http://127.0.0.1:8000/.
 
-### Remember to import dummy data using Seed.sql in mysqlworkbench
+7. **Create admin user**
+    ```python
+    python manage.py createsuperuser
+    ```
+    You can log in using page http://127.0.0.1:8000/admin/
 
-# Setting up more on pipenv
-## Installing Restful API, nested routers, Filtering
+#### Remember to import dummy data using Seed.sql in mysqlworkbench
+
+
+## Additional Setup
+
+### RESTful API and Utilities Installation
 ```bash
-pipenv install djangorestframework
-pipenv install drf-nested-routers
-pipenv install django-filter # added into the installed apps in setting.py
-pipenv install djoser
-pipenv install pillow
-pipenv install django-templated-mail
-pipenv install djangorestframework_simplejwt
-
+pipenv install djangorestframework drf-nested-routers django-filter djoser pillow django-templated-mail djangorestframework_simplejwt
 ```
-## Install django-cors-headers for transferring files from client to server
-https://github.com/adamchainz/django-cors-headers
-## Install smtp4dev for email purpose
+### Cross-Origin Resource Sharing (CORS) and Email Service Setup
+```bash
+pipenv install django-cors-headers
+```
+reference: https://github.com/adamchainz/django-cors-headers
+
+### Install smtp4dev for email purpose
 https://github.com/rnwood/smtp4dev
 Run it using docker
 
-# Setting up for Client side
-## Install NodeJS then
+## Setting up for Client side
+### Install Node.js dependencies and start the client application:
 ```bash
 npm install # install dependencies
 npm start
 ```
 
 
-# For Web Performance Improvement
-## Install redis (Message Brokers)& celery & flower
+## Performance Improvement
+### Background Tasks with Celery and Redis
 ```bash
-docker run -d -p 6379:6379 redis 
-pipenv install redis 
-pipenv install django-redis
-pipenv install celery
-pipenv install flower
+docker run -d -p 6379:6379 redis
+pipenv install redis django-redis celery flower
 ```
-## run celery for running bg tasks and monitor with flower
+### Run Celery workers and monitor tasks with Flower:
 ```bash
-celery -A storefront worker --loglevel=info  
+celery -A storefront worker --loglevel=info
 ```
-or periodic
+### or periodic:
 ```bash
 celery -A storefront beat
 ```
@@ -127,8 +121,8 @@ celery -A storefront flower
 
 
 
-# For Testing
-## Install pytest
+## Testing
+### Unit and Integration Tests with Pytest
 ```bash
 pipenv install --dev pytest
 pipenv install --dev pytest-django
@@ -136,7 +130,7 @@ pipenv run pytest
 pipenv run ptw # automated testing keep running
 ```
 
-## Performance testing using locust & django-silk
+### Performance testing using locust & django-silk
 ```bash
 pipenv install --dev locust
 pipenv install --dev django-silk
@@ -144,7 +138,7 @@ pipenv install django-silk
 locust -f locustfiles/browse_products.py
 ```
 
-## Monitoring cache
+### Monitoring cache
 ```bash
 docker exec -it CONTAINER_ID redis-cli ## select 2
 ...
@@ -152,7 +146,7 @@ keys *
 del ...
 flushall
 ```
-# Prepare Production
+## Prepare Production
 ```bash
 python manage.py collectstatic # collecting static
 pipenv install whitenoise # serving static assets
@@ -160,7 +154,7 @@ pipenv install gunicorn
 gunicorn storefront.wsgi # web server gateway interface
 ``` 
 
-# Deployment
+## Deployment
 using HeroKu: https://www.heroku.com/
 ```bash
 heroku login
@@ -185,14 +179,14 @@ git push heroku main
 heroku run bash # run in production environment
 ```
 
-# Dockerize
+## Dockerize
  ```bash
 docker-compose up --build
 docker-compose log web
 docker-compose log test
 docker-compose logs -f tests
 docker-compose run web bash
-
+```
 
 ## Populating the database
 ```bash
@@ -211,4 +205,4 @@ To contribute, follow these steps:
 Alternatively, see the GitHub documentation on creating a pull request.
 
 #License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the  Apache License Version 2.0 - see the LICENSE file for details.
