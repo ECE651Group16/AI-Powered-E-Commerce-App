@@ -58,7 +58,7 @@ Ensure you have the following installed before starting:
     ```
 5. **Run Database Migrations**
     ```bash
-    python manager.py makemigrations
+    python manage.py makemigrations
     python manage.py migrate
     ```
 6. **Running the Project**
