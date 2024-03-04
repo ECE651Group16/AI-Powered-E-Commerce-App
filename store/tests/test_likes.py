@@ -4,7 +4,7 @@ from rest_framework.test import APIClient
 from model_bakery import baker
 from store.models import Product
 
-# Function to find an item ID in a JSON array based on a given product ID.
+# Function to find a liked item ID in a JSON array based on a given product ID.
 def find_liked_item_id_from_product_id(json_array, product_id):
     for json_object in json_array:
         # Check if the current object's product ID matches the given product ID.
@@ -65,7 +65,7 @@ class TestCreateLikes:
         # Assert that the response status is 201 (Created).
         assert response_item_added.status_code == status.HTTP_201_CREATED
 
-    # Test case for deleting a product from likes with valid data.
+    # Test case for deleting a liked item from likes with valid data.
     def test_delete_product_from_likes(self, api_client, create_likes):
         product = baker.make(Product)
         response = create_likes
