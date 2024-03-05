@@ -39,3 +39,5 @@ jobs:
         pipenv run python manage.py makemigrations
         pipenv run python manage.py test
         pipenv run pytest
+    - name: Code Coverage Report
+      uses: romeovs/lcov-reporter-action@v0.3.1
