@@ -39,3 +39,5 @@ jobs:
         pipenv run python manage.py makemigrations
         pipenv run python manage.py test
         pipenv run pytest
+    - name: Code Coverage Summary
+      uses: irongut/CodeCoverageSummary@v1.3.0
