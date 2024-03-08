@@ -36,6 +36,6 @@ jobs:
         
     - name: Run Tests
       run: |
-        pipenv run python manage.py makemigrations
-        pipenv run python manage.py test
+        pipenv run python ./backend/manage.py makemigrations
+        pipenv run python ./backend/manage.py test
         pipenv run pytest
