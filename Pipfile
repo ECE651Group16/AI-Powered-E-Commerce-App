@@ -25,6 +25,7 @@ gunicorn = "*"
 dj-database-url = "*"
 django-silk = "*"
 model-bakery = "*"
+pytest-cov = "*"
 
 [dev-packages]
 pytest = "*"
