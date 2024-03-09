@@ -36,6 +36,7 @@ jobs:
         
     - name: Run Tests
       run: |
-        pipenv run python ./backend/manage.py makemigrations
-        pipenv run python ./backend/manage.py test
+        cd backend
+        pipenv run python manage.py makemigrations
+        pipenv run python manage.py test
         pipenv run pytest --cov-report term-missing --cov=./
