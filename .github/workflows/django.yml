@@ -30,9 +30,11 @@ jobs:
         
     - name: Install Dependencies
       run: |
+        cd backend
         python -m pip install --upgrade pip
         pip install pipenv
         pipenv install --dev
+        cd ../
         
     - name: Run Tests
       run: |
@@ -40,3 +42,4 @@ jobs:
         pipenv run python manage.py makemigrations
         pipenv run python manage.py test
         pipenv run pytest --cov-report term-missing --cov=./
+        cd ../
