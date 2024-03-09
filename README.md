@@ -58,8 +58,8 @@ After following these steps, the backend server will be running, and you can acc
 
 ## 📚 Documentation
 
-For more detailed documentation on Django, visit Django's official documentation.
-For React and how to work with it, check out React's official documentation.
+For more detailed documentation on Django, visit [Django's official documentation](https://docs.djangoproject.com/en/3.2/).
+For React and how to work with it, check out [React's official documentation](https://reactjs.org/docs/getting-started.html).
 
 ## 🤝 Contributing
 
@@ -72,7 +72,7 @@ Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 ## 📝 License
 
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the Apache License Version 2.0 License. See [LICENSE](LICENSE) for more information.
 
 ## 📩 Contact
 
