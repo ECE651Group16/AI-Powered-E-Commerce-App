@@ -37,7 +37,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-###Frontend Setup
+### Frontend Setup
 The frontend code is stored in the Frontend/ directory and is built using React. Follow these steps to set up the frontend:
 
 1. **Navigate to the Frontend Directory**
