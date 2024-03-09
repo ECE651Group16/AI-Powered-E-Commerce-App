@@ -1,4 +1,4 @@
-# AI-Powered E-Commerce App
+# AI-Powered E-Commerce App Django Backend
 
 An AI-enhanced e-commerce platform designed to offer an intuitive and efficient online shopping experience. Developed with Django and backed by MySQL, this app integrates advanced AI features to cater to both user and business needs.
 
