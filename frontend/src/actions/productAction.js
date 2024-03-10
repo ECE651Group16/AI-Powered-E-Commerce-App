@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from '../api/api';
 import {
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -12,10 +12,13 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/api/products/");
+    const { data } = await axios.get("/store/products/");
+    console.log("API response:", data); // Should show the full paginated response
+    console.log("Dispatching data:", data.results); // Should show just the array of products
+
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
-      payload: data,
+      payload: data.results,
     });
   } catch (error) {
     dispatch({
@@ -33,7 +36,7 @@ export const listProductDetails =(id) => async (dispatch)=>{
 
   try{
       dispatch({type:PRODUCT_DETAILS_REQUEST})
-      const {data} = await axios.get(`/api/products/${id}`)
+      const {data} = await axios.get(`/store/products/${id}`)
 
       dispatch({
           type:PRODUCT_DETAILS_SUCCESS,
