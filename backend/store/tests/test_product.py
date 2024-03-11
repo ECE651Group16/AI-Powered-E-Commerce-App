@@ -169,7 +169,8 @@ class TestRetrieveproduct:
             "images": [],  # Include if your response expects an images list
             "unit_price": product.unit_price,  # Convert Decimal to string
             "price_with_tax": round(product.unit_price * Decimal(1.1),2),  # Convert calculation result to string
-
+            'average_rating': None, 
+            'total_reviews': 0
 }
 
 
