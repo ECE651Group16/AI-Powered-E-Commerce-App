@@ -141,6 +141,7 @@ class Address(models.Model):
 class Cart(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE,null=True, blank=True)
 
 
 class CartItem(models.Model):
