@@ -20,7 +20,7 @@ function Product({ product }) {
 
         <Card.Text as="div">
             <div className="my-3">
-                {product.rating} from {product.numReviews} reviews
+                {product.average_rating} from {product.total_reviews} reviews
             </div>
         </Card.Text>
         
@@ -29,8 +29,8 @@ function Product({ product }) {
         </Card.Text>
 
         <Rating
-                // value={product.rating}
-                // text={`${product.numReviews} reviews`}
+                value={product.average_rating}
+                text={` ${product.total_reviews} reviews`}
                 color={"#f8e825"}
               />
       </Card.Body>

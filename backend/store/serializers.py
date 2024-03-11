@@ -23,12 +23,25 @@ class ProductImageSerializer(serializers.ModelSerializer):
         model = ProductImage
         fields = ['id', 'image']
 
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['id', 'date', 'rating','description']
+
+    def create(self, validated_data):
+        product_id = self.context['product_id']
+        return Review.objects.create(product_id=product_id, **validated_data)
+
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
+    total_reviews = serializers.IntegerField(read_only=True)
+    average_rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
     class Meta:
         model = Product
         fields = ['id', 'title', 'description', 'slug', 'inventory', 'total_sells',
-                  'unit_price', 'price_with_tax', 'collection', 'images']
+                  'unit_price', 'price_with_tax', 'collection', 'images',
+                  'total_reviews', 'average_rating']
     
     price_with_tax = serializers.SerializerMethodField(
         method_name='calculate_tax')
@@ -38,16 +51,6 @@ class ProductSerializer(serializers.ModelSerializer):
         # return "{:.2f}".format(price_with_tax)
         return round(product.unit_price * Decimal(1.1),2)
 
-
-
-class ReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = ['id', 'date', 'name', 'rating','description']
-
-    def create(self, validated_data):
-        product_id = self.context['product_id']
-        return Review.objects.create(product_id=product_id, **validated_data)
 
 
 class SimpleProductSerializer(serializers.ModelSerializer):

@@ -9,13 +9,12 @@ import {
 
 } from "../constants/productConstants";
 
-export const listProducts = () => async (dispatch) => {
+export const listLatestProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/store/products/");
+    const { data } = await axios.get("/store/products/?ordering=-last_update");
     console.log("API response:", data); // Should show the full paginated response
     console.log("Dispatching data:", data.results); // Should show just the array of products
-
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data.results,
