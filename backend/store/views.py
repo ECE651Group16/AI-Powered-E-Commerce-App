@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models.aggregates import Count
+from django.db.models import Avg
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -35,6 +36,12 @@ class ProductViewSet(ModelViewSet):
     permission_classes = [IsAdminOrReadOnly]
     search_fields = ['title', 'description']
     ordering_fields = ['unit_price', 'last_update', 'total_sells']
+
+    def get_queryset(self):
+        return super().get_queryset().annotate(
+            total_reviews=Count('reviews'),
+            average_rating=Avg('reviews__rating')
+        )
 
     def get_serializer_context(self):
         return {'request': self.request}

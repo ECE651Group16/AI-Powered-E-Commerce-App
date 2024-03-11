@@ -157,7 +157,7 @@ class CartItem(models.Model):
 class Review(models.Model):
     product = models.ForeignKey(
         Product, on_delete=models.CASCADE, related_name='reviews')
-    name = models.CharField(max_length=255)
+    # name = models.CharField(max_length=255)
     # rating = models.PositiveSmallIntegerField(max=5)
     RATINGS_CHOICES = [
         (Decimal('1'), '1'), (Decimal('1.5'), '1.5'),
@@ -166,8 +166,8 @@ class Review(models.Model):
         (Decimal('4'), '4'), (Decimal('4.5'), '4.5'),
         (Decimal('5'), '5')
     ]
-
+    
     rating = models.DecimalField(max_digits=2, decimal_places=1, choices=RATINGS_CHOICES)
     description = models.TextField()
-    description = models.TextField()
+    #description = models.TextField()
     date = models.DateField(auto_now_add=True)
