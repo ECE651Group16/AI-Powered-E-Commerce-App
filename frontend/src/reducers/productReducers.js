@@ -5,14 +5,18 @@ export const productListReducers =(state={products:[]},action)=>{
 
     switch(action.type){
         case PRODUCT_LIST_REQUEST:
-            return {laoding:true,products:[]}
+            return { ...state, loading: true };
         case PRODUCT_LIST_SUCCESS:
-            return {laoding:false,products:action.payload}
+            return {
+                ...state,
+                loading: false,
+                products: action.payload.results, // Assuming payload now includes a results field
+                totalPages: action.payload.totalPages, // Assuming payload now includes a totalPages field
+            };
         case PRODUCT_LIST_FAIL:
-            return {laoding:false,error: action.payload}
-
+            return { ...state, loading: false, error: action.payload };
         default:
-            return state
+            return state;
     }
 
 
