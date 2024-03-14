@@ -43,7 +43,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'unit_price', 'inventory', 'inventory_status', 'total_sells', 'collection_title']
     #list_editable = ['unit_price','inventory']
     list_per_page = 30
-    search_fields = ['title__istartswith']
+    search_fields = ['title']
     list_filter = ['collection','last_update', InventoryFilters] 
     #list_filter = ['collection__title']
     # queryset.select_related faster
