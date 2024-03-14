@@ -72,11 +72,23 @@ function HomeScreen() {
           ) : dealserror ? (
             <Message variant="danger">{dealserror}</Message>
           ) : (
-            dealsproducts.map((product) => (
-              <div key={product._id} className="product-card">
-                <Product product={product} />
-              </div>
-            ))
+            // dealsproducts.map((product) => (
+              
+              
+            //   <div key={product._id} className="product-card">
+            //     <Product product={product} />
+            //   </div>
+            // ))
+            dealsproducts.map((product) => {
+              // Add console log here to log each product
+              // console.log(product);
+      
+              return (
+                <div key={product._id} className="product-card">
+                  <Product product={product} />
+                </div>
+              );
+            })
           )}
           <div className={`pagination-control ${dealspage >= dealstotalPages ? 'disabled' : ''}`} onClick={dealshandleNext}>
             <FontAwesomeIcon icon={faChevronRight} />

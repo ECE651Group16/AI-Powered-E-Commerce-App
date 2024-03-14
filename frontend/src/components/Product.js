@@ -7,12 +7,12 @@ function Product({ product }) {
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
   return (
     <Card classname="my-3 p-3 rounded">
-      <Link to={`/product/${product._id}`}>
+      <Link to={`/products/${product._id}`}>
       <Card.Img src={product.images && product.images.length > 0 ? product.images[0].image : defaultImage} variant="top" />
       </Link>
 
       <Card.Body>
-        <Link to={`/product/${product._id}`}>
+        <Link to={`/products/${product._id}`}>
           <Card.Title as="div">
             <strong>{product.title}</strong>
           </Card.Title>
