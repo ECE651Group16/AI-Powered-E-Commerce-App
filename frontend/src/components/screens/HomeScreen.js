@@ -21,7 +21,7 @@ function HomeScreen() {
     const [latestpage, latestsetPage] = useState(1);
     const {latesterror, latestloading, latestproducts, latesttotalPages} = useSelector(state=>state.latestproductList);
 
-    console.log("totalPages", dealstotalPages);
+    // console.log("totalPages", dealstotalPages);
 
     useEffect(()=>{
         dispatch(listDealsProducts(dealspage));
@@ -72,11 +72,23 @@ function HomeScreen() {
           ) : dealserror ? (
             <Message variant="danger">{dealserror}</Message>
           ) : (
-            dealsproducts.map((product) => (
-              <div key={product._id} className="product-card">
-                <Product product={product} />
-              </div>
-            ))
+            // dealsproducts.map((product) => (
+              
+              
+            //   <div key={product._id} className="product-card">
+            //     <Product product={product} />
+            //   </div>
+            // ))
+            dealsproducts.map((product) => {
+              // Add console log here to log each product
+              // console.log(product);
+      
+              return (
+                <div key={product.id} className="product-card">
+                  <Product product={product} />
+                </div>
+              );
+            })
           )}
           <div className={`pagination-control ${dealspage >= dealstotalPages ? 'disabled' : ''}`} onClick={dealshandleNext}>
             <FontAwesomeIcon icon={faChevronRight} />
@@ -94,7 +106,7 @@ function HomeScreen() {
             <Message variant="danger">{maylikeerror}</Message>
           ) : (
             maylikeproducts.map((product) => (
-              <div key={product._id} className="product-card">
+              <div key={product.id} className="product-card">
                 <Product product={product} />
               </div>
             ))
@@ -116,7 +128,7 @@ function HomeScreen() {
             <Message variant="danger">{latesterror}</Message>
           ) : (
             latestproducts.map((product) => (
-              <div key={product._id} className="product-card">
+              <div key={product.id} className="product-card">
                 <Product product={product} />
               </div>
             ))
