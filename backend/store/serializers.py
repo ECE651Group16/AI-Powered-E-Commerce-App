@@ -35,13 +35,14 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
+    reviews = ReviewSerializer(many=True, read_only=True)
     total_reviews = serializers.IntegerField(read_only=True)
     average_rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)
     class Meta:
         model = Product
         fields = ['id', 'title', 'description', 'slug', 'inventory', 'total_sells',
                   'unit_price', 'price_with_tax', 'collection', 'images',
-                  'total_reviews', 'average_rating']
+                  'total_reviews', 'average_rating', 'reviews']
     
     price_with_tax = serializers.SerializerMethodField(
         method_name='calculate_tax')

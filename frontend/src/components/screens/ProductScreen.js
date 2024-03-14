@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Carousel } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card,Form } from "react-bootstrap";
 import Rating from "../Rating";
 import Loader from '../Loader';
@@ -10,7 +10,7 @@ import { listProductDetails } from "../../actions/productAction";
 import { productDetailsReducers } from "../../reducers/productReducers";
 
 function ProductScreen({ match,history }) {
-
+  const { id } = useParams();
   const [qty,setQty] = useState(1)
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
@@ -36,12 +36,13 @@ function ProductScreen({ match,history }) {
       </Link>
 
 
-{loading ? (
+      {loading ? (
         <Loader />
         
       ) : error ? (
         <Message variant='danger'>{error} </Message>
       ) : (
+        <>
         <Row>
           <Col md={6}>
           {product.images && product.images.length > 0 ? (
@@ -120,15 +121,9 @@ function ProductScreen({ match,history }) {
                       </Col>
 
 
-
-
-
                 </Row>
                 </ListGroup.Item>
             )}
-
-
-
 
                 <ListGroup.Item>
                   <Button
@@ -144,7 +139,27 @@ function ProductScreen({ match,history }) {
             </Card>
           </Col>
         </Row>
-     
+        
+        <div className="mt-5">
+        <h3>Reviews</h3>
+        {product.reviews && product.reviews.length > 0 ? (
+          <ListGroup variant="flush">
+            {product.reviews.map((review) => {
+                // console.log(review);
+                return(
+              <ListGroup.Item key={review.id}>
+                {/* <strong>{review.name}</strong> */}
+                <Rating value={review.rating} />
+                <p>{review.date}</p>
+                <p>{review.description}</p>
+              </ListGroup.Item>
+            );})}
+          </ListGroup>
+        ) : (
+          <Message>No reviews yet</Message>
+        )}
+      </div>
+      </>
       )}
     </div>
   );
