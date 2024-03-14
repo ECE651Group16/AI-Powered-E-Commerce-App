@@ -15,7 +15,7 @@ function ProductScreen({ match,history }) {
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
-
+  const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
   useEffect(()=>{
     dispatch(listProductDetails(match.params.id));
 
@@ -44,7 +44,21 @@ function ProductScreen({ match,history }) {
       ) : (
         <Row>
           <Col md={6}>
-            <Image src={`${process.env.PUBLIC_URL}${product.images[0]?.image}`} alt={product.title} fluid />
+          {product.images && product.images.length > 0 ? (
+          <Carousel>
+            {product.images.map((image) => (
+              <Carousel.Item key={image.id}>
+                <img
+                  className="d-block w-100"
+                  src={process.env.PUBLIC_URL + image.image}
+                  alt="Product image"
+                />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        ) : (
+          <img src={defaultImage} alt="Default product" className="img-fluid" />
+        )}
           </Col>
           <Col md={3}>
             <ListGroup variant="flush">
