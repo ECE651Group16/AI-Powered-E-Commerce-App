@@ -21,7 +21,7 @@ function HomeScreen() {
     const [latestpage, latestsetPage] = useState(1);
     const {latesterror, latestloading, latestproducts, latesttotalPages} = useSelector(state=>state.latestproductList);
 
-    console.log("totalPages", dealstotalPages);
+    // console.log("totalPages", dealstotalPages);
 
     useEffect(()=>{
         dispatch(listDealsProducts(dealspage));
@@ -84,7 +84,7 @@ function HomeScreen() {
               // console.log(product);
       
               return (
-                <div key={product._id} className="product-card">
+                <div key={product.id} className="product-card">
                   <Product product={product} />
                 </div>
               );
@@ -106,7 +106,7 @@ function HomeScreen() {
             <Message variant="danger">{maylikeerror}</Message>
           ) : (
             maylikeproducts.map((product) => (
-              <div key={product._id} className="product-card">
+              <div key={product.id} className="product-card">
                 <Product product={product} />
               </div>
             ))
@@ -128,7 +128,7 @@ function HomeScreen() {
             <Message variant="danger">{latesterror}</Message>
           ) : (
             latestproducts.map((product) => (
-              <div key={product._id} className="product-card">
+              <div key={product.id} className="product-card">
                 <Product product={product} />
               </div>
             ))

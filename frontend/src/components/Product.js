@@ -5,14 +5,15 @@ import {Link} from "react-router-dom"
 
 function Product({ product }) {
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
+  console.log(product); 
   return (
     <Card classname="my-3 p-3 rounded">
-      <Link to={`/products/${product._id}`}>
+      <Link to={`/products/${product.id}`}>
       <Card.Img src={product.images && product.images.length > 0 ? product.images[0].image : defaultImage} variant="top" />
       </Link>
 
       <Card.Body>
-        <Link to={`/products/${product._id}`}>
+        <Link to={`/products/${product.id}`}>
           <Card.Title as="div">
             <strong>{product.title}</strong>
           </Card.Title>
