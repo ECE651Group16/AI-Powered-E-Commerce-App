@@ -171,7 +171,7 @@ class TestRetrieveproduct:
             "price_with_tax": round(product.unit_price * Decimal(1.1),2),  # Convert calculation result to string
             'average_rating': None, 
             'total_reviews': 0,
-            'reviews': None
+            'reviews': [],
 }
 
 
