@@ -16,49 +16,57 @@ function AllProductScreen() {
     
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
-    
-    const {error, loading, products, totalPages} = useSelector(state=>state.productList);
+    const [currentFilters, setCurrentFilters] = useState({});
+  
+    const { error, loading, products, totalPages } = useSelector(state => state.productList);
 
-    // const applyFilter = (filters) => {
-    //     // Assuming you have a state for managing current page number
-    //     setPage(1); // Reset to first page or maintain current page based on your UX
-    //     dispatch(listProducts(1, filters));
-    // };
-    const applyFilter = async (filters) => {
-        setPage(1);
-        try {
-          // Adjusting parameter names to match backend expectations
-          const backendFilters = {
-            ...(filters.collection_id && {collection_id: filters.collection_id}),
-            ...(filters.price_gte && {unit_price__gt: filters.price_gte}),
-            ...(filters.price_lte && {unit_price__lt: filters.price_lte}),
-          };
+    // const applyFilter = async (filters) => {
+    //     setPage(1);
+    //     try {
+    //       // Adjusting parameter names to match backend expectations
+    //       const backendFilters = {
+    //         ...(filters.collection_id && {collection_id: filters.collection_id}),
+    //         ...(filters.price_gte && {unit_price__gt: filters.price_gte}),
+    //         ...(filters.price_lte && {unit_price__lt: filters.price_lte}),
+    //       };
       
-          // Construct the query string with adjusted parameter names
-          const params = new URLSearchParams(backendFilters).toString();
+    //       // Construct the query string with adjusted parameter names
+    //       const params = new URLSearchParams(backendFilters).toString();
           
-          // Log the final query string to verify correctness
-          console.log(`Final query string: ${params}`);
+    //       // Log the final query string to verify correctness
+    //       console.log(`Final query string: ${params}`);
           
-          // Make the API request with the correctly named parameters
-          const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
+    //       // Make the API request with the correctly named parameters
+    //       const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
           
-          // Update your state with the response data as needed
-          console.log("Filtered products:", response.data);
+    //       // Update your state with the response data as needed
+    //       console.log("Filtered products:", response.data);
           
-          // Assuming you have a state method called setProducts to update your product list
-          // setProducts(response.data.results); // You need to define setProducts in your component state
-        } catch (error) {
-          console.error('Failed to apply filters:', error);
-          // Handle errors, maybe set some error state to show in the UI
+    //       // Assuming you have a state method called setProducts to update your product list
+    //       // setProducts(response.data.results); // You need to define setProducts in your component state
+    //     } catch (error) {
+    //       console.error('Failed to apply filters:', error);
+    //       // Handle errors, maybe set some error state to show in the UI
+    //     }
+    //   };
+      
+
+    // Function to handle applying filters
+    const applyFilter = (filters) => {
+        setCurrentFilters(filters); // Store current filters
+        setPage(1); // Reset pagination to the first page
+        dispatch(filterProducts(filters, 1)); // Fetch filtered products for the first page
+    };
+
+
+    // Fetch products based on current page and filters
+    useEffect(() => {
+        if (Object.keys(currentFilters).length > 0) {
+            dispatch(filterProducts(currentFilters, page));
+        } else {
+            dispatch(listProducts(page));
         }
-      };
-      
-
-    useEffect(()=>{
-        dispatch(listProducts(page));
-    },[dispatch, page])
-    
+    }, [dispatch, page, currentFilters]);
 
     const handlePrevious = () => {
       setPage((prevPage) => Math.max(prevPage - 1, 1));

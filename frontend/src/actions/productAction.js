@@ -162,36 +162,63 @@ export const listProductDetails =(id) => async (dispatch)=>{
 }
 
 
+// export const filterProducts = (filters, pageNumber = 1) => async (dispatch) => {
+//   const PRODUCTS_PER_PAGE = 8;
+//   try {
+//     dispatch({ type: FILTER_PRODUCTS_REQUEST });
+//     const params = new URLSearchParams({ ...filters, page: pageNumber }).toString();
+//     const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
+//     const requestUrl = `http://127.0.0.1:8000/store/products/?${params}`;
+//     console.log('Request URL:', requestUrl);
+
+//     const { data } = await axios.get(requestUrl);
+//     console.log('Response data:', data);
+//     dispatch({
+//       type: FILTER_PRODUCTS_SUCCESS,
+//       payload: {
+//         results: response.data.results,
+//         totalPages: Math.ceil(response.data.count / PRODUCTS_PER_PAGE), // Adjust according to your pagination logic
+//       },
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: FILTER_PRODUCTS_FAIL,
+//       payload: error.message,
+//     });
+//   }
+// };
+
 export const filterProducts = (filters, page) => async (dispatch) => {
+  const PRODUCTS_PER_PAGE = 8;
+  dispatch({ type: FILTER_PRODUCTS_REQUEST });
+  const adjustedFilters = {
+    ...filters,
+    unit_price__gt: filters.price_gte,
+    unit_price__lt: filters.price_lte,
+  };
+  if (filters.collection_id) {
+    adjustedFilters.collection_id = filters.collection_id;
+  }
+  // Delete the temporary keys used for making the request more readable for Django filters
+  delete adjustedFilters.price_gte;
+  delete adjustedFilters.price_lte;
+
+  const params = new URLSearchParams({ ...adjustedFilters, page }).toString();
   try {
-    // Adjust filter keys to match Django backend expectations
-    const adjustedFilters = {
-      ...filters,
-      unit_price__gt: filters.price_gte,
-      unit_price__lt: filters.price_lte,
-    };
-
-    // Remove the original price_gte and price_lte keys
-    delete adjustedFilters.price_gte;
-    delete adjustedFilters.price_lte;
-
-    // Add collection_id filtering only if it is provided
-    if(filters.collection_id) {
-      adjustedFilters.collection_id = filters.collection_id;
-    }
-
-    const params = new URLSearchParams({ ...adjustedFilters, page }).toString();
-    const requestUrl = `http://127.0.0.1:8000/store/products/?${params}`;
-
-    console.log('Request URL:', requestUrl);
-
-    const { data } = await axios.get(requestUrl);
-    console.log('Response data:', data);
-
-    // Update your state here with the response data
-    // For example, if you're using Redux, dispatch the success action with the payload
+    const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
+    console.log('Response data:', response.data);
+    dispatch({
+      type: FILTER_PRODUCTS_SUCCESS,
+      payload: {
+        results: response.data.results,
+        totalPages: Math.ceil(response.data.count / PRODUCTS_PER_PAGE), // Assuming you have a PRODUCTS_PER_PAGE constant
+      },
+    });
   } catch (error) {
     console.error('Error applying filters:', error);
-    // Handle the error, for example, by dispatching a failure action if you're using Redux
+    dispatch({
+      type: FILTER_PRODUCTS_FAIL,
+      payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+    });
   }
 };
