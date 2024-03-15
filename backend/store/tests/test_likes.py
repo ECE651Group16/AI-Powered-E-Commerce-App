@@ -36,6 +36,7 @@ class TestCreateLikes:
         response = create_likes
         # Assert that the response status is 201 (Created) and 'id' is in response data.
         assert response.status_code == status.HTTP_201_CREATED
+        assert 'id' in response.data and response.data['id']
 
     # Test case for retrieving likes.
     def test_retrieve_likes(self, api_client, create_likes):
