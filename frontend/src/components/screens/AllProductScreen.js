@@ -76,7 +76,7 @@ function AllProductScreen() {
             <>
                 <Row>
                 <Col md={3}>
-                    <FilterComponent onApplyFilter={applyFilter} />
+                <FilterComponent onApplyFilter={applyFilter} currentFilters={currentFilters} />
                     <Button variant="secondary" onClick={resetFilters}>Reset Filters</Button>
                 </Col>
                 <Col md={9}>
