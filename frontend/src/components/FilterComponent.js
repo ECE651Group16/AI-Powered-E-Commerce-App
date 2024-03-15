@@ -1,15 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
-
+import axios from 'axios';
 const FilterComponent = ({ onApplyFilter }) => {
   const [collections, setCollections] = useState([]);
-  const [selectedCollection, setSelectedCollection] = useState('');
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
+  const [open, setOpen] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState([]);
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 2000 });
+
 
   useEffect(() => {
     // Fetch collections and other filter options
-    // setCollections(fetchedCollections);
+    const fetchCollections = async () => {
+      try {
+        const response = await axios.get('/store/collections/');
+        setCollections(response.data);
+      } catch (error) {
+        console.error('Failed to fetch collections:', error);
+      }
+    };
+
+    fetchCollections();
   }, []);
+
 
   const handlePriceChange = (e) => {
     const { name, value } = e.target;

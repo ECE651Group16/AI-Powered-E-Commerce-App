@@ -33,8 +33,8 @@ function AllProductScreen() {
         setPage(1); // Reset pagination to the first page
         dispatch(filterProducts(filters, 1)); // Fetch filtered products for the first page
     };
-
-
+    
+    
     // Fetch products based on current page and filters
     useEffect(() => {
         if (Object.keys(currentFilters).length > 0) {
