@@ -19,7 +19,8 @@ def api_client():
     return APIClient()
 
 @pytest.fixture
-def create_cart(api_client):
+def create_cart(api_client, authenticate):
+    authenticate()
     return api_client.post('/store/carts/')
 
 
