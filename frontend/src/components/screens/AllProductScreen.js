@@ -20,35 +20,11 @@ function AllProductScreen() {
   
     const { error, loading, products, totalPages } = useSelector(state => state.productList);
 
-    // const applyFilter = async (filters) => {
-    //     setPage(1);
-    //     try {
-    //       // Adjusting parameter names to match backend expectations
-    //       const backendFilters = {
-    //         ...(filters.collection_id && {collection_id: filters.collection_id}),
-    //         ...(filters.price_gte && {unit_price__gt: filters.price_gte}),
-    //         ...(filters.price_lte && {unit_price__lt: filters.price_lte}),
-    //       };
-      
-    //       // Construct the query string with adjusted parameter names
-    //       const params = new URLSearchParams(backendFilters).toString();
-          
-    //       // Log the final query string to verify correctness
-    //       console.log(`Final query string: ${params}`);
-          
-    //       // Make the API request with the correctly named parameters
-    //       const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
-          
-    //       // Update your state with the response data as needed
-    //       console.log("Filtered products:", response.data);
-          
-    //       // Assuming you have a state method called setProducts to update your product list
-    //       // setProducts(response.data.results); // You need to define setProducts in your component state
-    //     } catch (error) {
-    //       console.error('Failed to apply filters:', error);
-    //       // Handle errors, maybe set some error state to show in the UI
-    //     }
-    //   };
+    const resetFilters = () => {
+        setCurrentFilters({}); // Reset current filters to an empty object
+        setPage(1); // Optionally, reset to the first page
+        dispatch(listProducts(1)); // Fetch the initial list of products without filters
+    };
       
 
     // Function to handle applying filters
@@ -101,6 +77,7 @@ function AllProductScreen() {
                 <Row>
                 <Col md={3}>
                     <FilterComponent onApplyFilter={applyFilter} />
+                    <Button variant="secondary" onClick={resetFilters}>Reset Filters</Button>
                 </Col>
                 <Col md={9}>
                     <Row>
