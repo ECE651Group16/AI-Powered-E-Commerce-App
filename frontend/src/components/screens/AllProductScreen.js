@@ -21,9 +21,21 @@ function AllProductScreen() {
     const { error, loading, products, totalPages } = useSelector(state => state.productList);
 
     const resetFilters = () => {
-        setCurrentFilters({}); // Reset current filters to an empty object
-        setPage(1); // Optionally, reset to the first page
-        dispatch(listProducts(1)); // Fetch the initial list of products without filters
+        // Reset current filters to an empty object
+        setCurrentFilters({});
+
+        // Optionally, reset to the first page
+        setPage(1);
+
+        // Clear filter states from local storage
+        localStorage.removeItem('searchQuery');
+        localStorage.removeItem('ordering');
+        localStorage.removeItem('priceRangeMin');
+        localStorage.removeItem('priceRangeMax');
+        localStorage.removeItem('selectedCollection');
+
+        // Fetch the initial list of products without filters
+        dispatch(listProducts(1));
     };
       
 
