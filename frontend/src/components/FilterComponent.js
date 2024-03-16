@@ -16,13 +16,15 @@ const getCollapseState = (key, defaultValue) => {
 };
 
 
+
 const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
   const [collections, setCollections] = useState([]);
 
   const [isOpenCollection, setIsOpenCollection] = useState(() => getCollapseState('isOpenCollection', false));
   const [isOpenPrice, setIsOpenPrice] = useState(() => getCollapseState('isOpenPrice', false));
   
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const [ordering, setOrdering] = useState('');
   // Correct initialization based on currentFilters
   const [selectedCollection, setSelectedCollection] = useState(() => {
     const initialSelections = {};
@@ -77,6 +79,8 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
     fetchCollections();
   }, []);
 
+  
+
 
   const handlePriceChange = (e) => {
     const { name, value } = e.target;
@@ -101,6 +105,7 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3"></Form.Group>
       <Form.Group>
         
       <Form.Label onClick={toggleCollectionCollapse} style={{ cursor: 'pointer' }}>
@@ -121,6 +126,8 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
         </div>
         </Collapse>
       </Form.Group>
+
+      <Form.Group className="mb-3"></Form.Group>
 
       <Form.Group>
           <Form.Label onClick={togglePriceCollapse} style={{ cursor: 'pointer' }}>
@@ -146,6 +153,36 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
           </Collapse>
         </Form.Group>
 
+        <Form.Group className="mb-3"></Form.Group>
+
+        <Form.Group>
+        <Form.Label>Search</Form.Label>
+        <Form.Control
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group className="mb-3"></Form.Group>
+
+      <Form.Group>
+        <Form.Label>Order By</Form.Label>
+        <Form.Control as="select" value={ordering} onChange={(e) => setOrdering(e.target.value)}>
+        <option value="">Select...</option>
+        <option value="unit_price">Price (Low to High)</option>
+        <option value="-unit_price">Price (High to Low)</option>
+        <option value="last_update">Last Updated (Newest First)</option>
+        <option value="-last_update">Last Updated (Oldest First)</option>
+        <option value="total_sells">Total Sells (High to Low)</option>
+        <option value="-total_sells">Total Sells (Low to High)</option>
+        <option value="average_rating">Average Rating (High to Low)</option>
+        <option value="-average_rating">Average Rating (Low to High)</option>
+        <option value="total_reviews">Total Reviews (High to Low)</option>
+        <option value="-total_reviews">Total Reviews (Low to High)</option>
+</Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-3"></Form.Group>
       <Button variant="primary" type="submit">
         Apply Filters
       </Button>
