@@ -37,12 +37,13 @@ function AllProductScreen() {
     
     // Fetch products based on current page and filters
     useEffect(() => {
+        console.log('Current Filters:', currentFilters);
         if (Object.keys(currentFilters).length > 0) {
-            dispatch(filterProducts(currentFilters, page));
+          dispatch(filterProducts(currentFilters, page));
         } else {
-            dispatch(listProducts(page));
+          dispatch(listProducts(page));
         }
-    }, [dispatch, page, currentFilters]);
+      }, [dispatch, page, currentFilters]);
 
     const handlePrevious = () => {
       setPage((prevPage) => Math.max(prevPage - 1, 1));

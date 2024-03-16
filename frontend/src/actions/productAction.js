@@ -188,34 +188,38 @@ export const listProductDetails =(id) => async (dispatch)=>{
 //   }
 // };
 
-export const filterProducts = (filters, page) => async (dispatch) => {
-  const PRODUCTS_PER_PAGE = 8;
+export const filterProducts = (filters, page = 1) => async (dispatch) => {
   dispatch({ type: FILTER_PRODUCTS_REQUEST });
-  const adjustedFilters = {
-    ...filters,
-    unit_price__gt: filters.price_gte,
-    unit_price__lt: filters.price_lte,
-  };
-  if (filters.collection_id) {
-    adjustedFilters.collection_id = filters.collection_id;
-  }
-  // Delete the temporary keys used for making the request more readable for Django filters
-  delete adjustedFilters.price_gte;
-  delete adjustedFilters.price_lte;
 
-  const params = new URLSearchParams({ ...adjustedFilters, page }).toString();
+  // Filter out any parameters that are undefined, null, or empty strings
+  const adjustedFilters = Object.entries(filters).reduce((acc, [key, value]) => {
+    if (value !== undefined && value !== null && value !== '') {
+      // For array values, join them into a comma-separated string
+      acc[key] = Array.isArray(value) ? value.join(',') : value;
+    }
+    return acc;
+  }, {});
+
+  // Construct the query parameters string
+  const queryParams = new URLSearchParams({ ...adjustedFilters, page }).toString();
+
+  // Log the constructed URL for debugging
+  console.log(`Requesting: http://127.0.0.1:8000/store/products/?${queryParams}`);
+
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/store/products/?${params}`);
-    console.log('Response data:', response.data);
+    const response = await axios.get(`http://127.0.0.1:8000/store/products/?${queryParams}`);
+    const PRODUCTS_PER_PAGE = 8;
+    const totalPages = Math.ceil(response.data.count / PRODUCTS_PER_PAGE);
+
     dispatch({
       type: FILTER_PRODUCTS_SUCCESS,
       payload: {
         results: response.data.results,
-        totalPages: Math.ceil(response.data.count / PRODUCTS_PER_PAGE), // Assuming you have a PRODUCTS_PER_PAGE constant
+        totalPages,
       },
     });
   } catch (error) {
-    console.error('Error applying filters:', error);
+    console.error('Error fetching filtered products:', error);
     dispatch({
       type: FILTER_PRODUCTS_FAIL,
       payload: error.response && error.response.data.message ? error.response.data.message : error.message,

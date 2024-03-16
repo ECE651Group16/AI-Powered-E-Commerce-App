@@ -11,6 +11,7 @@ class ProductFilter(FilterSet):
   #   }
 
   collection_id = filters.BaseInFilter(field_name='collection_id', lookup_expr='in')
+  # unit_price = filters.RangeFilter()
   # unit_price_gt = filters.NumberFilter(field_name='unit_price', lookup_expr='gt')
   # unit_price_lt = filters.NumberFilter(field_name='unit_price', lookup_expr='lt')
 

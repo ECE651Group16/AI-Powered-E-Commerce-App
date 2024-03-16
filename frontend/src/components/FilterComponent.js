@@ -23,22 +23,25 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
   const [isOpenCollection, setIsOpenCollection] = useState(() => getCollapseState('isOpenCollection', false));
   const [isOpenPrice, setIsOpenPrice] = useState(() => getCollapseState('isOpenPrice', false));
   
-  const [searchQuery, setSearchQuery] = useState('');
-  const [ordering, setOrdering] = useState('');
-  // Correct initialization based on currentFilters
-  const [selectedCollection, setSelectedCollection] = useState(() => {
-    const initialSelections = {};
-    // Assume currentFilters.collection_id is an array of strings
-    (currentFilters.collection_id || []).forEach((id) => {
-      initialSelections[id] = true; // Mark as selected
-    });
-    return initialSelections;
+  const [searchQuery, setSearchQuery] = useState(() => {
+    // Attempt to get a stored search query or fall back to currentFilters or an empty string
+    return localStorage.getItem('searchQuery') || currentFilters.search || '';
   });
 
+  const [ordering, setOrdering] = useState(() => {
+    // Attempt to get a stored ordering or fall back to currentFilters or an empty string
+    return localStorage.getItem('ordering') || currentFilters.ordering || '';
+  });
+
+
+  const [selectedCollection, setSelectedCollection] = useState(() => {
+    const storedSelections = localStorage.getItem('selectedCollection');
+    return storedSelections ? JSON.parse(storedSelections) : {};
+  });
   
   const [priceRange, setPriceRange] = useState({
-    min: currentFilters.price_gte || '',
-    max: currentFilters.price_lte || '',
+    min: localStorage.getItem('priceRangeMin') || currentFilters.price_gte || '',
+    max: localStorage.getItem('priceRangeMax') || currentFilters.price_lte || '',
   });
 
   // Toggle functions that also save state to local storage
@@ -79,28 +82,54 @@ const FilterComponent = ({ onApplyFilter, currentFilters  }) => {
     fetchCollections();
   }, []);
 
-  
+  useEffect(() => {
+    localStorage.setItem('searchQuery', searchQuery);
+  }, [searchQuery]);
 
+  useEffect(() => {
+    localStorage.setItem('ordering', ordering);
+  }, [ordering]);
+  
+  useEffect(() => {
+    localStorage.setItem('priceRangeMin', priceRange.min);
+    localStorage.setItem('priceRangeMax', priceRange.max);
+  }, [priceRange]);
 
   const handlePriceChange = (e) => {
     const { name, value } = e.target;
     setPriceRange((prev) => ({ ...prev, [name]: value }));
   };
   const handleCollectionChange = (collectionId) => {
-    setSelectedCollection(prev => ({
-      ...prev,
-      [collectionId]: !prev[collectionId],
-    }));
+    setSelectedCollection((prev) => {
+      const newSelections = { ...prev, [collectionId]: !prev[collectionId] };
+      // Save the updated selections to local storage
+      localStorage.setItem('selectedCollection', JSON.stringify(newSelections));
+      return newSelections;
+    });
+  };
+  const handleOrderChange = (e) => {
+    setOrdering(e.target.value);
+    console.log(ordering);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const selectedCollectionIds = Object.keys(selectedCollection).filter(id => selectedCollection[id]);
-    onApplyFilter({
-      collection_id: selectedCollectionIds,
-      price_gte: priceRange.min,
-      price_lte: priceRange.max,
-    });
+    // const selectedCollectionIds = Object.keys(selectedCollection).filter(id => selectedCollection[id]);
+    // onApplyFilter({
+    //   collection_id: selectedCollectionIds,
+    //   price_gte: priceRange.min,
+    //   price_lte: priceRange.max,
+    // });
+    const selectedCollectionIds = Object.keys(selectedCollection).filter(key => selectedCollection[key]).join(',');
+    const filters = {
+      ...(searchQuery && { search: searchQuery }),
+      ...(ordering && { ordering }),
+      ...(priceRange.min && { 'unit_price__gt': priceRange.min }),
+      ...(priceRange.max && { 'unit_price__lt': priceRange.max }),
+      ...(selectedCollectionIds && { collection_id: selectedCollectionIds }),
+    };
+    // Dispatch the action creator with the filters and the current page (assuming '1' by default)
+    onApplyFilter(filters, 1);
   };
 
   return (
