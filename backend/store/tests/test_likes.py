@@ -22,9 +22,10 @@ def find_liked_item_id_from_product_id(json_array, product_id):
 def api_client():
     return APIClient()
 
-# Pytest fixture to create a 'like' via POST request.
+# Pytest fixture to create a 'likes' via POST request.
 @pytest.fixture
-def create_likes(api_client):
+def create_likes(api_client, authenticate):
+    authenticate()
     return api_client.post('/store/likes/')
 
 # Test class for creating likes using Django's database.
@@ -41,7 +42,7 @@ class TestCreateLikes:
     def test_retrieve_likes(self, api_client, create_likes):
         response = create_likes
         likes_id = response.data['id']
-        # Retrieving the like using the like_id.
+        # Retrieving the likes using the like_id.
         response = api_client.get(f'/store/likes/{likes_id}/items/')
         # Assert that the response status is 200 (OK).
         assert response.status_code == status.HTTP_200_OK

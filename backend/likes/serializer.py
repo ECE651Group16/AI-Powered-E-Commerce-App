@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Like, LikedItem
+from .models import Likes, LikedItem
 from store.models import Product
 
 class SimpleProductSerializer(serializers.ModelSerializer):
@@ -16,12 +16,12 @@ class LikedItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'product']
 
 
-class LikeSerializer(serializers.ModelSerializer):
+class LikesSerializer(serializers.ModelSerializer):
     id = serializers.UUIDField(read_only=True)
     items = LikedItemSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Like
+        model = Likes
         fields = ['id', 'items']
 
 class AddLikedItemSerializer(serializers.ModelSerializer):
@@ -34,15 +34,14 @@ class AddLikedItemSerializer(serializers.ModelSerializer):
         return value
 
     def save(self, **kwargs):
-        like_id = self.context['like_id']
+        likes_id = self.context['likes_id']
         product_id = self.validated_data['product_id']
         try:
-
-            like_item = LikedItem.objects.get(like_id=like_id, product_id = product_id)
-            like_item.save()
-            self.instance = like_item
+            likes_items = LikedItem.objects.get(likes_id=likes_id, product_id = product_id)
+            likes_items.save()
+            self.instance = likes_items
         except LikedItem.DoesNotExist:
-            self.instance = LikedItem.objects.create(like_id=like_id, **self.validated_data)
+            self.instance = LikedItem.objects.create(likes_id=likes_id, **self.validated_data)
 
         return self.instance
     class Meta:

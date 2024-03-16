@@ -127,11 +127,29 @@ class CartViewSet(CreateModelMixin,
                   RetrieveModelMixin,
                   DestroyModelMixin,
                   GenericViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
+    
+    def create(self, request, *args, **kwargs):
+        user = self.request.user
+
+        # Check if the customer already has a cart
+        if Cart.objects.filter(customer=user.customer).exists():
+            return Response({'detail': 'Cart already exists for this user.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Create a new cart instance with the customer set to the current user's customer
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(customer=user.customer)
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
 
 
 class CartItemViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
     http_method_names = ['get', 'post', 'patch', 'delete']
 
     def get_serializer_class(self):

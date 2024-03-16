@@ -8,19 +8,19 @@ from uuid import uuid4
 from store.models import Product, Customer, Cart, CartItem
 # Create your models here.
 
-class Like(models.Model):
+class Likes(models.Model):
     id = models.UUIDField(primary_key = True, default=uuid4, editable = False)
     created_at = models.DateTimeField(auto_now_add=True)
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE,null=True, blank=True)
 
 
 class LikedItem(models.Model):
-    like = models.ForeignKey(Like, on_delete=models.CASCADE, related_name = 'items') #cartitem_set
+    likes = models.ForeignKey(Likes, on_delete=models.CASCADE, related_name = 'items') #cartitem_set
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
     
     def add_to_cart(self):
-        customer = self.like.customer
+        customer = self.likes.customer
 
         if customer is None:
         # Handle the case where the customer is None, perhaps by providing a user-friendly error message.
@@ -38,5 +38,5 @@ class LikedItem(models.Model):
         return cart, cart_item
 
     class Meta:
-        unique_together = [['like','product']]
+        unique_together = [['likes','product']]
     
