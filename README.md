@@ -1,212 +1,75 @@
-# AI-Powered E-Commerce App
+# AI-Powered E-Commerce App Django
 
-This project is an AI-powered e-commerce application developed using the Django framework and MySQL as the database backend. It aims to provide an intuitive and efficient online shopping experience with the integration of advanced AI features.
+![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main)
 
-## Prerequisites
+An AI-enhanced e-commerce platform designed to offer an intuitive and efficient online shopping experience. Developed with Django and backed by MySQL, this app integrates advanced AI features to cater to both user and business needs.
 
-Before you begin, ensure you have met the following requirements:
-* You have installed Python 3.x.
-* You have installed MySQL.If not then use this command for MacOs:
-```bash
-brew install mysql-client
-```
-Use this command for Windows:
-```bash
-pip install mysqlclient
-```
-* You have a basic understanding of Python and Django.
+## 🚀 Getting Started
 
-## Setting Up Your Development Environment
+This project is divided into two main parts: the backend, developed using Django, and the frontend, developed using React. Below you will find instructions to set up each part of the project.
 
-Follow these steps to set up your development environment:
+### Backend Setup
 
-### Clone the repository
+The backend code is stored in the `Backend/` directory. Here's how to get started with it:
+
+1. **Navigate to the Backend Directory**
 
 ```bash
-git clone https://github.com/ECE651Group16/AI-Powered-E-Commerce-App.git
-cd AI-Powered-E-Commerce-App
+cd Backend/
 ```
-### Create and Activate a Virtual Environment
-For Unix and MacOS:
+
+2. **Install Dependencies**
+Ensure you have Python 3.10 and Pipenv installed. Then, install the required packages:
+```bash
+pipenv install
+```
+3. **Activate the Virtual Environment**
 ```bash
 pipenv shell
 ```
-### Install Django in a Virtual Environment
-```bash
-pipenv install django
-pipenv install django-debug-toolbar
-pipenv shell
-```
-### Configure MySQL
-Start the MySQL service on your machine.
-Create a new MySQL database for the project:
-```sql
-CREATE DATABASE storefront;
-```
-### Update Django Settings
-Navigate to the settings file at AI-Powered-E-Commerce-App/settings.py.
-Configure the DATABASES setting to reflect your MySQL setup:
-```python
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'root',
-        'USER': 'storefront',
-        'PASSWORD': 'yourpassword',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-```
-# Run Database Migrations
+4. **Setup the Database**
+Make sure MySQL is installed and running. Update the settings.py file with your database credentials, then execute:
 ```bash
 python manage.py migrate
 ```
-# Running the Project
-To run the project:
+5. **Run the Development Server**
 ```bash
 python manage.py runserver
 ```
-The project should now be running on http://127.0.0.1:8000/.
-# Create admin user
-```python
-python manage.py createsuperuser
-```
-You can log in using page http://127.0.0.1:8000/admin/
 
-### Remember to import dummy data using Seed.sql in mysqlworkbench
+### Frontend Setup
+The frontend code is stored in the Frontend/ directory and is built using React. Follow these steps to set up the frontend:
 
-# Setting up more on pipenv
-## Installing Restful API, nested routers, Filtering
+1. **Navigate to the Frontend Directory**
 ```bash
-pipenv install djangorestframework
-pipenv install drf-nested-routers
-pipenv install django-filter # added into the installed apps in setting.py
-pipenv install djoser
-pipenv install pillow
-pipenv install django-templated-mail
-pipenv install djangorestframework_simplejwt
-
+cd Frontend/
 ```
-## Install django-cors-headers for transferring files from client to server
-https://github.com/adamchainz/django-cors-headers
-## Install smtp4dev for email purpose
-https://github.com/rnwood/smtp4dev
-Run it using docker
-
-# Setting up for Client side
-## Install NodeJS then
+2. **Install Node.js and npm**
+Make sure you have Node.js and npm installed on your machine.
+3.**Install Dependencies**
+   ```bash
+   npm install
+   ```
+4.**Start the Development Server**
 ```bash
-npm install # install dependencies
 npm start
 ```
+After following these steps, the backend server will be running, and you can access the frontend application in your browser.
 
+## 📚 Documentation
 
-# For Web Performance Improvement
-## Install redis (Message Brokers)& celery & flower
-```bash
-docker run -d -p 6379:6379 redis 
-pipenv install redis 
-pipenv install django-redis
-pipenv install celery
-pipenv install flower
-```
-## run celery for running bg tasks and monitor with flower
-```bash
-celery -A storefront worker --loglevel=info  
-```
-or periodic
-```bash
-celery -A storefront beat
-```
-```bash
-celery -A storefront flower
-```
+For more detailed documentation on Django, visit [Django's official documentation](https://docs.djangoproject.com/en/3.2/).
+For React and how to work with it, check out [React's official documentation](https://reactjs.org/docs/getting-started.html).
 
+## 🤝 Contributing
 
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. See [CONTRIBUTING](CONTRIBUTING.md) for more information.
 
-# For Testing
-## Install pytest
-```bash
-pipenv install --dev pytest
-pipenv install --dev pytest-django
-pipenv run pytest
-pipenv run ptw # automated testing keep running
-```
+## 📝 License
 
-## Performance testing using locust & django-silk
-```bash
-pipenv install --dev locust
-pipenv install --dev django-silk
-pipenv install django-silk
-locust -f locustfiles/browse_products.py
-```
+Distributed under the Apache License Version 2.0 License. See [LICENSE](LICENSE) for more information.
 
-## Monitoring cache
-```bash
-docker exec -it CONTAINER_ID redis-cli ## select 2
-...
-keys *
-del ...
-flushall
-```
-# Prepare Production
-```bash
-python manage.py collectstatic # collecting static
-pipenv install whitenoise # serving static assets
-pipenv install gunicorn
-gunicorn storefront.wsgi # web server gateway interface
-``` 
+## 📩 Contact
 
-# Deployment
-using HeroKu: https://www.heroku.com/
-```bash
-heroku login
-heroku create AI-Ecom-prod
-```
-### add the domain to the allowed host in prod.py
-### use djecrety.ir generate the SECRET_KEY
-```bash
-heroku config:set SECRET_KEY = '...'
-heroku config:set DJANGO_SETTINGS_MODULE=storefront.settings.prod
-```
-After adding SQL, HeroRedis, Mailgun in Heroku
-```bash
-heroku config # get MySQL:....
-heroku config:set DATABASE_URL=MySQL:....
-pipenv install dj-database-url
-```
-## Deploy:
-```bash
-git remote -vv
-git push heroku main
-heroku run bash # run in production environment
-```
+Project Link: https://github.com/ECE651Group16/AI-Powered-E-Commerce-App
 
-# Dockerize
- ```bash
-docker-compose up --build
-docker-compose log web
-docker-compose log test
-docker-compose logs -f tests
-docker-compose run web bash
-
-
-## Populating the database
-```bash
-heroku run python manage.py seed_db
-heroku config:get DATABASE_URL # use it in DataGrip
-```
-
-# Contributing to AI-Powered E-Commerce App
-To contribute, follow these steps:
-
-1. Fork this repository.
-2. Create a branch: git checkout -b <branch_name>.
-3. Make your changes and commit them: git commit -m '<commit_message>'.
-4. Push to the original branch: git push origin AI-Powered-E-Commerce-App/<branch_name>.
-5. Create the pull request.
-Alternatively, see the GitHub documentation on creating a pull request.
-
-#License
-This project is licensed under the MIT License - see the LICENSE file for details.

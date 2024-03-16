@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.horizontal-scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  
+}
+
+.product-card {
+  display: inline-block;
+  margin: 10px;
+  width: 200px; /* Adjust based on your design */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+
+.pagination-button {
+  margin: 0 10px;
+}
+
+/* Adjust the size and alignment of the arrow containers */
+.pagination-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px; /* Adjust to match the desired width */
+  height: 250px; /* Adjust to match the height of your product images */
+  cursor: pointer;
+  user-select: none;
+  background-color: #f0f0f0; /* Optional: background color for the arrow containers */
+  position: relative; /* Add position relative to allow precise adjustment using top property */
+  top: 50px; /* Adjust this value to move the button lower */
+}
+
+/* Style for disabled navigation controls */
+.pagination-control.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Adjust the size of the FontAwesome icons */
+.pagination-control > svg {
+  font-size: 2rem; /* Adjust the size of the arrows */
+}

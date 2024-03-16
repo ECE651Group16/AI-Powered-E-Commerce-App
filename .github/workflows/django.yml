@@ -1,0 +1,45 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ['3.10']
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - uses: shogo82148/actions-setup-mysql@v1
+      with:
+        distribution: 'mysql'
+        root-password: '12345678'
+        
+    - name: Install Dependencies
+      run: |
+        cd backend
+        python -m pip install --upgrade pip
+        pip install pipenv
+        pipenv install --dev
+        cd ../
+        
+    - name: Run Tests
+      run: |
+        cd backend
+        pipenv run python manage.py makemigrations
+        pipenv run python manage.py test
+        pipenv run pytest --cov-report term-missing --cov=./
+        cd ../
