@@ -25,14 +25,19 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    
+    username = serializers.SerializerMethodField()
+    
     class Meta:
         model = Review
-        fields = ['id', 'date', 'rating','description']
+        fields = ['id', 'date', 'rating','description','username']
 
     def create(self, validated_data):
         product_id = self.context['product_id']
         return Review.objects.create(product_id=product_id, **validated_data)
 
+    def get_username(self, obj):
+        return obj.customer.user.username
     
     
 class UpdateReviewSerializer(serializers.ModelSerializer):
