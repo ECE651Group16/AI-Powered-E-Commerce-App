@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import { Carousel } from 'react-bootstrap';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory  } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Button, Card,Form } from "react-bootstrap";
 import Rating from "../Rating";
 import Loader from '../Loader';
@@ -16,6 +16,12 @@ function ProductScreen({ match,history }) {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
+
+  // Function to go back to the previous page
+  const goBackHandler = () => {
+    history.goBack();
+  };
+
   useEffect(()=>{
     dispatch(listProductDetails(match.params.id));
 
@@ -30,10 +36,9 @@ function ProductScreen({ match,history }) {
  
   return (
     <div>
-      <Link to="/" className="btn btn-dark my-3">
-        {" "}
+      <button className="btn btn-dark my-3" onClick={goBackHandler}>
         Go Back
-      </Link>
+      </button>
 
 
       {loading ? (

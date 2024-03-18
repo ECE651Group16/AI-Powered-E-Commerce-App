@@ -2,28 +2,33 @@ import { PRODUCT_LIST_REQUEST,PRODUCT_LIST_SUCCESS,PRODUCT_LIST_FAIL,
     LATEST_PRODUCT_LIST_REQUEST, LATEST_PRODUCT_LIST_SUCCESS, LATEST_PRODUCT_LIST_FAIL,   
     DEALS_PRODUCT_LIST_REQUEST, DEALS_PRODUCT_LIST_SUCCESS, DEALS_PRODUCT_LIST_FAIL,   
     MAYLIKE_PRODUCT_LIST_REQUEST, MAYLIKE_PRODUCT_LIST_SUCCESS, MAYLIKE_PRODUCT_LIST_FAIL,   
-    PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL 
+    PRODUCT_DETAILS_REQUEST,PRODUCT_DETAILS_SUCCESS, PRODUCT_DETAILS_FAIL, FILTER_PRODUCTS_REQUEST,
+    FILTER_PRODUCTS_SUCCESS,
+    FILTER_PRODUCTS_FAIL,
     
     } from '../constants/productConstants'
 
 
 export const productListReducers =(state={products:[]},action)=>{
-    switch(action.type){
+    switch (action.type) {
         case PRODUCT_LIST_REQUEST:
-            return { ...state, loading: true };
+        case FILTER_PRODUCTS_REQUEST: // Handle loading state similarly for filter request
+          return { ...state, loading: true };
         case PRODUCT_LIST_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                products: action.payload.results, // Assuming payload now includes a results field
-                totalPages: action.payload.totalPages, // Assuming payload now includes a totalPages field
-            };
+        case FILTER_PRODUCTS_SUCCESS: // Handle success state similarly for filtered products
+          return {
+            ...state,
+            loading: false,
+            products: action.payload.results,
+            totalPages: action.payload.totalPages,
+          };
         case PRODUCT_LIST_FAIL:
-            return { ...state, loading: false, error: action.payload };
+        case FILTER_PRODUCTS_FAIL: // Handle failure state similarly for filter failure
+          return { ...state, loading: false, error: action.payload };
         default:
-            return state;
-    }
-}
+          return state;
+      }
+    };
 
 
 export const dealsProductListReducers =(state={dealsproducts:[]},action)=>{
@@ -99,3 +104,4 @@ export const productDetailsReducers = (state={ product:{reviews:[]} },action) =>
     }
 
 }
+
