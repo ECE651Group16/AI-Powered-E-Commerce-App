@@ -172,7 +172,7 @@ class Review(models.Model):
     description = models.TextField()
     #description = models.TextField()
     date = models.DateField(auto_now_add=True)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     
     class Meta:
         unique_together = ['customer', 'product']
