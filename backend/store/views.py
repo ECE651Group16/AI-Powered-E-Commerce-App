@@ -21,7 +21,7 @@ from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
 from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, ViewCustomerHistoryPermission
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
-from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer, UpdateReviewSerializer
 
 
 
@@ -89,6 +89,11 @@ class ReviewViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
     serializer_class = ReviewSerializer
     
+    def get_serializer_class(self):
+        if self.request.method == 'PATCH':
+            return UpdateReviewSerializer
+        return ReviewSerializer
+    
     def get_permissions(self):
         #for posting reviews
         if self.request.method in ['POST','PATCH','DELETE']:
@@ -121,6 +126,47 @@ class ReviewViewSet(ModelViewSet):
 
     def get_serializer_context(self):
         return {'product_id': self.kwargs['product_pk']}
+
+    def create(self, request, *args, **kwargs):
+        user = request.user
+        product_id = kwargs.get('product_pk')
+        
+        
+        if not user.customer.order_set.filter(items__product_id=product_id).exists():
+            return Response({'detail': 'You must purchase the product before reviewing it.'},
+                            status=status.HTTP_403_FORBIDDEN)
+        
+        if Review.objects.filter(product_id=product_id, customer=user.customer).exists():
+            return Response({'detail': 'You have already reviewed this product.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(customer=user.customer)  # Pass customer and product ID when saving
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    
+    
+    def update(self, request, *args, **kwargs):
+        user = request.user
+        review = self.get_object()
+
+        # Ensure that the user is updating their own review
+        if review.customer.user != user:
+            return Response({'detail': "You do not have permission to update someone else's review."},
+                            status=status.HTTP_403_FORBIDDEN)
+
+        # Proceed with the update if the user owns the review
+        serializer = self.get_serializer(review, data=request.data, partial=kwargs.pop('partial', False))
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        if getattr(review, '_prefetched_objects_cache', None):
+            # If 'prefetch_related' has been applied to a queryset, we need to forcibly invalidate the prefetch cache on the instance.
+            review._prefetched_objects_cache = {}
+
+        return Response(serializer.data)
 
 
 class CartViewSet(CreateModelMixin,
