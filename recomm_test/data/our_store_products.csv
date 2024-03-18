@@ -1,0 +1,1001 @@
+id,title,slug,description,unit_price,inventory,total_sells,last_update,collection_id
+1,"Truffle - Whole Black Peeled",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",20.12,1,1,"2023-09-12 00:00:00.000000",4
+2,"Bar Energy Chocchip",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",80.48,2,2,"2024-02-05 00:00:00.000000",5
+3,"Myers Planters Punch",-,"Mauris ullamcorper purus sit amet nulla.",67.54,3,3,"2023-08-12 00:00:00.000000",2
+4,"Pate - Liver",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",95.01,4,4,"2024-01-11 00:00:00.000000",3
+5,"Beer - Maudite",-,"Donec ut dolor.",72.38,5,5,"2023-11-10 00:00:00.000000",3
+6,Yucca,-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",13.56,6,6,"2023-08-21 00:00:00.000000",2
+7,"Spinach - Frozen",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",71.99,7,7,"2023-12-30 00:00:00.000000",1
+8,"Wine - Sake",-,"Duis consequat dui nec nisi volutpat eleifend.",35.38,8,8,"2023-08-04 00:00:00.000000",4
+9,"Jello - Assorted",-,"Aenean lectus.",85.35,9,9,"2023-09-26 00:00:00.000000",3
+10,"Sugar Thermometer",-,"Aliquam sit amet diam in magna bibendum imperdiet.",1.75,10,10,"2023-08-26 00:00:00.000000",1
+11,"Mushroom - Morels, Dry",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",48.52,11,11,"2023-12-22 00:00:00.000000",2
+12,"Gelatine Powder",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",59.45,12,12,"2023-04-25 00:00:00.000000",3
+13,"Red Snapper - Fresh, Whole",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",65.23,13,13,"2023-09-21 00:00:00.000000",5
+14,"Beef - Chuck, Boneless",-,"Pellentesque viverra pede ac diam.",32.55,14,14,"2024-01-26 00:00:00.000000",2
+15,"Cumin - Ground",-,"Maecenas rhoncus aliquam lacus.",24.74,15,15,"2023-10-10 00:00:00.000000",1
+16,"Tea - Lemon Scented",-,"Morbi a ipsum.",11.92,16,16,"2023-12-22 00:00:00.000000",5
+17,"Beets - Candy Cane, Organic",-,"Donec dapibus.",18.92,17,17,"2023-04-07 00:00:00.000000",3
+18,"Peppercorns - Green",-,"Vestibulum sed magna at nunc commodo placerat.",51.37,18,18,"2024-02-04 00:00:00.000000",4
+19,"Beer - Upper Canada Light",-,"Aenean fermentum.",35.00,19,19,"2023-07-14 00:00:00.000000",1
+20,"Creme De Cacao Mcguines",-,"Integer a nibh.",14.03,20,20,"2023-02-27 00:00:00.000000",3
+21,"Wine - Rubyport",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",36.07,21,21,"2024-01-16 00:00:00.000000",1
+22,"Wine - White, Mosel Gold",-,"Pellentesque ultrices mattis odio.",59.40,22,22,"2024-01-04 00:00:00.000000",1
+23,"Pork - Smoked Back Bacon",-,"Pellentesque viverra pede ac diam.",15.02,23,23,"2023-04-11 00:00:00.000000",4
+24,"Lettuce - Radicchio",-,"Duis aliquam convallis nunc.",72.08,24,24,"2024-02-23 00:00:00.000000",4
+25,"Capers - Ox Eye Daisy",-,"Sed ante.",51.44,25,25,"2023-05-11 00:00:00.000000",1
+26,"Veal - Slab Bacon",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",45.80,26,26,"2023-02-28 00:00:00.000000",1
+27,"Beer - Corona",-,"Nullam porttitor lacus at turpis.",13.08,27,27,"2023-10-12 00:00:00.000000",5
+28,"Chocolate - Dark",-,"Duis ac nibh.",43.82,28,28,"2023-05-02 00:00:00.000000",2
+29,"Beef - Tongue, Fresh",-,"In congue.",54.42,29,29,"2023-03-17 00:00:00.000000",3
+30,"Pasta - Fett Alfredo, Single Serve",-,"Nunc nisl.",84.72,30,30,"2023-07-19 00:00:00.000000",2
+31,"Beer - Blue Light",-,"Etiam justo.",34.89,31,31,"2023-03-03 00:00:00.000000",3
+32,"Nut - Walnut, Chopped",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",69.84,32,32,"2024-01-11 00:00:00.000000",3
+33,Glycerine,-,"Aenean fermentum.",54.96,33,33,"2023-05-13 00:00:00.000000",3
+34,"Appetizer - Sausage Rolls",-,"Nulla ut erat id mauris vulputate elementum.",42.68,34,34,"2023-08-07 00:00:00.000000",2
+35,Currants,-,"Morbi ut odio.",73.83,35,35,"2023-04-20 00:00:00.000000",4
+36,"Tomatoes - Cherry",-,"Vivamus vel nulla eget eros elementum pellentesque.",93.77,36,36,"2024-02-22 00:00:00.000000",4
+37,"Sobe - Lizard Fuel",-,"Morbi ut odio.",23.11,37,37,"2023-03-17 00:00:00.000000",1
+38,"Bread - Pullman, Sliced",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",18.15,38,38,"2024-02-10 00:00:00.000000",2
+39,"Zucchini - Mini, Green",-,"Proin at turpis a pede posuere nonummy.",33.40,39,39,"2023-10-28 00:00:00.000000",3
+40,"Juice - Clamato, 341 Ml",-,"Quisque porta volutpat erat.",1.05,40,40,"2023-06-06 00:00:00.000000",2
+41,"Tuna - Canned, Flaked, Light",-,"Vestibulum sed magna at nunc commodo placerat.",64.70,41,41,"2023-05-18 00:00:00.000000",3
+42,"Wine - Cahors Ac 2000, Clos",-,"Quisque porta volutpat erat.",52.48,42,42,"2023-09-21 00:00:00.000000",5
+43,"Lentils - Green Le Puy",-,"Maecenas pulvinar lobortis est.",74.47,43,43,"2023-12-07 00:00:00.000000",5
+44,"Sauce - Alfredo",-,"Donec quis orci eget orci vehicula condimentum.",39.28,44,44,"2024-01-26 00:00:00.000000",5
+45,"Otomegusa Dashi Konbu",-,"Proin eu mi.",79.68,45,45,"2023-09-18 00:00:00.000000",4
+46,"Beef Striploin Aaa",-,"Donec quis orci eget orci vehicula condimentum.",9.98,46,46,"2023-07-02 00:00:00.000000",4
+47,"Wine - Shiraz South Eastern",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",52.34,47,47,"2023-11-18 00:00:00.000000",4
+48,"Doilies - 5, Paper",-,"In blandit ultrices enim.",39.34,48,48,"2023-08-10 00:00:00.000000",3
+49,"Wine - Alsace Riesling Reserve",-,"Nulla justo.",86.57,49,49,"2023-07-11 00:00:00.000000",3
+50,Cassis,-,"Integer a nibh.",29.94,50,50,"2023-06-09 00:00:00.000000",5
+51,"Pork - Suckling Pig",-,"Morbi quis tortor id nulla ultrices aliquet.",94.44,51,51,"2023-05-25 00:00:00.000000",4
+52,"Muffins - Assorted",-,"Integer tincidunt ante vel ipsum.",7.78,52,52,"2023-08-10 00:00:00.000000",4
+53,"Turnip - White, Organic",-,"Mauris sit amet eros.",94.61,53,53,"2023-11-27 00:00:00.000000",4
+54,"Extract - Rum",-,"Duis at velit eu est congue elementum.",71.37,54,54,"2023-03-24 00:00:00.000000",5
+55,"Jack Daniels",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",35.44,55,55,"2024-01-21 00:00:00.000000",3
+56,"Sauce - Hollandaise",-,"In hac habitasse platea dictumst.",91.24,56,56,"2023-04-08 00:00:00.000000",5
+57,"Durian Fruit",-,"Fusce posuere felis sed lacus.",89.11,57,57,"2023-04-23 00:00:00.000000",4
+58,"Juice - Clam, 46 Oz",-,"In quis justo.",24.94,58,58,"2023-08-27 00:00:00.000000",1
+59,"Flour - Semolina",-,"Pellentesque viverra pede ac diam.",91.06,59,59,"2023-10-22 00:00:00.000000",5
+60,"Rabbit - Saddles",-,"Nullam porttitor lacus at turpis.",51.65,60,60,"2023-08-14 00:00:00.000000",3
+61,"Lamb - Whole Head Off",-,"Praesent blandit.",6.90,61,61,"2023-04-04 00:00:00.000000",4
+62,"Pepper - Orange",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",61.70,62,62,"2023-09-27 00:00:00.000000",5
+63,"Dried Cherries",-,"Curabitur at ipsum ac tellus semper interdum.",42.89,63,63,"2024-01-27 00:00:00.000000",2
+64,"Carbonated Water - Strawberry",-,"Nulla justo.",3.35,64,64,"2023-05-06 00:00:00.000000",1
+65,"Wine - Ruffino Chianti Classico",-,"Nulla ac enim.",38.71,65,65,"2023-03-04 00:00:00.000000",4
+66,"Jello - Assorted",-,"Etiam pretium iaculis justo.",83.48,66,66,"2024-02-09 00:00:00.000000",2
+67,"Broom - Angled",-,"In hac habitasse platea dictumst.",68.99,67,67,"2023-05-18 00:00:00.000000",5
+68,"Wine - Red, Marechal Foch",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",93.83,68,68,"2023-10-23 00:00:00.000000",4
+69,"Truffle - Whole Black Peeled",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",52.42,69,69,"2023-03-05 00:00:00.000000",4
+70,"Gelatine Leaves - Envelopes",-,"Curabitur convallis.",15.86,70,70,"2023-08-08 00:00:00.000000",5
+71,"Crush - Orange, 355ml",-,"Morbi a ipsum.",94.41,71,71,"2023-03-24 00:00:00.000000",5
+72,"Huck White Towels",-,"Vivamus vel nulla eget eros elementum pellentesque.",91.78,72,72,"2023-03-25 00:00:00.000000",4
+73,"Creme De Menth - White",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",47.34,73,73,"2024-02-23 00:00:00.000000",2
+74,"Sword Pick Asst",-,"Nulla facilisi.",16.74,74,74,"2023-12-14 00:00:00.000000",3
+75,"Wine - George Duboeuf Rose",-,"Integer ac neque.",72.56,75,75,"2024-01-09 00:00:00.000000",4
+76,"Ice Cream Bar - Oreo Sandwich",-,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",6.81,76,76,"2023-06-27 00:00:00.000000",5
+77,"Apple - Royal Gala",-,"Sed ante.",37.93,77,77,"2023-08-14 00:00:00.000000",2
+78,"Red Pepper Paste",-,"Proin interdum mauris non ligula pellentesque ultrices.",65.84,78,78,"2023-12-09 00:00:00.000000",2
+79,"Potatoes - Yukon Gold 5 Oz",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",13.46,79,79,"2024-02-25 00:00:00.000000",1
+80,"Beef Ground Medium",-,"Nulla ac enim.",18.02,80,80,"2023-11-03 00:00:00.000000",5
+81,"Cake - Bande Of Fruit",-,"In sagittis dui vel nisl.",49.02,81,81,"2023-05-20 00:00:00.000000",4
+82,"Bowl 12 Oz - Showcase 92012",-,"In congue.",24.01,82,82,"2023-10-24 00:00:00.000000",1
+83,"Oil - Peanut",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",92.47,83,83,"2023-10-13 00:00:00.000000",4
+84,"Soup - Base Broth Beef",-,"Nulla ut erat id mauris vulputate elementum.",55.65,84,84,"2024-02-01 00:00:00.000000",3
+85,"Beef Striploin Aaa",-,"Morbi a ipsum.",69.36,85,85,"2023-09-07 00:00:00.000000",2
+86,"Table Cloth 62x114 Colour",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",73.01,86,86,"2023-10-09 00:00:00.000000",4
+87,"Tomatoes Tear Drop",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",6.45,87,87,"2023-09-27 00:00:00.000000",5
+88,"Peach - Fresh",-,"Vivamus tortor.",33.07,88,88,"2023-11-19 00:00:00.000000",5
+89,"Maintenance Removal Charge",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",94.00,89,89,"2023-08-04 00:00:00.000000",3
+90,"Salt - Sea",-,"In sagittis dui vel nisl.",19.85,90,90,"2023-05-18 00:00:00.000000",1
+91,"Chocolate - Mi - Amere Semi",-,"Nunc rhoncus dui vel sem.",91.14,91,91,"2023-11-23 00:00:00.000000",4
+92,"Wine - Red, Cabernet Sauvignon",-,"In congue.",39.14,92,92,"2024-02-19 00:00:00.000000",4
+93,"Beer - Sleemans Honey Brown",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",43.39,93,93,"2024-01-24 00:00:00.000000",4
+94,"Shrimp - 21/25, Peel And Deviened",-,"Mauris sit amet eros.",45.00,94,94,"2023-03-09 00:00:00.000000",5
+95,"Oil - Sesame",-,"Sed ante.",4.00,95,95,"2023-04-06 00:00:00.000000",4
+96,"Pastry - Apple Large",-,"Nulla suscipit ligula in lacus.",51.51,96,96,"2023-08-16 00:00:00.000000",1
+97,"Anisette - Mcguiness",-,"Sed sagittis.",17.10,97,97,"2024-02-25 00:00:00.000000",3
+98,"Veal - Knuckle",-,"Sed accumsan felis.",44.78,98,98,"2023-02-28 00:00:00.000000",3
+99,"Sprite, Diet - 355ml",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",76.64,99,99,"2023-10-13 00:00:00.000000",2
+100,"Bread - Sour Sticks With Onion",-,"Praesent blandit.",63.72,100,100,"2023-10-23 00:00:00.000000",1
+101,"Quail Eggs - Canned",-,"Etiam faucibus cursus urna.",59.26,101,101,"2023-06-04 00:00:00.000000",4
+102,"Rice - Aborio",-,"Proin eu mi.",94.42,102,102,"2024-01-07 00:00:00.000000",4
+103,"Milk - 1%",-,"Etiam justo.",52.25,103,103,"2023-10-22 00:00:00.000000",3
+104,"Crackers Cheez It",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",67.04,104,104,"2023-12-07 00:00:00.000000",3
+105,"Bread - Multigrain Oval",-,"Praesent lectus.",94.30,105,105,"2023-04-29 00:00:00.000000",4
+106,"Water - Mineral, Natural",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",64.02,106,106,"2023-10-14 00:00:00.000000",3
+107,"Clam - Cherrystone",-,"Duis bibendum.",71.05,107,107,"2023-04-18 00:00:00.000000",3
+108,"Flour - Teff",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",4.59,108,108,"2023-09-14 00:00:00.000000",1
+109,"Oil - Peanut",-,"Vivamus tortor.",95.38,109,109,"2023-08-05 00:00:00.000000",3
+110,"Vinegar - Balsamic",-,"Curabitur gravida nisi at nibh.",47.38,110,110,"2023-03-28 00:00:00.000000",5
+111,Contreau,-,"Nulla suscipit ligula in lacus.",65.31,111,111,"2023-07-05 00:00:00.000000",1
+112,"Pasta - Fettuccine, Dry",-,"Sed ante.",17.20,112,112,"2023-07-16 00:00:00.000000",5
+113,"Cookie - Oatmeal",-,"Integer ac leo.",20.52,113,113,"2023-05-03 00:00:00.000000",1
+114,"Halibut - Whole, Fresh",-,"Fusce consequat.",59.06,114,114,"2023-04-21 00:00:00.000000",1
+115,"Sponge Cake Mix - Chocolate",-,"Etiam faucibus cursus urna.",16.81,115,115,"2023-05-27 00:00:00.000000",5
+116,"Sauce - Sesame Thai Dressing",-,"Ut at dolor quis odio consequat varius.",51.92,116,116,"2024-02-01 00:00:00.000000",4
+117,"Cheese - Colby",-,"Morbi non lectus.",85.84,117,117,"2023-07-31 00:00:00.000000",4
+118,"Glass Clear 7 Oz Xl",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",3.91,118,118,"2023-05-12 00:00:00.000000",1
+119,"Raspberries - Frozen",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",66.70,119,119,"2023-10-30 00:00:00.000000",2
+120,"Tomatoes - Heirloom",-,"Morbi non quam nec dui luctus rutrum.",73.19,120,120,"2023-04-28 00:00:00.000000",2
+121,"Lotus Rootlets - Canned",-,"Nulla tempus.",80.74,121,121,"2023-11-07 00:00:00.000000",2
+122,"Pasta - Gnocchi, Potato",-,"Integer ac neque.",64.43,122,122,"2023-05-04 00:00:00.000000",4
+123,"Cheese - Boursin, Garlic / Herbs",-,"Nulla ut erat id mauris vulputate elementum.",52.32,123,123,"2023-08-02 00:00:00.000000",4
+124,"Oneshot Automatic Soap System",-,"Etiam faucibus cursus urna.",70.17,124,124,"2023-06-02 00:00:00.000000",4
+125,"Wine - Chateau Timberlay",-,"Duis bibendum.",96.74,125,125,"2023-06-11 00:00:00.000000",3
+126,"Sage Derby",-,"Suspendisse potenti.",20.92,126,126,"2024-01-31 00:00:00.000000",5
+127,"Chocolate - Dark",-,"Proin risus.",77.74,127,127,"2023-11-01 00:00:00.000000",4
+128,"Pepper - Chipotle, Canned",-,"Morbi non lectus.",5.92,128,128,"2023-06-20 00:00:00.000000",3
+129,Haggis,-,"Phasellus id sapien in sapien iaculis congue.",37.44,129,129,"2023-05-13 00:00:00.000000",2
+130,"Bacardi Breezer - Strawberry",-,"Donec semper sapien a libero.",6.81,130,130,"2023-04-19 00:00:00.000000",4
+131,"Juice - Orangina",-,"Nulla justo.",38.56,131,131,"2023-07-13 00:00:00.000000",3
+132,"Rum - Cream, Amarula",-,"Praesent blandit.",78.43,132,132,"2023-08-11 00:00:00.000000",1
+133,"Ice Cream - Super Sandwich",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",98.69,133,133,"2023-12-28 00:00:00.000000",1
+134,"Pepper - Chillies, Crushed",-,"In hac habitasse platea dictumst.",28.21,134,134,"2023-10-14 00:00:00.000000",1
+135,"Olives - Green, Pitted",-,"Aenean auctor gravida sem.",32.80,135,135,"2023-05-07 00:00:00.000000",5
+136,"Pork - Suckling Pig",-,"Ut at dolor quis odio consequat varius.",59.62,136,136,"2024-02-09 00:00:00.000000",5
+137,"Muffin - Mix - Strawberry Rhubarb",-,"Integer a nibh.",54.40,137,137,"2023-12-06 00:00:00.000000",3
+138,"Beef - Bones, Cut - Up",-,"Morbi ut odio.",92.76,138,138,"2023-09-09 00:00:00.000000",5
+139,"Cups 10oz Trans",-,"Suspendisse potenti.",81.62,139,139,"2023-04-20 00:00:00.000000",4
+140,"Chicken - Livers",-,"Etiam justo.",62.72,140,140,"2023-09-19 00:00:00.000000",2
+141,"Longos - Cheese Tortellini",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",68.33,141,141,"2024-02-23 00:00:00.000000",3
+142,"Yeast Dry - Fermipan",-,"Praesent blandit.",34.76,142,142,"2023-07-19 00:00:00.000000",5
+143,"Pepper - Scotch Bonnet",-,"Nulla ut erat id mauris vulputate elementum.",31.38,143,143,"2023-10-20 00:00:00.000000",3
+144,"Bouillion - Fish",-,"Etiam vel augue.",2.73,144,144,"2023-05-27 00:00:00.000000",4
+145,"Capon - Breast, Wing On",-,"Praesent blandit.",19.10,145,145,"2023-03-16 00:00:00.000000",5
+146,"Milk 2% 500 Ml",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",97.23,146,146,"2023-09-29 00:00:00.000000",5
+147,"Sole - Fillet",-,"Nullam varius.",31.91,147,147,"2024-01-07 00:00:00.000000",2
+148,Lychee,-,"Duis bibendum.",44.46,148,148,"2023-07-29 00:00:00.000000",2
+149,Loquat,-,"Integer non velit.",62.93,149,149,"2023-12-13 00:00:00.000000",4
+150,"Wine - Balbach Riverside",-,"Pellentesque viverra pede ac diam.",62.42,150,150,"2023-06-27 00:00:00.000000",2
+151,"Banana Turning",-,"Phasellus sit amet erat.",38.00,151,151,"2024-01-25 00:00:00.000000",3
+152,"Lamb - Loin Chops",-,"Quisque porta volutpat erat.",90.31,152,152,"2024-02-21 00:00:00.000000",1
+153,"Flour - Whole Wheat",-,"In quis justo.",52.46,153,153,"2023-11-25 00:00:00.000000",1
+154,"Wine - Touraine Azay - Le - Rideau",-,"Aenean lectus.",45.43,154,154,"2023-03-27 00:00:00.000000",4
+155,"Flour - Fast / Rapid",-,"Duis aliquam convallis nunc.",34.16,155,155,"2023-04-13 00:00:00.000000",3
+156,"Wine - Magnotta - Cab Sauv",-,"Nam dui.",13.83,156,156,"2023-10-26 00:00:00.000000",3
+157,"Compound - Orange",-,"Cras non velit nec nisi vulputate nonummy.",83.17,157,157,"2023-05-18 00:00:00.000000",5
+158,"Broom Handle",-,"In est risus, auctor sed, tristique in, tempus sit amet, sem.",24.82,158,158,"2023-11-03 00:00:00.000000",1
+159,"Sea Urchin",-,"Morbi a ipsum.",14.69,159,159,"2023-09-05 00:00:00.000000",1
+160,"Beer - Steamwhistle",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",42.15,160,160,"2024-01-11 00:00:00.000000",1
+161,"Rye Special Old",-,"Morbi non lectus.",59.17,161,161,"2024-01-24 00:00:00.000000",5
+162,"Capicola - Hot",-,"In hac habitasse platea dictumst.",38.29,162,162,"2023-10-07 00:00:00.000000",1
+163,Garlic,-,"Donec ut dolor.",99.91,163,163,"2023-07-14 00:00:00.000000",5
+164,"Truffle Paste",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",15.81,164,164,"2023-03-27 00:00:00.000000",3
+165,"Milk - Skim",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",54.65,165,165,"2023-04-06 00:00:00.000000",1
+166,"Soup - French Onion",-,"Quisque id justo sit amet sapien dignissim vestibulum.",90.32,166,166,"2023-06-28 00:00:00.000000",3
+167,"Schnappes Peppermint - Walker",-,"Donec dapibus.",79.28,167,167,"2023-04-23 00:00:00.000000",5
+168,"Honey - Comb",-,"Suspendisse potenti.",15.10,168,168,"2023-12-05 00:00:00.000000",2
+169,"Mushroom - Lg - Cello",-,"Maecenas ut massa quis augue luctus tincidunt.",37.52,169,169,"2023-11-18 00:00:00.000000",2
+170,"Vinegar - Rice",-,"In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",33.48,170,170,"2023-04-26 00:00:00.000000",1
+171,"Wine - Maipo Valle Cabernet",-,"Aenean sit amet justo.",86.69,171,171,"2023-04-05 00:00:00.000000",3
+172,"Veal - Nuckle",-,"Praesent id massa id nisl venenatis lacinia.",90.40,172,172,"2023-10-16 00:00:00.000000",2
+173,"Chocolate - Compound Coating",-,"In eleifend quam a odio.",30.37,173,173,"2023-07-25 00:00:00.000000",1
+174,"Pork - Sausage, Medium",-,"Morbi non lectus.",97.16,174,174,"2023-05-16 00:00:00.000000",1
+175,"Piping - Bags Quizna",-,"In est risus, auctor sed, tristique in, tempus sit amet, sem.",48.50,175,175,"2023-05-29 00:00:00.000000",1
+176,"Wine - Muscadet Sur Lie",-,"Suspendisse potenti.",99.31,176,176,"2023-10-12 00:00:00.000000",3
+177,"Pork - Hock And Feet Attached",-,"In hac habitasse platea dictumst.",94.36,177,177,"2023-11-11 00:00:00.000000",5
+178,"Cheese - Ermite Bleu",-,"Morbi non lectus.",96.06,178,178,"2023-05-04 00:00:00.000000",4
+179,Papayas,-,"Curabitur at ipsum ac tellus semper interdum.",37.39,179,179,"2023-05-19 00:00:00.000000",5
+180,"Beef - Montreal Smoked Brisket",-,"Nam tristique tortor eu pede.",32.05,180,180,"2024-02-15 00:00:00.000000",1
+181,"Beer - Alexander Kieths, Pale Ale",-,"Nulla suscipit ligula in lacus.",86.65,181,181,"2023-12-09 00:00:00.000000",3
+182,"Corn Shoots",-,"Sed ante.",99.21,182,182,"2023-04-19 00:00:00.000000",2
+183,"Container - Clear 16 Oz",-,"Aenean fermentum.",31.82,183,183,"2024-02-17 00:00:00.000000",3
+184,"Butcher Twine 4r",-,"In eleifend quam a odio.",72.47,184,184,"2023-06-03 00:00:00.000000",3
+185,"Lobster - Tail 6 Oz",-,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",39.38,185,185,"2023-08-04 00:00:00.000000",2
+186,"Puree - Kiwi",-,"Integer ac leo.",55.27,186,186,"2024-02-03 00:00:00.000000",5
+187,"Mustard - Individual Pkg",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",88.70,187,187,"2023-05-27 00:00:00.000000",5
+188,"Cheese - Ricotta",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",81.06,188,188,"2023-09-13 00:00:00.000000",4
+189,"Chambord Royal",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",32.40,189,189,"2023-08-22 00:00:00.000000",4
+190,"Carbonated Water - White Grape",-,"Vivamus tortor.",31.01,190,190,"2023-08-10 00:00:00.000000",1
+191,"Spoon - Soup, Plastic",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",17.08,191,191,"2023-12-21 00:00:00.000000",2
+192,"Muffins - Assorted",-,"Curabitur gravida nisi at nibh.",32.51,192,192,"2023-08-10 00:00:00.000000",3
+193,"7up Diet, 355 Ml",-,"Donec semper sapien a libero.",78.91,193,193,"2023-05-20 00:00:00.000000",4
+194,"Muffin Batt - Choc Chk",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",71.87,194,194,"2023-06-05 00:00:00.000000",3
+195,"Lotus Root",-,"Nunc rhoncus dui vel sem.",50.02,195,195,"2024-01-25 00:00:00.000000",4
+196,"Garbage Bag - Clear",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",72.54,196,196,"2023-10-21 00:00:00.000000",2
+197,"Brandy Apricot",-,"Morbi non quam nec dui luctus rutrum.",66.64,197,197,"2023-05-30 00:00:00.000000",2
+198,"Bok Choy - Baby",-,"Mauris sit amet eros.",39.27,198,198,"2023-11-12 00:00:00.000000",3
+199,"Nacho Chips",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",32.99,199,199,"2023-11-02 00:00:00.000000",3
+200,Bananas,-,"Pellentesque ultrices mattis odio.",85.23,200,200,"2023-12-28 00:00:00.000000",4
+201,"Beef - Bones, Cut - Up",-,"Donec vitae nisi.",70.27,201,201,"2023-05-12 00:00:00.000000",1
+202,"Pasta - Rotini, Dry",-,"Praesent blandit lacinia erat.",20.42,202,202,"2023-06-26 00:00:00.000000",4
+203,"Flour - Strong Pizza",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",46.87,203,203,"2023-03-12 00:00:00.000000",2
+204,"Garlic Powder",-,"Quisque ut erat.",81.26,204,204,"2023-12-01 00:00:00.000000",4
+205,"Bread - Multigrain",-,"In hac habitasse platea dictumst.",15.03,205,205,"2023-12-06 00:00:00.000000",2
+206,Loquat,-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",85.70,206,206,"2023-05-18 00:00:00.000000",5
+207,"Dawn Professionl Pot And Pan",-,"Morbi a ipsum.",16.50,207,207,"2023-03-06 00:00:00.000000",2
+208,"Bar - Granola Trail Mix Fruit Nut",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",21.42,208,208,"2023-06-14 00:00:00.000000",4
+209,"Lamb - Shoulder, Boneless",-,"Nam tristique tortor eu pede.",33.25,209,209,"2023-09-12 00:00:00.000000",1
+210,"Fish - Atlantic Salmon, Cold",-,"Maecenas ut massa quis augue luctus tincidunt.",12.61,210,210,"2023-03-18 00:00:00.000000",1
+211,"Cheese - Brie, Cups 125g",-,"Duis ac nibh.",83.89,211,211,"2023-06-01 00:00:00.000000",1
+212,"Puree - Blackcurrant",-,"Mauris lacinia sapien quis libero.",46.73,212,212,"2023-07-05 00:00:00.000000",4
+213,"Cheese - Swiss Sliced",-,"Sed accumsan felis.",11.57,213,213,"2023-09-28 00:00:00.000000",5
+214,"Chips Potato Reg 43g",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",19.98,214,214,"2023-10-14 00:00:00.000000",1
+215,"Wine - Chablis 2003 Champs",-,"Morbi a ipsum.",63.89,215,215,"2023-09-11 00:00:00.000000",5
+216,"Muffin Batt - Ban Dream Zero",-,"Praesent blandit.",63.91,216,216,"2024-02-25 00:00:00.000000",4
+217,"Vinegar - Sherry",-,"Proin risus.",16.69,217,217,"2023-09-16 00:00:00.000000",2
+218,Pancetta,-,"Nulla tellus.",86.57,218,218,"2023-10-05 00:00:00.000000",2
+219,"Sour Puss - Tangerine",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",96.76,219,219,"2023-08-14 00:00:00.000000",3
+220,"Kippers - Smoked",-,"Sed sagittis.",65.36,220,220,"2023-05-14 00:00:00.000000",4
+221,"Garlic - Elephant",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",27.36,221,221,"2024-01-24 00:00:00.000000",3
+222,"Lettuce - Romaine",-,"Aliquam sit amet diam in magna bibendum imperdiet.",6.79,222,222,"2023-09-21 00:00:00.000000",1
+223,"Sauce Tomato Pouch",-,"Integer ac neque.",52.91,223,223,"2023-05-18 00:00:00.000000",4
+224,"Table Cloth 54x72 Colour",-,"Morbi ut odio.",54.71,224,224,"2023-12-15 00:00:00.000000",1
+225,"Tomatoes - Roma",-,"Maecenas rhoncus aliquam lacus.",1.82,225,225,"2023-04-20 00:00:00.000000",1
+226,"Mustard - Seed",-,"Donec posuere metus vitae ipsum.",72.55,226,226,"2023-09-12 00:00:00.000000",1
+227,"Cheese - Gouda Smoked",-,"Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",56.43,227,227,"2023-07-25 00:00:00.000000",3
+228,"Onions - Spanish",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",98.30,228,228,"2023-06-18 00:00:00.000000",4
+229,"Cookies - Englishbay Chochip",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",95.12,229,229,"2023-08-05 00:00:00.000000",2
+230,"Wine - Niagara Peninsula Vqa",-,"Nam tristique tortor eu pede.",86.45,230,230,"2023-12-24 00:00:00.000000",3
+231,"Cheese - Cheddar, Medium",-,"Proin eu mi.",66.31,231,231,"2024-01-09 00:00:00.000000",1
+232,"Cheese Cheddar Processed",-,"Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",25.16,232,232,"2023-06-13 00:00:00.000000",4
+233,"Veal - Heart",-,"Suspendisse accumsan tortor quis turpis.",75.04,233,233,"2024-02-05 00:00:00.000000",4
+234,"Chicken - Leg / Back Attach",-,"Morbi quis tortor id nulla ultrices aliquet.",28.76,234,234,"2023-11-30 00:00:00.000000",1
+235,"Muffins - Assorted",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",20.04,235,235,"2023-07-10 00:00:00.000000",5
+236,"Dried Cherries",-,"Aliquam quis turpis eget elit sodales scelerisque.",22.56,236,236,"2023-07-26 00:00:00.000000",4
+237,"Bread - Hot Dog Buns",-,"Aliquam quis turpis eget elit sodales scelerisque.",28.51,237,237,"2023-09-22 00:00:00.000000",5
+238,"V8 - Vegetable Cocktail",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",27.45,238,238,"2023-12-22 00:00:00.000000",3
+239,"Beef - Roasted, Cooked",-,"Nunc nisl.",70.84,239,239,"2023-06-16 00:00:00.000000",1
+240,"Eggs - Extra Large",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",73.24,240,240,"2023-03-08 00:00:00.000000",4
+241,"Mince Meat - Filling",-,"Morbi porttitor lorem id ligula.",35.93,241,241,"2023-10-04 00:00:00.000000",1
+242,"Cake - Miini Cheesecake Cherry",-,"Morbi a ipsum.",20.14,242,242,"2023-10-26 00:00:00.000000",1
+243,"Soup Campbells Mexicali Tortilla",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",25.48,243,243,"2023-06-07 00:00:00.000000",4
+244,"Cheese - St. Andre",-,"Morbi a ipsum.",8.10,244,244,"2024-01-10 00:00:00.000000",2
+245,"Croissant, Raw - Mini",-,"Quisque porta volutpat erat.",37.25,245,245,"2023-08-09 00:00:00.000000",5
+246,"Wine - Redchard Merritt",-,"Nulla ac enim.",20.96,246,246,"2023-09-04 00:00:00.000000",4
+247,"Bar Mix - Lemon",-,"Curabitur gravida nisi at nibh.",20.20,247,247,"2023-09-25 00:00:00.000000",5
+248,"Juice - V8, Tomato",-,"Morbi non lectus.",20.05,248,248,"2023-12-08 00:00:00.000000",2
+249,"Pie Filling - Apple",-,"Phasellus in felis.",20.58,249,249,"2023-05-25 00:00:00.000000",3
+250,"Milk - 1%",-,"Integer a nibh.",53.09,250,250,"2023-09-04 00:00:00.000000",4
+251,"Ham - Black Forest",-,"Phasellus in felis.",17.35,251,251,"2024-02-24 00:00:00.000000",3
+252,"Pants Custom Dry Clean",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",87.52,252,252,"2023-11-19 00:00:00.000000",2
+253,"Everfresh Products",-,"Etiam vel augue.",14.91,253,253,"2023-12-21 00:00:00.000000",4
+254,"Cumin - Ground",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",10.84,254,254,"2023-05-26 00:00:00.000000",1
+255,"Stock - Beef, White",-,"In sagittis dui vel nisl.",91.95,255,255,"2023-05-30 00:00:00.000000",5
+256,"Orange - Tangerine",-,"Integer ac leo.",85.12,256,256,"2023-10-03 00:00:00.000000",4
+257,"Bread - Wheat Baguette",-,"Maecenas ut massa quis augue luctus tincidunt.",61.71,257,257,"2023-05-06 00:00:00.000000",4
+258,"Tea - English Breakfast",-,"Suspendisse ornare consequat lectus.",19.44,258,258,"2023-08-20 00:00:00.000000",3
+259,"Juice - Apple, 341 Ml",-,"Pellentesque viverra pede ac diam.",16.00,259,259,"2024-02-04 00:00:00.000000",2
+260,"Muffin - Banana Nut Individual",-,"Cras pellentesque volutpat dui.",81.40,260,260,"2023-12-20 00:00:00.000000",2
+261,"Cherries - Bing, Canned",-,"Praesent id massa id nisl venenatis lacinia.",44.02,261,261,"2023-08-31 00:00:00.000000",4
+262,"Spic And Span All Purpose",-,"Suspendisse potenti.",48.11,262,262,"2023-11-21 00:00:00.000000",3
+263,"Chocolate Eclairs",-,"In sagittis dui vel nisl.",19.12,263,263,"2023-08-28 00:00:00.000000",3
+264,"The Pop Shoppe - Cream Soda",-,"Donec quis orci eget orci vehicula condimentum.",97.09,264,264,"2023-06-05 00:00:00.000000",5
+265,"Corn Meal",-,"Mauris lacinia sapien quis libero.",79.01,265,265,"2023-08-04 00:00:00.000000",4
+266,"Loaf Pan - 2 Lb, Foil",-,"Curabitur in libero ut massa volutpat convallis.",24.85,266,266,"2024-01-12 00:00:00.000000",2
+267,Sardines,-,"Duis mattis egestas metus.",1.61,267,267,"2023-11-24 00:00:00.000000",2
+268,"Salmon - Fillets",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",20.16,268,268,"2024-01-15 00:00:00.000000",3
+269,"Energy Drink",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",66.31,269,269,"2024-01-06 00:00:00.000000",5
+270,"Soup Campbells Mexicali Tortilla",-,"Suspendisse potenti.",53.67,270,270,"2023-07-15 00:00:00.000000",5
+271,"Triple Sec - Mcguinness",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",38.13,271,271,"2023-04-11 00:00:00.000000",4
+272,"Beef - Sushi Flat Iron Steak",-,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",94.19,272,272,"2024-02-23 00:00:00.000000",1
+273,"Flavouring - Rum",-,"Donec quis orci eget orci vehicula condimentum.",40.56,273,273,"2023-09-18 00:00:00.000000",4
+274,"Olives - Morracan Dired",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",48.58,274,274,"2023-07-07 00:00:00.000000",4
+275,"Tilapia - Fillets",-,"Mauris lacinia sapien quis libero.",99.50,275,275,"2023-05-26 00:00:00.000000",2
+276,"Cake - Lemon Chiffon",-,"Curabitur gravida nisi at nibh.",38.81,276,276,"2023-12-02 00:00:00.000000",3
+277,"Carrots - Jumbo",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",24.62,277,277,"2024-01-23 00:00:00.000000",5
+278,"Chicken - Ground",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",42.36,278,278,"2023-04-24 00:00:00.000000",3
+279,"Versatainer Nc - 8288",-,"Nulla suscipit ligula in lacus.",68.47,279,279,"2023-06-09 00:00:00.000000",3
+280,"Nestea - Iced Tea",-,"Nulla ut erat id mauris vulputate elementum.",50.83,280,280,"2023-05-17 00:00:00.000000",1
+281,Guava,-,"Phasellus id sapien in sapien iaculis congue.",18.49,281,281,"2023-11-06 00:00:00.000000",5
+282,"Coffee - Colombian, Portioned",-,"Proin risus.",9.91,282,282,"2024-02-24 00:00:00.000000",2
+283,"Ecolab - Lime - A - Way 4/4 L",-,"Integer non velit.",21.75,283,283,"2024-01-09 00:00:00.000000",3
+284,"Beef - Ox Tail, Frozen",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",36.28,284,284,"2023-06-12 00:00:00.000000",3
+285,"Pie Box - Cello Window 2.5",-,"Phasellus sit amet erat.",89.05,285,285,"2023-12-28 00:00:00.000000",1
+286,"Bread Sour Rolls",-,"Maecenas tincidunt lacus at velit.",30.38,286,286,"2024-02-22 00:00:00.000000",3
+287,"Calypso - Black Cherry Lemonade",-,"Phasellus in felis.",30.75,287,287,"2023-03-30 00:00:00.000000",4
+288,"Wine - Chardonnay Mondavi",-,"Curabitur in libero ut massa volutpat convallis.",31.22,288,288,"2023-03-19 00:00:00.000000",4
+289,"Gatorade - Fruit Punch",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",16.01,289,289,"2023-05-27 00:00:00.000000",1
+290,"Beef - Texas Style Burger",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",59.08,290,290,"2023-11-05 00:00:00.000000",2
+291,"Island Oasis - Wildberry",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",71.64,291,291,"2023-07-20 00:00:00.000000",5
+292,"Pastry - Baked Cinnamon Stick",-,"Duis aliquam convallis nunc.",41.72,292,292,"2023-04-22 00:00:00.000000",5
+293,"Goulash Seasoning",-,"Nunc nisl.",46.29,293,293,"2023-05-03 00:00:00.000000",3
+294,"Buffalo - Short Rib Fresh",-,"Nullam molestie nibh in lectus.",26.35,294,294,"2023-06-19 00:00:00.000000",3
+295,"Sauce - White, Mix",-,"In congue.",91.26,295,295,"2023-07-11 00:00:00.000000",2
+296,"Zucchini - Green",-,"In hac habitasse platea dictumst.",83.50,296,296,"2023-11-24 00:00:00.000000",3
+297,"Appetizer - Escargot Puff",-,"Nam tristique tortor eu pede.",23.41,297,297,"2023-07-23 00:00:00.000000",4
+298,"Mikes Hard Lemonade",-,"Etiam justo.",2.62,298,298,"2023-07-23 00:00:00.000000",1
+299,"Vinegar - White Wine",-,"Proin interdum mauris non ligula pellentesque ultrices.",7.26,299,299,"2023-12-19 00:00:00.000000",3
+300,"Bread Base - Toscano",-,"Mauris lacinia sapien quis libero.",52.51,300,300,"2023-04-06 00:00:00.000000",1
+301,Rootbeer,-,"Integer a nibh.",67.89,301,301,"2024-01-05 00:00:00.000000",5
+302,"Sausage - Blood Pudding",-,"Nullam porttitor lacus at turpis.",78.74,302,302,"2023-08-06 00:00:00.000000",1
+303,"Ice Cream Bar - Oreo Sandwich",-,"Nulla suscipit ligula in lacus.",26.73,303,303,"2024-01-14 00:00:00.000000",3
+304,"Apples - Spartan",-,"Integer non velit.",84.63,304,304,"2024-01-06 00:00:00.000000",1
+305,"Milk 2% 500 Ml",-,"Suspendisse ornare consequat lectus.",98.26,305,305,"2023-05-31 00:00:00.000000",5
+306,"Gatorade - Lemon Lime",-,"Nulla nisl.",33.88,306,306,"2023-09-06 00:00:00.000000",4
+307,"Wine - Vouvray Cuvee Domaine",-,"Quisque porta volutpat erat.",37.06,307,307,"2023-06-04 00:00:00.000000",3
+308,"Bacardi Breezer - Tropical",-,"Aliquam non mauris.",38.91,308,308,"2023-06-22 00:00:00.000000",4
+309,"Table Cloth 54x72 White",-,"In hac habitasse platea dictumst.",77.61,309,309,"2023-12-03 00:00:00.000000",1
+310,"Ham - Virginia",-,"Integer tincidunt ante vel ipsum.",72.10,310,310,"2024-01-08 00:00:00.000000",1
+311,"Wine - Carmenere Casillero Del",-,"Etiam pretium iaculis justo.",88.58,311,311,"2023-08-03 00:00:00.000000",1
+312,"Beef - Short Ribs",-,"Aenean auctor gravida sem.",40.07,312,312,"2023-08-18 00:00:00.000000",2
+313,"Flour - Teff",-,"Cras in purus eu magna vulputate luctus.",43.34,313,313,"2023-07-16 00:00:00.000000",4
+314,"Grapefruit - White",-,"Praesent lectus.",27.67,314,314,"2023-07-05 00:00:00.000000",5
+315,"Pork - Chop, Frenched",-,"Donec vitae nisi.",89.05,315,315,"2023-03-13 00:00:00.000000",3
+316,"Cheese Cloth No 100",-,"Ut tellus.",32.43,316,316,"2024-01-29 00:00:00.000000",5
+317,"Ecolab - Medallion",-,"Morbi quis tortor id nulla ultrices aliquet.",25.75,317,317,"2023-07-23 00:00:00.000000",2
+318,"Chinese Foods - Plain Fried Rice",-,"Vivamus vestibulum sagittis sapien.",38.36,318,318,"2023-12-12 00:00:00.000000",3
+319,"Laundry - Bag Cloth",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",88.92,319,319,"2023-11-26 00:00:00.000000",5
+320,Grenadine,-,"Aliquam sit amet diam in magna bibendum imperdiet.",86.15,320,320,"2023-10-05 00:00:00.000000",1
+321,"Wine - Pinot Noir Latour",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",46.02,321,321,"2023-10-27 00:00:00.000000",1
+322,"Monkfish Fresh - Skin Off",-,"Quisque porta volutpat erat.",7.13,322,322,"2023-11-20 00:00:00.000000",4
+323,"Flower - Commercial Bronze",-,"In hac habitasse platea dictumst.",9.00,323,323,"2024-01-01 00:00:00.000000",1
+324,"Beer - Camerons Cream Ale",-,"Morbi quis tortor id nulla ultrices aliquet.",64.21,324,324,"2023-09-21 00:00:00.000000",5
+325,"Tarragon - Primerba, Paste",-,"Aenean lectus.",67.61,325,325,"2023-04-02 00:00:00.000000",3
+326,"Appetizer - Mushroom Tart",-,"Proin at turpis a pede posuere nonummy.",11.59,326,326,"2023-09-18 00:00:00.000000",4
+327,"Wine - Rosso Del Veronese Igt",-,"Donec semper sapien a libero.",35.57,327,327,"2023-09-29 00:00:00.000000",5
+328,"Muffin Batt - Ban Dream Zero",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",92.77,328,328,"2023-07-18 00:00:00.000000",5
+329,"Tequila - Sauza Silver",-,"Etiam faucibus cursus urna.",96.01,329,329,"2023-03-09 00:00:00.000000",5
+330,"Soup Campbells - Tomato Bisque",-,"Aliquam sit amet diam in magna bibendum imperdiet.",37.71,330,330,"2023-11-08 00:00:00.000000",1
+331,"Remy Red",-,"Suspendisse accumsan tortor quis turpis.",1.81,331,331,"2023-09-08 00:00:00.000000",5
+332,"Egg Patty Fried",-,"Etiam pretium iaculis justo.",86.34,332,332,"2024-01-06 00:00:00.000000",5
+333,"Tea Leaves - Oolong",-,"Cras in purus eu magna vulputate luctus.",16.54,333,333,"2023-06-24 00:00:00.000000",4
+334,"Beans - French",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",38.72,334,334,"2023-03-16 00:00:00.000000",1
+335,"Venison - Denver Leg Boneless",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",3.96,335,335,"2023-04-30 00:00:00.000000",2
+336,"Bread - White, Sliced",-,"Integer ac neque.",52.98,336,336,"2023-12-04 00:00:00.000000",3
+337,"Beef - Top Butt",-,"Sed vel enim sit amet nunc viverra dapibus.",27.14,337,337,"2024-01-21 00:00:00.000000",2
+338,"Soup Campbells Turkey Veg.",-,"Nulla justo.",21.33,338,338,"2023-09-23 00:00:00.000000",3
+339,"Triple Sec - Mcguinness",-,"Donec dapibus.",76.23,339,339,"2023-12-10 00:00:00.000000",3
+340,"Sesame Seed",-,"Morbi ut odio.",64.51,340,340,"2023-10-26 00:00:00.000000",4
+341,"Lentils - Red, Dry",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",27.96,341,341,"2023-04-25 00:00:00.000000",4
+342,"Wine - Sicilia Igt Nero Avola",-,"Fusce posuere felis sed lacus.",33.08,342,342,"2023-11-14 00:00:00.000000",1
+343,"Syrup - Pancake",-,"Praesent lectus.",96.01,343,343,"2024-02-14 00:00:00.000000",3
+344,"Water - Spring Water, 355 Ml",-,"Duis at velit eu est congue elementum.",65.14,344,344,"2023-12-14 00:00:00.000000",2
+345,Jicama,-,"Morbi vel lectus in quam fringilla rhoncus.",54.17,345,345,"2023-04-20 00:00:00.000000",5
+346,"Food Colouring - Pink",-,"Nam dui.",46.82,346,346,"2023-12-07 00:00:00.000000",2
+347,"Bread - Rolls, Rye",-,"Ut tellus.",78.65,347,347,"2023-11-23 00:00:00.000000",4
+348,"Ecolab - Balanced Fusion",-,"Suspendisse potenti.",65.08,348,348,"2023-08-19 00:00:00.000000",2
+349,"Muffin - Banana Nut Individual",-,"Mauris sit amet eros.",11.43,349,349,"2023-03-29 00:00:00.000000",3
+350,"Yogurt - Peach, 175 Gr",-,"Vestibulum sed magna at nunc commodo placerat.",82.20,350,350,"2023-04-19 00:00:00.000000",1
+351,"Ice Cream Bar - Drumstick",-,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",40.76,351,351,"2023-08-06 00:00:00.000000",4
+352,"Tofu - Soft",-,"Maecenas pulvinar lobortis est.",9.63,352,352,"2023-05-18 00:00:00.000000",2
+353,"Yoplait Drink",-,"Sed ante.",89.08,353,353,"2023-11-04 00:00:00.000000",1
+354,"Dc Hikiage Hira Huba",-,"In quis justo.",40.66,354,354,"2023-07-26 00:00:00.000000",3
+355,"Nantuket Peach Orange",-,"Aenean auctor gravida sem.",13.70,355,355,"2024-02-21 00:00:00.000000",4
+356,"Temperature Recording Station",-,"Donec quis orci eget orci vehicula condimentum.",12.63,356,356,"2023-09-07 00:00:00.000000",5
+357,"Mushroom - Trumpet, Dry",-,"Praesent lectus.",61.18,357,357,"2023-06-27 00:00:00.000000",3
+358,"Plums - Red",-,"Praesent blandit lacinia erat.",63.03,358,358,"2023-06-14 00:00:00.000000",4
+359,"Pepper - Black, Ground",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",5.65,359,359,"2023-07-30 00:00:00.000000",5
+360,"Coffee - Frthy Coffee Crisp",-,"Nullam porttitor lacus at turpis.",28.58,360,360,"2023-11-04 00:00:00.000000",3
+361,"Chicken - Whole",-,"Suspendisse ornare consequat lectus.",13.00,361,361,"2024-02-04 00:00:00.000000",4
+362,"Pepper - Red, Finger Hot",-,"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",19.44,362,362,"2024-01-30 00:00:00.000000",1
+363,"Wine - Mas Chicet Rose, Vintage",-,"Donec ut mauris eget massa tempor convallis.",35.50,363,363,"2023-11-25 00:00:00.000000",3
+364,"Water - Tonic",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",28.98,364,364,"2023-12-06 00:00:00.000000",2
+365,"Cake - Mini Cheesecake",-,"Sed ante.",3.80,365,365,"2023-06-18 00:00:00.000000",3
+366,"Appetizer - Mini Egg Roll, Shrimp",-,"Maecenas rhoncus aliquam lacus.",3.69,366,366,"2023-05-27 00:00:00.000000",1
+367,"Butter Balls Salted",-,"Aenean auctor gravida sem.",79.31,367,367,"2024-01-30 00:00:00.000000",5
+368,"Hog / Sausage Casing - Pork",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",17.89,368,368,"2023-09-10 00:00:00.000000",2
+369,"Juice - Apple 284ml",-,"In congue.",70.24,369,369,"2023-05-11 00:00:00.000000",1
+370,"Chicken - Whole",-,"Fusce consequat.",74.98,370,370,"2024-02-17 00:00:00.000000",2
+371,"Beef - Top Butt",-,"Donec posuere metus vitae ipsum.",46.55,371,371,"2023-03-27 00:00:00.000000",4
+372,"Wine - White Cab Sauv.on",-,"Phasellus sit amet erat.",36.45,372,372,"2023-07-02 00:00:00.000000",4
+373,"Tart - Butter Plain Squares",-,"Nulla suscipit ligula in lacus.",89.02,373,373,"2023-05-04 00:00:00.000000",2
+374,"Pastry - Choclate Baked",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",34.80,374,374,"2024-01-21 00:00:00.000000",4
+375,"Vanilla Beans",-,"Morbi non quam nec dui luctus rutrum.",4.75,375,375,"2023-09-05 00:00:00.000000",1
+376,"Soup Campbells Split Pea And Ham",-,"Donec ut mauris eget massa tempor convallis.",82.99,376,376,"2023-09-06 00:00:00.000000",5
+377,"Muffin Mix - Oatmeal",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",35.79,377,377,"2023-12-13 00:00:00.000000",1
+378,"Shrimp - 16 - 20 Cooked, Peeled",-,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",23.64,378,378,"2023-07-05 00:00:00.000000",5
+379,"Yoghurt Tubes",-,"Etiam justo.",24.43,379,379,"2023-12-06 00:00:00.000000",2
+380,"Pork - Ham, Virginia",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",32.58,380,380,"2023-12-13 00:00:00.000000",5
+381,"Rice Pilaf, Dry,package",-,"Phasellus in felis.",39.31,381,381,"2024-01-11 00:00:00.000000",1
+382,"Vinegar - Raspberry",-,"Morbi non lectus.",15.96,382,382,"2024-02-18 00:00:00.000000",2
+383,"Shrimp - Baby, Cold Water",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",35.68,383,383,"2023-06-02 00:00:00.000000",3
+384,"Pasta - Ravioli",-,"Nullam varius.",29.23,384,384,"2023-12-27 00:00:00.000000",3
+385,"Lettuce - Escarole",-,"Etiam vel augue.",87.07,385,385,"2023-03-07 00:00:00.000000",5
+386,"Pepper - Black, Crushed",-,"Fusce consequat.",53.22,386,386,"2023-08-29 00:00:00.000000",3
+387,"Bread - Olive Dinner Roll",-,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",23.82,387,387,"2023-10-27 00:00:00.000000",3
+388,"Scallops - 10/20",-,"Etiam faucibus cursus urna.",68.18,388,388,"2023-11-05 00:00:00.000000",5
+389,"Wine - Magnotta, White",-,"Vivamus tortor.",54.29,389,389,"2023-04-01 00:00:00.000000",1
+390,"Puff Pastry - Slab",-,"Maecenas rhoncus aliquam lacus.",20.63,390,390,"2023-09-26 00:00:00.000000",5
+391,Mangoes,-,"In congue.",61.94,391,391,"2023-05-28 00:00:00.000000",4
+392,"C - Plus, Orange",-,"Phasellus sit amet erat.",75.63,392,392,"2023-05-18 00:00:00.000000",2
+393,"Steampan - Foil",-,"Praesent blandit.",31.52,393,393,"2023-05-29 00:00:00.000000",2
+394,Tomatillo,-,"Praesent id massa id nisl venenatis lacinia.",94.43,394,394,"2023-05-16 00:00:00.000000",5
+395,"Appetizer - Spring Roll, Veg",-,"Etiam justo.",79.12,395,395,"2023-06-13 00:00:00.000000",1
+396,"Sauce - Caesar Dressing",-,"Etiam pretium iaculis justo.",51.44,396,396,"2023-04-24 00:00:00.000000",2
+397,"Yogurt - Raspberry, 175 Gr",-,"Integer tincidunt ante vel ipsum.",87.04,397,397,"2023-11-04 00:00:00.000000",5
+398,Okra,-,"Maecenas pulvinar lobortis est.",15.40,398,398,"2023-03-02 00:00:00.000000",1
+399,"Sugar - Palm",-,"Donec dapibus.",21.45,399,399,"2023-07-04 00:00:00.000000",5
+400,"Milk - Chocolate 250 Ml",-,"In hac habitasse platea dictumst.",38.60,400,400,"2023-08-07 00:00:00.000000",3
+401,"Tea - Herbal Sweet Dreams",-,"Donec semper sapien a libero.",57.03,401,401,"2023-11-17 00:00:00.000000",5
+402,"Wine - Fontanafredda Barolo",-,"Donec ut dolor.",60.47,402,402,"2023-07-21 00:00:00.000000",1
+403,"Teriyaki Sauce",-,"Maecenas rhoncus aliquam lacus.",72.45,403,403,"2023-09-16 00:00:00.000000",1
+404,"Creme De Menth - White",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",57.05,404,404,"2023-08-09 00:00:00.000000",5
+405,"Coffee Decaf Colombian",-,"Nunc rhoncus dui vel sem.",41.26,405,405,"2024-02-25 00:00:00.000000",2
+406,"Tuna - Yellowfin",-,"Vivamus in felis eu sapien cursus vestibulum.",14.90,406,406,"2023-03-02 00:00:00.000000",4
+407,"Turkey - Oven Roast Breast",-,"Curabitur at ipsum ac tellus semper interdum.",13.16,407,407,"2023-07-13 00:00:00.000000",1
+408,"Wine - Two Oceans Sauvignon",-,"Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",68.20,408,408,"2023-07-17 00:00:00.000000",2
+409,"Oil - Hazelnut",-,"Duis mattis egestas metus.",34.85,409,409,"2023-06-05 00:00:00.000000",2
+410,"Wine - Bourgogne 2002, La",-,"Etiam faucibus cursus urna.",97.47,410,410,"2023-07-06 00:00:00.000000",1
+411,"Beets - Pickled",-,"Duis bibendum.",78.17,411,411,"2024-01-07 00:00:00.000000",1
+412,"Pork - Ground",-,"Duis bibendum.",51.43,412,412,"2023-11-10 00:00:00.000000",3
+413,"Oysters - Smoked",-,"In hac habitasse platea dictumst.",40.03,413,413,"2024-01-05 00:00:00.000000",2
+414,"Pork - Loin, Bone - In",-,"Nullam porttitor lacus at turpis.",58.18,414,414,"2024-01-06 00:00:00.000000",2
+415,"Pastry - Apple Muffins - Mini",-,"Pellentesque eget nunc.",91.51,415,415,"2023-11-25 00:00:00.000000",2
+416,"Tea - Green",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",19.82,416,416,"2023-11-23 00:00:00.000000",3
+417,"Wine - Bourgogne 2002, La",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",99.94,417,417,"2023-05-08 00:00:00.000000",5
+418,"Dawn Professionl Pot And Pan",-,"Aenean fermentum.",35.92,418,418,"2023-10-10 00:00:00.000000",3
+419,"Pears - Anjou",-,"Nullam sit amet turpis elementum ligula vehicula consequat.",45.87,419,419,"2023-06-17 00:00:00.000000",3
+420,"Cheese - Mozzarella, Shredded",-,"Etiam justo.",27.95,420,420,"2024-01-30 00:00:00.000000",5
+421,"Tortillas - Flour, 12",-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",68.48,421,421,"2023-07-04 00:00:00.000000",3
+422,"Rice Pilaf, Dry,package",-,"Nulla tellus.",73.21,422,422,"2023-09-08 00:00:00.000000",1
+423,"Clam - Cherrystone",-,"Nulla facilisi.",67.73,423,423,"2023-05-25 00:00:00.000000",3
+424,"Pate - Peppercorn",-,"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",64.79,424,424,"2023-06-24 00:00:00.000000",1
+425,"Cloves - Ground",-,"Duis bibendum.",38.37,425,425,"2023-05-31 00:00:00.000000",1
+426,"Milk - Homo",-,"Maecenas ut massa quis augue luctus tincidunt.",80.10,426,426,"2023-08-13 00:00:00.000000",5
+427,"Lid Coffee Cup 8oz Blk",-,"Phasellus in felis.",15.96,427,427,"2023-10-01 00:00:00.000000",4
+428,"Catfish - Fillets",-,"Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.",34.31,428,428,"2023-10-26 00:00:00.000000",4
+429,"Trout - Rainbow, Fresh",-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",27.95,429,429,"2023-08-09 00:00:00.000000",3
+430,"Fenngreek Seed",-,"Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",32.58,430,430,"2023-10-06 00:00:00.000000",1
+431,"Turkey - Breast, Boneless Sk On",-,"Duis ac nibh.",38.97,431,431,"2023-11-07 00:00:00.000000",4
+432,"Munchies Honey Sweet Trail Mix",-,"Integer a nibh.",67.56,432,432,"2024-01-31 00:00:00.000000",5
+433,"Wine - Vidal Icewine Magnotta",-,"Nulla tempus.",18.04,433,433,"2023-10-18 00:00:00.000000",3
+434,"Pasta - Rotini, Colour, Dry",-,"Nulla suscipit ligula in lacus.",6.75,434,434,"2023-11-26 00:00:00.000000",4
+435,"Sausage - Blood Pudding",-,"Praesent id massa id nisl venenatis lacinia.",48.52,435,435,"2023-10-17 00:00:00.000000",5
+436,"Chicken - Ground",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",86.66,436,436,"2023-06-12 00:00:00.000000",5
+437,"Beef - Baby, Liver",-,"Sed vel enim sit amet nunc viverra dapibus.",46.49,437,437,"2024-01-13 00:00:00.000000",2
+438,"Hinge W Undercut",-,"Suspendisse potenti.",73.91,438,438,"2023-08-27 00:00:00.000000",4
+439,"Pork - Back, Short Cut, Boneless",-,"Donec quis orci eget orci vehicula condimentum.",46.44,439,439,"2023-03-11 00:00:00.000000",5
+440,"Table Cloth 54x54 Colour",-,"Duis bibendum.",91.20,440,440,"2023-04-30 00:00:00.000000",4
+441,"Cumin - Whole",-,"In eleifend quam a odio.",18.49,441,441,"2023-05-08 00:00:00.000000",2
+442,"Wine - White, Pelee Island",-,"Duis mattis egestas metus.",49.64,442,442,"2024-02-07 00:00:00.000000",4
+443,"Vinegar - Balsamic",-,"Suspendisse potenti.",42.09,443,443,"2023-12-05 00:00:00.000000",5
+444,"Flour - Pastry",-,"Integer non velit.",3.84,444,444,"2023-07-09 00:00:00.000000",5
+445,"Pork - Backs - Boneless",-,"Maecenas ut massa quis augue luctus tincidunt.",87.33,445,445,"2023-12-12 00:00:00.000000",3
+446,"Mackerel Whole Fresh",-,"In blandit ultrices enim.",88.77,446,446,"2023-09-12 00:00:00.000000",5
+447,"Tequila Rose Cream Liquor",-,"Vestibulum sed magna at nunc commodo placerat.",33.75,447,447,"2023-09-05 00:00:00.000000",5
+448,"Nantucket Orange Juice",-,"Aenean auctor gravida sem.",63.05,448,448,"2023-04-08 00:00:00.000000",1
+449,"Cleaner - Bleach",-,"Nam tristique tortor eu pede.",50.42,449,449,"2023-03-19 00:00:00.000000",3
+450,"Pork - European Side Bacon",-,"Praesent lectus.",84.01,450,450,"2023-04-05 00:00:00.000000",5
+451,"Puree - Guava",-,"Praesent lectus.",99.37,451,451,"2023-05-20 00:00:00.000000",4
+452,"Flour - All Purpose",-,"Praesent blandit lacinia erat.",80.66,452,452,"2023-11-02 00:00:00.000000",5
+453,"Bread - Frozen Basket Variety",-,"Sed ante.",36.14,453,453,"2023-12-30 00:00:00.000000",1
+454,"Pork - Butt, Boneless",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",75.39,454,454,"2023-09-07 00:00:00.000000",3
+455,"Alize Sunset",-,"Etiam pretium iaculis justo.",72.20,455,455,"2023-03-15 00:00:00.000000",5
+456,"Coffee Cup 16oz Foam",-,"Etiam faucibus cursus urna.",20.88,456,456,"2024-02-17 00:00:00.000000",4
+457,"Veal - Leg",-,"Etiam justo.",14.44,457,457,"2023-07-21 00:00:00.000000",1
+458,"Syrup - Monin - Passion Fruit",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",72.88,458,458,"2023-03-16 00:00:00.000000",1
+459,"Fiddlehead - Frozen",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",69.22,459,459,"2024-02-10 00:00:00.000000",3
+460,"Pork - Suckling Pig",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",29.73,460,460,"2023-03-29 00:00:00.000000",1
+461,"Shopper Bag - S - 4",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",25.33,461,461,"2023-03-26 00:00:00.000000",4
+462,"Cheese - Romano, Grated",-,"In blandit ultrices enim.",61.12,462,462,"2023-04-08 00:00:00.000000",3
+463,"Teriyaki Sauce",-,"Sed sagittis.",97.83,463,463,"2023-10-09 00:00:00.000000",2
+464,"Vodka - Smirnoff",-,"Morbi non quam nec dui luctus rutrum.",21.46,464,464,"2023-10-05 00:00:00.000000",3
+465,"Parsley - Fresh",-,"Sed ante.",65.32,465,465,"2024-02-13 00:00:00.000000",5
+466,"Bread - Multigrain, Loaf",-,"Aliquam non mauris.",96.89,466,466,"2023-06-17 00:00:00.000000",1
+467,"Fiddlehead - Frozen",-,"Aenean lectus.",61.04,467,467,"2023-11-08 00:00:00.000000",5
+468,"Marjoram - Fresh",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",80.59,468,468,"2023-05-22 00:00:00.000000",1
+469,"Wine - Rhine Riesling Wolf Blass",-,"In eleifend quam a odio.",28.20,469,469,"2023-06-09 00:00:00.000000",1
+470,"Cake - Pancake",-,"Morbi a ipsum.",66.31,470,470,"2023-10-13 00:00:00.000000",3
+471,"Shrimp - 21/25, Peel And Deviened",-,"Praesent blandit lacinia erat.",28.24,471,471,"2023-10-13 00:00:00.000000",1
+472,"Wine - Shiraz South Eastern",-,"Donec ut mauris eget massa tempor convallis.",21.98,472,472,"2023-12-10 00:00:00.000000",2
+473,"Coffee - Espresso",-,"Proin risus.",39.80,473,473,"2023-05-23 00:00:00.000000",4
+474,"Soup Campbells Turkey Veg.",-,"Quisque porta volutpat erat.",33.35,474,474,"2024-01-20 00:00:00.000000",2
+475,"Latex Rubber Gloves Size 9",-,"In quis justo.",97.80,475,475,"2023-12-25 00:00:00.000000",3
+476,"Beer - Maudite",-,"In hac habitasse platea dictumst.",15.03,476,476,"2023-06-24 00:00:00.000000",5
+477,"Zucchini - Mini, Green",-,"Duis consequat dui nec nisi volutpat eleifend.",55.36,477,477,"2023-06-22 00:00:00.000000",2
+478,"Nestea - Ice Tea, Diet",-,"Duis mattis egestas metus.",38.45,478,478,"2023-12-12 00:00:00.000000",2
+479,"Bread Fig And Almond",-,"Ut at dolor quis odio consequat varius.",20.60,479,479,"2023-06-22 00:00:00.000000",3
+480,"Garbage Bags - Black",-,"Morbi non lectus.",17.61,480,480,"2023-04-03 00:00:00.000000",5
+481,"Honey - Liquid",-,"Nulla ac enim.",6.51,481,481,"2023-07-23 00:00:00.000000",3
+482,"The Pop Shoppe - Cream Soda",-,"Vivamus vel nulla eget eros elementum pellentesque.",90.30,482,482,"2023-04-10 00:00:00.000000",3
+483,"Cup - 6oz, Foam",-,"Aliquam erat volutpat.",8.21,483,483,"2023-05-24 00:00:00.000000",4
+484,"Cloves - Whole",-,"Duis bibendum.",16.81,484,484,"2023-09-17 00:00:00.000000",2
+485,"Doilies - 8, Paper",-,"Suspendisse ornare consequat lectus.",72.14,485,485,"2024-01-09 00:00:00.000000",5
+486,"Cheese - Parmigiano Reggiano",-,"Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",19.65,486,486,"2024-01-04 00:00:00.000000",4
+487,Tamarillo,-,"Ut at dolor quis odio consequat varius.",63.70,487,487,"2023-10-24 00:00:00.000000",2
+488,"Pork Loin Cutlets",-,"In quis justo.",51.60,488,488,"2023-07-20 00:00:00.000000",2
+489,"Lamb Rack Frenched Australian",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",27.07,489,489,"2023-06-17 00:00:00.000000",3
+490,"Wine - Prosecco Valdobiaddene",-,"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",17.17,490,490,"2023-06-26 00:00:00.000000",4
+491,"Asparagus - Mexican",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",59.16,491,491,"2023-04-06 00:00:00.000000",3
+492,"Tortillas - Flour, 10",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",15.65,492,492,"2024-01-13 00:00:00.000000",2
+493,"Pork - Back, Short Cut, Boneless",-,"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",12.03,493,493,"2023-04-02 00:00:00.000000",1
+494,"Bread Cranberry Foccacia",-,"Nullam porttitor lacus at turpis.",36.55,494,494,"2023-11-20 00:00:00.000000",1
+495,Sultanas,-,"Quisque id justo sit amet sapien dignissim vestibulum.",51.12,495,495,"2023-09-19 00:00:00.000000",3
+496,"Veal - Insides Provini",-,"Vivamus vestibulum sagittis sapien.",72.50,496,496,"2023-07-14 00:00:00.000000",3
+497,"Heavy Duty Dust Pan",-,"Aenean lectus.",74.78,497,497,"2023-10-26 00:00:00.000000",1
+498,"Cake - Cheese Cake 9 Inch",-,"Aenean auctor gravida sem.",61.91,498,498,"2023-11-01 00:00:00.000000",5
+499,"Fish - Soup Base, Bouillon",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",22.08,499,499,"2023-05-07 00:00:00.000000",4
+500,Watercress,-,"Duis at velit eu est congue elementum.",88.83,500,500,"2023-09-30 00:00:00.000000",1
+501,"Rice - Wild",-,"Etiam justo.",54.85,501,501,"2023-06-12 00:00:00.000000",2
+502,"Pail With Metal Handle 16l White",-,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",38.44,502,502,"2024-01-10 00:00:00.000000",4
+503,"Lid - High Heat, Super Clear",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",6.18,503,503,"2023-04-16 00:00:00.000000",3
+504,"Sausage - Meat",-,"In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",25.28,504,504,"2024-01-20 00:00:00.000000",4
+505,"Wine - Champagne Brut Veuve",-,"Etiam faucibus cursus urna.",21.25,505,505,"2023-11-09 00:00:00.000000",1
+506,"Flour Pastry Super Fine",-,"In quis justo.",74.74,506,506,"2024-02-12 00:00:00.000000",4
+507,"Bag Clear 10 Lb",-,"Morbi non lectus.",52.22,507,507,"2023-07-23 00:00:00.000000",3
+508,"Bread - Roll, Calabrese",-,"Nullam molestie nibh in lectus.",14.76,508,508,"2023-10-10 00:00:00.000000",4
+509,"Cake Sheet Combo Party Pack",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",60.90,509,509,"2023-04-22 00:00:00.000000",3
+510,"Tea - Earl Grey",-,"Etiam justo.",26.01,510,510,"2023-08-14 00:00:00.000000",4
+511,"Flour - Bread",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",20.97,511,511,"2023-04-10 00:00:00.000000",4
+512,"Numi - Assorted Teas",-,"Vivamus vel nulla eget eros elementum pellentesque.",97.46,512,512,"2023-11-16 00:00:00.000000",4
+513,"Bread - Pumpernickle, Rounds",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",47.30,513,513,"2023-10-28 00:00:00.000000",4
+514,Fennel,-,"Vivamus tortor.",99.73,514,514,"2023-06-03 00:00:00.000000",4
+515,Octopus,-,"Proin at turpis a pede posuere nonummy.",45.57,515,515,"2023-07-20 00:00:00.000000",5
+516,"Beef - Diced",-,"Cras in purus eu magna vulputate luctus.",67.86,516,516,"2023-10-17 00:00:00.000000",2
+517,"Corn - On The Cob",-,"Donec posuere metus vitae ipsum.",61.49,517,517,"2023-05-11 00:00:00.000000",4
+518,"Olives - Green, Pitted",-,"Nulla tempus.",14.53,518,518,"2023-05-01 00:00:00.000000",5
+519,"Nantucket - Kiwi Berry Cktl.",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",91.43,519,519,"2023-06-25 00:00:00.000000",4
+520,"Table Cloth 54x54 Colour",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",86.20,520,520,"2023-03-14 00:00:00.000000",3
+521,"Salmon - Fillets",-,"Integer tincidunt ante vel ipsum.",46.86,521,521,"2023-08-31 00:00:00.000000",2
+522,"Cup - Paper 10oz 92959",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",50.18,522,522,"2023-08-16 00:00:00.000000",1
+523,"Cherries - Bing, Canned",-,"Morbi a ipsum.",54.18,523,523,"2023-07-08 00:00:00.000000",2
+524,Arrowroot,-,"Aenean lectus.",3.40,524,524,"2024-02-23 00:00:00.000000",5
+525,"Sobe - Cranberry Grapefruit",-,"Praesent blandit.",53.57,525,525,"2023-05-29 00:00:00.000000",1
+526,"Flour - Whole Wheat",-,"Maecenas ut massa quis augue luctus tincidunt.",81.13,526,526,"2023-03-02 00:00:00.000000",4
+527,Savory,-,"Curabitur gravida nisi at nibh.",47.92,527,527,"2023-12-14 00:00:00.000000",4
+528,"Quail - Jumbo",-,"Morbi vel lectus in quam fringilla rhoncus.",60.07,528,528,"2023-11-14 00:00:00.000000",5
+529,"Cheese - Bakers Cream Cheese",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",86.35,529,529,"2023-10-12 00:00:00.000000",5
+530,"Potato - Sweet",-,"Ut tellus.",26.62,530,530,"2023-06-06 00:00:00.000000",5
+531,"Cheese - Brie Roitelet",-,"Donec quis orci eget orci vehicula condimentum.",23.27,531,531,"2023-05-08 00:00:00.000000",5
+532,"Skewers - Bamboo",-,"Proin risus.",29.43,532,532,"2023-11-16 00:00:00.000000",3
+533,"Halibut - Fletches",-,"Morbi non quam nec dui luctus rutrum.",4.79,533,533,"2023-09-20 00:00:00.000000",5
+534,"Squid - Tubes / Tenticles 10/20",-,"Mauris ullamcorper purus sit amet nulla.",41.06,534,534,"2023-10-12 00:00:00.000000",5
+535,"Cheese - Parmigiano Reggiano",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",50.51,535,535,"2023-04-24 00:00:00.000000",1
+536,Plasticforkblack,-,"Proin interdum mauris non ligula pellentesque ultrices.",63.22,536,536,"2023-08-18 00:00:00.000000",3
+537,"Lotus Root",-,"Maecenas rhoncus aliquam lacus.",44.18,537,537,"2023-03-08 00:00:00.000000",1
+538,"The Pop Shoppe Pinapple",-,"Proin eu mi.",74.14,538,538,"2023-08-01 00:00:00.000000",1
+539,"Beef - Tongue, Cooked",-,"Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",19.68,539,539,"2023-04-07 00:00:00.000000",4
+540,"Seedlings - Buckwheat, Organic",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",76.21,540,540,"2023-08-22 00:00:00.000000",5
+541,"Steamers White",-,"Nulla justo.",60.29,541,541,"2023-03-30 00:00:00.000000",5
+542,"Beets - Pickled",-,"Aliquam sit amet diam in magna bibendum imperdiet.",41.66,542,542,"2024-02-09 00:00:00.000000",4
+543,"Soup Campbells - Tomato Bisque",-,"Quisque id justo sit amet sapien dignissim vestibulum.",24.51,543,543,"2023-07-03 00:00:00.000000",3
+544,"Pork Casing",-,"Nulla suscipit ligula in lacus.",30.79,544,544,"2023-10-09 00:00:00.000000",1
+545,"Irish Cream - Baileys",-,"In hac habitasse platea dictumst.",17.37,545,545,"2023-07-20 00:00:00.000000",4
+546,"Pepper Squash",-,"In quis justo.",40.15,546,546,"2023-10-23 00:00:00.000000",3
+547,"Bread Base - Goodhearth",-,"Nunc purus.",30.27,547,547,"2023-05-06 00:00:00.000000",5
+548,"Bar Mix - Pina Colada, 355 Ml",-,"Curabitur convallis.",37.66,548,548,"2023-08-05 00:00:00.000000",5
+549,"Wasabi Paste",-,"In quis justo.",67.13,549,549,"2023-09-11 00:00:00.000000",4
+550,"Cabbage - Savoy",-,"Proin eu mi.",89.34,550,550,"2023-10-01 00:00:00.000000",3
+551,"Leeks - Large",-,"Morbi porttitor lorem id ligula.",54.77,551,551,"2023-05-23 00:00:00.000000",3
+552,"Cocoa Butter",-,"Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",56.96,552,552,"2023-03-10 00:00:00.000000",2
+553,"Truffle Shells - Semi - Sweet",-,"Nam dui.",12.68,553,553,"2023-04-14 00:00:00.000000",3
+554,"Beef - Tongue, Fresh",-,"Proin risus.",34.01,554,554,"2023-10-26 00:00:00.000000",3
+555,"Chinese Foods - Chicken Wing",-,"Donec quis orci eget orci vehicula condimentum.",4.66,555,555,"2023-06-03 00:00:00.000000",1
+556,"Foie Gras",-,"Maecenas pulvinar lobortis est.",18.87,556,556,"2023-07-16 00:00:00.000000",5
+557,"Beans - Wax",-,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",84.57,557,557,"2023-11-06 00:00:00.000000",2
+558,"Cup - Translucent 7 Oz Clear",-,"Mauris ullamcorper purus sit amet nulla.",87.75,558,558,"2023-05-27 00:00:00.000000",3
+559,"Cookie - Oatmeal",-,"Vestibulum ac est lacinia nisi venenatis tristique.",9.03,559,559,"2024-01-02 00:00:00.000000",4
+560,"Gelatine Powder",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",26.02,560,560,"2023-08-31 00:00:00.000000",2
+561,"Ecolab - Hand Soap Form Antibac",-,"Curabitur convallis.",88.76,561,561,"2024-01-05 00:00:00.000000",1
+562,"Cheese - Oka",-,"Curabitur gravida nisi at nibh.",74.90,562,562,"2023-10-29 00:00:00.000000",1
+563,"Fondant - Icing",-,"Nullam molestie nibh in lectus.",96.18,563,563,"2024-01-22 00:00:00.000000",5
+564,"Vanilla Beans",-,"Nulla ut erat id mauris vulputate elementum.",39.95,564,564,"2023-03-16 00:00:00.000000",3
+565,"Cake - Mini Cheesecake",-,"Pellentesque at nulla.",87.85,565,565,"2023-08-05 00:00:00.000000",5
+566,"Bread - White Epi Baguette",-,"Aliquam erat volutpat.",2.51,566,566,"2024-01-01 00:00:00.000000",1
+567,Gherkin,-,"Vestibulum rutrum rutrum neque.",38.60,567,567,"2023-03-29 00:00:00.000000",4
+568,"Wine - Hardys Bankside Shiraz",-,"Vestibulum ac est lacinia nisi venenatis tristique.",26.14,568,568,"2023-03-29 00:00:00.000000",3
+569,"Snapple - Iced Tea Peach",-,"Mauris ullamcorper purus sit amet nulla.",77.96,569,569,"2023-08-27 00:00:00.000000",3
+570,"Soup - Campbells",-,"Nulla nisl.",92.12,570,570,"2023-04-17 00:00:00.000000",1
+571,"Grapefruit - White",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",24.98,571,571,"2024-01-25 00:00:00.000000",4
+572,"Foam Cup 6 Oz",-,"Quisque ut erat.",61.44,572,572,"2023-11-09 00:00:00.000000",2
+573,"Pork - European Side Bacon",-,"Etiam justo.",64.30,573,573,"2023-04-20 00:00:00.000000",3
+574,"Soup - French Onion, Dry",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",94.31,574,574,"2024-01-13 00:00:00.000000",5
+575,"Cocoa Powder - Natural",-,"Sed ante.",58.09,575,575,"2023-06-05 00:00:00.000000",5
+576,"Peas Snow",-,"Aenean auctor gravida sem.",17.12,576,576,"2023-05-06 00:00:00.000000",4
+577,"Cake - Night And Day Choclate",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",4.15,577,577,"2023-07-11 00:00:00.000000",2
+578,"Chick Peas - Dried",-,"Donec semper sapien a libero.",12.36,578,578,"2023-09-03 00:00:00.000000",4
+579,"Pears - Anjou",-,"Nullam varius.",84.89,579,579,"2023-11-25 00:00:00.000000",4
+580,"Chicken Breast Wing On",-,"Donec posuere metus vitae ipsum.",75.95,580,580,"2023-09-03 00:00:00.000000",1
+581,"Turkey - Breast, Double",-,"Sed ante.",27.81,581,581,"2023-05-05 00:00:00.000000",3
+582,"Cheese - Ermite Bleu",-,"Donec quis orci eget orci vehicula condimentum.",17.01,582,582,"2024-01-05 00:00:00.000000",5
+583,"Lettuce - Arugula",-,"Maecenas rhoncus aliquam lacus.",16.30,583,583,"2023-12-29 00:00:00.000000",3
+584,"Island Oasis - Magarita Mix",-,"Nulla tempus.",3.88,584,584,"2023-09-29 00:00:00.000000",1
+585,"Tea - Mint",-,"In congue.",91.36,585,585,"2023-11-27 00:00:00.000000",3
+586,"Mints - Striped Red",-,"Curabitur in libero ut massa volutpat convallis.",89.55,586,586,"2023-07-27 00:00:00.000000",3
+587,"Sauce - Soya, Light",-,"Nulla facilisi.",53.04,587,587,"2024-02-13 00:00:00.000000",3
+588,"Jam - Raspberry,jar",-,"Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",69.33,588,588,"2023-03-09 00:00:00.000000",2
+589,"Wine - Riesling Dr. Pauly",-,"Morbi vel lectus in quam fringilla rhoncus.",35.15,589,589,"2023-11-06 00:00:00.000000",4
+590,"Pears - Bartlett",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",35.12,590,590,"2023-10-02 00:00:00.000000",4
+591,"Ecolab - Hobart Upr Prewash Arm",-,"Suspendisse ornare consequat lectus.",7.91,591,591,"2023-05-14 00:00:00.000000",5
+592,"Ginger - Fresh",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",88.37,592,592,"2023-10-07 00:00:00.000000",2
+593,"Beef Cheek Fresh",-,"Vivamus vel nulla eget eros elementum pellentesque.",7.81,593,593,"2023-04-20 00:00:00.000000",1
+594,"Bandage - Finger Cots",-,"Aliquam erat volutpat.",60.02,594,594,"2023-10-18 00:00:00.000000",2
+595,"Taro Leaves",-,"Maecenas tincidunt lacus at velit.",79.21,595,595,"2023-04-03 00:00:00.000000",4
+596,"Wasabi Paste",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",66.85,596,596,"2023-06-21 00:00:00.000000",2
+597,"Star Fruit",-,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",65.69,597,597,"2023-05-09 00:00:00.000000",1
+598,"Beer - Muskoka Cream Ale",-,"Pellentesque at nulla.",7.62,598,598,"2023-12-22 00:00:00.000000",1
+599,"Ham - Cooked Italian",-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",5.99,599,599,"2023-05-13 00:00:00.000000",2
+600,"Tortillas - Flour, 8",-,"Fusce posuere felis sed lacus.",66.61,600,600,"2024-01-03 00:00:00.000000",5
+601,"Bread - Assorted Rolls",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",29.64,601,601,"2023-07-27 00:00:00.000000",3
+602,"Bread - Bagels, Mini",-,"Etiam faucibus cursus urna.",54.22,602,602,"2023-03-25 00:00:00.000000",5
+603,"Juice - Prune",-,"Morbi a ipsum.",83.02,603,603,"2023-03-11 00:00:00.000000",2
+604,"Pate - Cognac",-,"Nam nulla.",78.50,604,604,"2023-08-02 00:00:00.000000",5
+605,"Cleaner - Pine Sol",-,"In hac habitasse platea dictumst.",41.06,605,605,"2023-09-11 00:00:00.000000",3
+606,"Durian Fruit",-,"Quisque porta volutpat erat.",39.37,606,606,"2023-11-01 00:00:00.000000",4
+607,"Juice - Tomato, 48 Oz",-,"Fusce consequat.",12.42,607,607,"2023-11-24 00:00:00.000000",4
+608,"Poppy Seed",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",7.13,608,608,"2023-10-31 00:00:00.000000",3
+609,"Beef - Tenderloin",-,"Duis ac nibh.",82.30,609,609,"2024-01-18 00:00:00.000000",4
+610,"Longos - Grilled Veg Sandwiches",-,"Curabitur at ipsum ac tellus semper interdum.",83.78,610,610,"2023-04-27 00:00:00.000000",4
+611,"Cup - Translucent 7 Oz Clear",-,"Integer ac leo.",42.86,611,611,"2024-02-20 00:00:00.000000",3
+612,"Puff Pastry - Slab",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",90.22,612,612,"2024-02-19 00:00:00.000000",3
+613,"Cake - Lemon Chiffon",-,"Morbi non lectus.",43.07,613,613,"2023-11-10 00:00:00.000000",2
+614,"Rye Special Old",-,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",19.56,614,614,"2023-04-29 00:00:00.000000",5
+615,"Wine - Saint Emilion Calvet",-,"Morbi a ipsum.",58.58,615,615,"2023-07-20 00:00:00.000000",3
+616,"Anchovy Fillets",-,"Aliquam sit amet diam in magna bibendum imperdiet.",69.94,616,616,"2023-08-20 00:00:00.000000",3
+617,"Wine - White, Ej Gallo",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",66.22,617,617,"2023-06-16 00:00:00.000000",3
+618,"Mushroom - Morels, Dry",-,"Nullam porttitor lacus at turpis.",19.35,618,618,"2023-10-25 00:00:00.000000",4
+619,"Carrots - Purple, Organic",-,"Suspendisse accumsan tortor quis turpis.",25.19,619,619,"2023-10-02 00:00:00.000000",5
+620,"Ice Cream - Turtles Stick Bar",-,"Vivamus tortor.",67.35,620,620,"2023-10-23 00:00:00.000000",2
+621,"Artichoke - Bottom, Canned",-,"Sed accumsan felis.",16.65,621,621,"2023-10-23 00:00:00.000000",4
+622,"Puree - Raspberry",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",98.26,622,622,"2023-10-05 00:00:00.000000",5
+623,"Sugar - Sweet N Low, Individual",-,"Aenean lectus.",96.15,623,623,"2023-10-19 00:00:00.000000",2
+624,"Huck Towels White",-,"Integer a nibh.",78.89,624,624,"2023-10-07 00:00:00.000000",2
+625,"Carbonated Water - Orange",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",78.17,625,625,"2023-12-05 00:00:00.000000",2
+626,"Sambuca - Opal Nera",-,"Phasellus id sapien in sapien iaculis congue.",8.52,626,626,"2023-09-29 00:00:00.000000",2
+627,"Cake - Sheet Strawberry",-,"Mauris ullamcorper purus sit amet nulla.",12.19,627,627,"2024-02-08 00:00:00.000000",2
+628,"Rum - Coconut, Malibu",-,"Praesent blandit lacinia erat.",83.53,628,628,"2023-05-27 00:00:00.000000",3
+629,"Pear - Asian",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",50.68,629,629,"2023-03-26 00:00:00.000000",5
+630,"Mushroom - Morel Frozen",-,"Nunc nisl.",87.47,630,630,"2023-05-19 00:00:00.000000",3
+631,"Beef Wellington",-,"Nulla tellus.",41.01,631,631,"2023-05-06 00:00:00.000000",3
+632,"Squash - Pattypan, Yellow",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",77.92,632,632,"2023-04-19 00:00:00.000000",5
+633,"Pepper - Paprika, Hungarian",-,"Donec posuere metus vitae ipsum.",29.97,633,633,"2023-07-17 00:00:00.000000",4
+634,"Cheese Cheddar Processed",-,"Cras in purus eu magna vulputate luctus.",71.67,634,634,"2023-11-02 00:00:00.000000",4
+635,"Leeks - Baby, White",-,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",47.43,635,635,"2023-11-17 00:00:00.000000",3
+636,"Table Cloth 53x69 White",-,"In hac habitasse platea dictumst.",85.28,636,636,"2023-04-11 00:00:00.000000",5
+637,"Potatoes - Peeled",-,"Aliquam erat volutpat.",21.59,637,637,"2023-11-11 00:00:00.000000",1
+638,"Pasta - Cappellini, Dry",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",63.88,638,638,"2023-03-08 00:00:00.000000",5
+639,"Heavy Duty Dust Pan",-,"Maecenas tincidunt lacus at velit.",13.04,639,639,"2023-09-26 00:00:00.000000",2
+640,Pancetta,-,"Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",89.76,640,640,"2023-04-07 00:00:00.000000",2
+641,"Toamtoes 6x7 Select",-,"Sed accumsan felis.",30.41,641,641,"2023-11-26 00:00:00.000000",3
+642,"Pail - 15l White, With Handle",-,"Vestibulum ac est lacinia nisi venenatis tristique.",8.60,642,642,"2023-04-03 00:00:00.000000",3
+643,"Apples - Spartan",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",48.56,643,643,"2023-06-03 00:00:00.000000",1
+644,"Gelatine Leaves - Envelopes",-,"Ut at dolor quis odio consequat varius.",85.01,644,644,"2023-08-03 00:00:00.000000",3
+645,"Silicone Parch. 16.3x24.3",-,"Sed sagittis.",8.76,645,645,"2023-09-22 00:00:00.000000",5
+646,"Beef - Cow Feet Split",-,"Cras non velit nec nisi vulputate nonummy.",5.86,646,646,"2023-05-21 00:00:00.000000",3
+647,"Catfish - Fillets",-,"Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",48.50,647,647,"2024-01-10 00:00:00.000000",4
+648,"Flour - Strong",-,"Vestibulum rutrum rutrum neque.",88.24,648,648,"2023-05-03 00:00:00.000000",3
+649,"Beer - Upper Canada Lager",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",15.46,649,649,"2023-03-02 00:00:00.000000",5
+650,"Puff Pastry - Slab",-,"Praesent lectus.",47.82,650,650,"2023-03-18 00:00:00.000000",4
+651,"Toamtoes 6x7 Select",-,"In hac habitasse platea dictumst.",1.46,651,651,"2023-05-20 00:00:00.000000",4
+652,"French Kiss Vanilla",-,"Mauris sit amet eros.",56.15,652,652,"2023-10-03 00:00:00.000000",2
+653,"Napkin Colour",-,"Etiam pretium iaculis justo.",10.94,653,653,"2023-06-15 00:00:00.000000",5
+654,"Mushroom Morel Fresh",-,"Duis aliquam convallis nunc.",91.70,654,654,"2023-12-28 00:00:00.000000",2
+655,"Oil - Peanut",-,"Etiam pretium iaculis justo.",48.41,655,655,"2023-07-15 00:00:00.000000",1
+656,Kumquat,-,"Etiam justo.",81.58,656,656,"2023-06-09 00:00:00.000000",5
+657,"Veal - Nuckle",-,"Pellentesque eget nunc.",8.76,657,657,"2024-01-25 00:00:00.000000",1
+658,"Cheese - Marble",-,"Integer a nibh.",97.92,658,658,"2023-06-09 00:00:00.000000",5
+659,"Wine - Riesling Alsace Ac 2001",-,"Nulla facilisi.",21.04,659,659,"2023-10-24 00:00:00.000000",5
+660,"Flower - Commercial Spider",-,"Fusce posuere felis sed lacus.",69.36,660,660,"2023-10-07 00:00:00.000000",5
+661,"Crush - Orange, 355ml",-,"Maecenas pulvinar lobortis est.",47.37,661,661,"2023-11-19 00:00:00.000000",1
+662,Mace,-,"Mauris ullamcorper purus sit amet nulla.",43.46,662,662,"2023-08-23 00:00:00.000000",5
+663,"Squid U5 - Thailand",-,"Duis consequat dui nec nisi volutpat eleifend.",54.77,663,663,"2023-07-06 00:00:00.000000",5
+664,"Halibut - Fletches",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",59.72,664,664,"2023-03-13 00:00:00.000000",5
+665,"Honey - Comb",-,"In congue.",3.21,665,665,"2023-12-06 00:00:00.000000",2
+666,"Soda Water - Club Soda, 355 Ml",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",75.73,666,666,"2023-03-28 00:00:00.000000",3
+667,"Soup Campbells Mexicali Tortilla",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",79.71,667,667,"2024-02-03 00:00:00.000000",2
+668,Plasticknivesblack,-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",66.46,668,668,"2023-08-08 00:00:00.000000",3
+669,"Beer - Creemore",-,"Suspendisse accumsan tortor quis turpis.",70.94,669,669,"2023-03-07 00:00:00.000000",4
+670,"Cabbage - Red",-,"In hac habitasse platea dictumst.",61.95,670,670,"2023-06-27 00:00:00.000000",4
+671,"Longos - Assorted Sandwich",-,"Morbi a ipsum.",80.67,671,671,"2023-02-27 00:00:00.000000",5
+672,"Pasta - Elbows, Macaroni, Dry",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",60.78,672,672,"2023-09-09 00:00:00.000000",3
+673,"Lettuce - Escarole",-,"Vivamus tortor.",50.10,673,673,"2023-07-26 00:00:00.000000",3
+674,"Chocolate - Chips Compound",-,"Proin eu mi.",57.58,674,674,"2023-08-29 00:00:00.000000",4
+675,"Veal - Chops, Split, Frenched",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",68.39,675,675,"2023-11-23 00:00:00.000000",1
+676,"Juice - Orange, Concentrate",-,"Sed sagittis.",23.93,676,676,"2023-06-25 00:00:00.000000",4
+677,"Bread Foccacia Whole",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",86.95,677,677,"2023-07-12 00:00:00.000000",1
+678,"Salt And Pepper Mix - White",-,"Maecenas rhoncus aliquam lacus.",29.52,678,678,"2023-11-11 00:00:00.000000",3
+679,"Mikes Hard Lemonade",-,"Duis aliquam convallis nunc.",44.22,679,679,"2023-08-06 00:00:00.000000",1
+680,"Oxtail - Cut",-,"Pellentesque viverra pede ac diam.",46.68,680,680,"2023-11-17 00:00:00.000000",5
+681,"Salad Dressing",-,"Duis consequat dui nec nisi volutpat eleifend.",62.49,681,681,"2023-05-25 00:00:00.000000",2
+682,"Towel Dispenser",-,"Aliquam sit amet diam in magna bibendum imperdiet.",69.76,682,682,"2023-04-26 00:00:00.000000",2
+683,"Lobster - Cooked",-,"Nunc rhoncus dui vel sem.",23.36,683,683,"2024-02-14 00:00:00.000000",2
+684,Plasticknivesblack,-,"Nulla tempus.",62.13,684,684,"2023-09-05 00:00:00.000000",2
+685,"Juice - Clam, 46 Oz",-,"Curabitur at ipsum ac tellus semper interdum.",34.64,685,685,"2024-02-19 00:00:00.000000",5
+686,"Doilies - 8, Paper",-,"Donec quis orci eget orci vehicula condimentum.",49.89,686,686,"2023-07-21 00:00:00.000000",2
+687,"Pail With Metal Handle 16l White",-,"Nulla facilisi.",60.78,687,687,"2023-05-26 00:00:00.000000",3
+688,"Flavouring Vanilla Artificial",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",2.88,688,688,"2023-09-13 00:00:00.000000",1
+689,"Cheese - Brie, Triple Creme",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",45.31,689,689,"2023-09-08 00:00:00.000000",3
+690,"Lid - High Heat, Super Clear",-,"Pellentesque ultrices mattis odio.",20.60,690,690,"2023-11-18 00:00:00.000000",4
+691,"Syrup - Monin - Blue Curacao",-,"In hac habitasse platea dictumst.",7.53,691,691,"2023-09-03 00:00:00.000000",1
+692,"Beer - Paulaner Hefeweisse",-,"Morbi a ipsum.",9.67,692,692,"2023-05-23 00:00:00.000000",4
+693,"Spinach - Packaged",-,"Quisque ut erat.",48.34,693,693,"2023-09-15 00:00:00.000000",4
+694,"Juice - Lemon",-,"Nulla nisl.",58.10,694,694,"2023-05-17 00:00:00.000000",2
+695,"Straw - Regular",-,"In sagittis dui vel nisl.",58.90,695,695,"2023-05-26 00:00:00.000000",5
+696,"Cheese - Romano, Grated",-,"Nulla tempus.",71.41,696,696,"2024-01-08 00:00:00.000000",3
+697,"Bread - Mini Hamburger Bun",-,"Quisque porta volutpat erat.",12.15,697,697,"2023-07-13 00:00:00.000000",5
+698,"Nut - Hazelnut, Whole",-,"Maecenas tincidunt lacus at velit.",68.51,698,698,"2023-06-30 00:00:00.000000",2
+699,"Tuna - Salad Premix",-,"Integer ac neque.",69.82,699,699,"2023-06-15 00:00:00.000000",4
+700,"Wine - Alsace Riesling Reserve",-,"Maecenas rhoncus aliquam lacus.",19.17,700,700,"2023-04-04 00:00:00.000000",4
+701,"Chips - Assorted",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",10.06,701,701,"2023-11-03 00:00:00.000000",1
+702,"Lemonade - Mandarin, 591 Ml",-,"Morbi porttitor lorem id ligula.",77.18,702,702,"2023-07-18 00:00:00.000000",3
+703,"Beans - Navy, Dry",-,"Pellentesque at nulla.",58.79,703,703,"2024-01-01 00:00:00.000000",2
+704,"V8 - Berry Blend",-,"Maecenas rhoncus aliquam lacus.",62.34,704,704,"2023-07-17 00:00:00.000000",5
+705,"Cheese - Grana Padano",-,"Cras in purus eu magna vulputate luctus.",57.93,705,705,"2023-12-04 00:00:00.000000",2
+706,"Mix Pina Colada",-,"Vivamus vel nulla eget eros elementum pellentesque.",21.42,706,706,"2023-05-16 00:00:00.000000",4
+707,"Muffin Batt - Ban Dream Zero",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",87.00,707,707,"2024-01-07 00:00:00.000000",5
+708,"Wine - Ej Gallo Sonoma",-,"In est risus, auctor sed, tristique in, tempus sit amet, sem.",24.08,708,708,"2023-06-22 00:00:00.000000",3
+709,"Oil - Olive",-,"Aenean sit amet justo.",97.17,709,709,"2023-07-07 00:00:00.000000",2
+710,"Crab - Blue, Frozen",-,"Cras pellentesque volutpat dui.",75.22,710,710,"2023-10-31 00:00:00.000000",3
+711,"Spice - Onion Powder Granulated",-,"Morbi porttitor lorem id ligula.",5.43,711,711,"2023-10-23 00:00:00.000000",3
+712,"Beef - Prime Rib Aaa",-,"Morbi non lectus.",48.56,712,712,"2024-01-19 00:00:00.000000",4
+713,"Bread - Hot Dog Buns",-,"Integer tincidunt ante vel ipsum.",54.57,713,713,"2023-08-29 00:00:00.000000",5
+714,"Lobster - Canned Premium",-,"Vestibulum ac est lacinia nisi venenatis tristique.",49.24,714,714,"2023-03-28 00:00:00.000000",5
+715,"Beef - Ground Lean Fresh",-,"Pellentesque ultrices mattis odio.",54.53,715,715,"2023-10-04 00:00:00.000000",4
+716,"Schnappes Peppermint - Walker",-,"Proin risus.",55.10,716,716,"2023-11-02 00:00:00.000000",1
+717,"Napkin - Dinner, White",-,"Vestibulum ac est lacinia nisi venenatis tristique.",98.00,717,717,"2023-12-30 00:00:00.000000",2
+718,"Sausage - Chorizo",-,"Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",10.22,718,718,"2023-08-04 00:00:00.000000",1
+719,"Vodka - Lemon, Absolut",-,"Nullam porttitor lacus at turpis.",45.37,719,719,"2023-07-04 00:00:00.000000",2
+720,"Snails - Large Canned",-,"Nulla tellus.",96.06,720,720,"2023-09-23 00:00:00.000000",3
+721,"Vector Energy Bar",-,"Duis at velit eu est congue elementum.",29.25,721,721,"2023-11-03 00:00:00.000000",1
+722,"Longos - Assorted Sandwich",-,"Morbi a ipsum.",70.13,722,722,"2023-11-22 00:00:00.000000",1
+723,"Cookie Double Choco",-,"Mauris sit amet eros.",41.23,723,723,"2023-11-17 00:00:00.000000",5
+724,"Tray - 16in Rnd Blk",-,"In hac habitasse platea dictumst.",50.35,724,724,"2023-03-29 00:00:00.000000",2
+725,Garlic,-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.",63.66,725,725,"2024-02-05 00:00:00.000000",3
+726,"Soda Water - Club Soda, 355 Ml",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",18.60,726,726,"2023-07-19 00:00:00.000000",2
+727,"Ham - Proscuitto",-,"Etiam justo.",46.17,727,727,"2023-03-12 00:00:00.000000",5
+728,"Island Oasis - Pina Colada",-,"Quisque porta volutpat erat.",36.18,728,728,"2023-03-10 00:00:00.000000",2
+729,"Beans - Black Bean, Dry",-,"Maecenas rhoncus aliquam lacus.",28.09,729,729,"2024-02-14 00:00:00.000000",3
+730,"Knife Plastic - White",-,"Duis ac nibh.",48.88,730,730,"2023-12-29 00:00:00.000000",5
+731,Yams,-,"Nulla suscipit ligula in lacus.",95.79,731,731,"2024-02-24 00:00:00.000000",1
+732,"Tart Shells - Sweet, 4",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",29.03,732,732,"2023-08-21 00:00:00.000000",4
+733,"Sour Puss Sour Apple",-,"Aenean lectus.",92.67,733,733,"2023-08-29 00:00:00.000000",4
+734,"Cheese - Augre Des Champs",-,"Aenean auctor gravida sem.",66.30,734,734,"2023-12-15 00:00:00.000000",4
+735,"Wine - Ej Gallo Sierra Valley",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",16.64,735,735,"2024-02-10 00:00:00.000000",1
+736,"Beef - Kobe Striploin",-,"Donec ut dolor.",91.84,736,736,"2023-03-12 00:00:00.000000",3
+737,"Aromat Spice / Seasoning",-,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",33.74,737,737,"2023-07-19 00:00:00.000000",5
+738,"Oil - Sesame",-,"Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",47.88,738,738,"2023-05-31 00:00:00.000000",3
+739,"Nantucket Orange Juice",-,"Suspendisse potenti.",92.36,739,739,"2023-07-25 00:00:00.000000",4
+740,"Sprouts - Pea",-,"Suspendisse potenti.",98.55,740,740,"2023-04-17 00:00:00.000000",5
+741,Pumpkin,-,"Donec posuere metus vitae ipsum.",78.99,741,741,"2023-12-13 00:00:00.000000",5
+742,"Rabbit - Frozen",-,"Nulla justo.",17.82,742,742,"2023-08-22 00:00:00.000000",2
+743,"Wine - Sicilia Igt Nero Avola",-,"Curabitur convallis.",96.19,743,743,"2023-10-07 00:00:00.000000",3
+744,"Soup - Knorr, Veg / Beef",-,"Curabitur at ipsum ac tellus semper interdum.",84.07,744,744,"2023-11-11 00:00:00.000000",5
+745,"Veal - Inside",-,"Nullam molestie nibh in lectus.",22.47,745,745,"2023-06-17 00:00:00.000000",3
+746,"Bread - White, Unsliced",-,"Cras pellentesque volutpat dui.",87.37,746,746,"2023-06-09 00:00:00.000000",5
+747,"Zucchini - Mini, Green",-,"Nulla ac enim.",3.62,747,747,"2023-11-23 00:00:00.000000",2
+748,"Mountain Dew",-,"Pellentesque eget nunc.",77.88,748,748,"2023-03-09 00:00:00.000000",5
+749,"Beef Dry Aged Tenderloin Aaa",-,"Integer ac leo.",4.24,749,749,"2024-01-11 00:00:00.000000",5
+750,"Water - Mineral, Natural",-,"In blandit ultrices enim.",32.10,750,750,"2024-01-13 00:00:00.000000",5
+751,"Shrimp - Baby, Warm Water",-,"Vivamus vestibulum sagittis sapien.",29.31,751,751,"2023-04-11 00:00:00.000000",5
+752,"Table Cloth 54x54 Colour",-,"Sed vel enim sit amet nunc viverra dapibus.",14.64,752,752,"2023-12-31 00:00:00.000000",4
+753,"Container - Foam Dixie 12 Oz",-,"Praesent blandit.",66.19,753,753,"2023-06-28 00:00:00.000000",5
+754,"Wine - Spumante Bambino White",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",32.53,754,754,"2023-05-04 00:00:00.000000",5
+755,"Salmon Atl.whole 8 - 10 Lb",-,"Vestibulum rutrum rutrum neque.",44.45,755,755,"2023-09-15 00:00:00.000000",5
+756,"Nut - Macadamia",-,"Maecenas rhoncus aliquam lacus.",42.03,756,756,"2023-12-17 00:00:00.000000",2
+757,Pomegranates,-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",43.40,757,757,"2024-01-18 00:00:00.000000",1
+758,"Bread - Flat Bread",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",87.24,758,758,"2023-04-06 00:00:00.000000",3
+759,"Apple - Northern Spy",-,"Donec ut mauris eget massa tempor convallis.",33.54,759,759,"2023-10-05 00:00:00.000000",2
+760,"Beans - Long, Chinese",-,"In sagittis dui vel nisl.",44.88,760,760,"2023-08-08 00:00:00.000000",1
+761,"Ostrich - Prime Cut",-,"In est risus, auctor sed, tristique in, tempus sit amet, sem.",46.64,761,761,"2023-08-12 00:00:00.000000",3
+762,"Wine - Chablis 2003 Champs",-,"Phasellus id sapien in sapien iaculis congue.",88.41,762,762,"2024-01-31 00:00:00.000000",2
+763,"Ecolab - Balanced Fusion",-,"Donec quis orci eget orci vehicula condimentum.",59.39,763,763,"2023-09-30 00:00:00.000000",3
+764,"Potatoes - Pei 10 Oz",-,"Maecenas pulvinar lobortis est.",12.00,764,764,"2023-12-13 00:00:00.000000",2
+765,"Veal - Round, Eye Of",-,"Mauris ullamcorper purus sit amet nulla.",29.78,765,765,"2023-12-23 00:00:00.000000",4
+766,Pumpkin,-,"Cras pellentesque volutpat dui.",20.10,766,766,"2023-09-02 00:00:00.000000",4
+767,"Beef Wellington",-,"Sed vel enim sit amet nunc viverra dapibus.",55.14,767,767,"2023-11-02 00:00:00.000000",4
+768,"Mustard - Pommery",-,"In congue.",95.66,768,768,"2023-07-01 00:00:00.000000",5
+769,"Flour - Fast / Rapid",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",54.10,769,769,"2023-04-13 00:00:00.000000",1
+770,"Veal - Striploin",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",6.26,770,770,"2024-01-24 00:00:00.000000",1
+771,"Flower - Daisies",-,"Nam dui.",52.54,771,771,"2023-03-29 00:00:00.000000",1
+772,"Grapes - Red",-,"Curabitur at ipsum ac tellus semper interdum.",47.11,772,772,"2023-10-10 00:00:00.000000",3
+773,"Cake - French Pear Tart",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",81.76,773,773,"2023-12-31 00:00:00.000000",4
+774,"Horseradish - Prepared",-,"Integer ac neque.",37.27,774,774,"2023-11-07 00:00:00.000000",4
+775,"Puff Pastry - Slab",-,"Nulla suscipit ligula in lacus.",60.45,775,775,"2024-01-22 00:00:00.000000",2
+776,"Syrup - Monin, Swiss Choclate",-,"Nulla facilisi.",36.87,776,776,"2023-10-28 00:00:00.000000",2
+777,"Nut - Chestnuts, Whole",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",65.61,777,777,"2024-02-13 00:00:00.000000",5
+778,"Table Cloth 90x90 White",-,"Maecenas tincidunt lacus at velit.",15.62,778,778,"2023-04-23 00:00:00.000000",2
+779,"Beer - Mill St Organic",-,"Maecenas tincidunt lacus at velit.",85.67,779,779,"2023-11-04 00:00:00.000000",3
+780,"Tequila - Sauza Silver",-,"Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",68.30,780,780,"2023-09-29 00:00:00.000000",1
+781,"Chutney Sauce - Mango",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",7.82,781,781,"2024-01-08 00:00:00.000000",3
+782,"Wine - German Riesling",-,"Proin eu mi.",35.14,782,782,"2024-01-25 00:00:00.000000",1
+783,"Tomatoes - Hot House",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",81.82,783,783,"2023-03-20 00:00:00.000000",5
+784,"Cheese - Cheddar, Medium",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",79.68,784,784,"2023-06-12 00:00:00.000000",1
+785,"Chicken Thigh - Bone Out",-,"Praesent lectus.",83.47,785,785,"2023-11-26 00:00:00.000000",1
+786,"Squash - Pattypan, Yellow",-,"Etiam justo.",95.51,786,786,"2023-06-16 00:00:00.000000",4
+787,"Appetizer - Smoked Salmon / Dill",-,"Curabitur at ipsum ac tellus semper interdum.",17.42,787,787,"2024-01-24 00:00:00.000000",5
+788,"Wooden Mop Handle",-,"Sed ante.",24.07,788,788,"2023-09-25 00:00:00.000000",2
+789,"Flour - Buckwheat, Dark",-,"Nulla tellus.",96.27,789,789,"2023-05-18 00:00:00.000000",3
+790,"Steamers White",-,"Integer non velit.",84.31,790,790,"2023-04-11 00:00:00.000000",2
+791,"Filo Dough",-,"In hac habitasse platea dictumst.",82.88,791,791,"2023-06-06 00:00:00.000000",5
+792,"Poppy Seed",-,"Quisque ut erat.",51.46,792,792,"2023-05-02 00:00:00.000000",5
+793,"Coffee Swiss Choc Almond",-,"Mauris lacinia sapien quis libero.",8.97,793,793,"2023-05-01 00:00:00.000000",3
+794,"Wine - Masi Valpolocell",-,"Morbi ut odio.",69.26,794,794,"2023-06-29 00:00:00.000000",2
+795,"Shrimp - Black Tiger 6 - 8",-,"Aliquam non mauris.",55.73,795,795,"2024-01-13 00:00:00.000000",2
+796,"Chicken - Thigh, Bone In",-,"Praesent id massa id nisl venenatis lacinia.",30.86,796,796,"2024-02-14 00:00:00.000000",5
+797,"Kale - Red",-,"Pellentesque viverra pede ac diam.",25.09,797,797,"2023-07-21 00:00:00.000000",4
+798,"Soup - Verve - Chipotle Chicken",-,"Quisque id justo sit amet sapien dignissim vestibulum.",93.59,798,798,"2024-02-06 00:00:00.000000",4
+799,"Tobasco Sauce",-,"In hac habitasse platea dictumst.",6.04,799,799,"2024-02-22 00:00:00.000000",3
+800,"Beans - Turtle, Black, Dry",-,"Morbi porttitor lorem id ligula.",49.69,800,800,"2023-06-01 00:00:00.000000",4
+801,"Chinese Foods - Plain Fried Rice",-,"Nullam molestie nibh in lectus.",84.83,801,801,"2023-02-26 00:00:00.000000",5
+802,"Island Oasis - Pina Colada",-,"Vivamus vestibulum sagittis sapien.",4.88,802,802,"2023-08-12 00:00:00.000000",3
+803,"Bread - Multigrain Oval",-,"Integer ac leo.",34.42,803,803,"2023-10-19 00:00:00.000000",5
+804,Crawfish,-,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",58.87,804,804,"2024-01-03 00:00:00.000000",5
+805,"Pike - Frozen Fillet",-,"In blandit ultrices enim.",61.87,805,805,"2023-08-28 00:00:00.000000",3
+806,"Wine - Red, Wolf Blass, Yellow",-,"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",27.80,806,806,"2023-09-20 00:00:00.000000",4
+807,"Stock - Beef, White",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",39.32,807,807,"2023-08-07 00:00:00.000000",1
+808,"Wine - Magnotta - Cab Franc",-,"Aenean auctor gravida sem.",47.88,808,808,"2023-11-20 00:00:00.000000",3
+809,"Mussels - Cultivated",-,"Praesent id massa id nisl venenatis lacinia.",65.46,809,809,"2023-03-07 00:00:00.000000",4
+810,"Cookies - Fortune",-,"Quisque ut erat.",19.77,810,810,"2024-01-31 00:00:00.000000",1
+811,"Container Clear 8 Oz",-,"Suspendisse accumsan tortor quis turpis.",51.97,811,811,"2023-05-02 00:00:00.000000",4
+812,"Yoplait - Strawbrasp Peac",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",97.74,812,812,"2024-01-31 00:00:00.000000",2
+813,"Snapple - Mango Maddness",-,"Nulla mollis molestie lorem.",74.52,813,813,"2023-06-14 00:00:00.000000",4
+814,"Cheese - Marble",-,"Curabitur convallis.",26.17,814,814,"2023-08-11 00:00:00.000000",5
+815,"Tortillas - Flour, 8",-,"Donec ut dolor.",98.24,815,815,"2023-06-24 00:00:00.000000",4
+816,"Pail With Metal Handle 16l White",-,"Vivamus vestibulum sagittis sapien.",26.14,816,816,"2023-07-19 00:00:00.000000",2
+817,"Lettuce - Romaine",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",8.39,817,817,"2024-01-08 00:00:00.000000",1
+818,"Cumin - Ground",-,"In hac habitasse platea dictumst.",31.99,818,818,"2023-12-27 00:00:00.000000",5
+819,"Milk - 1%",-,"Mauris lacinia sapien quis libero.",99.82,819,819,"2023-11-09 00:00:00.000000",2
+820,"Daikon Radish",-,"In congue.",61.46,820,820,"2023-03-06 00:00:00.000000",2
+821,"Orange - Blood",-,"In hac habitasse platea dictumst.",3.56,821,821,"2023-07-09 00:00:00.000000",4
+822,"Pork - Loin, Boneless",-,"Etiam vel augue.",91.77,822,822,"2023-11-13 00:00:00.000000",5
+823,"Pastry - Trippleberry Muffin - Mini",-,"In hac habitasse platea dictumst.",26.91,823,823,"2023-08-16 00:00:00.000000",2
+824,"Chocolate - White",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",96.40,824,824,"2023-05-09 00:00:00.000000",1
+825,"Bowl 12 Oz - Showcase 92012",-,"Nullam porttitor lacus at turpis.",42.60,825,825,"2023-05-08 00:00:00.000000",3
+826,"Miso Paste White",-,"Sed vel enim sit amet nunc viverra dapibus.",85.96,826,826,"2023-04-01 00:00:00.000000",1
+827,"Wine - Pinot Noir Stoneleigh",-,"Curabitur at ipsum ac tellus semper interdum.",41.31,827,827,"2023-10-14 00:00:00.000000",1
+828,"Cod - Salted, Boneless",-,"Etiam faucibus cursus urna.",15.29,828,828,"2023-12-31 00:00:00.000000",1
+829,"Nutmeg - Ground",-,"Nullam molestie nibh in lectus.",27.32,829,829,"2023-11-30 00:00:00.000000",3
+830,"The Pop Shoppe Pinapple",-,"Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",11.97,830,830,"2023-03-22 00:00:00.000000",2
+831,"Puree - Pear",-,"Nulla ac enim.",13.72,831,831,"2024-02-16 00:00:00.000000",1
+832,"Octopus - Baby, Cleaned",-,"Sed vel enim sit amet nunc viverra dapibus.",9.37,832,832,"2023-08-11 00:00:00.000000",1
+833,"Tea - Darjeeling, Azzura",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",78.53,833,833,"2023-06-07 00:00:00.000000",1
+834,"Apricots - Dried",-,"Aliquam erat volutpat.",58.23,834,834,"2023-03-17 00:00:00.000000",5
+835,Emulsifier,-,"Curabitur convallis.",62.04,835,835,"2023-11-11 00:00:00.000000",3
+836,"Lettuce - Belgian Endive",-,"Fusce consequat.",8.20,836,836,"2023-10-21 00:00:00.000000",1
+837,"Beef - Montreal Smoked Brisket",-,"Nulla suscipit ligula in lacus.",98.11,837,837,"2023-08-09 00:00:00.000000",1
+838,"Muffin - Mix - Bran And Maple 15l",-,"Nulla facilisi.",64.47,838,838,"2023-04-16 00:00:00.000000",2
+839,"Beer - Blue Light",-,"Curabitur gravida nisi at nibh.",8.30,839,839,"2023-05-24 00:00:00.000000",4
+840,"Puff Pastry - Slab",-,"Donec semper sapien a libero.",20.19,840,840,"2023-04-12 00:00:00.000000",3
+841,"Lamb - Pieces, Diced",-,"In quis justo.",52.50,841,841,"2023-04-02 00:00:00.000000",3
+842,"Beer - Steamwhistle",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",87.54,842,842,"2023-04-29 00:00:00.000000",4
+843,"Oil - Truffle, White",-,"Pellentesque viverra pede ac diam.",41.68,843,843,"2023-05-07 00:00:00.000000",2
+844,"Puree - Raspberry",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",3.40,844,844,"2023-03-21 00:00:00.000000",5
+845,"Puree - Kiwi",-,"In est risus, auctor sed, tristique in, tempus sit amet, sem.",6.24,845,845,"2023-08-01 00:00:00.000000",5
+846,"Bread - Pain Au Liat X12",-,"Nam tristique tortor eu pede.",83.88,846,846,"2023-11-18 00:00:00.000000",3
+847,"Foam Espresso Cup Plain White",-,"Proin eu mi.",11.04,847,847,"2023-11-27 00:00:00.000000",4
+848,"Wine - Sauvignon Blanc Oyster",-,"Duis ac nibh.",21.62,848,848,"2023-07-04 00:00:00.000000",4
+849,"Wine - Cahors Ac 2000, Clos",-,"Nulla mollis molestie lorem.",47.73,849,849,"2023-09-22 00:00:00.000000",3
+850,"Tomato - Tricolor Cherry",-,"Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",61.98,850,850,"2024-01-15 00:00:00.000000",4
+851,"Wine - Niagara Peninsula Vqa",-,"Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",68.28,851,851,"2023-08-23 00:00:00.000000",3
+852,"Glaze - Clear",-,"Aenean auctor gravida sem.",77.72,852,852,"2023-10-10 00:00:00.000000",2
+853,"Vodka - Moskovskaya",-,"In sagittis dui vel nisl.",56.26,853,853,"2024-01-24 00:00:00.000000",2
+854,"Vaccum Bag - 14x20",-,"Morbi a ipsum.",45.22,854,854,"2023-09-26 00:00:00.000000",2
+855,"Vinegar - White Wine",-,"Maecenas pulvinar lobortis est.",5.07,855,855,"2023-04-14 00:00:00.000000",3
+856,"Soup - Knorr, Chicken Noodle",-,"Nunc nisl.",61.02,856,856,"2023-04-30 00:00:00.000000",5
+857,"Pepper Squash",-,"Nam nulla.",9.89,857,857,"2023-05-30 00:00:00.000000",2
+858,"Sesame Seed",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",60.49,858,858,"2023-10-09 00:00:00.000000",1
+859,"Wine - Barbera Alba Doc 2001",-,"Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",66.83,859,859,"2023-07-16 00:00:00.000000",2
+860,"Wine - Cava Aria Estate Brut",-,"Vivamus tortor.",53.31,860,860,"2023-12-28 00:00:00.000000",1
+861,"Ezy Change Mophandle",-,"Cras in purus eu magna vulputate luctus.",40.26,861,861,"2023-10-16 00:00:00.000000",2
+862,"Nougat - Paste / Cream",-,"Donec ut dolor.",41.46,862,862,"2023-04-28 00:00:00.000000",5
+863,"Salmon Atl.whole 8 - 10 Lb",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",63.46,863,863,"2023-04-24 00:00:00.000000",1
+864,"Wine - Fat Bastard Merlot",-,"Aliquam quis turpis eget elit sodales scelerisque.",61.17,864,864,"2024-01-22 00:00:00.000000",3
+865,"Vermouth - Sweet, Cinzano",-,"Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",14.60,865,865,"2023-12-22 00:00:00.000000",3
+866,"Napkin Colour",-,"Ut tellus.",14.49,866,866,"2023-05-31 00:00:00.000000",5
+867,"Bread - Italian Roll With Herbs",-,"Etiam vel augue.",55.13,867,867,"2023-07-12 00:00:00.000000",4
+868,"Hagen Daza - Dk Choocolate",-,"In congue.",95.97,868,868,"2023-11-01 00:00:00.000000",4
+869,"Salad Dressing",-,"Maecenas tincidunt lacus at velit.",78.95,869,869,"2023-09-26 00:00:00.000000",3
+870,"Tomatoes - Diced, Canned",-,"In quis justo.",62.34,870,870,"2023-05-21 00:00:00.000000",3
+871,"Pur Source",-,"Nunc nisl.",2.68,871,871,"2023-11-22 00:00:00.000000",3
+872,"Mushroom - Chanterelle, Dry",-,"Nullam varius.",28.98,872,872,"2023-04-11 00:00:00.000000",3
+873,"Crab Meat Claw Pasteurise",-,"Nulla mollis molestie lorem.",88.23,873,873,"2023-08-12 00:00:00.000000",5
+874,"Noodles - Steamed Chow Mein",-,"Quisque porta volutpat erat.",71.34,874,874,"2023-08-22 00:00:00.000000",3
+875,"Milk - Skim",-,"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",8.25,875,875,"2023-12-11 00:00:00.000000",2
+876,"Beer - Mcauslan Apricot",-,"Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",29.79,876,876,"2023-05-09 00:00:00.000000",2
+877,"Carbonated Water - White Grape",-,"Cras in purus eu magna vulputate luctus.",89.29,877,877,"2023-09-06 00:00:00.000000",1
+878,"Squeeze Bottle",-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",66.34,878,878,"2024-02-13 00:00:00.000000",3
+879,"Potatoes - Yukon Gold 5 Oz",-,"Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",16.68,879,879,"2023-05-20 00:00:00.000000",1
+880,"Wine - Delicato Merlot",-,"Nunc nisl.",79.39,880,880,"2023-09-30 00:00:00.000000",2
+881,"Bread - Pita",-,"Nulla mollis molestie lorem.",46.34,881,881,"2023-12-22 00:00:00.000000",5
+882,"Squid - Tubes / Tenticles 10/20",-,"Morbi non lectus.",20.31,882,882,"2023-06-24 00:00:00.000000",2
+883,"Pork - Backfat",-,"Sed ante.",73.44,883,883,"2023-09-18 00:00:00.000000",5
+884,"Cleaner - Pine Sol",-,"Morbi vel lectus in quam fringilla rhoncus.",99.25,884,884,"2023-05-19 00:00:00.000000",5
+885,"Dc - Sakura Fu",-,"Phasellus id sapien in sapien iaculis congue.",4.89,885,885,"2023-11-23 00:00:00.000000",1
+886,"Whmis Spray Bottle Graduated",-,"Donec dapibus.",46.56,886,886,"2024-02-12 00:00:00.000000",2
+887,"Artichokes - Knobless, White",-,"In hac habitasse platea dictumst.",23.14,887,887,"2023-05-29 00:00:00.000000",4
+888,"Wine - Red, Lurton Merlot De",-,"Praesent id massa id nisl venenatis lacinia.",61.02,888,888,"2023-07-25 00:00:00.000000",5
+889,"The Pop Shoppe - Black Cherry",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",37.18,889,889,"2023-05-24 00:00:00.000000",4
+890,"Oil - Margarine",-,"Nulla justo.",79.88,890,890,"2023-10-25 00:00:00.000000",1
+891,"Mushrooms - Honey",-,"Curabitur gravida nisi at nibh.",72.31,891,891,"2024-02-24 00:00:00.000000",2
+892,"Jolt Cola - Electric Blue",-,"Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",27.93,892,892,"2023-06-10 00:00:00.000000",5
+893,"Sea Urchin",-,"Pellentesque ultrices mattis odio.",99.39,893,893,"2023-07-24 00:00:00.000000",2
+894,"Tart Shells - Savory, 2",-,"Ut tellus.",27.97,894,894,"2023-09-03 00:00:00.000000",3
+895,"Bread - Italian Sesame Poly",-,"Quisque porta volutpat erat.",59.23,895,895,"2023-10-19 00:00:00.000000",5
+896,"Buffalo - Short Rib Fresh",-,"Nulla tempus.",12.02,896,896,"2023-10-12 00:00:00.000000",2
+897,Dikon,-,"Duis ac nibh.",51.05,897,897,"2023-09-12 00:00:00.000000",4
+898,"Compound - Passion Fruit",-,"Phasellus sit amet erat.",9.68,898,898,"2024-02-05 00:00:00.000000",4
+899,"Huck Towels White",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",59.17,899,899,"2023-05-07 00:00:00.000000",1
+900,"Rice - Aborio",-,"Suspendisse potenti.",39.04,900,900,"2023-05-10 00:00:00.000000",5
+901,"Soup - Campbells, Minestrone",-,"Donec ut dolor.",29.16,901,901,"2023-03-23 00:00:00.000000",5
+902,"Tendrils - Baby Pea, Organic",-,"Proin eu mi.",46.57,902,902,"2024-02-11 00:00:00.000000",5
+903,"Veal - Kidney",-,"Nunc purus.",33.35,903,903,"2024-02-19 00:00:00.000000",3
+904,"Lid Tray - 12in Dome",-,"Integer a nibh.",2.31,904,904,"2023-07-04 00:00:00.000000",4
+905,"Wine - Valpolicella Masi",-,"Ut tellus.",82.86,905,905,"2023-12-27 00:00:00.000000",3
+906,"Cheese - Romano, Grated",-,"Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante.",56.41,906,906,"2023-03-09 00:00:00.000000",4
+907,"Remy Red Berry Infusion",-,"Aliquam erat volutpat.",49.50,907,907,"2023-08-23 00:00:00.000000",4
+908,"Pants Custom Dry Clean",-,"Curabitur in libero ut massa volutpat convallis.",75.97,908,908,"2023-03-13 00:00:00.000000",3
+909,"Tomato - Plum With Basil",-,"Morbi non lectus.",25.90,909,909,"2024-01-02 00:00:00.000000",2
+910,"Juice - V8, Tomato",-,"Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa.",48.98,910,910,"2023-05-13 00:00:00.000000",4
+911,"Wine - White, Antinore Orvieto",-,"Aliquam erat volutpat.",60.79,911,911,"2023-04-10 00:00:00.000000",1
+912,"Apple - Fuji",-,"Quisque porta volutpat erat.",18.24,912,912,"2023-07-19 00:00:00.000000",1
+913,"Aromat Spice / Seasoning",-,"Duis mattis egestas metus.",38.42,913,913,"2024-01-27 00:00:00.000000",4
+914,"Noodles - Cellophane, Thin",-,"Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.",49.73,914,914,"2023-02-27 00:00:00.000000",1
+915,"Lentils - Green, Dry",-,"Sed sagittis.",82.68,915,915,"2023-10-20 00:00:00.000000",4
+916,"Yogurt - Blueberry, 175 Gr",-,"Nullam varius.",35.08,916,916,"2023-04-28 00:00:00.000000",5
+917,"Juice - Apple, 500 Ml",-,"Aenean sit amet justo.",53.14,917,917,"2023-12-25 00:00:00.000000",2
+918,"Yeast Dry - Fleischman",-,"Quisque porta volutpat erat.",94.16,918,918,"2023-08-31 00:00:00.000000",1
+919,"Beer - Blue",-,"Cras pellentesque volutpat dui.",4.32,919,919,"2023-12-20 00:00:00.000000",3
+920,"Pineapple - Canned, Rings",-,"Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",65.85,920,920,"2024-01-29 00:00:00.000000",4
+921,"Yogurt - Assorted Pack",-,"In sagittis dui vel nisl.",72.00,921,921,"2023-06-14 00:00:00.000000",1
+922,"Nori Sea Weed - Gold Label",-,"Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",57.99,922,922,"2023-12-19 00:00:00.000000",5
+923,"Wasabi Paste",-,"Etiam justo.",23.86,923,923,"2023-12-19 00:00:00.000000",4
+924,"Broccoli - Fresh",-,"Integer ac leo.",35.72,924,924,"2023-11-16 00:00:00.000000",2
+925,"Muffin Puck Ww Carrot",-,"Nulla tellus.",59.99,925,925,"2023-05-31 00:00:00.000000",2
+926,"Pepsi - 600ml",-,"Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",30.65,926,926,"2024-02-19 00:00:00.000000",4
+927,"Shortbread - Cookie Crumbs",-,"Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue.",63.02,927,927,"2024-01-16 00:00:00.000000",5
+928,"Wine - Pinot Grigio Collavini",-,"Aenean lectus.",75.20,928,928,"2024-02-21 00:00:00.000000",3
+929,"Sauce - Mint",-,"Curabitur gravida nisi at nibh.",69.12,929,929,"2023-07-23 00:00:00.000000",2
+930,"Cookie Chocolate Chip With",-,"Phasellus in felis.",87.73,930,930,"2023-03-22 00:00:00.000000",2
+931,"Calypso - Black Cherry Lemonade",-,"In sagittis dui vel nisl.",58.55,931,931,"2023-08-12 00:00:00.000000",5
+932,"Lobster - Tail 6 Oz",-,"Vestibulum sed magna at nunc commodo placerat.",75.95,932,932,"2023-09-13 00:00:00.000000",4
+933,"Soup - Campbells Bean Medley",-,"In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",37.86,933,933,"2023-11-09 00:00:00.000000",2
+934,"Glaze - Apricot",-,"Vivamus vestibulum sagittis sapien.",71.32,934,934,"2023-04-10 00:00:00.000000",5
+935,"Crab - Claws, 26 - 30",-,"Suspendisse potenti.",30.45,935,935,"2023-08-19 00:00:00.000000",4
+936,"Water - Spring Water 500ml",-,"In hac habitasse platea dictumst.",16.80,936,936,"2023-12-19 00:00:00.000000",2
+937,"Longos - Chicken Wings",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",80.58,937,937,"2024-01-04 00:00:00.000000",4
+938,"Beef - Cow Feet Split",-,"In hac habitasse platea dictumst.",64.68,938,938,"2023-08-13 00:00:00.000000",1
+939,"Dooleys Toffee",-,"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio.",85.69,939,939,"2023-03-21 00:00:00.000000",2
+940,"Cookies - Englishbay Chochip",-,"Pellentesque eget nunc.",42.45,940,940,"2023-08-11 00:00:00.000000",3
+941,"Yogurt - Cherry, 175 Gr",-,"Nam dui.",14.42,941,941,"2023-12-26 00:00:00.000000",4
+942,"Bread - Corn Muffaleta Onion",-,"Sed sagittis.",95.07,942,942,"2023-09-19 00:00:00.000000",1
+943,Cornflakes,-,"Proin at turpis a pede posuere nonummy.",21.78,943,943,"2023-06-08 00:00:00.000000",4
+944,"Pastry - Raisin Muffin - Mini",-,"Phasellus id sapien in sapien iaculis congue.",86.99,944,944,"2023-04-07 00:00:00.000000",1
+945,"Lid Tray - 16in Dome",-,"Nulla mollis molestie lorem.",32.78,945,945,"2023-12-09 00:00:00.000000",3
+946,"Fruit Salad Deluxe",-,"Duis bibendum.",43.92,946,946,"2023-09-14 00:00:00.000000",4
+947,"Leeks - Baby, White",-,"Phasellus in felis.",60.20,947,947,"2023-03-28 00:00:00.000000",4
+948,"Wine - White, Cooking",-,"Nulla justo.",38.76,948,948,"2023-12-08 00:00:00.000000",5
+949,Drambuie,-,"Ut at dolor quis odio consequat varius.",1.90,949,949,"2024-02-12 00:00:00.000000",2
+950,"Chocolate - Dark",-,"Nam dui.",37.06,950,950,"2023-07-19 00:00:00.000000",2
+951,"Longos - Cheese Tortellini",-,"Maecenas ut massa quis augue luctus tincidunt.",13.06,951,951,"2023-04-27 00:00:00.000000",1
+952,"Honey - Comb",-,"Sed sagittis.",4.71,952,952,"2023-03-04 00:00:00.000000",5
+953,"Barley - Pearl",-,"Cras in purus eu magna vulputate luctus.",23.14,953,953,"2023-08-14 00:00:00.000000",4
+954,"Scrubbie - Scotchbrite Hand Pad",-,"Sed sagittis.",23.72,954,954,"2024-02-09 00:00:00.000000",5
+955,"Food Colouring - Pink",-,"Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla.",89.28,955,955,"2023-10-13 00:00:00.000000",4
+956,"Yoplait Drink",-,"Duis bibendum.",23.26,956,956,"2023-05-07 00:00:00.000000",5
+957,"Cheese - Parmesan Grated",-,"Nullam varius.",88.82,957,957,"2023-09-29 00:00:00.000000",2
+958,"Trout - Rainbow, Frozen",-,"Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",18.89,958,958,"2023-08-22 00:00:00.000000",1
+959,"Pasta - Penne, Rigate, Dry",-,"Aliquam quis turpis eget elit sodales scelerisque.",28.81,959,959,"2023-12-17 00:00:00.000000",3
+960,"Cheese - Stilton",-,"Nullam porttitor lacus at turpis.",97.31,960,960,"2023-05-22 00:00:00.000000",1
+961,"Ham - Cooked Bayonne Tinned",-,"In hac habitasse platea dictumst.",69.65,961,961,"2024-02-02 00:00:00.000000",4
+962,"Sauce - Vodka Blush",-,"Donec posuere metus vitae ipsum.",72.50,962,962,"2023-10-02 00:00:00.000000",2
+963,"Cheese - Swiss",-,"Donec ut mauris eget massa tempor convallis.",8.29,963,963,"2023-11-12 00:00:00.000000",2
+964,"Tomatoes - Vine Ripe, Red",-,"Duis at velit eu est congue elementum.",1.13,964,964,"2024-01-07 00:00:00.000000",2
+965,"Beef - Chuck, Boneless",-,"Duis ac nibh.",94.56,965,965,"2023-11-30 00:00:00.000000",1
+966,"Ham - Cooked Bayonne Tinned",-,"Cras non velit nec nisi vulputate nonummy.",60.50,966,966,"2023-10-03 00:00:00.000000",5
+967,"Mushrooms - Black, Dried",-,"Phasellus id sapien in sapien iaculis congue.",96.64,967,967,"2023-10-18 00:00:00.000000",1
+968,"Nestea - Ice Tea, Diet",-,"Vivamus tortor.",26.68,968,968,"2024-01-09 00:00:00.000000",2
+969,"Duck - Breast",-,"Praesent lectus.",100.00,969,969,"2023-09-14 00:00:00.000000",2
+970,"Wine - Sicilia Igt Nero Avola",-,"Maecenas pulvinar lobortis est.",92.36,970,970,"2023-10-10 00:00:00.000000",1
+971,"Wine - White, Gewurtzraminer",-,"In sagittis dui vel nisl.",80.16,971,971,"2023-04-09 00:00:00.000000",4
+972,"Wine - Mas Chicet Rose, Vintage",-,"Vestibulum sed magna at nunc commodo placerat.",17.70,972,972,"2023-04-04 00:00:00.000000",1
+973,"Bacardi Mojito",-,"Duis ac nibh.",18.53,973,973,"2023-03-17 00:00:00.000000",3
+974,"Appetizer - Seafood Assortment",-,"Suspendisse potenti.",11.25,974,974,"2023-05-26 00:00:00.000000",5
+975,"Pastry - Apple Large",-,"Etiam pretium iaculis justo.",36.75,975,975,"2024-01-12 00:00:00.000000",2
+976,"Syrup - Monin - Passion Fruit",-,"Phasellus id sapien in sapien iaculis congue.",54.99,976,976,"2023-03-27 00:00:00.000000",5
+977,"Bread - Pita, Mini",-,"Cras in purus eu magna vulputate luctus.",80.74,977,977,"2023-12-22 00:00:00.000000",5
+978,"Nantucket Orange Juice",-,"Cras in purus eu magna vulputate luctus.",35.65,978,978,"2023-06-27 00:00:00.000000",1
+979,"Petit Baguette",-,"Vestibulum rutrum rutrum neque.",17.16,979,979,"2023-11-28 00:00:00.000000",5
+980,"Beer - Corona",-,"Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",90.56,980,980,"2023-12-23 00:00:00.000000",4
+981,"Soup - Campbells Chicken",-,"Nulla tellus.",57.57,981,981,"2023-11-26 00:00:00.000000",3
+982,"Lettuce - Romaine, Heart",-,"Nam nulla.",23.99,982,982,"2023-12-08 00:00:00.000000",4
+983,"Taro Leaves",-,"Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.",63.39,983,983,"2023-07-03 00:00:00.000000",5
+984,"Mix - Cocktail Ice Cream",-,"Suspendisse potenti.",65.85,984,984,"2023-07-25 00:00:00.000000",5
+985,"Cheese - Le Cru Du Clocher",-,"Proin leo odio, porttitor id, consequat in, consequat ut, nulla.",2.83,985,985,"2023-05-20 00:00:00.000000",1
+986,"Icecream - Dstk Cml And Fdg",-,"In sagittis dui vel nisl.",46.84,986,986,"2023-07-18 00:00:00.000000",4
+987,"Butter Sweet",-,"Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",25.45,987,987,"2023-07-04 00:00:00.000000",5
+988,"Huck Towels White",-,"Morbi a ipsum.",58.80,988,988,"2023-10-07 00:00:00.000000",4
+989,"Cheese - Provolone",-,"Nunc purus.",45.29,989,989,"2023-08-31 00:00:00.000000",1
+990,"Muskox - French Rack",-,"Nulla facilisi.",9.78,990,990,"2023-12-30 00:00:00.000000",5
+991,"Sandwich Wrap",-,"Nulla tempus.",93.92,991,991,"2023-03-27 00:00:00.000000",5
+992,"Glass Clear 7 Oz Xl",-,"Cras non velit nec nisi vulputate nonummy.",49.77,992,992,"2023-07-29 00:00:00.000000",5
+993,"Pasta - Lasagne, Fresh",-,"Pellentesque viverra pede ac diam.",44.57,993,993,"2023-08-04 00:00:00.000000",3
+994,"Mountain Dew",-,"Curabitur at ipsum ac tellus semper interdum.",43.30,994,994,"2023-07-04 00:00:00.000000",5
+995,"Bread Fig And Almond",-,"Vestibulum rutrum rutrum neque.",94.20,995,995,"2023-09-24 00:00:00.000000",4
+996,"Coffee - Cafe Moreno",-,"Vivamus tortor.",60.46,996,996,"2023-09-28 00:00:00.000000",1
+997,"Juice - Tomato, 48 Oz",-,"Mauris sit amet eros.",6.55,997,997,"2023-06-22 00:00:00.000000",1
+998,"Vacuum Bags 12x16",-,"Vestibulum sed magna at nunc commodo placerat.",77.75,998,998,"2023-04-28 00:00:00.000000",3
+999,"Peas - Frozen",-,"Morbi a ipsum.",82.73,999,999,"2023-03-01 00:00:00.000000",1
+1000,"Artichokes - Jerusalem",-,"Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",6.45,1000,1000,"2023-03-12 00:00:00.000000",3
