@@ -146,27 +146,6 @@ class ReviewViewSet(ModelViewSet):
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-    
-    
-    def update(self, request, *args, **kwargs):
-        user = request.user
-        review = self.get_object()
-
-        # Ensure that the user is updating their own review
-        if review.customer.user != user:
-            return Response({'detail': "You do not have permission to update someone else's review."},
-                            status=status.HTTP_403_FORBIDDEN)
-
-        # Proceed with the update if the user owns the review
-        serializer = self.get_serializer(review, data=request.data, partial=kwargs.pop('partial', False))
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        if getattr(review, '_prefetched_objects_cache', None):
-            # If 'prefetch_related' has been applied to a queryset, we need to forcibly invalidate the prefetch cache on the instance.
-            review._prefetched_objects_cache = {}
-
-        return Response(serializer.data)
 
 
 class CartViewSet(CreateModelMixin,
