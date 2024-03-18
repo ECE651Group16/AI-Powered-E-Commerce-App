@@ -11,6 +11,7 @@ import FormContainer from '../FormContainer'
 function LoginScreen({location,history}) {
 
     const [email,setEmail]=useState('')
+    const [username, setUsername] = useState('');
     const [password,setPassword]=useState('')
     const dispatch = useDispatch()
 
@@ -28,7 +29,7 @@ function LoginScreen({location,history}) {
 
     const submitHandler= (e)=>{
         e.preventDefault()
-        dispatch(login(email,password))
+        dispatch(login(username,password))
     }
     return (
         <div>
@@ -40,10 +41,20 @@ function LoginScreen({location,history}) {
           <Form onSubmit={submitHandler}>
 
 
-              <Form.Group controlId='email'>
+              {/* <Form.Group controlId='email'>
                 <Form.Label>Email Address </Form.Label>
                 <Form.Control required type='email' placeholder='Enter Email' value={email} onChange={(e)=> setEmail(e.target.value)}></Form.Control>
-              </Form.Group>
+              </Form.Group> */}
+              <Form.Group controlId='username'>
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                    required
+                    type='text' // Change to 'text' if it's just a username
+                    placeholder='Enter Username'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                ></Form.Control>
+                </Form.Group>
 
               <Form.Group controlId='password'>
                 <Form.Label>Password</Form.Label>
