@@ -39,7 +39,7 @@ class ReviewSerializer(serializers.ModelSerializer):
     def get_username(self, obj):
         if obj.customer and obj.customer.user:
             return obj.customer.user.username
-        return "User undefined."
+        return "User deleted."
 
     
 class UpdateReviewSerializer(serializers.ModelSerializer):
