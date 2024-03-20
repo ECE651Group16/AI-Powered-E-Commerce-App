@@ -17,9 +17,6 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from rest_framework import permissions
 
-from sklearn.feature_extraction.text import TfidfVectorizer
-import numpy as np
-
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
 from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, \
