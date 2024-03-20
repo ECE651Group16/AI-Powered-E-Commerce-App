@@ -4,7 +4,7 @@ from . import views
 from rest_framework.routers import SimpleRouter, DefaultRouter
 from pprint import pprint
 from rest_framework_nested import routers
-from likes.views import LikeViewSet, LikedItemViewSet
+from likes.views import LikesViewSet, LikedItemViewSet
 
 router = routers.DefaultRouter()
 # router = DefaultRouter()
