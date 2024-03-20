@@ -37,8 +37,10 @@ class ReviewSerializer(serializers.ModelSerializer):
         return Review.objects.create(product_id=product_id, **validated_data)
 
     def get_username(self, obj):
-        return obj.customer.user.username
-    
+        if obj.customer and obj.customer.user:
+            return obj.customer.user.username
+        return None  # Or an empty string, or however you wish to handle this case
+
     
 class UpdateReviewSerializer(serializers.ModelSerializer):
     class Meta:
