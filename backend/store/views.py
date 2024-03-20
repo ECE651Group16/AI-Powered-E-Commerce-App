@@ -10,8 +10,8 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet, GenericViewSet, ViewSet
+from rest_framework.generics import ListAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
@@ -19,10 +19,12 @@ from rest_framework import permissions
 
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
-from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, ViewCustomerHistoryPermission
+from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, \
+    ViewCustomerHistoryPermission
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
-from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
-
+from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, \
+    CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, \
+    ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
 
 
 # Create your views here.
@@ -48,9 +50,11 @@ class ProductViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         if OrderItem.objects.filter(product_id=kwargs['pk']).count() > 0:
-            return Response({'error': 'Product cannot be deleted because it is associated with an order item.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response({'error': 'Product cannot be deleted because it is associated with an order item.'},
+                            status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
         return super().destroy(request, *args, **kwargs)
+
 
 class ProductImageViewSet(ModelViewSet):
     serializer_class = ProductImageSerializer
@@ -60,17 +64,20 @@ class ProductImageViewSet(ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action in ['create', 'update', 'partial_update', 'destroy']:
-            permission_classes = [IsAdminOrReadOnly] #changed from UploadProductImagePermission
+            permission_classes = [IsAdminOrReadOnly]  # changed from UploadProductImagePermission
         else:
             # Apply default permission classes or other specific permissions based on the action
-            permission_classes = [permissions.AllowAny] # Example default
+            permission_classes = [permissions.AllowAny]  # Example default
         return [permission() for permission in permission_classes]
+
     # @action(detail=True, permission_classes=[UploadProductImagePermission])
-    def get_serializer_context(self): # add this because if only has get_queryset then it only upload the image. This function is to extract the id from serializer
+    def get_serializer_context(
+            self):  # add this because if only has get_queryset then it only upload the image. This function is to extract the id from serializer
         return {'product_id': self.kwargs['product_pk']}
 
-    def get_queryset(self): #/products/1(product_pk)/images/1(pk) 
-        return ProductImage.objects.filter(product_id = self.kwargs['product_pk'])
+    def get_queryset(self):  # /products/1(product_pk)/images/1(pk)
+        return ProductImage.objects.filter(product_id=self.kwargs['product_pk'])
+
 
 class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.annotate(
@@ -80,7 +87,8 @@ class CollectionViewSet(ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         if Product.objects.filter(collection_id=kwargs['pk']):
-            return Response({'error': 'Collection cannot be deleted because it includes one or more products.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+            return Response({'error': 'Collection cannot be deleted because it includes one or more products.'},
+                            status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
         return super().destroy(request, *args, **kwargs)
 
@@ -88,34 +96,35 @@ class CollectionViewSet(ModelViewSet):
 class ReviewViewSet(ModelViewSet):
     http_method_names = ['get', 'post', 'patch', 'delete', 'head', 'options']
     serializer_class = ReviewSerializer
-    
+
     def get_permissions(self):
-        #for posting reviews
-        if self.request.method in ['POST','PATCH','DELETE']:
+        # for posting reviews
+        if self.request.method in ['POST', 'PATCH', 'DELETE']:
             user = self.request.user
             bought_item = False
             if user.is_authenticated:
                 user = self.request.user
                 customer_id = Customer.objects.only('id').get(user_id=user.id)
-                
+
                 product_id = int(self.kwargs.get('product_pk'))
-                orders_by_user = Order.objects.filter(customer_id = customer_id)
+                orders_by_user = Order.objects.filter(customer_id=customer_id)
                 for order in orders_by_user:
-                    ordered_items = OrderItem.objects.filter(order = order)
+                    ordered_items = OrderItem.objects.filter(order=order)
                     for item in ordered_items:
                         print(type(item.product_id), type(product_id))
                         if item.product_id == product_id:
-                            print("found",item.product_id, product_id)
+                            print("found", item.product_id, product_id)
                             bought_item = True
-                if bought_item: #if user logged in and bought item, give permission
+                if bought_item:  # if user logged in and bought item, give permission
                     return [IsAuthenticated()]
-                else: #if user logged in but did not buy item, no permission
-                    return[IsNotAuthenticated()]
-            else: #if not logged in, no permission
+                else:  # if user logged in but did not buy item, no permission
+                    return [IsNotAuthenticated()]
+            else:  # if not logged in, no permission
                 return [IsAdminOrReadOnly()]
-        #but anyone can view reviews
+        # but anyone can view reviews
         else:
-            return [AllowAny()] #don't forget need import at top
+            return [AllowAny()]  # don't forget need import at top
+
     def get_queryset(self):
         return Review.objects.filter(product_id=self.kwargs['product_pk'])
 
@@ -130,7 +139,7 @@ class CartViewSet(CreateModelMixin,
     permission_classes = [IsAuthenticated]
     queryset = Cart.objects.prefetch_related('items__product').all()
     serializer_class = CartSerializer
-    
+
     def create(self, request, *args, **kwargs):
         user = self.request.user
 
@@ -145,7 +154,6 @@ class CartViewSet(CreateModelMixin,
 
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
 
 
 class CartItemViewSet(ModelViewSet):
@@ -221,6 +229,25 @@ class OrderViewSet(ModelViewSet):
         if user.is_staff:
             return Order.objects.all()
 
-        customer_id = Customer.objects.only(
-            'id').get(user_id=user.id)
+        customer_id = Customer.objects.only('id').get(user_id=user.id)
         return Order.objects.filter(customer_id=customer_id)
+
+
+class RecommendationViewSet(ModelViewSet):
+    http_method_names = ['get', 'options']
+    serializer_class = ProductSerializer
+    pagination_class = DefaultPagination
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        customer_id = get_object_or_404(Customer, user_id=self.request.user.id).id
+        customer_order_id = Order.objects.filter(customer_id=customer_id).values('id')
+        if len(customer_order_id):
+            customer_order_item = OrderItem.objects.filter(order_id__in=customer_order_id).values(
+                'product_id').distinct()
+            customer_interest_collection = Product.objects.filter(id__in=customer_order_item).values(
+                'collection_id').distinct()
+            queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
+        else:
+            queryset = Product.objects.prefetch_related('images').order_by('-last_update')
+        return queryset
