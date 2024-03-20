@@ -2,12 +2,13 @@ import React, {useState,useEffect} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import {Container,Row,Col, Button} from "react-bootstrap";
 import Product from '../Product';
-import { listProducts, listDealsProducts, listProductsYouMayLike,  listLatestProducts} from '../../actions/productAction';
+import { filterProducts,listProducts, listDealsProducts, listProductsYouMayLike,  listLatestProducts} from '../../actions/productAction';
 import Loader from '../Loader';
 import Message from '../Message';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import FilterComponent from '../FilterComponent';
+import axios from 'axios';
 // In another file, such as AllProductScreen.js
 
 
@@ -15,13 +16,46 @@ function AllProductScreen() {
     
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
-    const {error, loading, products, totalPages} = useSelector(state=>state.productList);
+    const [currentFilters, setCurrentFilters] = useState({});
+  
+    const { error, loading, products, totalPages } = useSelector(state => state.productList);
 
+    const resetFilters = () => {
+        // Reset current filters to an empty object
+        setCurrentFilters({});
 
-    useEffect(()=>{
-        dispatch(listProducts(page));
-    },[dispatch, page])
+        // Optionally, reset to the first page
+        setPage(1);
+
+        // Clear filter states from local storage
+        localStorage.removeItem('searchQuery');
+        localStorage.removeItem('ordering');
+        localStorage.removeItem('priceRangeMin');
+        localStorage.removeItem('priceRangeMax');
+        localStorage.removeItem('selectedCollection');
+
+        // Fetch the initial list of products without filters
+        dispatch(listProducts(1));
+    };
+      
+
+    // Function to handle applying filters
+    const applyFilter = (filters) => {
+        setCurrentFilters(filters); // Store current filters
+        setPage(1); // Reset pagination to the first page
+        dispatch(filterProducts(filters, 1)); // Fetch filtered products for the first page
+    };
     
+    
+    // Fetch products based on current page and filters
+    useEffect(() => {
+        console.log('Current Filters:', currentFilters);
+        if (Object.keys(currentFilters).length > 0) {
+          dispatch(filterProducts(currentFilters, page));
+        } else {
+          dispatch(listProducts(page));
+        }
+      }, [dispatch, page, currentFilters]);
 
     const handlePrevious = () => {
       setPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -54,32 +88,42 @@ function AllProductScreen() {
             ) : (
             <>
                 <Row>
-                {products.map((product) => (
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                    <h3>{product.name}</h3>
-                    <Product product={product} />
-                    </Col>
-                ))}
+                <Col md={3}>
+                <h5 className="text-center">Filters</h5>
+                <FilterComponent onApplyFilter={applyFilter} currentFilters={currentFilters} />
+                    <Button variant="secondary" onClick={resetFilters}>Reset Filters</Button>
+                </Col>
+                <Col md={9}>
+                    <Row>
+                    {products.map((product) => (
+                        <Col key={product.id} sm={12} md={6} lg={4} xl={3}>
+                        <h3>{product.name}</h3>
+                        <Product product={product} />
+                        </Col>
+                    ))}
+                    </Row>
+                </Col>
                 </Row>
+                
                 <div className="pagination-controls text-center">
-                <Button
-                style={customButtonStyle}
-                size="lg" // Bootstrap class for larger buttons
-                variant="info" // Bootstrap theme color, choose one that fits your design
-                onClick={handlePrevious}
-                disabled={page <= 1}
-                >
-                &laquo; Previous
-                </Button>
-                <Button
-                style={customButtonStyle}
-                size="lg"
-                variant="info"
-                onClick={handleNext}
-                disabled={page >= totalPages}
-                >
-                Next &raquo;
-                </Button>
+                    <Button
+                        style={customButtonStyle}
+                        size="lg" // Bootstrap class for larger buttons
+                        variant="info" // Bootstrap theme color, choose one that fits your design
+                        onClick={handlePrevious}
+                        disabled={page <= 1}
+                        >
+                        &laquo; Previous
+                        </Button>
+                        <Button
+                        style={customButtonStyle}
+                        size="lg"
+                        variant="info"
+                        onClick={handleNext}
+                        disabled={page >= totalPages}
+                        >
+                        Next &raquo;
+                    </Button>
                 </div>
             </>
             )}

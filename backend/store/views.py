@@ -35,7 +35,7 @@ class ProductViewSet(ModelViewSet):
     pagination_class = DefaultPagination
     permission_classes = [IsAdminOrReadOnly]
     search_fields = ['title', 'description']
-    ordering_fields = ['unit_price', 'last_update', 'total_sells']
+    ordering_fields = ['unit_price', 'last_update', 'total_sells', 'average_rating', "total_reviews"]
 
     def get_queryset(self):
         return super().get_queryset().annotate(
