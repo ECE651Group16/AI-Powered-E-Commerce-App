@@ -13,6 +13,7 @@ router.register('collections', views.CollectionViewSet)
 router.register('carts', views.CartViewSet)
 router.register('customers', views.CustomerViewSet)
 router.register('orders', views.OrderViewSet, basename='orders')
+router.register('recommendation', views.RecommendationViewSet, basename='recommendation')
 
 router.register('likes', LikesViewSet, basename='likes')
 likes_router = routers.NestedDefaultRouter(router, 'likes', lookup='likes')
