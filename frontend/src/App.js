@@ -9,11 +9,26 @@ import CartScreen from "./components/screens/CartScreen";
 import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import AllProductScreen from './components/screens/AllProductScreen';
+import ProfileScreen from "./components/screens/ProfileScreen";
+import axios from 'axios';
+import SessionCheck from "./components/SessionCheck";
 
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      alert('Your session has expired. Please log in again.');
+      localStorage.removeItem('userInfo');
+      // Redirect or handle logout
+    }
+    return Promise.reject(error);
+  }
+);
 
 function App() {
   return (
 <Router>
+<SessionCheck /> 
       <Header />
       <main className="py-3">
         <Container>
@@ -23,6 +38,7 @@ function App() {
           <Route path="/products/:id" component={ProductScreen} exact />
           <Route path="/cart/:id?" component={CartScreen} exact />
           <Route path="/all_products" component={AllProductScreen} exact />
+          <Route path="/profile" component={ProfileScreen}/>
           
         </Container>
       </main>
