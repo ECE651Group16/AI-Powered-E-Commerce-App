@@ -11,7 +11,11 @@ router = routers.DefaultRouter()
 router.register('products', views.ProductViewSet, basename='product')
 router.register('collections', views.CollectionViewSet)
 router.register('carts', views.CartViewSet)
+
 router.register('customers', views.CustomerViewSet)
+customers_router = routers.NestedDefaultRouter(router, 'customers', lookup='customer')
+customers_router.register('addresses', views.AddressViewSet, basename='customer-addresses')
+
 router.register('orders', views.OrderViewSet, basename='orders')
 router.register('recommendation', views.RecommendationViewSet, basename='recommendation')
 
@@ -27,7 +31,7 @@ products_router.register('images', views.ProductImageViewSet, basename='product-
 
 # pprint(router.urls)
 
-urlpatterns = router.urls + products_router.urls + carts_router.urls + likes_router.urls
+urlpatterns = router.urls + products_router.urls + carts_router.urls + likes_router.urls + customers_router.urls
 
 # URLConfiguration
 '''

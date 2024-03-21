@@ -25,3 +25,20 @@ class IsNotAuthenticated(permissions.BasePermission):
     def has_permission(self, request, view):
         return not request.user.is_authenticated
 
+class IsAdminOrOwnerForCustomer(permissions.BasePermission):
+    def has_permission(self, request, view):
+        #customer_pk is the id after "/store/customer/"
+        customer_pk = view.kwargs.get('customer_pk')
+        if not request.user.is_authenticated:
+            return False
+
+        if request.user.is_staff:
+            return True
+
+        if customer_pk:
+            try:
+                customer_id = int(customer_pk)
+                return request.user.customer.id == customer_id
+            except (ValueError, AttributeError):
+                return False
+        return False
