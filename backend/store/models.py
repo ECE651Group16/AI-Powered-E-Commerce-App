@@ -1,10 +1,10 @@
 from decimal import Decimal
-from django.conf import settings
-from django.db import models
-from django.contrib import admin
-from django.core.validators import MinValueValidator, FileExtensionValidator
 from uuid import uuid4
 
+from django.conf import settings
+from django.contrib import admin
+from django.core.validators import MinValueValidator
+from django.db import models
 from store.validators import validate_file_size
 
 
@@ -38,7 +38,7 @@ class Product(models.Model):
     total_sells = models.IntegerField(validators=[MinValueValidator(0)], default=0)
     last_update = models.DateTimeField(auto_now_add=True)
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT, related_name='products')
-    promotions = models.ManyToManyField(Promotion, null=True, blank=True)
+    promotions = models.ManyToManyField(Promotion, blank=True)
 
     def __str__(self):
         return self.title
@@ -141,7 +141,7 @@ class Address(models.Model):
 class Cart(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
-    customer = models.OneToOneField(Customer, on_delete=models.CASCADE,null=True, blank=True)
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, null=True, blank=True)
 
 
 class CartItem(models.Model):
@@ -167,10 +167,10 @@ class Review(models.Model):
         (Decimal('4'), '4'), (Decimal('4.5'), '4.5'),
         (Decimal('5'), '5')
     ]
-    
+
     rating = models.DecimalField(max_digits=2, decimal_places=1, choices=RATINGS_CHOICES)
     description = models.TextField()
-    #description = models.TextField()
+    # description = models.TextField()
     date = models.DateField(auto_now_add=True)
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     
