@@ -1,23 +1,52 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../Message'
 import { addToCart,removeFromCart } from '../../actions/cartActions'
+import axios from 'axios';
+
 
 function CartScreen({ match, location, history }) {
     const productId = match.params.id
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
 
+    const [cartUuid, setCartUuid] = useState('');
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+    
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
 
+    // useEffect(() => {
+    //     if (productId) {
+    //         dispatch(addToCart(productId, qty))
+    //     }
+    // }, [dispatch, productId, qty])
+
     useEffect(() => {
-        if (productId) {
-            dispatch(addToCart(productId, qty))
-        }
-    }, [dispatch, productId, qty])
+        const fetchCart = async () => {
+            if (!userInfo) {
+                history.push('/login');
+                return;
+            }
+            try {
+                const config = {
+                    headers: {
+                        Authorization: `Bearer ${userInfo.token}`,
+                    },
+                };
+                const { data } = await axios.get('/store/carts/my-cart/', config);
+                setCartUuid(data.id);
+                // Dispatch an action to load cart items into the state, if needed
+            } catch (error) {
+                console.error('Failed to fetch cart:', error);
+            }
+        };
+
+        fetchCart();
+    }, [userInfo, history]);
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
