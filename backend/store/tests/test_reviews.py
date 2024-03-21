@@ -25,6 +25,12 @@ class TestReviews:
         return user
 
     @pytest.fixture
+    def customer(self, user):
+        # Ensure a single Customer instance is created per User
+        customer, created = Customer.objects.get_or_create(user=user)
+        return customer
+
+    @pytest.fixture
     def product(self):
         product = baker.make(Product)
         return product
@@ -50,8 +56,8 @@ class TestReviews:
         return APIClient()
 
     #anyone can read reviews unlogged in
-    def test_reading_reviews_of_product(self, product, api_client):
-        review = baker.make(Review, product=product)
+    def test_reading_reviews_of_product(self, product, api_client, customer):
+        review = baker.make(Review, product=product, customer=customer)
         # Retrieve the reviews of the product
         url = f'/store/products/{product.id}/reviews/'
         response = api_client.get(url)

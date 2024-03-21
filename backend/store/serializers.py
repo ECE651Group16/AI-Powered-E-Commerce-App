@@ -25,13 +25,29 @@ class ProductImageSerializer(serializers.ModelSerializer):
 
 
 class ReviewSerializer(serializers.ModelSerializer):
+    
+    username = serializers.SerializerMethodField()
+    
     class Meta:
         model = Review
-        fields = ['id', 'date', 'rating','description']
+        fields = ['id', 'date', 'rating','description','username']
 
     def create(self, validated_data):
         product_id = self.context['product_id']
         return Review.objects.create(product_id=product_id, **validated_data)
+
+    def get_username(self, obj):
+        if obj.customer and obj.customer.user:
+            return obj.customer.user.username
+        return "User deleted."
+
+    
+class UpdateReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['rating', 'description']  # Only include the fields you want to be updateable
+        read_only_fields = ['id', 'date']  # Mark 'id' and 'date' as read-only
+
 
 class ProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
