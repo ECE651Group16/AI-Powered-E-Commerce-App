@@ -24,7 +24,7 @@ from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProduc
 from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, \
     CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, \
-    ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer
+    ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer, UpdateReviewSerializer
 
 
 # Create your views here.
