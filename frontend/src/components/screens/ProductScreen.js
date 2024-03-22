@@ -5,6 +5,7 @@ import { Row, Col, Image, ListGroup, Button, Card,Form } from "react-bootstrap";
 import Rating from "../Rating";
 import Loader from '../Loader';
 import Message from '../Message';
+import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productAction";
 import { productDetailsReducers } from "../../reducers/productReducers";
@@ -13,6 +14,9 @@ function ProductScreen({ match,history }) {
   const { id } = useParams();
   const [qty,setQty] = useState(1)
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const [cartUuid, setCartUuid] = useState('');
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
@@ -29,10 +33,84 @@ function ProductScreen({ match,history }) {
 
   },[dispatch,match]);
 
-  const addToCartHandler = ()=>{
-    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  useEffect(() => {
+    const fetchCustomerDetails = async () => {
+      if (!userInfo) {
+        console.log('User is not logged in');
+        return;
+      }
+  
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
+        const { data } = await axios.get('/store/customers/', config);
+        const customerDetails = data.find(customer => customer.user_id === userInfo.id); // Assuming userInfo.id holds the user ID
+        if (customerDetails && customerDetails.cart_id) {
+          setCartUuid(customerDetails.cart_id);
+          console.log('Cart ID fetched:', customerDetails.cart_id);
+        } else {
+          console.log('No cart ID found for the current user.');
+        }
+      } catch (error) {
+        console.error('Failed to fetch customer details:', error);
+      }
+    };
+  
+    fetchCustomerDetails();
+  }, [userInfo]);
 
+  const addToCartHandler = async()=>{
+    if (!userInfo) {
+      history.push('/login');
+      return;
+    }
+    try {
+      let currentCartId = cartUuid; // Assuming this state holds the current user's cart ID
+  
+      // If the user does not have a cart ID, create a new cart
+      if (!currentCartId) {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
+        const { data } = await axios.post('/store/carts/', {}, config);
+        currentCartId = data.id; // Assuming the response includes the cart ID
+        // console.log(currentCartId,"not id");
+        // Optionally, update the cartUuid state or redux store with the new cart ID
+      }
+  
+      // Add the product to the cart
+      if (currentCartId) {
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        };
+  
+        const postData = {
+          product_id: id, // id from useParams()
+          quantity: qty,
+        };
+        // console.log(currentCartId,"with id");
+        await axios.post(`/store/carts/${currentCartId}/items/`, postData, config);
+  
+        // Redirect to cart page or show success message
+        history.push('/cart');
+      }
+    } catch (error) {
+      console.error('Failed to add item to cart:', error);
+      // Handle error, e.g., show error message
+    }
+    // history.push(`/cart/`)
  }
+
+
  
   return (
     <div>

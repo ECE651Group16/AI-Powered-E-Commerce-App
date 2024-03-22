@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../Message'
-import { addToCart,removeFromCart } from '../../actions/cartActions'
+import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions'
 import axios from 'axios';
 
 
@@ -26,7 +26,7 @@ function CartScreen({ match, location, history }) {
     // }, [dispatch, productId, qty])
 
     useEffect(() => {
-        const fetchCart = async () => {
+        const fetchCustomerCartId = async () => {
             if (!userInfo) {
                 history.push('/login');
                 return;
@@ -34,19 +34,30 @@ function CartScreen({ match, location, history }) {
             try {
                 const config = {
                     headers: {
+                        'Content-Type': 'application/json',
                         Authorization: `Bearer ${userInfo.token}`,
                     },
                 };
-                const { data } = await axios.get('/store/carts/my-cart/', config);
-                setCartUuid(data.id);
-                // Dispatch an action to load cart items into the state, if needed
+                const { data } = await axios.get('/store/customers/', config);
+                // Assuming the response includes the cart_id directly
+                const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
+                if (customerCartId) {
+                    dispatch(fetchCartDetails(customerCartId));
+                }
             } catch (error) {
-                console.error('Failed to fetch cart:', error);
+                console.error('Failed to fetch customer cart ID:', error);
             }
         };
 
-        fetchCart();
-    }, [userInfo, history]);
+        fetchCustomerCartId();
+    }, [userInfo, history, dispatch]);
+
+
+    useEffect(() => {
+        if (productId && cart.cartId) {
+            dispatch(addToCart(cart.cartId, productId, qty));
+        }
+    }, [dispatch, productId, qty, cart.cartId]);
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))

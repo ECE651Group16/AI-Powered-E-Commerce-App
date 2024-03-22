@@ -34,9 +34,9 @@ export const listProducts = (pageNumber = '', filters = {}) => async (dispatch) 
 
     const PRODUCTS_PER_PAGE = 8;
     const totalPages = Math.ceil(data.count / PRODUCTS_PER_PAGE);
-    console.log(`Request URL: /store/products/?${queryParams}`); // Log the request URL
-    console.log("API response:", data); // Log the full API response
-    console.log("Dispatching data:", data.results, "Total pages:", totalPages); // Log specific parts of the response
+    // console.log(`Request URL: /store/products/?${queryParams}`); // Log the request URL
+    // console.log("API response:", data); // Log the full API response
+    // console.log("Dispatching data:", data.results, "Total pages:", totalPages); // Log specific parts of the response
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
