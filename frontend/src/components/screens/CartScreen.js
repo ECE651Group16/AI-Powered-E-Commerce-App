@@ -15,7 +15,7 @@ function CartScreen({ match, location, history }) {
     const [cartUuid, setCartUuid] = useState('');
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
-    
+    console.log("User Info",userInfo);
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
 
@@ -24,6 +24,7 @@ function CartScreen({ match, location, history }) {
     //         dispatch(addToCart(productId, qty))
     //     }
     // }, [dispatch, productId, qty])
+
 
     useEffect(() => {
         const fetchCustomerCartId = async () => {
@@ -34,10 +35,10 @@ function CartScreen({ match, location, history }) {
             try {
                 const config = {
                     headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${userInfo.token}`,
+                        'Authorization': `JWT ${userInfo.accessToken}`, 
                     },
                 };
+                console.log("Getting /store/customers/ with key", `JWT ${userInfo.accessToken}`);
                 const { data } = await axios.get('/store/customers/', config);
                 // Assuming the response includes the cart_id directly
                 const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
@@ -78,13 +79,13 @@ function CartScreen({ match, location, history }) {
                 ) : (
                         <ListGroup variant='flush'>
                             {cartItems.map(item => (
-                                <ListGroup.Item key={item.product}>
+                                <ListGroup.Item key={item.id}>
                                     <Row>
                                         <Col md={2}>
                                         <Image src={item.product.images && item.product.images.length > 0 ? item.product.images[0].image : defaultImage} alt={item.product.title} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
+                                            <Link to={`/products/${item.product.id}`}>{item.product.title}</Link>
                                         </Col>
 
                                         <Col md={2}>

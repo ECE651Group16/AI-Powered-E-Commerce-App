@@ -38,8 +38,8 @@ export const fetchCartDetails = (cartId) => async (dispatch, getState) => {
   
       const config = {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userInfo.token}`,
+        //   'Content-Type': 'application/json',
+          'Authorization': `JWT ${userInfo.accessToken}`,
         },
       };
   
