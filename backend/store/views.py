@@ -17,6 +17,11 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination, LimitOffsetPagination
 from rest_framework import permissions
 
+from scipy.sparse.linalg import svds
+from scipy.sparse import csr_matrix
+import pandas as pd
+import numpy as np
+
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
 from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, \
@@ -139,16 +144,16 @@ class ReviewViewSet(ModelViewSet):
     def create(self, request, *args, **kwargs):
         user = request.user
         product_id = kwargs.get('product_pk')
-        
-        
+
+
         if not user.customer.order_set.filter(items__product_id=product_id).exists():
             return Response({'detail': 'You must purchase the product before reviewing it.'},
                             status=status.HTTP_403_FORBIDDEN)
-        
+
         if Review.objects.filter(product_id=product_id, customer=user.customer).exists():
             return Response({'detail': 'You have already reviewed this product.'},
                             status=status.HTTP_400_BAD_REQUEST)
-        
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save(customer=user.customer)  # Pass customer and product ID when saving
@@ -268,11 +273,36 @@ class RecommendationViewSet(ModelViewSet):
         customer_id = get_object_or_404(Customer, user_id=self.request.user.id).id
         customer_order_id = Order.objects.filter(customer_id=customer_id).values('id')
         if len(customer_order_id):
-            customer_order_item = OrderItem.objects.filter(order_id__in=customer_order_id).values(
-                'product_id').distinct()
-            customer_interest_collection = Product.objects.filter(id__in=customer_order_item).values(
-                'collection_id').distinct()
-            queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
+            customer_and_order = OrderItem.objects.values('order_id__customer_id', 'product_id')
+            df = pd.DataFrame(list(customer_and_order))
+            df['score'] = 1.0
+            customer_items_pivot_matrix_df = df.pivot(index='order_id__customer_id', columns='product_id',
+                                                      values='score').fillna(0)
+            customer_items_pivot_matrix = csr_matrix(customer_items_pivot_matrix_df.values)
+            customer_ids = np.array(customer_items_pivot_matrix_df.index)
+            item_ids = np.array(customer_items_pivot_matrix_df.columns)
+
+            NUMBER_OF_FACTORS_MF = min(min(16, len(item_ids)), len(customer_ids)) - 1
+            if NUMBER_OF_FACTORS_MF <= 0:
+                queryset = Product.objects.prefetch_related('images').order_by('-last_update')
+                return queryset
+            U, sigma, Vt = svds(customer_items_pivot_matrix, k=NUMBER_OF_FACTORS_MF)
+            sigma = np.diag(sigma)
+
+            U_customer = U[np.argwhere(customer_ids == customer_id)[0]]
+            user_predicted_ratings = np.dot(np.dot(U_customer, sigma), Vt)
+
+            num_to_recommend = min(10, len(user_predicted_ratings))
+            ind = np.argpartition(user_predicted_ratings, user_predicted_ratings.size - num_to_recommend)[
+                  -num_to_recommend:]
+            recommend_items_id = item_ids[ind][0]
+            queryset = Product.objects.prefetch_related('images').filter(id__in=recommend_items_id.tolist())
+
+            # customer_order_item = OrderItem.objects.filter(order_id__in=customer_order_id).values(
+            #     'product_id').distinct()
+            # customer_interest_collection = Product.objects.filter(id__in=customer_order_item).values(
+            #     'collection_id').distinct()
+            # queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
         else:
             queryset = Product.objects.prefetch_related('images').order_by('-last_update')
         return queryset
