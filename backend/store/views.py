@@ -204,7 +204,35 @@ class CartItemViewSet(ModelViewSet):
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'put', 'patch', 'delete', 'head', 'options']
+    
+    
+    def get_queryset(self):
+        # If the current user is an admin, return all customers
+        if self.request.user.is_staff:
+            return Customer.objects.all()
+        # Otherwise, return only the current customer's object
+        else:
+            return Customer.objects.filter(user=self.request.user)
+        
+    def me(self, request):
+        # This action always returns the current customer, regardless of admin status
+        customer = self.get_object()
+        if request.method == 'GET':
+            serializer = CustomerSerializer(customer)
+            return Response(serializer.data)
+        elif request.method == 'PUT':
+            serializer = CustomerSerializer(customer, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
+
+    def get_object(self):
+        # Override the get_object method to handle 'me' action
+        if self.action == 'me':
+            return Customer.objects.get(user=self.request.user)
+        return super().get_object()
 
     @action(detail=True, permission_classes=[ViewCustomerHistoryPermission])
     def history(self, request, pk):
