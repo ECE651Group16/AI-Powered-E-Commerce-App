@@ -66,7 +66,7 @@ function CartScreen({ match, location, history }) {
         history.push('/login?redirect=shipping')
     }
 
-
+    const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     return (
         <Row>
             <Col md={8}>
@@ -81,10 +81,10 @@ function CartScreen({ match, location, history }) {
                                 <ListGroup.Item key={item.product}>
                                     <Row>
                                         <Col md={2}>
-                                            <Image src={item.image} alt={item.name} fluid rounded />
+                                        <Image src={item.product.images && item.product.images.length > 0 ? item.product.images[0].image : defaultImage} alt={item.product.title} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
                                         </Col>
 
                                         <Col md={2}>
@@ -92,7 +92,7 @@ function CartScreen({ match, location, history }) {
                                         </Col>
 
                                         <Col md={3}>
-                                            <Form.Control
+                                            {/* <Form.Control
                                                 as="select"
                                                 value={item.qty}
                                                 onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
@@ -107,6 +107,18 @@ function CartScreen({ match, location, history }) {
                                                     ))
                                                 }
 
+                                            </Form.Control>
+                                             */}
+                                             <Form.Control
+                                            as="select"
+                                            value={item.qty}
+                                            onChange={(e) => dispatch(addToCart(item.product.id, Number(e.target.value)))}
+                                            >
+                                            {[...Array(item.countInStock).keys()].map((x) => (
+                                                <option key={x + 1} value={x + 1}>
+                                                {x + 1}
+                                                </option>
+                                            ))}
                                             </Form.Control>
                                         </Col>
 

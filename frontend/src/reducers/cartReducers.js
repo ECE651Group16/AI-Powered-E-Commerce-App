@@ -37,8 +37,15 @@ import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST,
             case CART_DETAILS_SUCCESS:
                 return {
                     ...state,
-                    loading: false,
-                    cartItems: action.payload.items, // Assuming your payload structure contains an items array
+                    cartItems: action.payload.items.map(item => ({
+                      product: item.product.id,
+                      name: item.product.title,
+                      image: item.product.image, // Assuming you have an image URL or path here
+                      price: item.product.unit_price,
+                      qty: item.quantity,
+                      countInStock: item.product.inventory, // Assuming you have inventory info
+                    })),
+                    // Update total price if needed, or any other state properties
                 };
     
             case CART_DETAILS_FAIL:

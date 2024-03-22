@@ -45,7 +45,7 @@ export const fetchCartDetails = (cartId) => async (dispatch, getState) => {
   
       // Assuming your backend has an endpoint to fetch cart details by cart ID
       const { data } = await axios.get(`/store/carts/${cartId}/`, config);
-  
+      console.log(data);
       dispatch({
         type: CART_DETAILS_SUCCESS,
         payload: data,

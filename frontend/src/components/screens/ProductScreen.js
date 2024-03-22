@@ -97,9 +97,10 @@ function ProductScreen({ match,history }) {
           product_id: id, // id from useParams()
           quantity: qty,
         };
+
         // console.log(currentCartId,"with id");
         await axios.post(`/store/carts/${currentCartId}/items/`, postData, config);
-  
+        
         // Redirect to cart page or show success message
         history.push('/cart');
       }
