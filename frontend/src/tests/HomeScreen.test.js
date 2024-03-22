@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { MemoryRouter } from 'react-router-dom';
-import HomeScreen from '../Components/screens/HomeScreen';
+import HomeScreen from '../components/screens/HomeScreen';
 import { listDealsProducts } from '../actions/productAction';
 
 // const middlewares = [thunk];
