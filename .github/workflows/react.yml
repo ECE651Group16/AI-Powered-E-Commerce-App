@@ -23,7 +23,7 @@ jobs:
           node-version: '16.x'
       - name: Install dependencies
         working-directory: ./frontend
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Run tests
         working-directory: ./frontend
         run: npm test
