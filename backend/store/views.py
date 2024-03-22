@@ -20,11 +20,11 @@ from rest_framework import permissions
 from store.filters import ProductFilter
 from store.pagniation import DefaultPagination
 from store.permission import IsAdminOrReadOnly, IsNotAuthenticated, UploadProductImagePermission, \
-    ViewCustomerHistoryPermission
-from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review
+    ViewCustomerHistoryPermission, IsAdminOrOwnerForCustomer
+from .models import Cart, CartItem, Collection, Customer, Order, OrderItem, Product, ProductImage, Review, Address
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, \
     CreateOrderSerializer, CustomerSerializer, OrderSerializer, ProductImageSerializer, ProductSerializer, \
-    ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer, UpdateReviewSerializer
+    ReviewSerializer, UpdateCartItemSerializer, UpdateOrderSerializer, UpdateReviewSerializer, AddressSerializer
 
 
 # Create your views here.
@@ -204,7 +204,35 @@ class CartItemViewSet(ModelViewSet):
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get', 'put', 'patch', 'delete', 'head', 'options']
+    
+    
+    def get_queryset(self):
+        # If the current user is an admin, return all customers
+        if self.request.user.is_staff:
+            return Customer.objects.all()
+        # Otherwise, return only the current customer's object
+        else:
+            return Customer.objects.filter(user=self.request.user)
+        
+    def me(self, request):
+        # This action always returns the current customer, regardless of admin status
+        customer = self.get_object()
+        if request.method == 'GET':
+            serializer = CustomerSerializer(customer)
+            return Response(serializer.data)
+        elif request.method == 'PUT':
+            serializer = CustomerSerializer(customer, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
+
+    def get_object(self):
+        # Override the get_object method to handle 'me' action
+        if self.action == 'me':
+            return Customer.objects.get(user=self.request.user)
+        return super().get_object()
 
     @action(detail=True, permission_classes=[ViewCustomerHistoryPermission])
     def history(self, request, pk):
@@ -276,3 +304,16 @@ class RecommendationViewSet(ModelViewSet):
         else:
             queryset = Product.objects.prefetch_related('images').order_by('-last_update')
         return queryset
+
+
+class AddressViewSet(ModelViewSet):
+    serializer_class = AddressSerializer
+    permission_classes = [IsAdminOrOwnerForCustomer]
+    
+    def get_queryset(self):
+        customer_id = self.kwargs['customer_pk']
+        return Address.objects.filter(customer_id=customer_id)
+    
+    def perform_create(self, serializer):
+        customer_pk = self.kwargs.get('customer_pk')
+        serializer.save(customer_id=customer_pk)

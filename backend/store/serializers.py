@@ -4,7 +4,8 @@ from rest_framework import serializers
 
 from store.permission import UploadProductImagePermission
 from .signals import order_created
-from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Review
+from .models import Cart, CartItem, Customer, Order, OrderItem, Product, Collection, ProductImage, Review, Address
+from likes.models import Likes
 from rest_framework.decorators import action
 
 class CollectionSerializer(serializers.ModelSerializer):
@@ -140,10 +141,30 @@ class UpdateCartItemSerializer(serializers.ModelSerializer):
 
 class CustomerSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(read_only=True)
+    cart_id = serializers.SerializerMethodField()
+    likes_id = serializers.SerializerMethodField()
 
     class Meta:
         model = Customer
-        fields = ['id', 'user_id', 'phone', 'birth_date', 'membership']
+        fields = ['id', 'user_id', 'phone', 'birth_date', 'membership', 'cart_id', 'likes_id']
+        
+    def __init__(self, *args, **kwargs):
+        super(CustomerSerializer, self).__init__(*args, **kwargs)
+        
+        request = self.context.get('request')
+
+        if request and not request.user.is_staff:
+            self.fields['membership'].read_only = True
+
+    def get_cart_id(self, obj):
+        # Try to fetch the cart related to the customer. If not found, return None.
+        cart = Cart.objects.filter(customer=obj).first()
+        return str(cart.id) if cart else None
+
+    def get_likes_id(self, obj):
+        # Try to fetch the likes related to the customer. If not found, return None.
+        likes = Likes.objects.filter(customer=obj).first()
+        return str(likes.id) if likes else None
 
 
 class OrderItemSerializer(serializers.ModelSerializer):
@@ -205,3 +226,8 @@ class CreateOrderSerializer(serializers.Serializer):
             order_created.send_robust(self.__class__, order=order)
 
             return order
+
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['id', 'street', 'city', 'zip']
