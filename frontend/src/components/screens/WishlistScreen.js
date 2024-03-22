@@ -7,7 +7,7 @@ import { addToCart,removeFromCart } from '../../actions/cartActions'
 import axios from 'axios';
 
 
-function CartScreen({ match, location, history }) {
+function WishlistScreen({ match, location, history }) {
     const productId = match.params.id
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
@@ -37,7 +37,7 @@ function CartScreen({ match, location, history }) {
                         Authorization: `Bearer ${userInfo.token}`,
                     },
                 };
-                const { data } = await axios.get('/store/carts/my-cart/', config);
+                const { data } = await axios.get('/store/carts/my-like/', config);
                 setCartUuid(data.id);
                 // Dispatch an action to load cart items into the state, if needed
             } catch (error) {
@@ -58,11 +58,11 @@ function CartScreen({ match, location, history }) {
 
     return (
         <Row>
-            <Col md={8}>
-                <h1>Shopping Cart</h1>
+            {/* <Col md={8}> */}
+                <h1>Wishlist</h1>
                 {cartItems.length === 0 ? (
                     <Message variant='info'>
-                        Your cart is empty <Link to='/'>Go Back</Link>
+                        Your Wishlist is empty <Link to='/'>Go Back</Link>
                     </Message>
                 ) : (
                         <ListGroup variant='flush'>
@@ -113,9 +113,9 @@ function CartScreen({ match, location, history }) {
                             ))}
                         </ListGroup>
                     )}
-            </Col>
+            {/* </Col> */}
 
-            <Col md={4}>
+            {/* <Col md={4}>
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
@@ -137,9 +137,9 @@ function CartScreen({ match, location, history }) {
 
 
                 </Card>
-            </Col>
+            </Col> */}
         </Row>
     )
 }
 
-export default CartScreen
+export default WishlistScreen
