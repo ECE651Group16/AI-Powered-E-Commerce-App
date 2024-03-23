@@ -40,8 +40,9 @@ import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST,
                     cartItems: action.payload.items.map(item => ({
                       product: item.product.id,
                       name: item.product.title,
-                      image: item.product.image, // Assuming you have an image URL or path here
-                      price: item.product.unit_price,
+                      images: item.product.images, // Assuming you have an image URL or path here
+                      total_price: item.total_price,
+                      unit_price: item.product.unit_price,
                       qty: item.quantity,
                       countInStock: item.product.inventory, // Assuming you have inventory info
                     })),

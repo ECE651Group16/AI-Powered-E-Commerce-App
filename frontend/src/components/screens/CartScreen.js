@@ -42,7 +42,7 @@ function CartScreen({ match, location, history }) {
                 const { data } = await axios.get('/store/customers/', config);
                 // Assuming the response includes the cart_id directly
                 const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
-                console.log(customerCartId);
+                console.log("cartID:", customerCartId);
                 if (customerCartId) {
                     dispatch(fetchCartDetails(customerCartId));
                 }
@@ -83,23 +83,24 @@ function CartScreen({ match, location, history }) {
                                 console.log(item);
                                 return (
                                 <ListGroup.Item key={item.id}>
+                                    <Row className="align-items-center">
                                     <Row>
                                         <Col md={2}>
-                                        <Image src={item.product.images && item.product.images.length > 0 ? item.product.images[0].image : defaultImage} alt={item.product.title} fluid rounded />
+                                        <Image src={item.images && item.images.length > 0 ? item.images[0].image : defaultImage} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/products/${item.product.id}`}>{item.name}</Link>
+                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
                                         </Col>
 
                                         <Col md={2}>
-                                            ${item.price}
+                                            ${item.unit_price}
                                         </Col>
 
-                                        <Col md={3}>
+                                        <Col md={2}>
                                              <Form.Control
                                             as="select"
                                             value={item.qty}
-                                            onChange={(e) => dispatch(addToCart(item.product.id, Number(e.target.value)))}
+                                            onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
                                             >
                                             {[...Array(item.countInStock).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}>
@@ -107,6 +108,9 @@ function CartScreen({ match, location, history }) {
                                                 </option>
                                             ))}
                                             </Form.Control>
+                                        </Col>
+                                        <Col md={2}> {/* New Column for Total Price */}
+                                            ${item.total_price.toFixed(2)}
                                         </Col>
 
                                         <Col md={1}>
@@ -118,6 +122,7 @@ function CartScreen({ match, location, history }) {
                                                 <i className='fas fa-trash'></i>
                                             </Button>
                                         </Col>
+                                    </Row>
                                     </Row>
                                 </ListGroup.Item>
                             )}
@@ -131,7 +136,7 @@ function CartScreen({ match, location, history }) {
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-                            ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                            ${cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2)}
                         </ListGroup.Item>
                     </ListGroup>
 
