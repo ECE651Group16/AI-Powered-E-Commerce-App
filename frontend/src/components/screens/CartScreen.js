@@ -42,6 +42,7 @@ function CartScreen({ match, location, history }) {
                 const { data } = await axios.get('/store/customers/', config);
                 // Assuming the response includes the cart_id directly
                 const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
+                console.log(customerCartId);
                 if (customerCartId) {
                     dispatch(fetchCartDetails(customerCartId));
                 }
@@ -78,14 +79,16 @@ function CartScreen({ match, location, history }) {
                     </Message>
                 ) : (
                         <ListGroup variant='flush'>
-                            {cartItems.map(item => (
+                            {cartItems.map(item =>{
+                                console.log(item);
+                                return (
                                 <ListGroup.Item key={item.id}>
                                     <Row>
                                         <Col md={2}>
                                         <Image src={item.product.images && item.product.images.length > 0 ? item.product.images[0].image : defaultImage} alt={item.product.title} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/products/${item.product.id}`}>{item.product.title}</Link>
+                                            <Link to={`/products/${item.product.id}`}>{item.name}</Link>
                                         </Col>
 
                                         <Col md={2}>
@@ -93,23 +96,6 @@ function CartScreen({ match, location, history }) {
                                         </Col>
 
                                         <Col md={3}>
-                                            {/* <Form.Control
-                                                as="select"
-                                                value={item.qty}
-                                                onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
-                                             
-                                            >
-                                                {
-
-                                                    [...Array(item.countInStock).keys()].map((x) => (
-                                                        <option key={x + 1} value={x + 1}>
-                                                            {x + 1}
-                                                        </option>
-                                                    ))
-                                                }
-
-                                            </Form.Control>
-                                             */}
                                              <Form.Control
                                             as="select"
                                             value={item.qty}
@@ -134,7 +120,8 @@ function CartScreen({ match, location, history }) {
                                         </Col>
                                     </Row>
                                 </ListGroup.Item>
-                            ))}
+                            )}
+                            )}
                         </ListGroup>
                     )}
             </Col>
