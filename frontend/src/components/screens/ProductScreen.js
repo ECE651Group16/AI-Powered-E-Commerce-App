@@ -43,7 +43,7 @@ function ProductScreen({ match,history }) {
       try {
         const config = {
           headers: {
-            Authorization: `Bearer ${userInfo.token}`,
+            'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         };
         const { data } = await axios.get('/store/customers/', config);
@@ -74,8 +74,7 @@ function ProductScreen({ match,history }) {
       if (!currentCartId) {
         const config = {
           headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userInfo.token}`,
+            'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         };
         const { data } = await axios.post('/store/carts/', {}, config);
@@ -88,8 +87,7 @@ function ProductScreen({ match,history }) {
       if (currentCartId) {
         const config = {
           headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${userInfo.token}`,
+            'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         };
   

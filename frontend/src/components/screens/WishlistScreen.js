@@ -34,7 +34,7 @@ function WishlistScreen({ match, location, history }) {
             try {
                 const config = {
                     headers: {
-                        Authorization: `Bearer ${userInfo.token}`,
+                        'Authorization': `JWT ${userInfo.accessToken}`, 
                     },
                 };
                 const { data } = await axios.get('/store/carts/my-like/', config);
