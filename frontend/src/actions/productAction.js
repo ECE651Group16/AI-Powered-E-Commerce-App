@@ -87,7 +87,7 @@ export const listDealsProducts = (pageNumber = '') => async (dispatch) => {
 export const listProductsYouMayLike = (pageNumber = '') => async (dispatch) => {
   try {
     dispatch({ type: MAYLIKE_PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`/store/products/?ordering=-last_update&page=${pageNumber}`);
+    const { data } = await axios.get(`/store/recommendation/?page=${pageNumber}`);
     // console.log("API response:", data); // Should show the full paginated response
     // console.log("Dispatching data:", data.results); // Should show just the array of products
     const PRODUCTS_PER_PAGE = 8;
