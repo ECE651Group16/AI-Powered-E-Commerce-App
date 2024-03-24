@@ -43,12 +43,3 @@ jobs:
           pipenv run python manage.py test
           pipenv run pytest --cov-report term-missing --cov=./
           cd ../
-
-      - name: Format Code
-        uses: lgeiger/black-action@master
-        with:
-          args: "."
-
-      - uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
