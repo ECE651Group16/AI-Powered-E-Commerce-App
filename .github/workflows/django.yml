@@ -46,3 +46,4 @@ jobs:
 
       - name: Format Code
         uses: lgeiger/black-action@master
+        args: "."
