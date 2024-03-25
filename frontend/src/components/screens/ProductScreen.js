@@ -90,7 +90,9 @@ function ProductScreen({ match,history }) {
             'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         };
-  
+        // const response = await axios.get(`/store/products/${id}/`, config);
+        // const product_data = response.data; // This is the correct way to access the returned data
+        // console.log(`/store/products/${id}/`, product_data);
         const postData = {
           product_id: id, // id from useParams()
           quantity: qty,

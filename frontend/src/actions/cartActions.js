@@ -3,16 +3,19 @@ import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST, CART_DETAILS_SUC
 
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/products/${id}`)
-
+    // const { data } = await axios.get(`/store/products/${id}/`)
+    const response = await axios.get(`/store/products/${id}/`);
+    const data = response.data; // This is the correct way to access the returned data
+    console.log(`/store/products/${id}/`, data);
+    console.log(data.inventory);
     dispatch({
         type: CART_ADD_ITEM,
         payload: {
-            product: data._id,
-            name: data.name,
-            image: data.image,
-            price: data.price,
-            countInStock: data.countInStock,
+            product: data.id,
+            name: data.title,
+            images: data.images,
+            price: data.unit_price,
+            countInStock: data.inventory,
             qty
         }
     })
@@ -45,7 +48,7 @@ export const fetchCartDetails = (cartId) => async (dispatch, getState) => {
   
       // Assuming your backend has an endpoint to fetch cart details by cart ID
       const { data } = await axios.get(`/store/carts/${cartId}/`, config);
-      console.log(data);
+      // console.log(data);
       dispatch({
         type: CART_DETAILS_SUCCESS,
         payload: data,

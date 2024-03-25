@@ -20,7 +20,7 @@ import {
   FILTER_PRODUCTS_FAIL,
 
 } from "../constants/productConstants";
-
+import { useDispatch, useSelector } from "react-redux";
 
 export const listProducts = (pageNumber = '', filters = {}) => async (dispatch) => {
   try {
@@ -85,7 +85,14 @@ export const listDealsProducts = (pageNumber = '') => async (dispatch) => {
 
 
 export const listProductsYouMayLike = (pageNumber = '') => async (dispatch) => {
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
   try {
+    // const config = {
+    //   headers: {
+    //     'Authorization': `JWT ${userInfo.accessToken}`, 
+    //   },
+    // };
     dispatch({ type: MAYLIKE_PRODUCT_LIST_REQUEST });
     const { data } = await axios.get(`/store/recommendation/?page=${pageNumber}`);
     // console.log("API response:", data); // Should show the full paginated response
