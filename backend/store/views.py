@@ -145,7 +145,6 @@ class ReviewViewSet(ModelViewSet):
         user = request.user
         product_id = kwargs.get('product_pk')
 
-
         if not user.customer.order_set.filter(items__product_id=product_id).exists():
             return Response({'detail': 'You must purchase the product before reviewing it.'},
                             status=status.HTTP_403_FORBIDDEN)
@@ -211,8 +210,7 @@ class CustomerViewSet(ModelViewSet):
     serializer_class = CustomerSerializer
     permission_classes = [IsAuthenticated]
     http_method_names = ['get', 'put', 'patch', 'delete', 'head', 'options']
-    
-    
+
     def get_queryset(self):
         # If the current user is an admin, return all customers
         if self.request.user.is_staff:
@@ -300,19 +298,19 @@ class RecommendationViewSet(ModelViewSet):
 
             NUMBER_OF_FACTORS_MF = min(min(16, len(item_ids)), len(customer_ids)) - 1
             if NUMBER_OF_FACTORS_MF <= 0:
-                queryset = Product.objects.prefetch_related('images').order_by('-last_update')
-                return queryset
-            U, sigma, Vt = svds(customer_items_pivot_matrix, k=NUMBER_OF_FACTORS_MF)
-            sigma = np.diag(sigma)
+                queryset = Product.objects.prefetch_related('images').order_by('-last_update')[:10]
+            else:
+                U, sigma, Vt = svds(customer_items_pivot_matrix, k=NUMBER_OF_FACTORS_MF)
+                sigma = np.diag(sigma)
 
-            U_customer = U[np.argwhere(customer_ids == customer_id)[0]]
-            user_predicted_ratings = np.dot(np.dot(U_customer, sigma), Vt)
+                U_customer = U[np.argwhere(customer_ids == customer_id)[0]]
+                user_predicted_ratings = np.dot(np.dot(U_customer, sigma), Vt)
 
-            num_to_recommend = min(10, len(user_predicted_ratings))
-            ind = np.argpartition(user_predicted_ratings, user_predicted_ratings.size - num_to_recommend)[
-                  -num_to_recommend:]
-            recommend_items_id = item_ids[ind][0]
-            queryset = Product.objects.prefetch_related('images').filter(id__in=recommend_items_id.tolist())
+                num_to_recommend = min(10, len(user_predicted_ratings))
+                ind = np.argpartition(user_predicted_ratings, user_predicted_ratings.size - num_to_recommend)[
+                      -num_to_recommend:]
+                recommend_items_id = item_ids[ind][0]
+                queryset = Product.objects.prefetch_related('images').filter(id__in=recommend_items_id.tolist())
 
             # customer_order_item = OrderItem.objects.filter(order_id__in=customer_order_id).values(
             #     'product_id').distinct()
@@ -320,18 +318,21 @@ class RecommendationViewSet(ModelViewSet):
             #     'collection_id').distinct()
             # queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
         else:
-            queryset = Product.objects.prefetch_related('images').order_by('-last_update')
-        return queryset
+            queryset = Product.objects.prefetch_related('images').order_by('-last_update')[:10]
+        return queryset.annotate(
+            total_reviews=Count('reviews'),
+            average_rating=Avg('reviews__rating')
+        )
 
 
 class AddressViewSet(ModelViewSet):
     serializer_class = AddressSerializer
     permission_classes = [IsAdminOrOwnerForCustomer]
-    
+
     def get_queryset(self):
         customer_id = self.kwargs['customer_pk']
         return Address.objects.filter(customer_id=customer_id)
-    
+
     def perform_create(self, serializer):
         customer_pk = self.kwargs.get('customer_pk')
         serializer.save(customer_id=customer_pk)
