@@ -38,11 +38,11 @@ function Header() {
             <Nav.Link><i className="fas fa-home"></i> Home</Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/">
+            <LinkContainer to="/all_products">
             <Nav.Link><i className="fas fa-envelope"></i> Contact Us</Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/">
+            <LinkContainer to="/all_products">
             <Nav.Link><i className="fas fa-info-circle"></i> About Us</Nav.Link>
             </LinkContainer>
             </Nav>
