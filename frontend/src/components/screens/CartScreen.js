@@ -159,10 +159,6 @@ function CartScreen({ match, location, history }) {
                             ).toFixed(2)}
                         </div>
                         </ListGroup.Item>
-                        {/* <ListGroup.Item>
-                            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-                            ${cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2)}
-                        </ListGroup.Item> */}
                     </ListGroup>
 
                     <ListGroup.Item>
