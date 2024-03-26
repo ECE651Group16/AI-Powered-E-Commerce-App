@@ -14,17 +14,17 @@ import axios from 'axios';
 import SessionCheck from "./components/SessionCheck";
 import WishlistScreen from "./components/screens/WishlistScreen";
 
-axios.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      alert('Your session has expired. Please log in again.');
-      localStorage.removeItem('userInfo');
-      // Redirect or handle logout
-    }
-    return Promise.reject(error);
-  }
-);
+// axios.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response && error.response.status === 401) {
+//       alert('Your session has expired. Please log in again.');
+//       localStorage.removeItem('userInfo');
+//       // Redirect or handle logout
+//     }
+//     return Promise.reject(error);
+//   }
+// );
 
 function App() {
   return (

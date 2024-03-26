@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 function ProfileManagementScreen() {
   const [username, setUsername] = useState('');
@@ -9,7 +10,31 @@ function ProfileManagementScreen() {
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const history = useHistory();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
 
+  useEffect(() => {
+    const fetchCustomerDetails = async () => {
+      if (!userInfo) {
+        console.log('User is not logged in');
+        return;
+      }
+  
+      try {
+        const config = {
+          headers: {
+            'Authorization': `JWT ${userInfo.accessToken}`, 
+          },
+        };
+        const { data } = await axios.get('/store/customers/', config);
+      } catch (error) {
+        console.error('Failed to fetch customer details:', error);
+      }
+    };
+  
+    // fetchCustomerDetails();
+  }, [userInfo]);
+  
   useEffect(() => {
     // Fetch user info and populate the states
     const fetchUserInfo = async () => {
@@ -17,7 +42,8 @@ function ProfileManagementScreen() {
         const { data } = await axios.get('http://127.0.0.1:8000/auth/users/me/', {
           headers: {
             // Your auth token needs to be included here for authenticated requests
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            // Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+            'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         });
         setUsername(data.username);
@@ -43,7 +69,7 @@ function ProfileManagementScreen() {
         address,
       }, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+           'Authorization': `JWT ${userInfo.accessToken}`, 
         },
       });
 

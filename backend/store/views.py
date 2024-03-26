@@ -210,7 +210,8 @@ class CustomerViewSet(ModelViewSet):
     serializer_class = CustomerSerializer
     permission_classes = [IsAuthenticated]
     http_method_names = ['get', 'put', 'patch', 'delete', 'head', 'options']
-
+    
+    
     def get_queryset(self):
         # If the current user is an admin, return all customers
         if self.request.user.is_staff:
@@ -218,6 +219,18 @@ class CustomerViewSet(ModelViewSet):
         # Otherwise, return only the current customer's object
         else:
             return Customer.objects.filter(user=self.request.user)
+        
+    def me(self, request):
+        # This action always returns the current customer, regardless of admin status
+        customer = self.get_object()
+        if request.method == 'GET':
+            serializer = CustomerSerializer(customer)
+            return Response(serializer.data)
+        elif request.method == 'PUT':
+            serializer = CustomerSerializer(customer, data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response(serializer.data)
 
     def get_object(self):
         # Override the get_object method to handle 'me' action
@@ -318,21 +331,18 @@ class RecommendationViewSet(ModelViewSet):
             #     'collection_id').distinct()
             # queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
         else:
-            queryset = Product.objects.prefetch_related('images').order_by('-last_update')[:10]
-        return queryset.annotate(
-            total_reviews=Count('reviews'),
-            average_rating=Avg('reviews__rating')
-        )
+            queryset = Product.objects.prefetch_related('images').order_by('-last_update')
+        return queryset
 
 
 class AddressViewSet(ModelViewSet):
     serializer_class = AddressSerializer
     permission_classes = [IsAdminOrOwnerForCustomer]
-
+    
     def get_queryset(self):
         customer_id = self.kwargs['customer_pk']
         return Address.objects.filter(customer_id=customer_id)
-
+    
     def perform_create(self, serializer):
         customer_pk = self.kwargs.get('customer_pk')
         serializer.save(customer_id=customer_pk)

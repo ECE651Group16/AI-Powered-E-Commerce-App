@@ -20,7 +20,7 @@ import {
   FILTER_PRODUCTS_FAIL,
 
 } from "../constants/productConstants";
-
+import { useDispatch, useSelector } from "react-redux";
 
 export const listProducts = (pageNumber = '', filters = {}) => async (dispatch) => {
   try {
@@ -34,9 +34,9 @@ export const listProducts = (pageNumber = '', filters = {}) => async (dispatch) 
 
     const PRODUCTS_PER_PAGE = 8;
     const totalPages = Math.ceil(data.count / PRODUCTS_PER_PAGE);
-    console.log(`Request URL: /store/products/?${queryParams}`); // Log the request URL
-    console.log("API response:", data); // Log the full API response
-    console.log("Dispatching data:", data.results, "Total pages:", totalPages); // Log specific parts of the response
+    // console.log(`Request URL: /store/products/?${queryParams}`); // Log the request URL
+    // console.log("API response:", data); // Log the full API response
+    // console.log("Dispatching data:", data.results, "Total pages:", totalPages); // Log specific parts of the response
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -85,9 +85,16 @@ export const listDealsProducts = (pageNumber = '') => async (dispatch) => {
 
 
 export const listProductsYouMayLike = (pageNumber = '') => async (dispatch) => {
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
   try {
+    // const config = {
+    //   headers: {
+    //     'Authorization': `JWT ${userInfo.accessToken}`, 
+    //   },
+    // };
     dispatch({ type: MAYLIKE_PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`/store/products/?ordering=-last_update&page=${pageNumber}`);
+    const { data } = await axios.get(`/store/recommendation/?page=${pageNumber}`);
     // console.log("API response:", data); // Should show the full paginated response
     // console.log("Dispatching data:", data.results); // Should show just the array of products
     const PRODUCTS_PER_PAGE = 8;

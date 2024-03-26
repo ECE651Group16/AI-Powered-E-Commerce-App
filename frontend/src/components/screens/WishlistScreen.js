@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../Message'
-import { addToCart,removeFromCart } from '../../actions/cartActions'
+import { addToCart,removeFromCart , fetchCartDetails } from '../../actions/cartActions'
 import axios from 'axios';
 
 
@@ -34,7 +34,7 @@ function WishlistScreen({ match, location, history }) {
             try {
                 const config = {
                     headers: {
-                        Authorization: `Bearer ${userInfo.token}`,
+                        'Authorization': `JWT ${userInfo.accessToken}`, 
                     },
                 };
                 const { data } = await axios.get('/store/carts/my-like/', config);

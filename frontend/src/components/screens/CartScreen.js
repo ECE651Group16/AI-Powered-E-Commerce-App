@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../Message'
-import { addToCart,removeFromCart } from '../../actions/cartActions'
+import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions'
 import axios from 'axios';
 
 
@@ -15,18 +15,24 @@ function CartScreen({ match, location, history }) {
     const [cartUuid, setCartUuid] = useState('');
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
-    
+    console.log("User Info",userInfo);
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+    const cartId = "yourCartIdHere"; 
 
+
+    const GST_RATE = 0.05; // 5% GST for example purposes
+    const HST_RATE = 0.13; // 13% HST for Ontario
+    
     // useEffect(() => {
     //     if (productId) {
     //         dispatch(addToCart(productId, qty))
     //     }
     // }, [dispatch, productId, qty])
 
+
     useEffect(() => {
-        const fetchCart = async () => {
+        const fetchCustomerCartId = async () => {
             if (!userInfo) {
                 history.push('/login');
                 return;
@@ -34,28 +40,41 @@ function CartScreen({ match, location, history }) {
             try {
                 const config = {
                     headers: {
-                        Authorization: `Bearer ${userInfo.token}`,
+                        'Authorization': `JWT ${userInfo.accessToken}`, 
                     },
                 };
-                const { data } = await axios.get('/store/carts/my-cart/', config);
-                setCartUuid(data.id);
-                // Dispatch an action to load cart items into the state, if needed
+                console.log("Getting /store/customers/ with key", `JWT ${userInfo.accessToken}`);
+                const { data } = await axios.get('/store/customers/', config);
+                // Assuming the response includes the cart_id directly
+                const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
+                console.log("cartID:", customerCartId);
+                if (customerCartId) {
+                    dispatch(fetchCartDetails(customerCartId));
+                }
             } catch (error) {
-                console.error('Failed to fetch cart:', error);
+                console.error('Failed to fetch customer cart ID:', error);
             }
         };
 
-        fetchCart();
-    }, [userInfo, history]);
+        fetchCustomerCartId();
+    }, [userInfo, history, dispatch]);
 
-    const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id))
-    }
+
+    useEffect(() => {
+        if (productId && cart.cartId) {
+            dispatch(addToCart(cart.cartId, productId, qty));
+        }
+    }, [dispatch, productId, qty, cart.cartId]);
+
+    const removeFromCartHandler = (itemId) => {
+        dispatch(removeFromCart(itemId));
+    };
+
     const checkoutHandler = () => {
         history.push('/login?redirect=shipping')
     }
 
-
+    const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     return (
         <Row>
             <Col md={8}>
@@ -66,37 +85,40 @@ function CartScreen({ match, location, history }) {
                     </Message>
                 ) : (
                         <ListGroup variant='flush'>
-                            {cartItems.map(item => (
-                                <ListGroup.Item key={item.product}>
+                            {cartItems.map(item =>{
+                                console.log(item);
+                                return (
+                                <ListGroup.Item key={item.id}>
+                                    <Row className="align-items-center">
                                     <Row>
                                         <Col md={2}>
-                                            <Image src={item.image} alt={item.name} fluid rounded />
+                                        <Image src={item.images && item.images.length > 0 ? item.images[0].image : defaultImage} alt={item.name} fluid rounded />
                                         </Col>
                                         <Col md={3}>
-                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                            <Link to={`/products/${item.product}`}>{item.name}</Link>
                                         </Col>
 
                                         <Col md={2}>
-                                            ${item.price}
+                                            ${item.unit_price}
                                         </Col>
 
-                                        <Col md={3}>
-                                            <Form.Control
-                                                as="select"
-                                                value={item.qty}
-                                                onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
-                                             
+                                        <Col md={2}>
+                                             <Form.Control
+                                            as="select"
+                                            value={item.qty}
+                                            onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
                                             >
-                                                {
-
-                                                    [...Array(item.countInStock).keys()].map((x) => (
-                                                        <option key={x + 1} value={x + 1}>
-                                                            {x + 1}
-                                                        </option>
-                                                    ))
-                                                }
-
+                                            {[...Array(item.countInStock).keys()].map((x) => (
+                                                <option key={x + 1} value={x + 1}>
+                                                {x + 1}
+                                                </option>
+                                            ))}
                                             </Form.Control>
+                                        </Col>
+                                        <Col md={2}> {/* New Column for Total Price */}
+                                        <Col md={2}> {/* New Column for Total Price */}
+                                        ${item.total_price ? item.total_price.toFixed(2) : '0.00'}
+                                        </Col>
                                         </Col>
 
                                         <Col md={1}>
@@ -109,8 +131,10 @@ function CartScreen({ match, location, history }) {
                                             </Button>
                                         </Col>
                                     </Row>
+                                    </Row>
                                 </ListGroup.Item>
-                            ))}
+                            )}
+                            )}
                         </ListGroup>
                     )}
             </Col>
@@ -119,8 +143,23 @@ function CartScreen({ match, location, history }) {
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
-                            <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
-                            ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+                        <h2>Summary</h2>
+                        {/* Subtotal */}
+                        <div>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)} items): 
+                            ${cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2)}
+                        </div>
+                        {/* GST/HST Calculation */}
+                        <div>GST/HST (13%): 
+                            ${(
+                                0.13 * cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0)
+                            ).toFixed(2)}
+                        </div>
+                        {/* Final Price */}
+                        <div>Total: 
+                            ${(
+                                1.13 * cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0)
+                            ).toFixed(2)}
+                        </div>
                         </ListGroup.Item>
                     </ListGroup>
 
