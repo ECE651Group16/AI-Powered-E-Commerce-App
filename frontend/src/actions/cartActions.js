@@ -22,14 +22,54 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     })
     localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }
-export const removeFromCart = (id) => (dispatch, getState) => {
-    dispatch({
-        type: CART_REMOVE_ITEM,
-        payload: id,
-    })
+export const removeFromCart = (itemId) => async (dispatch, getState) => {
+    try {
+      const { userLogin: { userInfo } } = getState();
+  
+      if (!userInfo || !userInfo.accessToken) {
+        throw new Error('User not authenticated');
+      }
+  
+      const config = {
+        headers: {
+          'Authorization': `JWT ${userInfo.accessToken}`,
+        },
+      };
+  
+      // Fetching the user's cart ID
+      const customerResponse = await axios.get('/store/customers/', config);
+      const customerDetails = customerResponse.data.find(customer => customer.user_id === userInfo.id);
+  
+      if (!customerDetails || !customerDetails.cart_id) {
+        throw new Error('No cart ID found for the current user.');
+      }
+      
+      // Fetch cart items to find the correct cart item ID
+      const cartItemsResponse = await axios.get(`/store/carts/${customerDetails.cart_id}/items/`, config);
+      console.log('Cart Items:', cartItemsResponse.data);
 
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
-}
+      const cartItem = cartItemsResponse.data.find(item => item.product.id === itemId);
+      console.log('Cart Item ID:', cartItem.id, itemId);
+
+      if (!cartItem) {
+          throw new Error('Cart item not found for the given product ID');
+      }
+
+      // Once cart ID is fetched, proceed to remove the item
+      await axios.delete(`/store/carts/${customerDetails.cart_id}/items/${cartItem.id}/`, config);
+  
+      dispatch({
+        type: CART_REMOVE_ITEM,
+        payload: itemId,
+      });
+  
+      // Update localStorage
+      localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+    } catch (error) {
+      console.error('Failed to remove item from cart:', error);
+      // Optionally dispatch an error action here
+    }
+  };
 
 
 export const fetchCartDetails = (cartId) => async (dispatch, getState) => {

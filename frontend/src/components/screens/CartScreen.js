@@ -18,6 +18,7 @@ function CartScreen({ match, location, history }) {
     console.log("User Info",userInfo);
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
+    const cartId = "yourCartIdHere"; 
 
 
     const GST_RATE = 0.05; // 5% GST for example purposes
@@ -65,9 +66,10 @@ function CartScreen({ match, location, history }) {
         }
     }, [dispatch, productId, qty, cart.cartId]);
 
-    const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id))
-    }
+    const removeFromCartHandler = (itemId) => {
+        dispatch(removeFromCart(itemId));
+    };
+
     const checkoutHandler = () => {
         history.push('/login?redirect=shipping')
     }
