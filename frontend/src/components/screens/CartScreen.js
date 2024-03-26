@@ -19,6 +19,10 @@ function CartScreen({ match, location, history }) {
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
 
+
+    const GST_RATE = 0.05; // 5% GST for example purposes
+    const HST_RATE = 0.13; // 13% HST for Ontario
+    
     // useEffect(() => {
     //     if (productId) {
     //         dispatch(addToCart(productId, qty))
@@ -111,7 +115,7 @@ function CartScreen({ match, location, history }) {
                                         </Col>
                                         <Col md={2}> {/* New Column for Total Price */}
                                         <Col md={2}> {/* New Column for Total Price */}
-                                            ${item.total_price?.toFixed(2) || '0.00'}
+                                        ${item.total_price ? item.total_price.toFixed(2) : '0.00'}
                                         </Col>
                                         </Col>
 
@@ -137,9 +141,28 @@ function CartScreen({ match, location, history }) {
                 <Card>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
+                        <h2>Summary</h2>
+                        {/* Subtotal */}
+                        <div>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)} items): 
+                            ${cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2)}
+                        </div>
+                        {/* GST/HST Calculation */}
+                        <div>GST/HST (13%): 
+                            ${(
+                                0.13 * cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0)
+                            ).toFixed(2)}
+                        </div>
+                        {/* Final Price */}
+                        <div>Total: 
+                            ${(
+                                1.13 * cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0)
+                            ).toFixed(2)}
+                        </div>
+                        </ListGroup.Item>
+                        {/* <ListGroup.Item>
                             <h2>Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items</h2>
                             ${cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2)}
-                        </ListGroup.Item>
+                        </ListGroup.Item> */}
                     </ListGroup>
 
                     <ListGroup.Item>
