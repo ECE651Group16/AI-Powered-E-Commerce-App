@@ -110,7 +110,9 @@ function CartScreen({ match, location, history }) {
                                             </Form.Control>
                                         </Col>
                                         <Col md={2}> {/* New Column for Total Price */}
-                                            ${item.total_price.toFixed(2)}
+                                        <Col md={2}> {/* New Column for Total Price */}
+                                            ${item.total_price?.toFixed(2) || '0.00'}
+                                        </Col>
                                         </Col>
 
                                         <Col md={1}>

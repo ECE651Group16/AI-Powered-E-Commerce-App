@@ -7,7 +7,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     const response = await axios.get(`/store/products/${id}/`);
     const data = response.data; // This is the correct way to access the returned data
     console.log(`/store/products/${id}/`, data);
-    console.log(data.inventory);
+    console.log("inventory:",data.inventory);
     dispatch({
         type: CART_ADD_ITEM,
         payload: {
@@ -48,7 +48,7 @@ export const fetchCartDetails = (cartId) => async (dispatch, getState) => {
   
       // Assuming your backend has an endpoint to fetch cart details by cart ID
       const { data } = await axios.get(`/store/carts/${cartId}/`, config);
-      // console.log(data);
+      console.log("fetching cart detail:", data);
       dispatch({
         type: CART_DETAILS_SUCCESS,
         payload: data,
