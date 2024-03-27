@@ -26,6 +26,9 @@ dj-database-url = "*"
 django-silk = "*"
 model-bakery = "*"
 pytest-cov = "*"
+pandas = "*"
+scipy = "*"
+numpy = "*"
 
 [dev-packages]
 pytest = "*"

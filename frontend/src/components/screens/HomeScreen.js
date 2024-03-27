@@ -21,15 +21,23 @@ function HomeScreen() {
     const [latestpage, latestsetPage] = useState(1);
     const {latesterror, latestloading, latestproducts, latesttotalPages} = useSelector(state=>state.latestproductList);
 
-    // console.log("totalPages", dealstotalPages);
+      // Add the userLogin part from Redux store to determine if the user is logged in
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
 
     useEffect(()=>{
         dispatch(listDealsProducts(dealspage));
     },[dispatch, dealspage])
     
     useEffect(()=>{
-      dispatch(listProductsYouMayLike(maylikepage));
-    },[dispatch, maylikepage])
+      //console.log('User Info:', userInfo); // Check what userInfo contains
+    if (userInfo && userInfo.accessToken) {
+      //console.log('Access Token:', userInfo.accessToken); // Check the accessToken
+      dispatch(listProductsYouMayLike(maylikepage, userInfo));
+    } else {
+      console.log('No user info or access token available.');
+    }
+  }, [dispatch, maylikepage, userInfo]);
 
     useEffect(()=>{
       dispatch(listLatestProducts(latestpage));
@@ -95,6 +103,8 @@ function HomeScreen() {
           </div>
         </div>
 
+        {userInfo && ( // Conditionally render this section if userInfo is not null
+        <React.Fragment>
         <h1 className="text-center">Product You May Like</h1>
         <div className="horizontal-scroll-wrapper">
           <div className={`pagination-control ${maylikepage <= 1 ? 'disabled' : ''}`} onClick={maylikehandlePrevious}>
@@ -115,7 +125,7 @@ function HomeScreen() {
             <FontAwesomeIcon icon={faChevronRight} />
           </div>
         </div>
-          
+        </React.Fragment>)}   
 
         <h1 className="text-center">Latest Product or (Hottest Product in your region)</h1>
         <div className="horizontal-scroll-wrapper">

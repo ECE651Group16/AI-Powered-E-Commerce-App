@@ -14,10 +14,6 @@ function Header() {
     dispatch(logout())
   }
 
-
-
-
-
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -42,52 +38,49 @@ function Header() {
             <Nav.Link><i className="fas fa-home"></i> Home</Nav.Link>
             </LinkContainer>
 
+            <LinkContainer to="/all_products">
+            <Nav.Link><i className="fas fa-envelope"></i> Contact Us</Nav.Link>
+            </LinkContainer>
+
+            <LinkContainer to="/all_products">
+            <Nav.Link><i className="fas fa-info-circle"></i> About Us</Nav.Link>
+            </LinkContainer>
+            </Nav>
+
+          <Nav className="ms-auto">  
             <LinkContainer to="/like">
-            <Nav.Link><i className="fas fa-heart"></i> wishlist</Nav.Link>
+            <Nav.Link><i className="fas fa-heart"></i> Wishlist</Nav.Link>
             </LinkContainer>
 
             <LinkContainer to="/cart">
             <Nav.Link><i className="fas fa-shopping-cart"></i> Cart</Nav.Link>
             </LinkContainer>
 
+            {userInfo?(
+            <NavDropdown title={`${userInfo.first_name} ${userInfo.last_name}`} id='username'>
+              
+            <LinkContainer to='/profile'>
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+            </LinkContainer>
+
+            <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+
+            </NavDropdown>
+            ):
+            (
+            <LinkContainer to="/login">
+            <Nav.Link><i className="fas fa-user"></i> Login</Nav.Link>
+            </LinkContainer>
+            )
+
+            }
+            </Nav>
             
-{userInfo?(
-  <NavDropdown title={userInfo.name} id='username'>
-                                    <LinkContainer to='/profile'>
-                                        <NavDropdown.Item>Profile</NavDropdown.Item>
-                                    </LinkContainer>
-
-                                    <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-
-                                </NavDropdown>
-
-):
-
-(
-
-
-  <LinkContainer to="/login">
-  <Nav.Link><i className="fas fa-user"></i> Login</Nav.Link>
-  </LinkContainer>
-)
-
-}
-
-
-
-
-
-
-
-            
-         
-          </Nav>
-          
-        </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
-  );
-}
+          </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </div>
+    );
+    }
 
 export default Header;

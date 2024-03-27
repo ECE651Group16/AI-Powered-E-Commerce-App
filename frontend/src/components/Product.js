@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 function Product({ product }) {
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
-  console.log(product); 
+  // console.log(product); 
   return (
     <Card classname="my-3 p-3 rounded">
       <Link to={`/products/${product.id}`}>

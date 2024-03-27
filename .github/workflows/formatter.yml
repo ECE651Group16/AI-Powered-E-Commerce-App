@@ -1,0 +1,32 @@
+name: Formatter
+
+permissions:
+  contents: write
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+
+      - name: Format code
+        uses: lgeiger/black-action@master
+        with:
+          args: "."
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          default_author: github_actions
+          message: 'Format Code'
+          push: true
+          token: ${{ secrets.MY_GITHUB_TOKEN }} 
