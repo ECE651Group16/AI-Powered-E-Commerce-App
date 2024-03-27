@@ -31,7 +31,7 @@ export const login = (username,password)=> async(dispatch)=>{
                 'Authorization': `JWT ${accessToken}`, // Use the access token here
             },
         };
-        console.log(`Making request to URL: ${axios.defaults.baseURL}auth/users/me/ with token: ${accessToken}`);
+        console.log(`Making request to URL: ${axios.defaults.baseURL}auth/users/me/ with token: JWT ${accessToken}`);
         const userDetails = await axios.get('/auth/users/me/', userDetailConfig);
         
         console.log("User details response data:", userDetails.data); // Log the user details
