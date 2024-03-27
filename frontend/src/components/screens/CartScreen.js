@@ -12,13 +12,13 @@ function CartScreen({ match, location, history }) {
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
 
-    const [cartUuid, setCartUuid] = useState('');
+    // const [cartUuid, setCartUuid] = useState('');
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     console.log("User Info",userInfo);
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    const cartId = "yourCartIdHere"; 
+    // const cartId = "yourCartIdHere"; 
 
 
     const GST_RATE = 0.05; // 5% GST for example purposes
