@@ -1,5 +1,8 @@
 import { USER_LOGIN_FAIL,USER_LOGIN_SUCCESS,USER_LOGOUT,USER_LOGIN_REQUEST,USER_REGISTER_FAIL,USER_REGISTER_SUCCESS,USER_REGISTER_REQUEST, } from '../constants/userConstants'
 import axios from 'axios'
+import { clearCart } from './cartActions'; 
+import { clearLikes } from './likesActions';
+
 axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 
 
@@ -130,7 +133,13 @@ export const register =(email, password, username, firstName, lastName)=> async(
 
 
 export const logout = () => (dispatch) => {
-    localStorage.removeItem('userInfo')
-    dispatch({ type: USER_LOGOUT })
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems'); // Clear cart items from local storage
+    localStorage.removeItem('likesItems');
+    // Optionally, clear other local storage items related to user session
+    
+    dispatch({ type: USER_LOGOUT });
+    dispatch(clearCart()); // Clear cart items in Redux state
+    dispatch(clearLikes());
  
 }

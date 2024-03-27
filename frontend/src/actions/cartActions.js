@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST, CART_DETAILS_SUCCESS, CART_DETAILS_FAIL} from '../constants/cartConstants';
+import { CART_CLEAR ,CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST, CART_DETAILS_SUCCESS, CART_DETAILS_FAIL} from '../constants/cartConstants';
 
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
@@ -104,3 +104,10 @@ export const fetchCartDetails = (cartId) => async (dispatch, getState) => {
       });
     }
   };
+
+
+export const clearCart = () => (dispatch) => {
+    dispatch({
+        type: CART_CLEAR,
+    });
+};

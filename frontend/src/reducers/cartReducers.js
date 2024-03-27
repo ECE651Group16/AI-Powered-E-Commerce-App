@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST,
+import { CART_CLEAR, CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST,
     CART_DETAILS_SUCCESS,
     CART_DETAILS_FAIL,} from "../constants/cartConstants";
 
@@ -54,6 +54,12 @@ import { CART_ADD_ITEM ,CART_REMOVE_ITEM, CART_DETAILS_REQUEST,
                     ...state,
                     loading: false,
                     error: action.payload,
+                };
+
+            case CART_CLEAR:
+                return {
+                    ...state,
+                    cartItems: [] // Reset cartItems to an empty array
                 };
     
             default:

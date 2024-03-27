@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST, LIKES_DETAILS_SUCCESS, LIKES_DETAILS_FAIL} from '../constants/likesConstants';
+import { LIKES_CLEAR, LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST, LIKES_DETAILS_SUCCESS, LIKES_DETAILS_FAIL} from '../constants/likesConstants';
 
 
 export const addTolikes = (id, qty) => async (dispatch, getState) => {
@@ -104,3 +104,9 @@ export const fetchLikesDetails = (likesId) => async (dispatch, getState) => {
       });
     }
   };
+
+export const clearLikes = () => (dispatch) => {
+    dispatch({
+        type: LIKES_CLEAR,
+    });
+};

@@ -1,4 +1,4 @@
-import { LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST,
+import { LIKES_CLEAR, LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST,
     LIKES_DETAILS_SUCCESS,
     LIKES_DETAILS_FAIL,} from "../constants/likesConstants";
 
@@ -54,6 +54,11 @@ import { LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST,
                     ...state,
                     loading: false,
                     error: action.payload,
+                };
+            case LIKES_CLEAR:
+                return {
+                    ...state,
+                    likesItems: [] // Reset cartItems to an empty array
                 };
     
             default:
