@@ -84,17 +84,19 @@ export const listDealsProducts = (pageNumber = '') => async (dispatch) => {
 };
 
 
-export const listProductsYouMayLike = (pageNumber = '') => async (dispatch) => {
+export const listProductsYouMayLike = (pageNumber = '', userInfo) => async (dispatch) => {
   // const userLogin = useSelector((state) => state.userLogin);
   // const { userInfo } = userLogin;
   try {
-    // const config = {
-    //   headers: {
-    //     'Authorization': `JWT ${userInfo.accessToken}`, 
-    //   },
-    // };
+    const config = {
+      headers: {
+        'Authorization': `JWT ${userInfo.accessToken}`, 
+      },
+    };
     dispatch({ type: MAYLIKE_PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`/store/recommendation/?page=${pageNumber}`);
+    // console.log('userInfo:', userInfo);
+    // console.log('config:', config);
+    const { data } = await axios.get(`/store/recommendation/?page=${pageNumber}`, config);
     // console.log("API response:", data); // Should show the full paginated response
     // console.log("Dispatching data:", data.results); // Should show just the array of products
     const PRODUCTS_PER_PAGE = 8;

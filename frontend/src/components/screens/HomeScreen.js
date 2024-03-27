@@ -30,10 +30,14 @@ function HomeScreen() {
     },[dispatch, dealspage])
     
     useEffect(()=>{
-      if (userInfo) {
-        dispatch(listProductsYouMayLike(maylikepage));
-      }
-    }, [dispatch, maylikepage, userInfo]); 
+      //console.log('User Info:', userInfo); // Check what userInfo contains
+    if (userInfo && userInfo.accessToken) {
+      //console.log('Access Token:', userInfo.accessToken); // Check the accessToken
+      dispatch(listProductsYouMayLike(maylikepage, userInfo));
+    } else {
+      console.log('No user info or access token available.');
+    }
+  }, [dispatch, maylikepage, userInfo]);
 
     useEffect(()=>{
       dispatch(listLatestProducts(latestpage));
