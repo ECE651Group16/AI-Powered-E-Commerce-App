@@ -1,6 +1,6 @@
 # AI-Powered E-Commerce App Django
 
-![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main) ![Node CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/react.yml/badge.svg?branch=main) ![Black Formatter](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/formatter.yml/badge.svg?branch=main)
+![Django CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/django.yml/badge.svg?branch=main) ![Node CI](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/react.yml/badge.svg?branch=main) ![Formatter](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/actions/workflows/formatter.yml/badge.svg?branch=main)
 
 An AI-enhanced e-commerce platform designed to offer an intuitive and efficient online shopping experience. Developed
 with Django and backed by MySQL, this app integrates advanced AI features to cater to both user and business needs.
