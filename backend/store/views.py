@@ -311,7 +311,7 @@ class RecommendationViewSet(ModelViewSet):
 
             NUMBER_OF_FACTORS_MF = min(min(16, len(item_ids)), len(customer_ids)) - 1
             if NUMBER_OF_FACTORS_MF <= 0:
-                queryset = Product.objects.prefetch_related('images').order_by('-last_update')[:10]
+                queryset = Product.objects.prefetch_related('images').order_by('-last_update')#[:10]
             else:
                 U, sigma, Vt = svds(customer_items_pivot_matrix, k=NUMBER_OF_FACTORS_MF)
                 sigma = np.diag(sigma)
@@ -332,7 +332,10 @@ class RecommendationViewSet(ModelViewSet):
             # queryset = Product.objects.prefetch_related('images').filter(collection_id__in=customer_interest_collection)
         else:
             queryset = Product.objects.prefetch_related('images').order_by('-last_update')
-        return queryset
+        return queryset.annotate(
+            total_reviews=Count('reviews'),
+            average_rating=Avg('reviews__rating')
+        )
 
 
 class AddressViewSet(ModelViewSet):
