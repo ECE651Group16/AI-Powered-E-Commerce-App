@@ -8,33 +8,43 @@ from likes.views import LikesViewSet, LikedItemViewSet
 
 router = routers.DefaultRouter()
 # router = DefaultRouter()
-router.register('products', views.ProductViewSet, basename='product')
-router.register('collections', views.CollectionViewSet)
-router.register('carts', views.CartViewSet)
+router.register("products", views.ProductViewSet, basename="product")
+router.register("collections", views.CollectionViewSet)
+router.register("carts", views.CartViewSet)
 
-router.register('customers', views.CustomerViewSet)
-customers_router = routers.NestedDefaultRouter(router, 'customers', lookup='customer')
-customers_router.register('addresses', views.AddressViewSet, basename='customer-addresses')
+router.register("customers", views.CustomerViewSet)
+customers_router = routers.NestedDefaultRouter(router, "customers", lookup="customer")
+customers_router.register(
+    "addresses", views.AddressViewSet, basename="customer-addresses"
+)
 
-router.register('orders', views.OrderViewSet, basename='orders')
-router.register('recommendation', views.RecommendationViewSet, basename='recommendation')
+router.register("orders", views.OrderViewSet, basename="orders")
+router.register(
+    "recommendation", views.RecommendationViewSet, basename="recommendation"
+)
 
-router.register('likes', LikesViewSet, basename='likes')
-likes_router = routers.NestedDefaultRouter(router, 'likes', lookup='likes')
-likes_router.register('items', LikedItemViewSet, basename='likes-items')
+router.register("likes", LikesViewSet, basename="likes")
+likes_router = routers.NestedDefaultRouter(router, "likes", lookup="likes")
+likes_router.register("items", LikedItemViewSet, basename="likes-items")
 
-carts_router = routers.NestedDefaultRouter(router, 'carts', lookup='cart')
-carts_router.register('items', views.CartItemViewSet, basename='cart-items')
-products_router = routers.NestedDefaultRouter(router, 'products', lookup='product')
-products_router.register('reviews', views.ReviewViewSet, basename='product-reviews')
-products_router.register('images', views.ProductImageViewSet, basename='product-images')
+carts_router = routers.NestedDefaultRouter(router, "carts", lookup="cart")
+carts_router.register("items", views.CartItemViewSet, basename="cart-items")
+products_router = routers.NestedDefaultRouter(router, "products", lookup="product")
+products_router.register("reviews", views.ReviewViewSet, basename="product-reviews")
+products_router.register("images", views.ProductImageViewSet, basename="product-images")
 
 # pprint(router.urls)
 
-urlpatterns = router.urls + products_router.urls + carts_router.urls + likes_router.urls + customers_router.urls
+urlpatterns = (
+    router.urls
+    + products_router.urls
+    + carts_router.urls
+    + likes_router.urls
+    + customers_router.urls
+)
 
 # URLConfiguration
-'''
+"""
 # urlpatterns = router.urls
 # urlpatterns = [
 #     path('', include(router.urls))
@@ -44,4 +54,4 @@ urlpatterns = router.urls + products_router.urls + carts_router.urls + likes_rou
 #     path("collections/", views.CollectionList.as_view()),
 #     path("collections/<int:pk>/", views.CollectionDetail.as_view(), name = 'collection-detail')
 # ]
-'''
+"""
