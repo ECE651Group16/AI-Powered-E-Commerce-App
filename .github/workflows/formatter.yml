@@ -1,4 +1,4 @@
-name: Black Formatter
+name: Formatter
 
 permissions:
   contents: write
@@ -18,15 +18,16 @@ jobs:
         with:
           token: ${{ secrets.MY_GITHUB_TOKEN }}
 
-      - name: Format code
-        uses: lgeiger/black-action@master
-        with:
-          args: "."
+      - name: Super-Linter
+        uses: super-linter/super-linter/slim@v6.3.0
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
-          message: 'Format code using black'
+          message: 'Format Code'
           push: true
           token: ${{ secrets.MY_GITHUB_TOKEN }} 
