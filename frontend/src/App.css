@@ -36,3 +36,96 @@
     transform: rotate(360deg);
   }
 }
+
+
+.horizontal-scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  align-items: stretch;
+  
+}
+
+/* .product-card {
+  display: inline-block;
+  margin: 10px;
+  width: 200px; 
+} */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* This will align the child content to the bottom */
+  margin: 10px;
+  width: 280px; /* Adjust based on your design */
+  box-sizing: border-box; /* Make sure padding and borders are included in the width */
+  background-color: #fff; /* Background color */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+}
+
+.product-card img {
+  width: 100%; /* Ensure images are full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 150px; /* Adjust based on your design, ensures images don't stretch too tall */
+  object-fit: cover; /* This will cover the area of the image div without stretching */
+}
+
+.product-card h3 {
+  overflow: hidden; /* Hide text overflow */
+  text-overflow: ellipsis; /* Show ellipsis (...) when text overflows */
+  white-space: nowrap; /* Keep titles in a single line */
+  margin-bottom: 0.5em; /* Add space below the title */
+}
+.product-title { /* New class for the title */
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px; /* Give some horizontal padding */
+  height: 1.2em; /* Set a fixed height for one line */
+  line-height: 1.2em; /* Set a line height to match the height */
+}
+.product-info { /* Add this class to the div that wraps the title and other text inside .product-card */
+  padding: 0 10px; /* Add some padding around the text */
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  margin-top: 20px;
+  cursor: pointer;
+  user-select: none;
+  position: relative; /* To adjust the vertical position */
+  
+}
+
+.pagination-button {
+  margin: 0 10px;
+}
+
+/* Adjust the size and alignment of the arrow containers */
+.pagination-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px; /* Adjust to match the desired width */
+  height: 250px; /* Adjust to match the height of your product images */
+  cursor: pointer;
+  user-select: none;
+  background-color: #f0f0f0; /* Optional: background color for the arrow containers */
+  position: relative; /* Add position relative to allow precise adjustment using top property */
+  top: 50px; /* Adjust this value to move the button lower */
+}
+
+/* Style for disabled navigation controls */
+.pagination-control.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Adjust the size of the FontAwesome icons */
+.pagination-control > svg {
+  font-size: 2rem; /* Adjust the size of the arrows */
+}
+
