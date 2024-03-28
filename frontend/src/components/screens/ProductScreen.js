@@ -17,6 +17,7 @@ function ProductScreen({ match,history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const [cartUuid, setCartUuid] = useState('');
+  const [likesUuid, setLikesUuid] = useState('');
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
@@ -28,9 +29,6 @@ function ProductScreen({ match,history }) {
 
   useEffect(()=>{
     dispatch(listProductDetails(match.params.id));
-
-
-
   },[dispatch,match]);
 
   useEffect(() => {
@@ -53,6 +51,12 @@ function ProductScreen({ match,history }) {
           console.log('Cart ID fetched:', customerDetails.cart_id);
         } else {
           console.log('No cart ID found for the current user.');
+        }
+        if (customerDetails && customerDetails.likes_id) {
+          setLikesUuid(customerDetails.likes_id);
+          console.log('Likes ID fetched:', customerDetails.likes_id);
+        } else {
+          console.log('No likes ID found for the current user.');
         }
       } catch (error) {
         console.error('Failed to fetch customer details:', error);
@@ -110,6 +114,58 @@ function ProductScreen({ match,history }) {
     }
     // history.push(`/cart/`)
  }
+
+
+ const addToLikesHandler = async()=>{
+  if (!userInfo) {
+    history.push('/login');
+    return;
+  }
+  try {
+    console.log("userInfo:", userInfo);
+    let currentLikesId = likesUuid; // Assuming this state holds the current user's likes ID
+
+    // If the user does not have a likes ID, create a new likes
+    if (!currentLikesId) {
+      const config = {
+        headers: {
+          'Authorization': `JWT ${userInfo.accessToken}`, 
+        },
+      };
+      console.log("POSTING: /store/likes/ with ", config)
+      const { data } = await axios.post('/store/likes/', {}, config);
+      currentLikesId = data.id; // Assuming the response includes the likes ID
+      // console.log(currentLikesId,"not id");
+      // Optionally, update the likesUuid state or redux store with the new likes ID
+    }
+
+    // Add the product to the likes
+    if (currentLikesId) {
+      const config = {
+        headers: {
+          'Authorization': `JWT ${userInfo.accessToken}`, 
+        },
+      };
+      // const response = await axios.get(`/store/products/${id}/`, config);
+      // const product_data = response.data; // This is the correct way to access the returned data
+      // console.log(`/store/products/${id}/`, product_data);
+      const postData = {
+        product_id: id, // id from useParams()
+        quantity: qty,
+      };
+
+      // console.log(currentLikesId,"with id");
+      await axios.post(`/store/likes/${currentLikesId}/items/`, postData, config);
+      
+      // Redirect to cart page or show success message
+      history.push('/wishlist');
+    }
+  } catch (error) {
+    console.error('Failed to add item to wishlist:', error);
+    // Handle error, e.g., show error message
+  }
+  // history.push(`/wishlist/`)
+}
 
 
  
@@ -208,6 +264,17 @@ function ProductScreen({ match,history }) {
                 </Row>
                 </ListGroup.Item>
             )}
+                <ListGroup.Item>
+                  <Button
+                    className="btn-block"
+                    disabled={product.inventory == 0}
+                    type="button"
+                    onClick={addToLikesHandler}
+                  >
+                    Add to Wishlist
+                  </Button>
+                </ListGroup.Item>
+
 
                 <ListGroup.Item>
                   <Button
@@ -219,6 +286,7 @@ function ProductScreen({ match,history }) {
                     Add to Cart
                   </Button>
                 </ListGroup.Item>
+                
               </ListGroup>
             </Card>
           </Col>

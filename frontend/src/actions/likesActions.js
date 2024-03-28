@@ -45,18 +45,18 @@ export const removeFromLikes = (itemId) => async (dispatch, getState) => {
       }
       
       // Fetch likes items to find the correct likes item ID
-      const likesItemsResponse = await axios.get(`/store/likess/${customerDetails.likes_id}/items/`, config);
+      const likesItemsResponse = await axios.get(`/store/likes/${customerDetails.likes_id}/items/`, config);
       console.log('Likes Items:', likesItemsResponse.data);
 
-      const likesItem = likesItemsResponse.data.find(item => item.product.id === itemId);
-      console.log('Likes Item ID:', likesItem.id, itemId);
+      const likesItems = likesItemsResponse.data.find(item => item.product.id === itemId);
+      console.log('Likes Item ID:', likesItems.id, itemId);
 
-      if (!likesItem) {
+      if (!likesItems) {
           throw new Error('Likes item not found for the given product ID');
       }
 
       // Once likes ID is fetched, proceed to remove the item
-      await axios.delete(`/store/likes/${customerDetails.likes_id}/items/${likesItem.id}/`, config);
+      await axios.delete(`/store/likes/${customerDetails.likes_id}/items/${likesItems.id}/`, config);
   
       dispatch({
         type: LIKES_REMOVE_ITEM,
@@ -88,7 +88,7 @@ export const fetchLikesDetails = (likesId) => async (dispatch, getState) => {
       };
   
       // Assuming your backend has an endpoint to fetch likes details by likes ID
-      const { data } = await axios.get(`/store/likess/${likesId}/`, config);
+      const { data } = await axios.get(`/store/likes/${likesId}/`, config);
       console.log("fetching likes detail:", data);
       dispatch({
         type: LIKES_DETAILS_SUCCESS,
