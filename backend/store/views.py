@@ -64,7 +64,7 @@ from .serializers import (
     UpdateReviewSerializer,
     AddressSerializer,
 )
-
+from .recommender import recommend
 
 # Create your views here.
 # generic views
@@ -82,6 +82,7 @@ class ProductViewSet(ModelViewSet):
         "total_sells",
         "average_rating",
         "total_reviews",
+        'recommended_products'
     ]
 
     def get_queryset(self):
@@ -92,6 +93,8 @@ class ProductViewSet(ModelViewSet):
                 total_reviews=Count("reviews"), average_rating=Avg("reviews__rating")
             )
         )
+    
+    
 
     def get_serializer_context(self):
         return {"request": self.request}
