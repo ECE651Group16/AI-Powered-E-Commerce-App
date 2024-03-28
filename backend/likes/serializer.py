@@ -7,6 +7,7 @@ from store.models import Product
 
 class SimpleProductSerializer(serializers.ModelSerializer):
     images = ProductImageSerializer(many=True, read_only=True)
+
     class Meta:
         model = Product
         fields = ["id", "title", "unit_price", "images", "inventory"]
