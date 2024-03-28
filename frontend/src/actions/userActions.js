@@ -122,7 +122,7 @@ export const register =(email, password, username, firstName, lastName)=> async(
          const userDetails = await axios.get('/auth/users/me/', userDetailConfig);
          
          console.log("User details response data:", userDetails.data); // Log the user details
- 
+         console.log("Register Done");
          // Combine user info and tokens into a single object before storing
          const userInfo = {
              ...userDetails.data,
