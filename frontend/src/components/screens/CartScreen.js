@@ -12,13 +12,13 @@ function CartScreen({ match, location, history }) {
     const qty = location.search ? Number(location.search.split('=')[1]) : 1
     const dispatch = useDispatch()
 
-    const [cartUuid, setCartUuid] = useState('');
+    // const [cartUuid, setCartUuid] = useState('');
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     console.log("User Info",userInfo);
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart
-    const cartId = "yourCartIdHere"; 
+    // const cartId = "yourCartIdHere"; 
 
 
     const GST_RATE = 0.05; // 5% GST for example purposes
@@ -76,7 +76,7 @@ function CartScreen({ match, location, history }) {
 
     const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     return (
-        <Row>
+        <Row className="justify-content-center">
             <Col md={8}>
                 <h1>Shopping Cart</h1>
                 {cartItems.length === 0 ? (
@@ -91,18 +91,18 @@ function CartScreen({ match, location, history }) {
                                 <ListGroup.Item key={item.id}>
                                     <Row className="align-items-center">
                                     <Row>
-                                        <Col md={2}>
+                                        <Col md={2} className="d-flex align-items-center justify-content-center">
                                         <Image src={item.images && item.images.length > 0 ? item.images[0].image : defaultImage} alt={item.name} fluid rounded />
                                         </Col>
-                                        <Col md={3}>
+                                        <Col md={3} className="d-flex align-items-center">
                                             <Link to={`/products/${item.product}`}>{item.name}</Link>
                                         </Col>
 
-                                        <Col md={2}>
+                                        <Col md={2} className="d-flex align-items-center justify-content-center">
                                             ${item.unit_price}
                                         </Col>
 
-                                        <Col md={2}>
+                                        <Col md={2} className="d-flex align-items-center justify-content-center">
                                              <Form.Control
                                             as="select"
                                             value={item.qty}
@@ -115,13 +115,13 @@ function CartScreen({ match, location, history }) {
                                             ))}
                                             </Form.Control>
                                         </Col>
-                                        <Col md={2}> {/* New Column for Total Price */}
-                                        <Col md={2}> {/* New Column for Total Price */}
+                                        
+                                        <Col md={2} className="d-flex align-items-center justify-content-center"> {/* New Column for Total Price */}
                                         ${item.total_price ? item.total_price.toFixed(2) : '0.00'}
                                         </Col>
-                                        </Col>
+                                        
 
-                                        <Col md={1}>
+                                        <Col md={1} className="d-flex align-items-center justify-content-center">
                                             <Button
                                                 type='button'
                                                 variant='light'
@@ -140,7 +140,7 @@ function CartScreen({ match, location, history }) {
             </Col>
 
             <Col md={4}>
-                <Card>
+            <Card className="mx-auto" style={{ width: 'auto' }}>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                         <h2>Summary</h2>

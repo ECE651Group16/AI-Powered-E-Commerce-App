@@ -38,7 +38,7 @@ function App() {
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/products/:id" component={ProductScreen} exact />
           <Route path="/cart/:id?" component={CartScreen} exact />
-          <Route path="/like/:id?" component={WishlistScreen} exact />
+          <Route path="/wishlist/:id?" component={WishlistScreen} exact />
           <Route path="/all_products" component={AllProductScreen} exact />
           <Route path="/profile" component={ProfileScreen}/>
           

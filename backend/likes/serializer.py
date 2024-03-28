@@ -1,12 +1,15 @@
 from rest_framework import serializers
+
+from store.serializers import ProductImageSerializer
 from .models import Likes, LikedItem
 from store.models import Product
 
 
 class SimpleProductSerializer(serializers.ModelSerializer):
+    images = ProductImageSerializer(many=True, read_only=True)
     class Meta:
         model = Product
-        fields = ["id", "title", "unit_price"]
+        fields = ["id", "title", "unit_price", "images", "inventory"]
 
 
 class LikedItemSerializer(serializers.ModelSerializer):

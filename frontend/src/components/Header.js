@@ -48,7 +48,7 @@ function Header() {
             </Nav>
 
           <Nav className="ms-auto">  
-            <LinkContainer to="/like">
+            <LinkContainer to="/wishlist">
             <Nav.Link><i className="fas fa-heart"></i> Wishlist</Nav.Link>
             </LinkContainer>
 
