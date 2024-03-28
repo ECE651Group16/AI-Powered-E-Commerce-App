@@ -29,6 +29,7 @@ pytest-cov = "*"
 pandas = "*"
 scipy = "*"
 numpy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 pytest = "*"
