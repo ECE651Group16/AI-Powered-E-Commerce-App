@@ -12,33 +12,36 @@ def get_all_products():
 
 #calculates the most similar products of a given product
 #currently using item title and collection id for recommendation
-def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVectorizer, tfidf_matrix, num_to_recommend=6):
-    #transform the input title into tfidf vector
+def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVectorizer, tfidf_matrix, num_to_recommend):
+    # Transform the input title into tfidf vector
     input_features = vectorizer.transform([input_title])
-    #calculate cosine similarity
+
+    # Calculate cosine similarity
     sim_score = cosine_similarity(tfidf_matrix, input_features)
 
     # A penalty is applied to products from different collections
-    # to favour products in the same collection
+    # to favor products in the same collection
     penalty_coefficient = 0.25
     collection_penalty = F('collection_id') != collection_id
     sim_score_w_penalty = sim_score * (1 - penalty_coefficient * collection_penalty)
     sim_score_w_penalty = sim_score_w_penalty.flatten()
-    
-    #find the indices fo the highest scorews
-    ind = np.argpartition(sim_score_w_penalty, -num_to_recommend)[-num_to_recommend:]
-
+    # Find the indices of the highest scores
+    #the if-else prevents when products in database less than num_to_recommend
+    if (len(sim_score_w_penalty) > num_to_recommend):
+        ind = np.argpartition(sim_score_w_penalty.flatten(), sim_score_w_penalty.size -num_to_recommend)[-num_to_recommend:]
+    else:
+        return Product.objects
     # Convert int64 indices to Python integers (to prevent errors)
     ind = [int(i) for i in ind]
+
     # Extract primary keys (PKs) of recommended products
     recommended_pks = [Product.objects.all()[i].pk for i in ind]
 
-    #return serialized_data
     # Filter the queryset using the extracted PKs
     return Product.objects.filter(pk__in=recommended_pks)
 
 #calls the fn. above, returns the most similar products of a given product 
-def recommend(item_title):
+def recommend(item_title, num_to_recommend = 6):
     # Load our_products data
     products = get_all_products()
 
@@ -58,6 +61,6 @@ def recommend(item_title):
     matching_product = matching_products.first()
     item_collection_id = matching_product.collection
 
-    recomm_items = get_similar_products(item_title, item_collection_id, vectorizer, tfidf_matrix)
+    recomm_items = get_similar_products(item_title, item_collection_id, vectorizer, tfidf_matrix, num_to_recommend)
     #print(recomm_items['collection_id'],recomm_items['title'])
     return recomm_items
