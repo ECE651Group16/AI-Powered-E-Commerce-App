@@ -96,18 +96,45 @@ export const register =(email, password, username, firstName, lastName)=> async(
         // Logging to verify the correct data structure
         console.log("Sending registration data:", postData);
 
-        const { data } = await axios.post('http://127.0.0.1:8000/auth/users/', postData, config);
+        const response = await axios.post('http://127.0.0.1:8000/auth/users/', postData, config);
+        
+        dispatch({
+            type:USER_REGISTER_SUCCESS,
+            payload:response.data
+        })
 
-       dispatch({
-           type:USER_REGISTER_SUCCESS,
-           payload:data
-       })
-       dispatch({
-           type:USER_LOGIN_SUCCESS,
-           payload:data
-       })
+        console.log(`Attempting to login with URL: /auth/jwt/create/ and payload:`, { username, password });
+        const {data}= await axios.post('/auth/jwt/create/',
+        {'username':username,'password':password},config
+        )
+        console.log("Login response data:", data); 
+ 
+        const accessToken =  data.access;
+     
+         // Use the access token to fetch user details
+         const userDetailConfig = {
+             headers: {
+                 // 'Content-Type': 'application/json',
+                 'Authorization': `JWT ${accessToken}`, // Use the access token here
+             },
+         };
+         console.log(`Making request to URL: ${axios.defaults.baseURL}auth/users/me/ with token: JWT ${accessToken}`);
+         const userDetails = await axios.get('/auth/users/me/', userDetailConfig);
+         
+         console.log("User details response data:", userDetails.data); // Log the user details
+ 
+         // Combine user info and tokens into a single object before storing
+         const userInfo = {
+             ...userDetails.data,
+             accessToken: data.access,
+             refreshToken: data.refresh,
+         };
+        dispatch({
+            type:USER_LOGIN_SUCCESS,
+            payload:userInfo
+        })
 
-       localStorage.setItem('userInfo',JSON.stringify(data))
+        localStorage.setItem('userInfo',JSON.stringify(data))
 
     }
     catch(error){
