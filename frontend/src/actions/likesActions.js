@@ -16,8 +16,7 @@ export const addTolikes = (id, qty) => async (dispatch, getState) => {
             images: data.images,
             unit_price: data.unit_price,
             countInStock: data.inventory,
-            qty,
-            total_price: Number(data.unit_price) * qty,
+
         }
     })
     localStorage.setItem('likesItems', JSON.stringify(getState().likes.likesItems))
@@ -88,8 +87,12 @@ export const fetchLikesDetails = (likesId) => async (dispatch, getState) => {
       };
   
       // Assuming your backend has an endpoint to fetch likes details by likes ID
-      const { data } = await axios.get(`/store/likes/${likesId}/`, config);
-      console.log("fetching likes detail:", data);
+    //   const  response = await axios.get(`/store/likes/${likesId}/`, config);
+    //   const product_id = response.data.id;
+    //   console.log("product_id", response.data)
+    //   const { data } = await axios.get(`/store/products/${product_id}/`, config);
+    //   console.log("fetching likes detail:", data);
+        const { data } = await axios.get(`/store/likes/${likesId}/`, config);
       dispatch({
         type: LIKES_DETAILS_SUCCESS,
         payload: data,

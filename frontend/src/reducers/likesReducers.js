@@ -41,9 +41,7 @@ import { LIKES_CLEAR, LIKES_ADD_ITEM ,LIKES_REMOVE_ITEM, LIKES_DETAILS_REQUEST,
                       product: item.product.id,
                       name: item.product.title,
                       images: item.product.images, // Assuming you have an image URL or path here
-                      total_price: item.total_price,
                       unit_price: item.product.unit_price,
-                      qty: item.quantity,
                       countInStock: item.product.inventory, // Assuming you have inventory info
                     })),
                     // Update total price if needed, or any other state properties

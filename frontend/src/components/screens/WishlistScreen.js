@@ -99,54 +99,54 @@ function WishlistScreen({ match, location, history }) {
         dispatch(removeFromLikes(itemId));
     };
 
-    const addToCartHandler = async()=>{
-        // if (!userInfo) {
-        //   history.push('/login');
-        //   return;
-        // }
-        // try {
-        //   let currentCartId = cartUuid; // Assuming this state holds the current user's cart ID
-      
-        //   // If the user does not have a cart ID, create a new cart
-        //   if (!currentCartId) {
-        //     const config = {
-        //       headers: {
-        //         'Authorization': `JWT ${userInfo.accessToken}`, 
-        //       },
-        //     };
-        //     const { data } = await axios.post('/store/carts/', {}, config);
-        //     currentCartId = data.id; // Assuming the response includes the cart ID
-        //     // console.log(currentCartId,"not id");
-        //     // Optionally, update the cartUuid state or redux store with the new cart ID
-        //   }
-      
-        //   // Add the product to the cart
-        //   if (currentCartId) {
-        //     const config = {
-        //       headers: {
-        //         'Authorization': `JWT ${userInfo.accessToken}`, 
-        //       },
-        //     };
-        //     // const response = await axios.get(`/store/products/${id}/`, config);
-        //     // const product_data = response.data; // This is the correct way to access the returned data
-        //     // console.log(`/store/products/${id}/`, product_data);
-        //     const postData = {
-        //       product_id: id, // id from useParams()
-        //       quantity: qty,
-        //     };
+    const addToCartHandler = async (productId) => {
+        if (!userInfo) {
+            history.push('/login');
+            return;
+        }
+        
     
-        //     console.log("POST data",postData);
-        //     await axios.post(`/store/carts/${currentCartId}/items/`, postData, config);
+        try {
+            // Add the product to the cart
+            const config = {
+                headers: {
+                    'Authorization': `JWT ${userInfo.accessToken}`,
+                },
+            };
+
+            const customerResponse = await axios.get('/store/customers/', config);
             
-        //     // Redirect to cart page or show success message
-        //     history.push('/cart');
-        //   }
-        // } catch (error) {
-        //   console.error('Failed to add item to cart:', error);
-        //   // Handle error, e.g., show error message
-        // }
-        history.push(`/cart/`)
-     }
+            const customerDetails = customerResponse.data.find(customer => customer.user_id === userInfo.id);
+            console.log(customerDetails);
+            const currentCartId = customerDetails.cart_id;
+            console.log("CART ID:", currentCartId);
+            if (!currentCartId){
+                console.error("Error getting CartId");
+                return;
+            }
+
+            
+
+            const postData = {
+                product_id: productId, // Assuming the product ID to add to cart
+                quantity: 1, // Assuming a default quantity of 1
+            };
+    
+            await axios.post(`/store/carts/${currentCartId}/items/`, postData, config);
+    
+            console.log(`Product ${productId} added to cart ${currentCartId}`);
+    
+            // Remove the item from the wishlist after adding it to the cart
+            dispatch(removeFromLikes(productId));
+    
+            // Optionally, refresh the page or redirect to the cart page
+            history.push('/cart');
+    
+        } catch (error) {
+            console.error('Failed to add item to cart:', error.response ? error.response.data : error);
+            // Handle error, e.g., show error message
+        }
+    };
 
     const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     return (
@@ -178,7 +178,7 @@ function WishlistScreen({ match, location, history }) {
                                 <Button
                                     type='button'
                                     className='btn-block'
-                                    onClick={addToCartHandler}
+                                    onClick={() => addToCartHandler(item.product)} // Use the item's product ID
                                 >
                                     Add to Cart
                                 </Button>
@@ -187,6 +187,7 @@ function WishlistScreen({ match, location, history }) {
                                     <Button
                                         type='button'
                                         variant='light'
+                                        disabled={likesItems.length === 0}
                                         onClick={() => removeFromlikesHandler(item.product)}
                                     >
                                         <i className='fas fa-trash'></i>
