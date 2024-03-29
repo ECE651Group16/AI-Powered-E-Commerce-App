@@ -1,7 +1,9 @@
 // CheckoutScreen.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form, Button, Col, Row } from 'react-bootstrap';
+import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap';
+
+
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
 
 // import paypalLogo from '../../assets/paypal.png'; // Path to PayPal logo
@@ -20,6 +22,13 @@ function CheckoutScreen({ history }) {
     // const [city, setCity] = useState(shippingAddress.city || '');
     // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '');
     // const [country, setCountry] = useState(shippingAddress.country || '');
+    const [showOrderSummary, setShowOrderSummary] = useState(false);
+    const { cartItems } = cart;
+
+    const toggleOrderSummary = () => {
+        setShowOrderSummary((prevShowOrderSummary) => !prevShowOrderSummary);
+    };
+
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
     const dispatch = useDispatch();
 
@@ -30,6 +39,61 @@ function CheckoutScreen({ history }) {
     };
 
     return (
+        <div className="d-flex justify-content-center align-items-start">
+        <div style={{ maxWidth: '600px', width: '100%' }}>
+            <Card className="mb-3">
+                <Card.Header className="d-flex justify-content-between align-items-center" onClick={toggleOrderSummary} style={{ cursor: 'pointer' }}>
+                    {showOrderSummary ? 'Hide' : 'Show'} order summary 
+                    <span className="float-right">
+                        {showOrderSummary ? '▲' : '▼'}
+                    </span>
+                </Card.Header>
+                {showOrderSummary && (
+                    <ListGroup variant="flush">
+                        {cartItems.map((item) => (
+                            <ListGroup.Item key={item.product}>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="d-flex align-items-center">
+                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                        <div className="ml-3">
+                                            <div>{item.name}</div>
+                                            <div className="text-muted">Qty: {item.qty}</div>
+                                        </div>
+                                    </div>
+                                    <div>${(item.qty * item.price).toFixed(2)}</div>
+                                </div>
+                            </ListGroup.Item>
+                        ))}
+                        <ListGroup.Item>
+                            <div className="d-flex">
+                                <input type="text" className="form-control" placeholder="Discount code or gift card" />
+                                <Button variant="outline-secondary" className="ml-2">Apply</Button>
+                            </div>
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            <div className="d-flex justify-content-between">
+                                <strong>Subtotal</strong>
+                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <strong>Shipping</strong>
+                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <strong>Taxes</strong>
+                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                            </div>
+                            <div className="d-flex justify-content-between">
+                                <span style={{ fontSize: '1.5em' }}>Total</span>
+                                <span style={{ fontSize: '1.5em' }}>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</span>
+                            </div>
+                            {/* Repeat for Shipping, Taxes, and Total */}
+                        </ListGroup.Item>
+                        {/* Discount Code Input */}
+
+                    </ListGroup>
+                )}
+            </Card>
         <div className="container mt-5"> {/* Adds some top margin for spacing */}
             <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}> {/* Centers the form horizontally with auto margins */}
                 {/* Express Checkout Section */}
@@ -139,6 +203,8 @@ function CheckoutScreen({ history }) {
                 Continue
             </Button>
             </Form>
+        </div>
+        </div>
         </div>
     );
 }
