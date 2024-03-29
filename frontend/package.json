@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "14 || >=16.14"
+    "node": ">=20"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
