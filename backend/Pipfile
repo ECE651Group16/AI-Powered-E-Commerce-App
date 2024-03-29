@@ -25,11 +25,6 @@ gunicorn = "*"
 dj-database-url = "*"
 django-silk = "*"
 model-bakery = "*"
-pytest-cov = "*"
-pandas = "*"
-scipy = "*"
-numpy = "*"
-scikit-learn = "*"
 
 [dev-packages]
 pytest = "*"
@@ -38,6 +33,11 @@ pytest-watch = "*"
 model-bakery = "*"
 locust = "*"
 django-silk = "*"
+pytest-cov = "*"
+pyarrow = "*"
+pandas = "*"
+faker = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.10"
