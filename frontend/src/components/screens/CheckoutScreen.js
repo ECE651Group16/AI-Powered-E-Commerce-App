@@ -7,12 +7,12 @@ import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap'
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
 
 // import paypalLogo from '../../assets/paypal.png'; // Path to PayPal logo
-// import stripeLogo from '../../assets/stripe.png'; // Path to Stripe logo
+// import shopLogo from '../../assets/shop.png'; // Path to shop logo
 // import applePayLogo from '../../assets/applepay.png'; // Path to Apple Pay logo
 
-import paypalLogo from '../../images/phone.jpg'; // Path to PayPal logo
-import stripeLogo from '../../images/phone.jpg'; // Path to Stripe logo
-import applePayLogo from '../../images/phone.jpg'; // Path to Apple Pay logo
+import paypalLogo from '../../images/paypl.png'; // Path to PayPal logo
+import shopLogo from '../../images/shop.jpg'; // Path to shop logo
+import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
 function CheckoutScreen({ history }) {
     const cart = useSelector(state => state.cart);
@@ -95,25 +95,23 @@ function CheckoutScreen({ history }) {
                 )}
             </Card>
         <div className="container mt-5"> {/* Adds some top margin for spacing */}
-            <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}> {/* Centers the form horizontally with auto margins */}
-                {/* Express Checkout Section */}
-                <Form.Group className="text-center mb-4">
-                    <Form.Label as="legend">Express checkout</Form.Label>
+            <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <Form.Group className="text-center mb-4">
+                <Form.Label as="legend">Express checkout</Form.Label>
+                <div className="d-flex justify-content-around">
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('PayPal')}>
+                        <img src={paypalLogo} alt="PayPal" style={{ maxWidth: '600px' }} />
+                    </Button>
 
-                    <div className="d-flex justify-content-around"> {/* Buttons are spaced evenly */}
-                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('PayPal')}>
-                            <img src={paypalLogo} alt="PayPal" style={{ maxWidth: '50px' }} /> {/* Ensure logos are not too large */}
-                        </Button>
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('shop')}>
+                        <img src={shopLogo} alt="shop" style={{ maxWidth: '600px' }} />
+                    </Button>
 
-                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('Stripe')}>
-                            <img src={stripeLogo} alt="Stripe" style={{ maxWidth: '50px' }} />
-                        </Button>
-
-                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('ApplePay')}>
-                            <img src={applePayLogo} alt="Apple Pay" style={{ maxWidth: '50px' }} />
-                        </Button>
-                    </div>
-                </Form.Group>
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('ApplePay')}>
+                        <img src={applePayLogo} alt="Apple Pay" style={{ maxWidth: '600px' }} />
+                    </Button>
+                </div>
+            </Form.Group>
 
               {/* "OR" Divider with Lines */}
               <div className="d-flex align-items-center my-4">
