@@ -159,7 +159,7 @@ function WishlistScreen({ match, location, history }) {
                 <h1>Wishlist</h1>
                 {likesItems.length === 0 ? (
                     <Message variant='info'>
-                        Your cart is empty <Link to='/'>Go Back</Link>
+                        Your wishlist is empty <Link to='/'>Go Back</Link>
                     </Message>
                 ) : (
                 <ListGroup variant='flush'>
