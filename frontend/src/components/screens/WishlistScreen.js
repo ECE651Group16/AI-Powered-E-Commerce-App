@@ -57,6 +57,8 @@ function WishlistScreen({ match, location, history }) {
         fetchCustomerCartId();
     }, [userInfo, history, dispatch]);
 
+
+
     // useEffect(() => {
     //     const fetchCustomerLikesId = async () => {
     //         if (!userInfo) {

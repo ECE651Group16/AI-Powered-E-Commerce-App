@@ -1,7 +1,10 @@
 // CheckoutScreen.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap';
+import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions';
+import axios from 'axios';
 
 
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
@@ -15,16 +18,23 @@ import shopLogo from '../../images/shop.jpg'; // Path to shop logo
 import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
 function CheckoutScreen({ history }) {
-    const cart = useSelector(state => state.cart); 
-    console.log("Checkout Cart",cart);
-    const { shippingAddress } = cart;
+    
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
+    console.log("User Info",userInfo);
+
+
 
     // const [address, setAddress] = useState(shippingAddress.address || '');
     // const [city, setCity] = useState(shippingAddress.city || '');
     // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '');
     // const [country, setCountry] = useState(shippingAddress.country || '');
     const [showOrderSummary, setShowOrderSummary] = useState(false);
+
+    const cart = useSelector(state => state.cart)
     const { cartItems } = cart;
+    const { shippingAddress } = cart;
+    console.log("Checkout Cart",cart);
 
     const toggleOrderSummary = () => {
         setShowOrderSummary((prevShowOrderSummary) => !prevShowOrderSummary);
@@ -39,6 +49,35 @@ function CheckoutScreen({ history }) {
         history.push('/payment'); // Redirect to payment selection
     };
 
+    useEffect(() => {
+        const fetchCustomerCartId = async () => {
+            if (!userInfo) {
+                history.push('/login');
+                return;
+            }
+            try {
+                const config = {
+                    headers: {
+                        'Authorization': `JWT ${userInfo.accessToken}`, 
+                    },
+                };
+                console.log("Getting /store/customers/ with key", `JWT ${userInfo.accessToken}`);
+                const { data } = await axios.get('/store/customers/', config);
+                // Assuming the response includes the cart_id directly
+                const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
+                console.log("cartID:", customerCartId);
+                if (customerCartId) {
+                    dispatch(fetchCartDetails(customerCartId));
+                }
+            } catch (error) {
+                console.error('Failed to fetch customer cart ID:', error);
+            }
+        };
+
+        fetchCustomerCartId();
+    }, [userInfo, history, dispatch]);
+    
+
     return (
         <div className="d-flex justify-content-center align-items-start">
         <div style={{ maxWidth: '600px', width: '100%' }}>
@@ -51,7 +90,7 @@ function CheckoutScreen({ history }) {
                 </Card.Header>
                 {showOrderSummary && (
                     <ListGroup variant="flush">
-                        {cartItems.map((item) => (
+                        {/* {cartItems.map((item) => (
                             <ListGroup.Item key={item.product}>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div className="d-flex align-items-center">
@@ -64,7 +103,7 @@ function CheckoutScreen({ history }) {
                                     <div>${(item.qty * item.price).toFixed(2)}</div>
                                 </div>
                             </ListGroup.Item>
-                        ))}
+                        ))} */}
                         <ListGroup.Item>
                             <div className="d-flex">
                                 <input type="text" className="form-control" placeholder="Discount code or gift card" />
