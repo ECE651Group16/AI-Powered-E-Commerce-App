@@ -25,6 +25,9 @@ gunicorn = "*"
 dj-database-url = "*"
 django-silk = "*"
 model-bakery = "*"
+pandas = "*"
+numpy = "*"
+scipy = "*"
 
 [dev-packages]
 pytest = "*"
@@ -35,7 +38,6 @@ locust = "*"
 django-silk = "*"
 pytest-cov = "*"
 pyarrow = "*"
-pandas = "*"
 faker = "*"
 tqdm = "*"
 
