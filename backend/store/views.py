@@ -64,6 +64,7 @@ from .serializers import (
     UpdateReviewSerializer,
     AddressSerializer,
 )
+from .recommender import recommend
 
 
 # Create your views here.
@@ -82,6 +83,7 @@ class ProductViewSet(ModelViewSet):
         "total_sells",
         "average_rating",
         "total_reviews",
+        "recommended_products",
     ]
 
     def get_queryset(self):
@@ -92,6 +94,17 @@ class ProductViewSet(ModelViewSet):
                 total_reviews=Count("reviews"), average_rating=Avg("reviews__rating")
             )
         )
+
+    # overwriting retrieve method for content-based recommender
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serialized_data = self.get_serializer(instance).data
+        recommended_products = recommend(instance.title)
+        serialized_recommended_products = ProductSerializer(
+            recommended_products, many=True
+        ).data
+        serialized_data["recommended_products"] = serialized_recommended_products
+        return Response(serialized_data)
 
     def get_serializer_context(self):
         return {"request": self.request}

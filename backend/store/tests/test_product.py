@@ -8,6 +8,7 @@ from model_bakery import baker
 from django.core.files.uploadedfile import SimpleUploadedFile
 import os
 import glob
+from unittest.mock import patch
 
 
 @pytest.fixture
@@ -171,8 +172,10 @@ class TestCreateproduct:
 class TestRetrieveproduct:
     def test_if_product_exists_returns_200(self, api_client):
         product = baker.make(Product)
-        # baker.make(Product, product-product, _quantity=10)
-        response = api_client.get(f"/store/products/{product.id}/")
+        with patch(
+            "store.views.recommend", return_value=[]
+        ):  # Mock the recommend function to return an empty list
+            response = api_client.get(f"/store/products/{product.id}/")
 
         assert response.status_code == status.HTTP_200_OK
         assert response.data == {
@@ -191,6 +194,7 @@ class TestRetrieveproduct:
             "average_rating": None,
             "total_reviews": 0,
             "reviews": [],
+            "recommended_products": [],  # Include recommended products here
         }
 
 
