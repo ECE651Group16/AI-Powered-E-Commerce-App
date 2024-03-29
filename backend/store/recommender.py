@@ -10,9 +10,16 @@ def get_all_products():
     products = Product.objects.all()
     return products
 
-#calculates the most similar products of a given product
-#currently using item title and collection id for recommendation
-def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVectorizer, tfidf_matrix, num_to_recommend):
+
+# calculates the most similar products of a given product
+# currently using item title and collection id for recommendation
+def get_similar_products(
+    input_title: str,
+    collection_id,
+    vectorizer: TfidfVectorizer,
+    tfidf_matrix,
+    num_to_recommend,
+):
     # Transform the input title into tfidf vector
     input_features = vectorizer.transform([input_title])
 
@@ -22,13 +29,15 @@ def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVecto
     # A penalty is applied to products from different collections
     # to favor products in the same collection
     penalty_coefficient = 0.25
-    collection_penalty = F('collection_id') != collection_id
+    collection_penalty = F("collection_id") != collection_id
     sim_score_w_penalty = sim_score * (1 - penalty_coefficient * collection_penalty)
     sim_score_w_penalty = sim_score_w_penalty.flatten()
     # Find the indices of the highest scores
-    #the if-else prevents when products in database less than num_to_recommend
-    if (len(sim_score_w_penalty) > num_to_recommend):
-        ind = np.argpartition(sim_score_w_penalty.flatten(), sim_score_w_penalty.size -num_to_recommend)[-num_to_recommend:]
+    # the if-else prevents when products in database less than num_to_recommend
+    if len(sim_score_w_penalty) > num_to_recommend:
+        ind = np.argpartition(
+            sim_score_w_penalty.flatten(), sim_score_w_penalty.size - num_to_recommend
+        )[-num_to_recommend:]
     else:
         return Product.objects
     # Convert int64 indices to Python integers (to prevent errors)
@@ -40,13 +49,14 @@ def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVecto
     # Filter the queryset using the extracted PKs
     return Product.objects.filter(pk__in=recommended_pks)
 
-#calls the fn. above, returns the most similar products of a given product 
-def recommend(item_title, num_to_recommend = 6):
+
+# calls the fn. above, returns the most similar products of a given product
+def recommend(item_title, num_to_recommend=6):
     # Load our_products data
     products = get_all_products()
 
     # Define a TF-IDF Vectorizer Object
-    vectorizer = TfidfVectorizer(stop_words='english')
+    vectorizer = TfidfVectorizer(stop_words="english")
     # #Replace NaN with an empty string
     all_titles = [product.title for product in products]
     tfidf_matrix = vectorizer.fit_transform(all_titles)
@@ -57,10 +67,14 @@ def recommend(item_title, num_to_recommend = 6):
     # Find the matching product and its collection_id
     matching_products = products.filter(title=item_title)
     if not matching_products.exists():
-        raise ValueError("Error: Item '{}' not found in the dataset.".format(item_title))
+        raise ValueError(
+            "Error: Item '{}' not found in the dataset.".format(item_title)
+        )
     matching_product = matching_products.first()
     item_collection_id = matching_product.collection
 
-    recomm_items = get_similar_products(item_title, item_collection_id, vectorizer, tfidf_matrix, num_to_recommend)
-    #print(recomm_items['collection_id'],recomm_items['title'])
+    recomm_items = get_similar_products(
+        item_title, item_collection_id, vectorizer, tfidf_matrix, num_to_recommend
+    )
+    # print(recomm_items['collection_id'],recomm_items['title'])
     return recomm_items
