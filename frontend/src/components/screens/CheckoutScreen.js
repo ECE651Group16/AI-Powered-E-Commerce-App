@@ -15,7 +15,8 @@ import shopLogo from '../../images/shop.jpg'; // Path to shop logo
 import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
 function CheckoutScreen({ history }) {
-    const cart = useSelector(state => state.cart);
+    const cart = useSelector(state => state.cart); 
+    console.log("Checkout Cart",cart);
     const { shippingAddress } = cart;
 
     // const [address, setAddress] = useState(shippingAddress.address || '');
