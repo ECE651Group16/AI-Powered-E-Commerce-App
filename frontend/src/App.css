@@ -129,3 +129,28 @@
   font-size: 2rem; /* Adjust the size of the arrows */
 }
 
+
+.payment-methods {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.payment-method-button {
+  border: none;
+  background-color: transparent;
+}
+
+.payment-method-button img {
+  width: 100%; /* Set width as desired, or use max-width */
+  cursor: pointer;
+}
+
+
+.full-height-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Full viewport height */
+}

@@ -12,6 +12,7 @@ import AllProductScreen from './components/screens/AllProductScreen';
 import ProfileScreen from "./components/screens/ProfileScreen";
 import AboutScreen from "./components/screens/AboutScreen";
 import ContactScreen from "./components/screens/ContactScreen";
+import CheckoutScreen from './components/screens/CheckoutScreen'; 
 import axios from 'axios';
 import SessionCheck from "./components/SessionCheck";
 import WishlistScreen from "./components/screens/WishlistScreen";
@@ -45,7 +46,7 @@ function App() {
           <Route path="/aboutus" component={AboutScreen} exact />
           <Route path="/contactus" component={ContactScreen} exact />
           <Route path="/profile" component={ProfileScreen}/>
-          
+          <Route path="/shipping" component={CheckoutScreen} exact />
         </Container>
       </main>
 
