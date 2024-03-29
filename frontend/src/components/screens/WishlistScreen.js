@@ -105,7 +105,6 @@ function WishlistScreen({ match, location, history }) {
             return;
         }
         
-    
         try {
             // Add the product to the cart
             const config = {
@@ -113,20 +112,25 @@ function WishlistScreen({ match, location, history }) {
                     'Authorization': `JWT ${userInfo.accessToken}`,
                 },
             };
-
-            const customerResponse = await axios.get('/store/customers/', config);
-            
-            const customerDetails = customerResponse.data.find(customer => customer.user_id === userInfo.id);
-            console.log(customerDetails);
-            const currentCartId = customerDetails.cart_id;
-            console.log("CART ID:", currentCartId);
+            let currentCartId = cartUuid;
             if (!currentCartId){
-                console.error("Error getting CartId");
+                console.log("NO CartId, reading customer info");
+                const customerResponse = await axios.get('/store/customers/', config);
+                const customerDetails = customerResponse.data.find(customer => customer.user_id === userInfo.id);
+                console.log(customerDetails);
+                currentCartId = customerDetails.cart_id;
+                console.log("CART ID:", currentCartId);
+            }
+            if (!currentCartId){
+                console.log("NO CartId, creating one");
+                const { data } = await axios.post('/store/carts/', {}, config);
+                currentCartId = data.id; 
+                console.log("Cart created:", currentCartId);
+            }
+            if(!currentCartId){
+                console.error("No Cart Id");
                 return;
             }
-
-            
-
             const postData = {
                 product_id: productId, // Assuming the product ID to add to cart
                 quantity: 1, // Assuming a default quantity of 1
