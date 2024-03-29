@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap';
 import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions';
 import axios from 'axios';
-
+import { useHistory } from 'react-router-dom';
 
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
 
@@ -17,31 +17,32 @@ import paypalLogo from '../../images/paypl.png'; // Path to PayPal logo
 import shopLogo from '../../images/shop.jpg'; // Path to shop logo
 import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
-function CheckoutScreen({ history }) {
-    
+function CheckoutScreen() {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     console.log("User Info",userInfo);
-
-
-
-    // const [address, setAddress] = useState(shippingAddress.address || '');
-    // const [city, setCity] = useState(shippingAddress.city || '');
-    // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '');
-    // const [country, setCountry] = useState(shippingAddress.country || '');
-    const [showOrderSummary, setShowOrderSummary] = useState(false);
 
     const cart = useSelector(state => state.cart)
     const { cartItems } = cart;
     const { shippingAddress } = cart;
     console.log("Checkout Cart",cart);
 
+    // const [address, setAddress] = useState(shippingAddress.address || '');
+    // const [city, setCity] = useState(shippingAddress.city || '');
+    // const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '');
+    // const [country, setCountry] = useState(shippingAddress.country || '');
+    const [showOrderSummary, setShowOrderSummary] = useState(false);
+    
+
     const toggleOrderSummary = () => {
         setShowOrderSummary((prevShowOrderSummary) => !prevShowOrderSummary);
     };
 
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
-    const dispatch = useDispatch();
+    
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -76,7 +77,60 @@ function CheckoutScreen({ history }) {
 
         fetchCustomerCartId();
     }, [userInfo, history, dispatch]);
+
+    const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
+    const calculateSubtotal = () => cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2);
+    const calculateShipping = () => {
+        // Assuming shippingAddress is part of your cart or user state and contains a 'country' field
+        const { shippingAddress } = cart;
     
+        // Check if country is Canada or US
+        if (shippingAddress && (shippingAddress.country === 'Canada' || shippingAddress.country === 'US')) {
+            return 'Free Shipping';
+        } else {
+            // Implement your shipping cost calculation for other countries
+            return 10.00; // Placeholder for shipping cost outside Canada and US
+        }
+    };
+    const calculateTaxes = (subtotal) => {
+        const shippingCost = calculateShipping(); 
+        // Assuming a tax rate, for simplicity
+        if (shippingAddress && (shippingAddress.country === 'Canada')){
+            const TAX_RATE = 0.13; // 13% tax rate as an example
+            const tax = (subtotal+'Free Shipping' ? 0 : parseFloat(shippingCost)) * TAX_RATE;
+            return tax.toFixed(2);
+        }
+        else{
+            const TAX_RATE = 0.13; // 13% tax rate as an example
+            return (subtotal * TAX_RATE).toFixed(2);
+        }
+        
+        
+    };
+    const calculateTotal = () => {
+        const subtotal = calculateSubtotal();
+        const shippingCost = calculateShipping(); // Update this to ensure it returns a numeric value for shipping
+        const taxes = calculateTaxes(subtotal);
+    
+        // Ensure all values are numeric. Convert 'Free Shipping' to 0 for calculation.
+        const numericShippingCost = shippingCost === 'Free Shipping' ? 0 : parseFloat(shippingCost);
+        const numericSubtotal = parseFloat(subtotal);
+        const numericTaxes = parseFloat(taxes);
+    
+        // Ensure all components of total are numeric before summing
+        if (!isNaN(numericShippingCost) && !isNaN(numericSubtotal) && !isNaN(numericTaxes)) {
+            const total = numericSubtotal + numericShippingCost + numericTaxes;
+            return total.toFixed(2); // This should now always work, as total is guaranteed to be numeric
+        } else {
+            console.error("One or more components of the total are not numeric", {numericSubtotal, numericShippingCost, numericTaxes});
+            return 'Error calculating total'; // Or handle this scenario as appropriate for your app
+        }
+    };
+
+    const subtotal = calculateSubtotal();
+    const shipping = calculateShipping();
+    const taxes = calculateTaxes(subtotal);
+    const total = calculateTotal(subtotal, shipping, taxes);
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -90,20 +144,49 @@ function CheckoutScreen({ history }) {
                 </Card.Header>
                 {showOrderSummary && (
                     <ListGroup variant="flush">
-                        {/* {cartItems.map((item) => (
-                            <ListGroup.Item key={item.product}>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="d-flex align-items-center">
-                                        <Image src={item.image} alt={item.name} fluid rounded />
-                                        <div className="ml-3">
-                                            <div>{item.name}</div>
-                                            <div className="text-muted">Qty: {item.qty}</div>
-                                        </div>
-                                    </div>
-                                    <div>${(item.qty * item.price).toFixed(2)}</div>
+                        {cartItems.map((item, index) => (
+                            /* STYLE 1*/
+                            // <ListGroup.Item key={index}>
+                            //     <div className="d-flex justify-content-between">
+                            //         <div className="d-flex">
+                            //             <Image src={item.images.length > 0 ? item.images[0].image : defaultImage} alt={item.name}  style={{ width: '50px', height: '50px', objectFit: 'cover' }}/>
+                            //             <div className="ml-3" style={{ marginLeft: '20px' }}>
+                            //                 <p>{item.name}</p>
+                            //                 <p>Qty: {item.qty}</p>
+                            //             </div>
+                            //         </div>
+                            //         <div>${item.total_price.toFixed(2)}</div>
+                            //     </div>
+                            // </ListGroup.Item>
+                            /* STYLE 2*/
+                            <ListGroup.Item key={index}>
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div style={{ position: 'relative' }}>
+                                    <Image src={item.images.length > 0 ? item.images[0].image : defaultImage} alt={item.name} style={{ width: '100px', height: '100px', objectFit: 'cover' }} />
+                                    <span style={{
+                                        position: 'absolute',
+                                        top: '-15px', // Half the height of the sticker to move it up
+                                        right: '-15px', // Half the width of the sticker to move it to the right
+                                        backgroundColor: 'rgba(90,90,90,0.8)',
+                                        borderRadius: '50%',
+                                        width: '30px',
+                                        height: '30px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '12px',
+                                        color: 'white',
+                                    }}>
+                                        {item.qty}
+                                    </span>
                                 </div>
-                            </ListGroup.Item>
-                        ))} */}
+                                <div className="ml-3" style={{ marginLeft: '15px' }}>
+                                    <p>{item.name}</p>
+                                </div>
+                                <div>${item.total_price.toFixed(2)}</div>
+                            </div>
+                        </ListGroup.Item>
+                        ))}
                         <ListGroup.Item>
                             <div className="d-flex">
                                 <input type="text" className="form-control" placeholder="Discount code or gift card" />
@@ -113,19 +196,19 @@ function CheckoutScreen({ history }) {
                         <ListGroup.Item>
                             <div className="d-flex justify-content-between">
                                 <strong>Subtotal</strong>
-                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                                <strong>${subtotal}</strong>
                             </div>
                             <div className="d-flex justify-content-between">
                                 <strong>Shipping</strong>
-                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                                <strong>${shipping}</strong>
                             </div>
                             <div className="d-flex justify-content-between">
                                 <strong>Taxes</strong>
-                                <strong>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</strong>
+                                <strong>${taxes}</strong>
                             </div>
                             <div className="d-flex justify-content-between">
                                 <span style={{ fontSize: '1.5em' }}>Total</span>
-                                <span style={{ fontSize: '1.5em' }}>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</span>
+                                <span style={{ fontSize: '1.5em' }}>${total}</span>
                             </div>
                             {/* Repeat for Shipping, Taxes, and Total */}
                         </ListGroup.Item>
