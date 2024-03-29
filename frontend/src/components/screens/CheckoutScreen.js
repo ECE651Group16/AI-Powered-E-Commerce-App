@@ -30,7 +30,66 @@ function CheckoutScreen({ history }) {
     };
 
     return (
-        <Form onSubmit={submitHandler}>
+        <div className="container mt-5"> {/* Adds some top margin for spacing */}
+            <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}> {/* Centers the form horizontally with auto margins */}
+                {/* Express Checkout Section */}
+                <Form.Group className="text-center mb-4">
+                    <Form.Label as="legend">Express checkout</Form.Label>
+
+                    <div className="d-flex justify-content-around"> {/* Buttons are spaced evenly */}
+                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('PayPal')}>
+                            <img src={paypalLogo} alt="PayPal" style={{ maxWidth: '50px' }} /> {/* Ensure logos are not too large */}
+                        </Button>
+
+                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('Stripe')}>
+                            <img src={stripeLogo} alt="Stripe" style={{ maxWidth: '50px' }} />
+                        </Button>
+
+                        <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('ApplePay')}>
+                            <img src={applePayLogo} alt="Apple Pay" style={{ maxWidth: '50px' }} />
+                        </Button>
+                    </div>
+                </Form.Group>
+
+              {/* "OR" Divider with Lines */}
+              <div className="d-flex align-items-center my-4">
+                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Left line */}
+                    <span className="mx-2">OR</span> {/* "OR" text */}
+                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Right line */}
+                </div>
+
+             {/* Credit Card Details Section */}
+             <Form.Group className="mb-4">
+                    <Form.Label className="d-block">Credit Card Details</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Card Number"
+                        className="mb-3"
+                        required
+                        // Add onChange handler as needed
+                    />
+                    <Row>
+                        <Col>
+                            <Form.Control
+                                type="text"
+                                placeholder="MM/YY"
+                                className="mb-3"
+                                required
+                                // Add onChange handler as needed
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Control
+                                type="text"
+                                placeholder="CVV"
+                                required
+                                // Add onChange handler as needed
+                            />
+                        </Col>
+                    </Row>
+                </Form.Group>
+
+            {/* Address Section... */}
             <Form.Group controlId='address'>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
@@ -75,41 +134,12 @@ function CheckoutScreen({ history }) {
             </Form.Group>
             {/* Add similar Form.Group components for city, postalCode, and country */}
 
-            <Form.Group>
-            <Form.Label as="legend">Payment Method</Form.Label>
-            <Col>
-            <div className="payment-methods">
-            <Button
-                variant="light"
-                className="payment-method-button"
-                onClick={() => setPaymentMethod('PayPal')}
-            >
-                <img src={paypalLogo} alt="PayPal" />
-            </Button>
             
-            <Button
-                variant="light"
-                className="payment-method-button"
-                onClick={() => setPaymentMethod('Stripe')}
-            >
-                <img src={stripeLogo} alt="Stripe" />
-            </Button>
-            
-            <Button
-                variant="light"
-                className="payment-method-button"
-                onClick={() => setPaymentMethod('ApplePay')}
-            >
-                <img src={applePayLogo} alt="Apple Pay" />
-            </Button>
-            </div>
-
-            </Col>
-            </Form.Group>
             <Button type='submit' variant='primary'>
                 Continue
             </Button>
-        </Form>
+            </Form>
+        </div>
     );
 }
 

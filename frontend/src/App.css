@@ -145,3 +145,12 @@
   width: 100%; /* Set width as desired, or use max-width */
   cursor: pointer;
 }
+
+
+.full-height-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh; /* Full viewport height */
+}
