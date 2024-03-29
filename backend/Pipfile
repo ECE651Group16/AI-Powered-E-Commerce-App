@@ -28,6 +28,7 @@ model-bakery = "*"
 pandas = "*"
 numpy = "*"
 scipy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 pytest = "*"
