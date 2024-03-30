@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-from rest_framework.decorators import api_view
+from django.http import JsonResponse
+from rest_framework.decorators import api_view, permission_classes
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models.aggregates import Count
 from django.db.models import Avg
@@ -10,6 +11,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet, GenericViewSet, ViewSet
 from rest_framework.generics import ListAPIView
 from rest_framework.mixins import (
@@ -65,6 +67,54 @@ from .serializers import (
     AddressSerializer,
 )
 from .recommender import recommend
+
+import stripe
+
+
+
+
+class PaymentViewSet(viewsets.ViewSet):
+    stripe.api_key = 'pk_test_A7jK4iCYHL045qgjjfzAfPxu'
+    permission_classes = [IsAuthenticated]  # Ensure user is authenticated
+
+    def list(self, request):
+        # This method handles GET requests to the endpoint
+        return Response({"message": "Payment endpoint reachable."}, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=['post'], permission_classes=[IsAuthenticated])
+    def create_payment(self, request):
+        paymentMethodId = request.data.get('paymentMethodId')
+        user = request.user
+        customer = get_object_or_404(Customer, user=user)
+        cart = get_object_or_404(Cart, customer=customer)
+
+        # You would need to initialize your CreateOrderSerializer with the right context
+        order_serializer = CreateOrderSerializer(data=request.data, context={'user_id': user.id})
+        order_serializer.is_valid(raise_exception=True)
+
+        # Use the calculate_total method from the CreateOrderSerializer
+        amount = order_serializer.calculate_total(customer)
+
+        # Convert to cents and make sure it's an integer
+        amount_in_cents = int(amount * 100)
+        amount_in_cents = 100
+
+        try:
+            # Create a PaymentIntent with the order amount and currency
+            paymentIntent = stripe.PaymentIntent.create(
+                amount=amount_in_cents,
+                currency='usd',
+                payment_method=paymentMethodId,
+                confirmation_method='manual',
+                confirm=True,
+            )
+            return Response({
+                'message': 'Success',
+                'paymentIntent': paymentIntent
+            })
+        except stripe.error.StripeError as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        
 
 
 # Create your views here.

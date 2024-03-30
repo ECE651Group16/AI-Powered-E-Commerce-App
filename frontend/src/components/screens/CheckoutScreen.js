@@ -6,6 +6,8 @@ import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap'
 import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
 
@@ -18,6 +20,7 @@ import shopLogo from '../../images/shop.jpg'; // Path to shop logo
 import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
 function CheckoutScreen() {
+    const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -44,10 +47,11 @@ function CheckoutScreen() {
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
     
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        // dispatch(saveShippingAddress({ address, city, postalCode, country }));
-        history.push('/payment'); // Redirect to payment selection
+    const submitHandler =  async (event) => {
+        event.preventDefault();
+
+        const stripe = await stripePromise;
+        const elements = stripe.elements();
     };
 
     useEffect(() => {
@@ -131,6 +135,64 @@ function CheckoutScreen() {
     const shipping = calculateShipping();
     const taxes = calculateTaxes(subtotal);
     const total = calculateTotal(subtotal, shipping, taxes);
+
+
+
+    // Define CheckoutForm component
+    const CheckoutForm = () => {
+        const stripe = useStripe();
+        const elements = useElements();
+
+        const handleSubmit = async (event) => {
+            event.preventDefault();
+
+            if (!stripe || !elements) {
+                // Stripe.js has not yet loaded.
+                return;
+              }
+          
+              const cardElement = elements.getElement(CardElement);
+          
+              const {error, paymentMethod} = await stripe.createPaymentMethod({
+                type: 'card',
+                card: cardElement,
+              });
+          
+              if (error) {
+                console.log('[error]', error);
+              } else {
+                console.log('[PaymentMethod]', paymentMethod);
+                // Here, you'd send the paymentMethod.id to your server
+                // Example POST request with fetch:
+                const config = {
+                    headers: {
+                        // Include your auth token in the header if your endpoint requires authentication
+                        'Authorization': `JWT ${userInfo.accessToken}`, // Ensure this matches how you store and access tokens
+                    }
+                };
+                try {
+                    console.log("Data", paymentMethod.id);
+                    console.log("cart id", cart.id);
+                    const response = await axios.post(
+                        `/store/payments/create_payment`,
+                        { paymentMethodId: paymentMethod.id, cart_id: cart.id },
+                        config
+                    );
+                    
+                    console.log('Payment intent created:', response.data);
+                    // Navigate to a success page or display a message
+                } catch (error) {
+                    console.error('Error creating payment intent:', error.response ? error.response.data : error.message);
+                } }
+                 }
+            return (
+                <form onSubmit={handleSubmit}>
+                    {/* <CardElement options={{ style: { base: { fontSize: '1.1em' } } }} /> */}
+                    <CardElement/>
+                    <Button type="submit" className="mt-3" disabled={!stripe}>Pay</Button>
+                </form>
+            );
+    };
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -243,9 +305,18 @@ function CheckoutScreen() {
                     <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Right line */}
                 </div>
 
+               
+                
              {/* Credit Card Details Section */}
-             <Form.Group className="mb-4">
+             {/* <Form.Group className="mb-4">
                     <Form.Label className="d-block">Credit Card Details</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Name On the Card"
+                        className="mb-3"
+                        required
+                        // Add onChange handler as needed
+                    />
                     <Form.Control
                         type="text"
                         placeholder="Card Number"
@@ -272,9 +343,10 @@ function CheckoutScreen() {
                             />
                         </Col>
                     </Row>
-                </Form.Group>
+                </Form.Group> */}
 
             {/* Address Section... */}
+
             <Form.Group controlId='address'>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
@@ -319,11 +391,34 @@ function CheckoutScreen() {
             </Form.Group>
             {/* Add similar Form.Group components for city, postalCode, and country */}
 
-            
-            <Button type='submit' variant='primary'>
+            {/* <Form.Label className="d-block">Credit Card Details</Form.Label>
+            <div className="container mt-5">
+                <Elements stripe={stripePromise}>
+                    <CheckoutForm />
+                </Elements>
+            </div>
+             */}
+             </Form>
+             {/* Spacer div for extra space before the credit card section */}
+            <div style={{ height: '2rem' }}></div> {/* Adjust '2rem' to the amount of space you want */}
+
+            <Card className="mb-3">
+                <Card.Body>
+                <Card.Title>Credit Card Details</Card.Title>
+                <Card.Text className="text-muted" style={{ fontSize: '1rem' }}>
+                    All transactions are secure and encrypted.
+                </Card.Text>
+                <div className="mt-4">
+                    <Elements stripe={stripePromise}>
+                    <CheckoutForm />
+                    </Elements>
+                </div>
+                </Card.Body>
+            </Card>
+            {/* <Button type='submit' variant='primary'>
                 Continue
-            </Button>
-            </Form>
+            </Button> */}
+            
         </div>
         </div>
         </div>

@@ -145,7 +145,8 @@ class OrderItem(models.Model):
 class Address(models.Model):
     street = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
-    zip = models.CharField(default="", max_length=20)
+    zip = models.CharField(default="", max_length=10)
+    country = models.CharField(default="", max_length=20)
     # customer = models.OneToOneField(Customer, on_delete = models.CASCADE, primary_key = True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
