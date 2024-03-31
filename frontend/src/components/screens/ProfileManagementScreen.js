@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import { ListGroup } from 'react-bootstrap';
 
 function ProfileManagementScreen() {
   const [username, setUsername] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [first_name, setFirstname] = useState('');
+  const [last_name, setLastname] = useState('');
+  const [birth_date, setBirthday] = useState('');
+  const [phone, setPhone] = useState('');
+  const [membership, setMembership] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [address, setAddress] = useState('');
   const history = useHistory();
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  
   useEffect(() => {
     const fetchCustomerDetails = async () => {
       if (!userInfo) {
@@ -27,12 +32,15 @@ function ProfileManagementScreen() {
           },
         };
         const { data } = await axios.get('/store/customers/', config);
+        setPhone(data.phone);
+        setBirthday(data.birth_date);
+        setMembership(data.membership);
       } catch (error) {
         console.error('Failed to fetch customer details:', error);
       }
     };
   
-    // fetchCustomerDetails();
+    fetchCustomerDetails();
   }, [userInfo]);
   
   useEffect(() => {
@@ -46,6 +54,9 @@ function ProfileManagementScreen() {
             'Authorization': `JWT ${userInfo.accessToken}`, 
           },
         });
+        setEmail(data.email);
+        setFirstname(data.first_name);
+        setLastname(data.last_name);
         setUsername(data.username);
         // Set other fields similarly, based on the data structure you receive
         // You may need to adjust this depending on how your backend sends the user's info
@@ -63,7 +74,7 @@ function ProfileManagementScreen() {
       // Make sure to include the Authorization header if this endpoint is protected
       await axios.put('http://127.0.0.1:8000/path/to/update/profile', {
         username,
-        birthday,
+        birth_date,
         email,
         password, // Be cautious with updating passwords. Ensure your backend handles it securely.
         address,
@@ -83,6 +94,20 @@ function ProfileManagementScreen() {
 
   return (
     <div>
+      <div className="customer-profile">
+      <h2>Customer Profile</h2>
+      <ListGroup>
+        <ListGroup.Item><strong>Username:</strong> {username}</ListGroup.Item>
+        <ListGroup.Item><strong>Password:</strong> {password}</ListGroup.Item>
+        <ListGroup.Item><strong>First Name:</strong> {first_name}</ListGroup.Item>
+        <ListGroup.Item><strong>Last Name:</strong> {last_name}</ListGroup.Item>
+        <ListGroup.Item><strong>Phone Number:</strong> {phone}</ListGroup.Item>
+        <ListGroup.Item><strong>Email:</strong> {email}</ListGroup.Item>
+        <ListGroup.Item><strong>Address:</strong> {address}</ListGroup.Item>
+        <ListGroup.Item><strong>Birthday:</strong> {birth_date}</ListGroup.Item>
+        <ListGroup.Item><strong>Membership:</strong> {membership}</ListGroup.Item>
+      </ListGroup>
+    </div>
       <h2>Profile Management</h2>
       <form onSubmit={handleSubmit}>
         {/* Example of a text input for the username */}
