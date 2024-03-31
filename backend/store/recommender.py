@@ -28,6 +28,9 @@ def get_similar_products(input_title: str, collection_id, vectorizer: TfidfVecto
     # Find the indices of the highest scores
     #the if-else prevents when products in database less than num_to_recommend
     if (len(sim_score_w_penalty) > num_to_recommend):
+        # Exclude the index of the product itself (product with the highest cosine score)
+        highest_score_index = np.argmax(sim_score_w_penalty)
+        sim_score_w_penalty[highest_score_index] = -np.inf
         ind = np.argpartition(sim_score_w_penalty.flatten(), sim_score_w_penalty.size -num_to_recommend)[-num_to_recommend:]
     else:
         return Product.objects

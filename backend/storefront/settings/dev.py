@@ -9,9 +9,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",  # sqlite3
         # "NAME": BASE_DIR / "db.sqlite3",
         "NAME": "storefront",
-        "HOST": "127.0.0.1",  # 'mysql' when use docker from localhost
+        "HOST": "localhost",  # 'mysql' when use docker from localhost
         "USER": "root",
-        "PASSWORD": "12345678",
+        "PASSWORD": "1234",
     }
 }
 
