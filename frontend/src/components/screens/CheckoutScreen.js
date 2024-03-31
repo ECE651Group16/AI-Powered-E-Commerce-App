@@ -150,7 +150,19 @@ function CheckoutScreen() {
                 // Stripe.js has not yet loaded.
                 return;
               }
-          
+              const config = {
+                headers: {
+                    'Authorization': `JWT ${userInfo.accessToken}`, 
+                },
+                };
+                console.log("Getting /store/customers/ with key", `JWT ${userInfo.accessToken}`);
+                const { data } = await axios.get('/store/customers/', config);
+                // Assuming the response includes the cart_id directly
+                const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
+                console.log("cartID:", customerCartId);
+                if (customerCartId) {
+                    dispatch(fetchCartDetails(customerCartId));
+                }
               const cardElement = elements.getElement(CardElement);
           
               const {error, paymentMethod} = await stripe.createPaymentMethod({
