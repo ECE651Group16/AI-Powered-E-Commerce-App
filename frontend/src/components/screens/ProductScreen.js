@@ -330,14 +330,15 @@ function ProductScreen({ match, history }) {
                   //   <div key={recommendedProduct.id} className="product-card">
                   //   <Product recommendedProduct={recommendedProduct} />
                   // </div>
-                  <div key={recommendedProduct.id} className="product-card m-2">
-                    <img src={recommendedProduct.image} alt={recommendedProduct.title} />
-                    <div className="product-info">
-                      <h3 className="product-title">{recommendedProduct.title}</h3>
-                      <p>{recommendedProduct.description}</p>
-                      <Button variant="primary" onClick={() => history.push(`/products/${recommendedProduct.id}`)}>View Details</Button>
-                    </div>
+                <div key={recommendedProduct.id} className="product-card m-2">
+                  <img src={recommendedProduct.image} alt={recommendedProduct.title} />
+                  <div className="product-info">
+                    <h3 className="product-title">{recommendedProduct.title}</h3>
+                    <p className="product-description">{recommendedProduct.description}</p>
+                    <Button variant="primary" onClick={() => history.push(`/products/${recommendedProduct.id}`)}>View Details</Button>
                   </div>
+                </div>
+
                   // <Card key={recommendedProduct.id} className="m-2" style={{ width: "20rem" }}>
                   //   <Card.Img variant="top" src={recommendedProduct.image} />
                   //   <Card.Body>

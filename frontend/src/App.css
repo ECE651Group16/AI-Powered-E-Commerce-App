@@ -89,6 +89,17 @@
   padding: 0 10px; /* Add some padding around the text */
 }
 
+.product-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits text to 3 lines */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px; /* Consistent with your other padding */
+  margin-bottom: 1em; /* Adjust as needed */
+}
+
+
 .pagination-controls {
   display: flex;
   justify-content: center;
