@@ -299,18 +299,6 @@ class CustomerViewSet(ModelViewSet):
         else:
             return Customer.objects.filter(user=self.request.user)
 
-    def me(self, request):
-        # This action always returns the current customer, regardless of admin status
-        customer = self.get_object()
-        if request.method == "GET":
-            serializer = CustomerSerializer(customer)
-            return Response(serializer.data)
-        elif request.method == "PUT":
-            serializer = CustomerSerializer(customer, data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data)
-
     def get_object(self):
         # Override the get_object method to handle 'me' action
         if self.action == "me":
