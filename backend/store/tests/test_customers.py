@@ -80,15 +80,4 @@ class TestCustomerCreation:
     def test_customer_instance_anonymous_user(self, api_client, customer):
         url = f"/store/customers/"
         response = api_client.get(url)
-        assert response.status_code == status.HTTP_401_UNAUTHORIZED 
-    
-        
-        
-    
-    
-
-        
-        
-        
-        
-
+        assert response.status_code == status.HTTP_401_UNAUTHORIZED

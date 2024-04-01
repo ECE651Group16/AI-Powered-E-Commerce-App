@@ -114,15 +114,3 @@ class TestCustomerCreation:
         url = f"/store/customers/{customer.id}/addresses/{address_id}/"
         response = api_client.delete(url)
         assert response.status_code == status.HTTP_204_NO_CONTENT
-        
-        
-   
-    
-
-   
-
-        
-        
-        
-        
-
