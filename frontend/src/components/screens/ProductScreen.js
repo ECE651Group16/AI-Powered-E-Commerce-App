@@ -22,7 +22,7 @@ function ProductScreen({ match, history }) {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
-
+  const maxReviewsDisplay = 2;
 
 
   // Function to go back to the previous page
@@ -304,17 +304,19 @@ function ProductScreen({ match, history }) {
             <h3>Reviews</h3>
             {product.reviews && product.reviews.length > 0 ? (
               <ListGroup variant="flush">
-                {product.reviews.map((review) => {
-                  // console.log(review);
-                  return (
-                    <ListGroup.Item key={review.id}>
-                      {/* <strong>{review.name}</strong> */}
-                      <Rating value={review.rating} />
-                      <p>{review.date}</p>
-                      <p>{review.description}</p>
-                    </ListGroup.Item>
-                  );
-                })}
+                {/* limit the number of reviews displayed, in descending order of date */}
+                {product.reviews.sort((a, b) => new Date(b.date) - new Date(a.date))                  
+                  .slice(0, maxReviewsDisplay).map((review) => {
+                    // console.log(review);
+                    return (
+                      <ListGroup.Item key={review.id}>
+                        {/* <strong>{review.name}</strong> */}
+                        <Rating value={review.rating} />
+                        <p>{review.date}</p>
+                        <p>{review.description}</p>
+                      </ListGroup.Item>
+                    );
+                  })}
               </ListGroup>
             ) : (
               <Message>No reviews yet</Message>
@@ -330,14 +332,14 @@ function ProductScreen({ match, history }) {
                   //   <div key={recommendedProduct.id} className="product-card">
                   //   <Product recommendedProduct={recommendedProduct} />
                   // </div>
-                <div key={recommendedProduct.id} className="product-card m-2">
-                  <img src={recommendedProduct.image} alt={recommendedProduct.title} />
-                  <div className="product-info">
-                    <h3 className="product-title">{recommendedProduct.title}</h3>
-                    <p className="product-description">{recommendedProduct.description}</p>
-                    <Button variant="primary" onClick={() => history.push(`/products/${recommendedProduct.id}`)}>View Details</Button>
+                  <div key={recommendedProduct.id} className="product-card m-2">
+                    <img src={recommendedProduct.image} alt={recommendedProduct.title} />
+                    <div className="product-info">
+                      <h3 className="product-title">{recommendedProduct.title}</h3>
+                      <p className="product-description">{recommendedProduct.description}</p>
+                      <Button variant="primary" onClick={() => history.push(`/products/${recommendedProduct.id}`)}>View Details</Button>
+                    </div>
                   </div>
-                </div>
 
                   // <Card key={recommendedProduct.id} className="m-2" style={{ width: "20rem" }}>
                   //   <Card.Img variant="top" src={recommendedProduct.image} />
