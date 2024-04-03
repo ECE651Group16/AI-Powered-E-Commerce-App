@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "store",
     "tags",
     "likes",
+    "payments",
     "core",
 ]
 
@@ -72,6 +73,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8001",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
 ]
 
 ROOT_URLCONF = "storefront.urls"
@@ -79,7 +82,7 @@ ROOT_URLCONF = "storefront.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / 'storefront/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

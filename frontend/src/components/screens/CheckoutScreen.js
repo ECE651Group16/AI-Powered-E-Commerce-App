@@ -1,6 +1,6 @@
 // CheckoutScreen.js
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap';
 import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions';
@@ -23,6 +23,7 @@ function CheckoutScreen() {
     const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
     const dispatch = useDispatch();
     const history = useHistory();
+    const [message, setMessage] = useState("");
 
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
@@ -45,14 +46,6 @@ function CheckoutScreen() {
     };
 
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
-    
-
-    const submitHandler =  async (event) => {
-        event.preventDefault();
-
-        const stripe = await stripePromise;
-        const elements = stripe.elements();
-    };
 
     useEffect(() => {
         const fetchCustomerCartId = async () => {
@@ -136,74 +129,74 @@ function CheckoutScreen() {
     const taxes = calculateTaxes(subtotal);
     const total = calculateTotal(subtotal, shipping, taxes);
 
-
-
-    // Define CheckoutForm component
-    const CheckoutForm = () => {
-        const stripe = useStripe();
-        const elements = useElements();
-
-        const handleSubmit = async (event) => {
-            event.preventDefault();
-
-            if (!stripe || !elements) {
-                // Stripe.js has not yet loaded.
-                return;
-              }
-              const config = {
-                headers: {
-                    'Authorization': `JWT ${userInfo.accessToken}`, 
-                },
-                };
-                console.log("Getting /store/customers/ with key", `JWT ${userInfo.accessToken}`);
-                const { data } = await axios.get('/store/customers/', config);
-                // Assuming the response includes the cart_id directly
-                const customerCartId = data.find(customer => customer.user_id === userInfo.id).cart_id;
-                console.log("cartID:", customerCartId);
-                if (customerCartId) {
-                    dispatch(fetchCartDetails(customerCartId));
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
                 }
-              const cardElement = elements.getElement(CardElement);
-          
-              const {error, paymentMethod} = await stripe.createPaymentMethod({
-                type: 'card',
-                card: cardElement,
-              });
-          
-              if (error) {
-                console.log('[error]', error);
-              } else {
-                console.log('[PaymentMethod]', paymentMethod);
-                // Here, you'd send the paymentMethod.id to your server
-                // Example POST request with fetch:
-                const config = {
-                    headers: {
-                        // Include your auth token in the header if your endpoint requires authentication
-                        'Authorization': `JWT ${userInfo.accessToken}`, // Ensure this matches how you store and access tokens
-                    }
-                };
-                try {
-                    console.log("Data", paymentMethod.id);
-                    console.log("cart id", cart.id);
-                    const response = await axios.post(
-                        `/store/payments/create_payment`,
-                        { paymentMethodId: paymentMethod.id, cart_id: cart.id },
-                        config
-                    );
-                    
-                    console.log('Payment intent created:', response.data);
-                    // Navigate to a success page or display a message
-                } catch (error) {
-                    console.error('Error creating payment intent:', error.response ? error.response.data : error.message);
-                } }
-                 }
-            return (
-                <form onSubmit={handleSubmit}>
-                    {/* <CardElement options={{ style: { base: { fontSize: '1.1em' } } }} /> */}
-                    <CardElement/>
-                    <Button type="submit" className="mt-3" disabled={!stripe}>Pay</Button>
-                </form>
-            );
+            }
+        }
+        return cookieValue;
+    }
+    
+    const csrfToken = getCookie('csrftoken');
+    
+
+    const Message = ({ message }) => (
+        <section>
+          <p>{message}</p>
+        </section>
+      );
+
+    useEffect(() => {
+        const query = new URLSearchParams(window.location.search);
+
+        if (query.get("success")) {
+        setMessage("Order placed! You will receive an email confirmation.");
+        }
+
+        if (query.get("canceled")) {
+        setMessage("Order canceled -- continue to shop around and checkout when you're ready.");
+        }
+    }, []);
+
+   // Handler to create Stripe Checkout Session
+    const handleCheckout = async () => {
+        console.log("Initiating checkout process...");
+
+        try {
+            console.log("Preparing to fetch checkout session...");
+            const config = {
+                headers: {
+                  'Authorization': `JWT ${userInfo.accessToken}`, 
+                  'X-CSRFToken': csrfToken, // Include CSRF token in request headers
+                },
+              };
+              
+            const response = await axios.post('/create-checkout-session/', {body: JSON.stringify({ items: cartItems })}, config);
+            console.log("Fetch request sent. Processing response...");
+
+            if (!response.ok) {
+            throw new Error(`Failed to create checkout session, server responded with status: ${response.status}`);
+            }
+
+            const session = await response.json();
+
+            console.log("Checkout session received:", session);
+
+            // Assuming your backend returns the URL or session ID for Stripe
+            window.location = session.url; // Or use Stripe's redirectToCheckout method if you have a session ID
+            console.log("Redirecting to Stripe checkout page...");
+
+        } catch (error) {
+            console.error("Error during checkout:", error.message);
+            // Handle error (e.g., show error message to the user)
+        }
     };
 
     return (
@@ -292,7 +285,7 @@ function CheckoutScreen() {
                 )}
             </Card>
         <div className="container mt-5"> {/* Adds some top margin for spacing */}
-            <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}>
+            {/* <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}> */}
             <Form.Group className="text-center mb-4">
                 <Form.Label as="legend">Express checkout</Form.Label>
                 <div className="d-flex justify-content-around">
@@ -410,7 +403,7 @@ function CheckoutScreen() {
                 </Elements>
             </div>
              */}
-             </Form>
+             {/* </Form> */}
              {/* Spacer div for extra space before the credit card section */}
             <div style={{ height: '2rem' }}></div> {/* Adjust '2rem' to the amount of space you want */}
 
@@ -420,16 +413,18 @@ function CheckoutScreen() {
                 <Card.Text className="text-muted" style={{ fontSize: '1rem' }}>
                     All transactions are secure and encrypted.
                 </Card.Text>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                     <Elements stripe={stripePromise}>
                     <CheckoutForm />
                     </Elements>
-                </div>
+                </div> */}
                 </Card.Body>
             </Card>
-            {/* <Button type='submit' variant='primary'>
-                Continue
-            </Button> */}
+            {message ? (
+                    <p>{message}</p>
+                ) : (
+                    <Button onClick={handleCheckout}>Proceed to Payment</Button>
+                )}
             
         </div>
         </div>
