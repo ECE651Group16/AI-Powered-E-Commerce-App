@@ -129,75 +129,72 @@ function CheckoutScreen() {
     const taxes = calculateTaxes(subtotal);
     const total = calculateTotal(subtotal, shipping, taxes);
 
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
+    // function getCookie(name) {
+    //     let cookieValue = null;
+    //     if (document.cookie && document.cookie !== '') {
+    //         const cookies = document.cookie.split(';');
+    //         for (let i = 0; i < cookies.length; i++) {
+    //             const cookie = cookies[i].trim();
+    //             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+    //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     return cookieValue;
+    // }
     
-    const csrfToken = getCookie('csrftoken');
+    // const csrfToken = getCookie('csrftoken');
     
-
-    const Message = ({ message }) => (
-        <section>
-          <p>{message}</p>
-        </section>
-      );
 
     useEffect(() => {
+        // Check to see if this is a redirect back from Checkout
         const query = new URLSearchParams(window.location.search);
-
+    
         if (query.get("success")) {
-        setMessage("Order placed! You will receive an email confirmation.");
+          console.log("Order placed! You will receive an email confirmation.");
         }
-
+    
         if (query.get("canceled")) {
-        setMessage("Order canceled -- continue to shop around and checkout when you're ready.");
+          console.log(
+            "Order canceled -- continue to shop around and checkout when you're ready."
+          );
         }
-    }, []);
+        }, []);
 
    // Handler to create Stripe Checkout Session
-    const handleCheckout = async () => {
-        console.log("Initiating checkout process...");
+    // const handleCheckout = async () => {
+    //     console.log("Initiating checkout process...");
 
-        try {
-            console.log("Preparing to fetch checkout session...");
-            const config = {
-                headers: {
-                  'Authorization': `JWT ${userInfo.accessToken}`, 
-                  'X-CSRFToken': csrfToken, // Include CSRF token in request headers
-                },
-              };
+    //     try {
+    //         console.log("Preparing to fetch checkout session...");
+    //         const config = {
+    //             headers: {
+    //               'Authorization': `JWT ${userInfo.accessToken}`, 
+    //             //   'X-CSRFToken': csrfToken, // Include CSRF token in request headers
+    //             },
+    //           };
               
-            const response = await axios.post('/create-checkout-session/', {body: JSON.stringify({ items: cartItems })}, config);
-            console.log("Fetch request sent. Processing response...");
+    //         const response = await axios.post('/create-checkout-session/', {body: JSON.stringify({ items: cartItems })}, config);
+    //         console.log("Fetch request sent. Processing response...");
 
-            if (!response.ok) {
-            throw new Error(`Failed to create checkout session, server responded with status: ${response.status}`);
-            }
+    //         if (!response.ok) {
+    //         throw new Error(`Failed to create checkout session, server responded with status: ${response.status}`);
+    //         }
 
-            const session = await response.json();
+    //         const session = await response.json();
 
-            console.log("Checkout session received:", session);
+    //         console.log("Checkout session received:", session);
 
-            // Assuming your backend returns the URL or session ID for Stripe
-            window.location = session.url; // Or use Stripe's redirectToCheckout method if you have a session ID
-            console.log("Redirecting to Stripe checkout page...");
+    //         // Assuming your backend returns the URL or session ID for Stripe
+    //         window.location = session.url; // Or use Stripe's redirectToCheckout method if you have a session ID
+    //         console.log("Redirecting to Stripe checkout page...");
 
-        } catch (error) {
-            console.error("Error during checkout:", error.message);
-            // Handle error (e.g., show error message to the user)
-        }
-    };
+    //     } catch (error) {
+    //         console.error("Error during checkout:", error.message);
+    //         // Handle error (e.g., show error message to the user)
+    //     }
+    // };
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -420,11 +417,28 @@ function CheckoutScreen() {
                 </div> */}
                 </Card.Body>
             </Card>
-            {message ? (
+            {/* {message ? (
                     <p>{message}</p>
                 ) : (
                     <Button onClick={handleCheckout}>Proceed to Payment</Button>
-                )}
+                )} */}
+                <section>
+                <div className="product">
+                    <img
+                    src="https://i.imgur.com/EHyR2nP.png"
+                    alt="The cover of Stubborn Attachments"
+                    />
+                    <div className="description">
+                    <h3>Stubborn Attachments</h3>
+                    <h5>$20.00</h5>
+                    </div>
+                </div>
+                <form action="/api/stripe/create-checkout-session" method="POST">
+                    <button type="submit">
+                    Checkout
+                    </button>
+                </form>
+                </section>
             
         </div>
         </div>

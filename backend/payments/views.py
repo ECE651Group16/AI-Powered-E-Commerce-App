@@ -81,7 +81,7 @@ class PaymentViewSet(APIView):
     def post(self, request):
         YOUR_DOMAIN = "http://127.0.0.1:3000/"
         try:
-            product = Product.objects.get(pk=product)
+            # product = Product.objects.get(pk=product)
             # product_image = product.images[0] if product.images.exists() else 'url_to_default_image'
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
@@ -104,6 +104,7 @@ class PaymentViewSet(APIView):
                 mode='payment',
                 success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
                 cancel_url='http://localhost:3000/?canceled=true',
+                # cancel_url='http://localhost:3000/',
             )
             return redirect(checkout_session.url)
             # return JsonResponse({'sessionId': checkout_session['id']})

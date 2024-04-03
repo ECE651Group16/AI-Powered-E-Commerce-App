@@ -33,11 +33,11 @@ import OrderConfirmationScreen from "./components/screens/OrderConfirmationScree
 // );
 
 function App() {
-  const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
+  // const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
   return (
-    <Elements stripe={stripePromise}>
-<Router>
-<SessionCheck /> 
+    // <Elements stripe={stripePromise}>
+    <Router>
+    <SessionCheck /> 
       <Header />
       <main className="py-3">
         <Container>
@@ -51,14 +51,14 @@ function App() {
           <Route path="/aboutus" component={AboutScreen} exact />
           <Route path="/contactus" component={ContactScreen} exact />
           <Route path="/profile" component={ProfileScreen}/>
-          <Route path="/shipping" component={CheckoutScreen} exact />
+          <Route path="/payments" component={CheckoutScreen} exact />
           <Route path="/order-confirmation" component={OrderConfirmationScreen} />
         </Container>
       </main>
 
       <Footer />
       </Router>
-      </Elements>
+      // </Elements>
   );
 }
 
