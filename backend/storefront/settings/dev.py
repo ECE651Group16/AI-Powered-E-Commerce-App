@@ -11,7 +11,7 @@ DATABASES = {
         "NAME": "storefront",
         "HOST": "127.0.0.1",  # 'mysql' when use docker from localhost
         "USER": "root",
-        "PASSWORD": "Jxczk123",
+        "PASSWORD": "12345678",
     }
 }
 
