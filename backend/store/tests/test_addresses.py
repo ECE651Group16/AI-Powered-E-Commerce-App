@@ -7,7 +7,7 @@ from model_bakery import baker
 
 
 @pytest.mark.django_db
-class TestCustomerCreation:
+class TestAddresses:
     @pytest.fixture
     def api_client():
         return APIClient()
