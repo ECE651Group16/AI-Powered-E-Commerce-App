@@ -20,6 +20,7 @@ from django.urls import path, include
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
+from store.views import PaymentViewSet
 
 # playground/hello
 
@@ -33,6 +34,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("auth/", include("djoser.urls")),
     path("auth/", include("djoser.urls.jwt")),
+    path("create-checkout-session/",PaymentViewSet.as_view(), name='create-checkout-session'),
 ]
 
 if settings.DEBUG:

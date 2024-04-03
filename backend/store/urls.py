@@ -11,7 +11,7 @@ router = routers.DefaultRouter()
 router.register("products", views.ProductViewSet, basename="product")
 router.register("collections", views.CollectionViewSet)
 router.register("carts", views.CartViewSet)
-router.register("payments", views.PaymentViewSet, basename="payment")
+# router.register("payments", views.PaymentViewSet, basename="payment")
 
 
 router.register("customers", views.CustomerViewSet)
