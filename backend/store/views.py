@@ -368,7 +368,7 @@ class RecommendationViewSet(ModelViewSet):
         if len(customer_order_id):
             customer_and_order = OrderItem.objects.values(
                 "order_id__customer_id", "product_id"
-            )
+            ).distinct()
             df = pd.DataFrame(list(customer_and_order))
             df["score"] = 1.0
             customer_items_pivot_matrix_df = df.pivot(
