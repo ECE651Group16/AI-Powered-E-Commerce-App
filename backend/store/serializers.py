@@ -277,28 +277,39 @@ class AddressSerializer(serializers.ModelSerializer):
 class CreateOrderSerializer(serializers.Serializer):
     # ... existing fields ...
 
-    def calculate_total(self, customer):
-        # Get the subtotal by summing up the price of items in the cart
-        cart_id = self.validated_data["cart_id"]
-        subtotal = CartItem.objects.filter(cart_id=cart_id).aggregate(
-            subtotal=Sum(F('quantity') * F('product__unit_price')))['subtotal'] or 0
+    cart_id = serializers.UUIDField()
 
-        # Determine shipping cost
-        shipping_address = Address.objects.filter(customer=customer).first()
-        if shipping_address and (shipping_address.country in [Country('CA'), Country('US')]):
-            shipping = 0  # Free shipping for Canada and US
-        else:
-            shipping = 10  # Flat rate shipping for other countries
-
-        # Calculate tax and total
-        if shipping_address and shipping_address.country == Country('CA'):
-            total = (subtotal + shipping) * Decimal('1.13')
-        else:
-            total = subtotal * Decimal('1.13') + shipping
-
-        return total.quantize(Decimal('0.01'))  # rounds to two places
+    def validate_cart_id(self, cart_id):
+        if not Cart.objects.filter(pk=cart_id).exists():
+            raise serializers.ValidationError("No cart with the given ID was found.")
+        if CartItem.objects.filter(cart_id=cart_id).count() == 0:
+            raise serializers.ValidationError("The cart is empty.")
+        return cart_id
 
     def save(self, **kwargs):
-        customer = Customer.objects.get(user_id=self.context["user_id"])
-        total = self.calculate_total(customer)
+        with transaction.atomic():
+            cart_id = self.validated_data["cart_id"]
+
+            customer = Customer.objects.get(user_id=self.context["user_id"])
+            order = Order.objects.create(customer=customer)
+
+            cart_items = CartItem.objects.select_related("product").filter(
+                cart_id=cart_id
+            )
+            order_items = [
+                OrderItem(
+                    order=order,
+                    product=item.product,
+                    unit_price=item.product.unit_price,
+                    quantity=item.quantity,
+                )
+                for item in cart_items
+            ]
+            OrderItem.objects.bulk_create(order_items)
+
+            Cart.objects.filter(pk=cart_id).delete()
+
+            order_created.send_robust(self.__class__, order=order)
+
+            return order
         # ... rest of your save logic, create Order and set total ...

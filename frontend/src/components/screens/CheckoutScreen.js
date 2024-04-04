@@ -7,7 +7,6 @@ import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartAc
 import axios from 'axios';
 import { useHistory, useLocation } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
-import QueryString from "query-string";
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
@@ -79,57 +78,55 @@ function CheckoutScreen() {
 
     const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     const calculateSubtotal = () => cartItems.reduce((acc, item) => acc + item.qty * item.unit_price, 0).toFixed(2);
-    const calculateShipping = () => {
-        // Assuming shippingAddress is part of your cart or user state and contains a 'country' field
-        const { shippingAddress } = cart;
+    //const calculateShipping = () => {
+    //     // Assuming shippingAddress is part of your cart or user state and contains a 'country' field
+    //     const { shippingAddress } = cart;
     
-        // Check if country is Canada or US
-        if (shippingAddress && (shippingAddress.country === 'Canada' || shippingAddress.country === 'US')) {
-            return 'Free Shipping';
-        } else {
-            // Implement your shipping cost calculation for other countries
-            return 10.00; // Placeholder for shipping cost outside Canada and US
-        }
-    };
-    const calculateTaxes = (subtotal) => {
-        const shippingCost = calculateShipping(); 
-        // Assuming a tax rate, for simplicity
-        if (shippingAddress && (shippingAddress.country === 'Canada')){
-            const TAX_RATE = 0.13; // 13% tax rate as an example
-            const tax = (subtotal+'Free Shipping' ? 0 : parseFloat(shippingCost)) * TAX_RATE;
-            return tax.toFixed(2);
-        }
-        else{
-            const TAX_RATE = 0.13; // 13% tax rate as an example
-            return (subtotal * TAX_RATE).toFixed(2);
-        }
-        
-        
-    };
-    const calculateTotal = () => {
-        const subtotal = calculateSubtotal();
-        const shippingCost = calculateShipping(); // Update this to ensure it returns a numeric value for shipping
-        const taxes = calculateTaxes(subtotal);
+    //     // Check if country is Canada or US
+    //     if (shippingAddress && (shippingAddress.country === 'Canada' || shippingAddress.country === 'US')) {
+    //         return 'Free Shipping';
+    //     } else {
+    //         // Implement your shipping cost calculation for other countries
+    //         return 10.00; // Placeholder for shipping cost outside Canada and US
+    //     }
+    // };
+    // const calculateTaxes = (subtotal) => {
+    //     const shippingCost = calculateShipping(); 
+    //     // Assuming a tax rate, for simplicity
+    //     if (shippingAddress && (shippingAddress.country === 'Canada')){
+    //         const TAX_RATE = 0.13; // 13% tax rate as an example
+    //         const tax = (subtotal+'Free Shipping' ? 0 : parseFloat(shippingCost)) * TAX_RATE;
+    //         return tax.toFixed(2);
+    //     }
+    //     else{
+    //         const TAX_RATE = 0.13; // 13% tax rate as an example
+    //         return (subtotal * TAX_RATE).toFixed(2);
+    //     } 
+    // };
+    // const calculateTotal = () => {
+    //     const subtotal = calculateSubtotal();
+    //     const shippingCost = calculateShipping(); // Update this to ensure it returns a numeric value for shipping
+    //     const taxes = calculateTaxes(subtotal);
     
-        // Ensure all values are numeric. Convert 'Free Shipping' to 0 for calculation.
-        const numericShippingCost = shippingCost === 'Free Shipping' ? 0 : parseFloat(shippingCost);
-        const numericSubtotal = parseFloat(subtotal);
-        const numericTaxes = parseFloat(taxes);
+    //     // Ensure all values are numeric. Convert 'Free Shipping' to 0 for calculation.
+    //     const numericShippingCost = shippingCost === 'Free Shipping' ? 0 : parseFloat(shippingCost);
+    //     const numericSubtotal = parseFloat(subtotal);
+    //     const numericTaxes = parseFloat(taxes);
     
-        // Ensure all components of total are numeric before summing
-        if (!isNaN(numericShippingCost) && !isNaN(numericSubtotal) && !isNaN(numericTaxes)) {
-            const total = numericSubtotal + numericShippingCost + numericTaxes;
-            return total.toFixed(2); // This should now always work, as total is guaranteed to be numeric
-        } else {
-            console.error("One or more components of the total are not numeric", {numericSubtotal, numericShippingCost, numericTaxes});
-            return 'Error calculating total'; // Or handle this scenario as appropriate for your app
-        }
-    };
+    //     // Ensure all components of total are numeric before summing
+    //     if (!isNaN(numericShippingCost) && !isNaN(numericSubtotal) && !isNaN(numericTaxes)) {
+    //         const total = numericSubtotal + numericShippingCost + numericTaxes;
+    //         return total.toFixed(2); // This should now always work, as total is guaranteed to be numeric
+    //     } else {
+    //         console.error("One or more components of the total are not numeric", {numericSubtotal, numericShippingCost, numericTaxes});
+    //         return 'Error calculating total'; // Or handle this scenario as appropriate for your app
+    //     }
+    // };
 
     const subtotal = calculateSubtotal();
-    const shipping = calculateShipping();
-    const taxes = calculateTaxes(subtotal);
-    const total = calculateTotal(subtotal, shipping, taxes);
+    // const shipping = calculateShipping();
+    // const taxes = calculateTaxes(subtotal);
+    // const total = calculateTotal(subtotal, shipping, taxes);
     
     const location = useLocation();
 
