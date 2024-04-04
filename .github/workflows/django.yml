@@ -32,7 +32,7 @@ jobs:
         run: > 
           mysql 
           -u root 
-          -p 12345678 
+          -p12345678 
           --socket=${{ steps.setup-mysql.outputs.base-dir }}/tmp/mysql.sock 
           -e "CREATE DATABASE storefront"
 
