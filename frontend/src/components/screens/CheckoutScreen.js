@@ -202,18 +202,18 @@ function CheckoutScreen() {
                             </div>
                         </ListGroup.Item>
                         ))}
-                        <ListGroup.Item>
+                        {/* <ListGroup.Item>
                             <div className="d-flex">
                                 <input type="text" className="form-control" placeholder="Discount code or gift card" />
                                 <Button variant="outline-secondary" className="ml-2">Apply</Button>
                             </div>
-                        </ListGroup.Item>
+                        </ListGroup.Item> */}
                         <ListGroup.Item>
                             <div className="d-flex justify-content-between">
-                                <strong>Subtotal</strong>
-                                <strong>${subtotal}</strong>
+                                <span style={{ fontSize: '1.5em' }}>Subtotal</span>
+                                <span style={{ fontSize: '1.5em' }}>${subtotal}</span>
                             </div>
-                            <div className="d-flex justify-content-between">
+                            {/* <div className="d-flex justify-content-between">
                                 <strong>Shipping</strong>
                                 <strong>${shipping}</strong>
                             </div>
@@ -224,7 +224,7 @@ function CheckoutScreen() {
                             <div className="d-flex justify-content-between">
                                 <span style={{ fontSize: '1.5em' }}>Total</span>
                                 <span style={{ fontSize: '1.5em' }}>${total}</span>
-                            </div>
+                            </div> */}
                             {/* Repeat for Shipping, Taxes, and Total */}
                         </ListGroup.Item>
                         {/* Discount Code Input */}
