@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Button, Col, Row, Card, ListGroup, Image } from 'react-bootstrap';
 import { addToCart,removeFromCart, fetchCartDetails } from '../../actions/cartActions';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
+import QueryString from "query-string";
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 // import { saveShippingAddress } from '../../actions/cartActions'; // You need to implement this
@@ -24,7 +25,7 @@ function CheckoutScreen() {
     const dispatch = useDispatch();
     const history = useHistory();
     const [message, setMessage] = useState("");
-
+    
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     console.log("User Info",userInfo);
@@ -128,73 +129,23 @@ function CheckoutScreen() {
     const shipping = calculateShipping();
     const taxes = calculateTaxes(subtotal);
     const total = calculateTotal(subtotal, shipping, taxes);
-
-    // function getCookie(name) {
-    //     let cookieValue = null;
-    //     if (document.cookie && document.cookie !== '') {
-    //         const cookies = document.cookie.split(';');
-    //         for (let i = 0; i < cookies.length; i++) {
-    //             const cookie = cookies[i].trim();
-    //             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-    //                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-    //                 break;
-    //             }
-    //         }
-    //     }
-    //     return cookieValue;
-    // }
     
-    // const csrfToken = getCookie('csrftoken');
-    
+    const location = useLocation();
 
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
-        const query = new URLSearchParams(window.location.search);
-    
-        if (query.get("success")) {
+        // const query = new URLSearchParams(window.location.search);
+        const values = QueryString.parse(location.search);
+        if (values.success) { // query.get("success")
           console.log("Order placed! You will receive an email confirmation.");
         }
     
-        if (query.get("canceled")) {
+        if (values.cancled) { //query.get("canceled")
           console.log(
             "Order canceled -- continue to shop around and checkout when you're ready."
           );
         }
         }, []);
-
-   // Handler to create Stripe Checkout Session
-    // const handleCheckout = async () => {
-    //     console.log("Initiating checkout process...");
-
-    //     try {
-    //         console.log("Preparing to fetch checkout session...");
-    //         const config = {
-    //             headers: {
-    //               'Authorization': `JWT ${userInfo.accessToken}`, 
-    //             //   'X-CSRFToken': csrfToken, // Include CSRF token in request headers
-    //             },
-    //           };
-              
-    //         const response = await axios.post('/create-checkout-session/', {body: JSON.stringify({ items: cartItems })}, config);
-    //         console.log("Fetch request sent. Processing response...");
-
-    //         if (!response.ok) {
-    //         throw new Error(`Failed to create checkout session, server responded with status: ${response.status}`);
-    //         }
-
-    //         const session = await response.json();
-
-    //         console.log("Checkout session received:", session);
-
-    //         // Assuming your backend returns the URL or session ID for Stripe
-    //         window.location = session.url; // Or use Stripe's redirectToCheckout method if you have a session ID
-    //         console.log("Redirecting to Stripe checkout page...");
-
-    //     } catch (error) {
-    //         console.error("Error during checkout:", error.message);
-    //         // Handle error (e.g., show error message to the user)
-    //     }
-    // };
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -434,7 +385,7 @@ function CheckoutScreen() {
                     </div>
                 </div>
                 <form action="/api/stripe/create-checkout-session" method="POST">
-                    <button type="submit">
+                    <button className="checkout-button" type="submit">
                     Checkout
                     </button>
                 </form>
