@@ -19,6 +19,10 @@ import {
   FILTER_PRODUCTS_SUCCESS,
   FILTER_PRODUCTS_FAIL,
 
+  RECOMM_PRODUCT_LIST_REQUEST, 
+  RECOMM_PRODUCT_LIST_SUCCESS, 
+  RECOMM_PRODUCT_LIST_FAIL
+
 } from "../constants/productConstants";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -152,7 +156,7 @@ export const listProductDetails =(id) => async (dispatch)=>{
   try{
       dispatch({type:PRODUCT_DETAILS_REQUEST})
       const {data} = await axios.get(`/store/products/${id}`)
-
+      console.log("product detail", data);
       dispatch({
           type:PRODUCT_DETAILS_SUCCESS,
           payload:data
@@ -196,6 +200,8 @@ export const listProductDetails =(id) => async (dispatch)=>{
 //     });
 //   }
 // };
+
+
 
 export const filterProducts = (filters, page = 1) => async (dispatch) => {
   dispatch({ type: FILTER_PRODUCTS_REQUEST });
