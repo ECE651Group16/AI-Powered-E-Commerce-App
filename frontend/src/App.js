@@ -19,6 +19,7 @@ import WishlistScreen from "./components/screens/WishlistScreen";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import OrderConfirmationScreen from "./components/screens/OrderConfirmationScreen";
+import SuccessScreen from "./components/screens/SuccessScreen";
 
 // axios.interceptors.response.use(
 //   (response) => response,
@@ -53,6 +54,7 @@ function App() {
           <Route path="/profile" component={ProfileScreen}/>
           <Route path="/payments" component={CheckoutScreen} exact />
           <Route path="/order-confirmation" component={OrderConfirmationScreen} />
+          <Route path="/success" component={SuccessScreen} />
         </Container>
       </main>
 

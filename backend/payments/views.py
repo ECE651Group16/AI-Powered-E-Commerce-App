@@ -115,7 +115,8 @@ class PaymentViewSet(APIView):
                 ],
                 payment_method_types=['card'],
                 mode='payment',
-                success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
+                success_url='http://localhost:3000/?success?session_id={CHECKOUT_SESSION_ID}',
+                #success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
                 cancel_url='http://localhost:3000/?canceled=true',
                 automatic_tax={'enabled': True},  # Enable or disable automatic tax calculation
                 billing_address_collection='required',  # Set to 'required' to collect billing address
