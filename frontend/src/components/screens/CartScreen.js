@@ -71,7 +71,7 @@ function CartScreen({ match, location, history }) {
     };
 
     const checkoutHandler = () => {
-        history.push('/login?redirect=shipping')
+        history.push('/login?redirect=payments')
     }
 
     const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';

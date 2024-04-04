@@ -16,6 +16,10 @@ import CheckoutScreen from './components/screens/CheckoutScreen';
 import axios from 'axios';
 import SessionCheck from "./components/SessionCheck";
 import WishlistScreen from "./components/screens/WishlistScreen";
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import OrderConfirmationScreen from "./components/screens/OrderConfirmationScreen";
+import SuccessScreen from "./components/screens/SuccessScreen";
 
 // axios.interceptors.response.use(
 //   (response) => response,
@@ -30,9 +34,11 @@ import WishlistScreen from "./components/screens/WishlistScreen";
 // );
 
 function App() {
+  // const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
   return (
-<Router>
-<SessionCheck /> 
+    // <Elements stripe={stripePromise}>
+    <Router>
+    <SessionCheck /> 
       <Header />
       <main className="py-3">
         <Container>
@@ -46,12 +52,15 @@ function App() {
           <Route path="/aboutus" component={AboutScreen} exact />
           <Route path="/contactus" component={ContactScreen} exact />
           <Route path="/profile" component={ProfileScreen}/>
-          <Route path="/shipping" component={CheckoutScreen} exact />
+          <Route path="/payments" component={CheckoutScreen} exact />
+          <Route path="/order-confirmation" component={OrderConfirmationScreen} />
+          <Route path="/success" component={SuccessScreen} />
         </Container>
       </main>
 
       <Footer />
       </Router>
+      // </Elements>
   );
 }
 

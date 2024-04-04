@@ -313,7 +313,7 @@ function ProductScreen({ match, history }) {
                         {/* <strong>{review.name}</strong> */}
                         <Rating value={review.rating} />
                         <p>{review.date}</p>
-                        <p>{review.description}</p>
+                        <p  className="review-description">{review.description}</p>
                       </ListGroup.Item>
                     );
                   })}
@@ -327,15 +327,20 @@ function ProductScreen({ match, history }) {
           <div className="mt-5">
             <h3>Similar products you may like</h3>
             <div className="horizontal-scroll-wrapper">
-              {product.recommended_products &&
-                product.recommended_products.map((recommendedProduct) => (
-                  //   <div key={recommendedProduct.id} className="product-card">
-                  //   <Product recommendedProduct={recommendedProduct} />
-                  // </div>
-                  <div key={recommendedProduct.id} className="product-card m-2">
-                    <img src={recommendedProduct.image} alt={recommendedProduct.title} />
+            {product.recommended_products &&
+              product.recommended_products.map((recommendedProduct) => (
+                <div key={recommendedProduct.id} className="product-card m-2">
+                  {recommendedProduct.images && recommendedProduct.images.length > 0 ? (
+                    <img
+                      src={process.env.PUBLIC_URL + recommendedProduct.images[0].image}
+                      alt={recommendedProduct.title}
+                      className="img-fluid"
+                    />
+                  ) : (
+                    <img src={defaultImage} alt="Default product" className="img-fluid" />
+                  )}
                     <div className="product-info">
-                      <h3 className="product-title">{recommendedProduct.title}</h3>
+                      <h3 className="product-subtitle">{recommendedProduct.title}</h3>
                       <p className="product-description">{recommendedProduct.description}</p>
                       <Button variant="primary" onClick={() => history.push(`/products/${recommendedProduct.id}`)}>View Details</Button>
                     </div>

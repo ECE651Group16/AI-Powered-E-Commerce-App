@@ -1,15 +1,22 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-from rest_framework.decorators import api_view
+from django.http import JsonResponse
+from django.views import View
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models.aggregates import Count
 from django.db.models import Avg
+from django.conf import settings
+from django.views.generic import TemplateView
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework import viewsets
 from rest_framework.viewsets import ModelViewSet, GenericViewSet, ViewSet
 from rest_framework.generics import ListAPIView
 from rest_framework.mixins import (
@@ -66,6 +73,9 @@ from .serializers import (
 )
 from .recommender import recommend
 
+from django.shortcuts import redirect
+
+        
 
 # Create your views here.
 # generic views
