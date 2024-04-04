@@ -29,6 +29,8 @@ pandas = "*"
 numpy = "*"
 scipy = "*"
 scikit-learn = "*"
+django-countries = "*"
+stripe = "*"
 
 [dev-packages]
 pytest = "*"

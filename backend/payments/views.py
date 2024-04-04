@@ -16,7 +16,7 @@ class PaymentViewSet(APIView):
     def post(self, request):
         # subtotal = request.data.get('subtotal', 0)
         items = request.data.get('items', [])
-        print("Received items from frontend:", items) 
+     
         input_items = []
         for item in items:
             print("currency: ", item.get('currency'))
@@ -40,7 +40,7 @@ class PaymentViewSet(APIView):
             # amount_subtotal = 2198
             # amount_total = int(subtotal * 100)
             line_items = []
-
+            
             # Construct the line_items list by iterating over items
             for item in items:
                 line_item = {
