@@ -41,5 +41,6 @@ jobs:
           cd backend
           pipenv run python manage.py makemigrations
           pipenv run python manage.py test
+          pipenv run python manage.py migrate
           pipenv run pytest --cov-report term-missing --cov=./
           cd ../
