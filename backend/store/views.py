@@ -74,52 +74,8 @@ from .serializers import (
 from .recommender import recommend
 
 from django.shortcuts import redirect
-# import stripe
 
-# stripe.api_key = settings.STRIPE_SECRET_KEY
-
-# class ProductLandingPageView(TemplateView):
-#     template_name = "landing.html"
-
-# @method_decorator(csrf_exempt, name='dispatch')
-# class PaymentViewSet(View):
-#     def post(self, request, *args, **kwargs):
-#         YOUR_DOMAIN = "http://127.0.0.1:3000/"
-#         try:
-#             product = Product.objects.get(pk=product)
-#             # product_image = product.images[0] if product.images.exists() else 'url_to_default_image'
-#             checkout_session = stripe.checkout.Session.create(
-                
-#                 line_items=[
-#                     {
-#                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-#                         # 'price': '{{PRICE_ID}}',
-#                         'price': 'price_1P1MAuLyCz9ytZLn4dZUIH3f',
-#                         # 'price_data': {
-#                         #     'currency': 'cad',
-#                         #     'product_data': {
-#                         #         'name': product.title,
-#                         #         # 'images': [],
-#                         #     },
-#                         #     'unit_amount': int(product.unit_price * 100),
-#                         # },
-#                         'quantity': 1,
-#                     },
-#                 ],
-#                 payment_method_types=['card'],
-#                 mode='payment',
-#                 success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
-#                 cancel_url='http://localhost:3000/?canceled=true',
-#             )
-#             return redirect(checkout_session.url)
-#             # return JsonResponse({'sessionId': checkout_session['id']})
-#         except Exception as e:
-#             return JsonResponse({'error': str(e)}, status=500)
-#         # return JsonResponse({
-#         #     'id': checkout_session.id
-#         # })
         
-
 
 # Create your views here.
 # generic views

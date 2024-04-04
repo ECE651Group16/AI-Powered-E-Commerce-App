@@ -21,7 +21,6 @@ import shopLogo from '../../images/shop.jpg'; // Path to shop logo
 import applePayLogo from '../../images/apple.jpg'; // Path to Apple Pay logo
 
 function CheckoutScreen() {
-    const stripePromise = loadStripe('pk_test_A7jK4iCYHL045qgjjfzAfPxu');
     const dispatch = useDispatch();
     const history = useHistory();
     const [message, setMessage] = useState("");
@@ -132,6 +131,7 @@ function CheckoutScreen() {
     
     const location = useLocation();
 
+    //strip checkout
     useEffect(() => {
         // Check to see if this is a redirect back from Checkout
         // const query = new URLSearchParams(window.location.search);
@@ -260,44 +260,7 @@ function CheckoutScreen() {
 
                
                 
-             {/* Credit Card Details Section */}
-             {/* <Form.Group className="mb-4">
-                    <Form.Label className="d-block">Credit Card Details</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Name On the Card"
-                        className="mb-3"
-                        required
-                        // Add onChange handler as needed
-                    />
-                    <Form.Control
-                        type="text"
-                        placeholder="Card Number"
-                        className="mb-3"
-                        required
-                        // Add onChange handler as needed
-                    />
-                    <Row>
-                        <Col>
-                            <Form.Control
-                                type="text"
-                                placeholder="MM/YY"
-                                className="mb-3"
-                                required
-                                // Add onChange handler as needed
-                            />
-                        </Col>
-                        <Col>
-                            <Form.Control
-                                type="text"
-                                placeholder="CVV"
-                                required
-                                // Add onChange handler as needed
-                            />
-                        </Col>
-                    </Row>
-                </Form.Group> */}
-
+            
             {/* Address Section... */}
 
             <Form.Group controlId='address'>
