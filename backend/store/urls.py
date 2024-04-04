@@ -37,7 +37,6 @@ products_router.register("reviews", views.ReviewViewSet, basename="product-revie
 products_router.register("images", views.ProductImageViewSet, basename="product-images")
 
 
-
 # payments_router = routers.NestedDefaultRouter(router, "payments", lookup="payments")
 # payments_router.register(
 #     "payments", views.PaymentViewSet, basename="payments"
@@ -51,7 +50,6 @@ urlpatterns = (
     + carts_router.urls
     + likes_router.urls
     + customers_router.urls
-
 )
 
 # URLConfiguration

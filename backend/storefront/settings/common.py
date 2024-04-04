@@ -82,7 +82,7 @@ ROOT_URLCONF = "storefront.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'storefront/templates'],
+        "DIRS": [BASE_DIR / "storefront/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

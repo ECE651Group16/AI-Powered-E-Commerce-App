@@ -3,5 +3,5 @@ from .views import PaymentViewSet
 
 # URLConf
 urlpatterns = [
-    path("create-checkout-session", PaymentViewSet.as_view()),           
+    path("create-checkout-session", PaymentViewSet.as_view()),
 ]

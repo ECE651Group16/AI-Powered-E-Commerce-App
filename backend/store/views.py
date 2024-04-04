@@ -75,7 +75,6 @@ from .recommender import recommend
 
 from django.shortcuts import redirect
 
-        
 
 # Create your views here.
 # generic views
