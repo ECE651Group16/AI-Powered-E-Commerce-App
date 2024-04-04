@@ -85,6 +85,16 @@
   height: 1.2em; /* Set a fixed height for one line */
   line-height: 1.2em; /* Set a line height to match the height */
 }
+.product-subtitle { /* New class for the title */
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px; /* Give some horizontal padding */
+  height: 1.5em; /* Set a fixed height for one line */
+  line-height: 2em; /* Set a line height to match the height */
+  font-size: 1.3em; /* Smaller font size */
+}
 .product-info { /* Add this class to the div that wraps the title and other text inside .product-card */
   padding: 0 10px; /* Add some padding around the text */
 }
@@ -99,6 +109,9 @@
   margin-bottom: 1em; /* Adjust as needed */
 }
 
+.review-description {
+  font-size: 1.2em; /* Larger font size */
+}
 
 .pagination-controls {
   display: flex;
