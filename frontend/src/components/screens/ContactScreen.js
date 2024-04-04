@@ -44,7 +44,7 @@ function ContactScreen() {
                 <Form.Label htmlFor="inlineFormInputName" visuallyHidden>
                     Name
                 </Form.Label>
-                <Form.Control required type="text" value={formData.name} onChange={handleChange} placeholder="Name"/>
+                <Form.Control required type="text" name="name" value ={formData.name} onChange={handleChange} placeholder="Name"/>
                </Form.Group>
                 </Col>
             </Row>
@@ -54,7 +54,7 @@ function ContactScreen() {
                 <Form.Label htmlFor="inlineFormInputEmail" visuallyHidden>
                     Email
                 </Form.Label>
-                <Form.Control required type="email" value={formData.email} onChange={handleChange} placeholder="Email"/>
+                <Form.Control required type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email"/>
                </Form.Group>
                 </Col>
             </Row>
@@ -64,7 +64,7 @@ function ContactScreen() {
                 <Form.Label htmlFor="inlineFormInputMessage" visuallyHidden>
                     Message
                 </Form.Label>
-                <Form.Control as="textarea" rows={3} required type="text" value={formData.message} onChange={handleChange} placeholder="Message"/>
+                <Form.Control as="textarea" rows={3} name="message" required type="text" value={formData.message} onChange={handleChange} placeholder="Message"/>
                </Form.Group>
                 </Col>
             </Row>
