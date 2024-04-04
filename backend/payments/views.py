@@ -79,12 +79,14 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 class PaymentViewSet(APIView):
     def post(self, request):
+        subtotal = request.data.get('subtotal', 0)
+        items = request.data.get('items', [])
         YOUR_DOMAIN = "http://127.0.0.1:3000/"
         try:
             # product = Product.objects.get(pk=product)
             # product_image = product.images[0] if product.images.exists() else 'url_to_default_image'
             amount_subtotal = 2198
-            amount_total = 2198
+            amount_total = int(subtotal * 100)
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {

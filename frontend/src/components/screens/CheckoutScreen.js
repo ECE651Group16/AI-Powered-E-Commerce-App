@@ -41,6 +41,8 @@ function CheckoutScreen() {
     const [showOrderSummary, setShowOrderSummary] = useState(false);
     
 
+    const stripePromise = loadStripe('pk_test_kbqUrvH0YXB7wc9EHEO6e9dP00Ox2h6G5M');
+
     const toggleOrderSummary = () => {
         setShowOrderSummary((prevShowOrderSummary) => !prevShowOrderSummary);
     };
@@ -132,20 +134,62 @@ function CheckoutScreen() {
     const location = useLocation();
 
     //strip checkout
-    useEffect(() => {
-        // Check to see if this is a redirect back from Checkout
-        // const query = new URLSearchParams(window.location.search);
-        const values = QueryString.parse(location.search);
-        if (values.success) { // query.get("success")
-          console.log("Order placed! You will receive an email confirmation.");
-        }
+    // useEffect(() => {
+    //     // Check to see if this is a redirect back from Checkout
+    //     // const query = new URLSearchParams(window.location.search);
+    //     const values = QueryString.parse(location.search);
+    //     if (values.success) { // query.get("success")
+    //       console.log("Order placed! You will receive an email confirmation.");
+    //     }
     
-        if (values.cancled) { //query.get("canceled")
-          console.log(
-            "Order canceled -- continue to shop around and checkout when you're ready."
-          );
+    //     if (values.cancled) { //query.get("canceled")
+    //       console.log(
+    //         "Order canceled -- continue to shop around and checkout when you're ready."
+    //       );
+    //     }
+    //     }, []);
+
+    const handleCheckout = async () => {
+        try {
+        // Prepare the data to send
+        const subtotal = calculateSubtotal(); // Make sure this function returns the subtotal
+        const cartItemsPayload = cartItems.map(item => ({
+            id: item.id,
+            quantity: item.quantity,
+            // Include any other item details necessary for your backend
+        }));
+        console.log("Sending POST request to /create-checkout-session/ with payload:", { subtotal, cartItems: cartItemsPayload });
+        // Send a POST request to your backend
+        const response = await fetch('/api/stripe/create-checkout-session', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${userInfo.accessToken}`,
+            // Include any necessary headers, such as authentication tokens
+            },
+            body: JSON.stringify({
+                items: cartItems, // Assuming cartItems is your payload
+                subtotal: subtotal, // Include subtotal in the payload
+            }),
+        });
+    
+        if (!response.ok) throw new Error('Network response was not ok.');
+    
+        const session = await response.json();
+        console.log("Received response from /create-checkout-session/:", session);
+        // Redirect to Stripe checkout using the session ID
+        const stripe = await stripePromise; // Assuming you've already loaded Stripe.js and created `stripePromise`
+        const { error } = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        });
+    
+        if (error) {
+            console.log('Stripe checkout error:', error.message);
         }
-        }, []);
+        } catch (error) {
+        console.error('Error during checkout:', error.message);
+        }
+    };
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -344,7 +388,10 @@ function CheckoutScreen() {
                     </div>
                 </div> */}
                 <form action="/api/stripe/create-checkout-session" method="POST">
-                    <button className="checkout-button" type="submit">
+                    {/* <button className="checkout-button" type="submit">
+                    Proceed to Payment
+                    </button> */}
+                    <button className="checkout-button" onClick={handleCheckout}>
                     Proceed to Payment
                     </button>
                 </form>
