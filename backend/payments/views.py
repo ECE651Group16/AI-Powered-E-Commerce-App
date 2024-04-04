@@ -127,6 +127,7 @@ class PaymentViewSet(APIView):
                 shipping_address_collection={
                     'allowed_countries': ['US', 'CA'],  # Specify allowed countries for shipping
                 },
+                 allow_promotion_codes=True,  # This enables promotion code input
             )
             return redirect(checkout_session.url)
             # return JsonResponse({'sessionId': checkout_session['id']})
