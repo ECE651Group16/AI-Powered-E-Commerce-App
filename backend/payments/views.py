@@ -83,13 +83,17 @@ class PaymentViewSet(APIView):
         try:
             # product = Product.objects.get(pk=product)
             # product_image = product.images[0] if product.images.exists() else 'url_to_default_image'
+            amount_subtotal = 2198
+            amount_total = 2198
             checkout_session = stripe.checkout.Session.create(
                 line_items=[
                     {
                         # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
                         # 'price': '{{PRICE_ID}}',
-                        'price': 'price_1P1MAuLyCz9ytZLn4dZUIH3f',
-                        # 'price_data': {
+                        #'price': 'price_1P1MAuLyCz9ytZLn4dZUIH3f',
+                        # "automatic_tax": {
+                        #     "enabled": True,
+                        # },
                         #     'currency': 'cad',
                         #     'product_data': {
                         #         'name': product.title,
@@ -97,6 +101,15 @@ class PaymentViewSet(APIView):
                         #     },
                         #     'unit_amount': int(product.unit_price * 100),
                         # },
+                        'price_data': {
+                            'currency': 'cad',
+                            'product_data': {
+                                'name': 'Your Product Name',
+                                # Optionally, add an image
+                                # 'images': [product_image],
+                            },
+                            'unit_amount': amount_total, # Assuming amount_total is in cents
+                        },
                         'quantity': 1,
                     },
                 ],
@@ -104,7 +117,16 @@ class PaymentViewSet(APIView):
                 mode='payment',
                 success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
                 cancel_url='http://localhost:3000/?canceled=true',
-                # cancel_url='http://localhost:3000/',
+                automatic_tax={'enabled': True},  # Enable or disable automatic tax calculation
+                billing_address_collection='required',  # Set to 'required' to collect billing address
+                shipping_options=[  # Use 'shipping_options' to specify shipping rates
+                    {
+                        'shipping_rate': 'shr_1P1h9kLyCz9ytZLnNjnm4TMt'
+                    }
+                ],
+                shipping_address_collection={
+                    'allowed_countries': ['US', 'CA'],  # Specify allowed countries for shipping
+                },
             )
             return redirect(checkout_session.url)
             # return JsonResponse({'sessionId': checkout_session['id']})
