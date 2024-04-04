@@ -35,18 +35,18 @@ class TestRecommendation:
         response = api_client.get(url)
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
         
-    def test_recommendation_authenticated_user_no_order(self, api_client, authenticate):
-        authenticate()
+    def test_recommendation_authenticated_user_no_order(self, api_client, customer):
+        api_client.force_authenticate(user=customer.user)
         url = f"/store/recommendation/"
         response = api_client.get(url)
         assert response.status_code == status.HTTP_200_OK
         
             
-    def test_recommendation_authenticated_user_with_order(self, api_client, authenticate, customer):
+    def test_recommendation_authenticated_user_with_order(self, api_client, customer):
         order, created = Order.objects.get_or_create(customer=customer)
         product = baker.make(Product)
         orderitem, created = OrderItem.objects.get_or_create(order=order, quantity = 1, product=product)
-        authenticate()
+        api_client.force_authenticate(user=customer.user)
         url = f"/store/recommendation/"
         response = api_client.get(url)
         assert response.status_code == status.HTTP_200_OK
