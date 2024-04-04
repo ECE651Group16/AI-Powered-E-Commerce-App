@@ -152,13 +152,14 @@ function CheckoutScreen() {
     const handleCheckout = async () => {
         try {
         // Prepare the data to send
-        const subtotal = calculateSubtotal(); // Make sure this function returns the subtotal
+        // const subtotal = calculateSubtotal(); // Make sure this function returns the subtotal
         const cartItemsPayload = cartItems.map(item => ({
-            id: item.id,
-            quantity: item.quantity,
-            // Include any other item details necessary for your backend
+            name: item.name,
+            amount: item.unit_price * 100, // Convert price to cents
+            currency: "cad",
+            quantity: item.qty,
         }));
-        console.log("Sending POST request to /create-checkout-session/ with payload:", { subtotal, cartItems: cartItemsPayload });
+        console.log("Sending POST request to /create-checkout-session/ with payload:", { cartItems: cartItemsPayload });
         // Send a POST request to your backend
         const response = await fetch('/api/stripe/create-checkout-session', {
             method: 'POST',
@@ -168,8 +169,7 @@ function CheckoutScreen() {
             // Include any necessary headers, such as authentication tokens
             },
             body: JSON.stringify({
-                items: cartItems, // Assuming cartItems is your payload
-                subtotal: subtotal, // Include subtotal in the payload
+                items: cartItemsPayload,
             }),
         });
     
