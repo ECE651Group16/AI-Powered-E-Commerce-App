@@ -232,37 +232,11 @@ function CheckoutScreen() {
                     </ListGroup>
                 )}
             </Card>
+
+
         <div className="container mt-5"> {/* Adds some top margin for spacing */}
             {/* <Form onSubmit={submitHandler} className="w-100" style={{ maxWidth: '600px', margin: '0 auto' }}> */}
-            <Form.Group className="text-center mb-4">
-                <Form.Label as="legend">Express checkout</Form.Label>
-                <div className="d-flex justify-content-around">
-                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('PayPal')}>
-                        <img src={paypalLogo} alt="PayPal" style={{ maxWidth: '600px' }} />
-                    </Button>
-
-                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('shop')}>
-                        <img src={shopLogo} alt="shop" style={{ maxWidth: '600px' }} />
-                    </Button>
-
-                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('ApplePay')}>
-                        <img src={applePayLogo} alt="Apple Pay" style={{ maxWidth: '600px' }} />
-                    </Button>
-                </div>
-            </Form.Group>
-
-              {/* "OR" Divider with Lines */}
-              <div className="d-flex align-items-center my-4">
-                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Left line */}
-                    <span className="mx-2">OR</span> {/* "OR" text */}
-                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Right line */}
-                </div>
-
-               
-                
-            
-            {/* Address Section... */}
-
+            <h3>Shipping Details</h3>
             <Form.Group controlId='address'>
                 <Form.Label>Address</Form.Label>
                 <Form.Control
@@ -307,22 +281,43 @@ function CheckoutScreen() {
             </Form.Group>
             {/* Add similar Form.Group components for city, postalCode, and country */}
 
-            {/* <Form.Label className="d-block">Credit Card Details</Form.Label>
-            <div className="container mt-5">
-                <Elements stripe={stripePromise}>
-                    <CheckoutForm />
-                </Elements>
-            </div>
-             */}
              {/* </Form> */}
-             {/* Spacer div for extra space before the credit card section */}
-            <div style={{ height: '2rem' }}></div> {/* Adjust '2rem' to the amount of space you want */}
+
+             <div style={{ height: '2rem' }}></div> {/* Adjust '2rem' to the amount of space you want */}                        
+
+
+            <Form.Group className="text-center mb-4">
+                <Form.Label as="legend">Express checkout</Form.Label>
+                <div className="d-flex justify-content-around">
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('PayPal')}>
+                        <img src={paypalLogo} alt="PayPal" style={{ maxWidth: '600px' }} />
+                    </Button>
+
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('shop')}>
+                        <img src={shopLogo} alt="shop" style={{ maxWidth: '600px' }} />
+                    </Button>
+
+                    <Button variant="light" className="payment-method-button" onClick={() => setPaymentMethod('ApplePay')}>
+                        <img src={applePayLogo} alt="Apple Pay" style={{ maxWidth: '600px' }} />
+                    </Button>
+                </div>
+            </Form.Group>
+
+              {/* "OR" Divider with Lines */}
+              <div className="d-flex align-items-center my-4">
+                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Left line */}
+                    <span className="mx-2">OR</span> {/* "OR" text */}
+                    <div className="flex-grow-1" style={{ height: '1px', backgroundColor: '#ccc' }}></div> {/* Right line */}
+                </div>
+
+               
+           
 
             <Card className="mb-3">
                 <Card.Body>
-                <Card.Title>Credit Card Details</Card.Title>
+                <Card.Title>Credit / Debit Card Payment</Card.Title>
                 <Card.Text className="text-muted" style={{ fontSize: '1rem' }}>
-                    All transactions are secure and encrypted.
+                    All transactions are secure and encrypted. Powered by Stripe.
                 </Card.Text>
                 {/* <div className="mt-4">
                     <Elements stripe={stripePromise}>
@@ -336,8 +331,9 @@ function CheckoutScreen() {
                 ) : (
                     <Button onClick={handleCheckout}>Proceed to Payment</Button>
                 )} */}
+
                 <section>
-                <div className="product">
+                {/* <div className="product">
                     <img
                     src="https://i.imgur.com/EHyR2nP.png"
                     alt="The cover of Stubborn Attachments"
@@ -346,10 +342,10 @@ function CheckoutScreen() {
                     <h3>Stubborn Attachments</h3>
                     <h5>$20.00</h5>
                     </div>
-                </div>
+                </div> */}
                 <form action="/api/stripe/create-checkout-session" method="POST">
                     <button className="checkout-button" type="submit">
-                    Checkout
+                    Proceed to Payment
                     </button>
                 </form>
                 </section>
