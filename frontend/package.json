@@ -13,6 +13,7 @@
     "@stripe/react-stripe-js": "^2.6.2",
     "@stripe/stripe-js": "^3.1.0",
     "axios": "^0.21.1",
+    "nodemailer": "^6.9.13",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.8",
     "react-dom": "^17.0.2",
