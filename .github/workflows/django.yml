@@ -29,7 +29,7 @@ jobs:
           root-password: '12345678'
 
       - name: connect via unix domain socket
-        run: mysql -uroot --protocol=SOCKET --socket=${{ steps.setup-mysql.outputs.base-dir }}/tmp/mysql.sock -e 'CREATE DATABASE storefront'
+        run: mysql -u root --protocol=SOCKET --socket=${{ steps.setup-mysql.outputs.base-dir }}/tmp/mysql.sock -e 'CREATE DATABASE storefront'
 
       - name: Install Dependencies
         run: |
