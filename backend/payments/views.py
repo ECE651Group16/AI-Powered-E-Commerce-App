@@ -1,4 +1,3 @@
-
 import time
 from django.http import JsonResponse
 from rest_framework.response import Response
@@ -12,6 +11,7 @@ import stripe
 import json
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 class PaymentViewSet(APIView):
     def post(self, request):
@@ -41,20 +41,27 @@ class PaymentViewSet(APIView):
         items = parsed_items
         input_items = []
         for item in items:
-            print("currency: ", item.get('currency'))
-            print('name', item.get('name'))
-            print('unit_amount', item.get('amount'))
-            print('quantity', item.get('quantity'))
-            input_items.append({'price_data': {
-                        'currency': str(item.get('currency', 'cad')),  # Default currency to 'cad' if not provided
-                        'product_data': {
-                            'name': str(item.get('name', 'Unknown Product')),  # Default name if not provided
+            print("currency: ", item.get("currency"))
+            print("name", item.get("name"))
+            print("unit_amount", item.get("amount"))
+            print("quantity", item.get("quantity"))
+            input_items.append(
+                {
+                    "price_data": {
+                        "currency": str(
+                            item.get("currency", "cad")
+                        ),  # Default currency to 'cad' if not provided
+                        "product_data": {
+                            "name": str(
+                                item.get("name", "Unknown Product")
+                            ),  # Default name if not provided
                         },
                         'unit_amount': int(round(float(item.get('amount')))) # Amount in cents
                     },
                     'quantity': int(round(float(item.get('quantity', 1)))),})
         print("input_items:\n",input_items)
         
+
         YOUR_DOMAIN = "http://127.0.0.1:3000/"
         try:
             # product = Product.objects.get(pk=product)
@@ -113,29 +120,31 @@ class PaymentViewSet(APIView):
                 #         },
                 #         'quantity': 1,
                 #     },
-                #],
-                payment_method_types=['card'],
-                mode='payment',
-                success_url='http://localhost:3000/?success?session_id={CHECKOUT_SESSION_ID}',
-                #success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
-                cancel_url='http://localhost:3000/?canceled=true',
-                automatic_tax={'enabled': True},  # Enable or disable automatic tax calculation
-                billing_address_collection='required',  # Set to 'required' to collect billing address
+                # ],
+                payment_method_types=["card"],
+                mode="payment",
+                success_url="http://localhost:3000/?success?session_id={CHECKOUT_SESSION_ID}",
+                # success_url='http://localhost:3000/?success&session_id={CHECKOUT_SESSION_ID}',
+                cancel_url="http://localhost:3000/?canceled=true",
+                automatic_tax={
+                    "enabled": True
+                },  # Enable or disable automatic tax calculation
+                billing_address_collection="required",  # Set to 'required' to collect billing address
                 shipping_options=[  # Use 'shipping_options' to specify shipping rates
-                    {
-                        'shipping_rate': 'shr_1P1h9kLyCz9ytZLnNjnm4TMt'
-                    }
+                    {"shipping_rate": "shr_1P1h9kLyCz9ytZLnNjnm4TMt"}
                 ],
                 shipping_address_collection={
-                    'allowed_countries': ['US', 'CA'],  # Specify allowed countries for shipping
+                    "allowed_countries": [
+                        "US",
+                        "CA",
+                    ],  # Specify allowed countries for shipping
                 },
-                 allow_promotion_codes=True,  # This enables promotion code input
+                allow_promotion_codes=True,  # This enables promotion code input
             )
             return redirect(checkout_session.url)
             # return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
-            return JsonResponse({'error': str(e)}, status=500)
+            return JsonResponse({"error": str(e)}, status=500)
         # return JsonResponse({
         #     'id': checkout_session.id
         # })
-        
