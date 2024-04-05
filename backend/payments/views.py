@@ -20,9 +20,9 @@ class PaymentViewSet(APIView):
         # Iterate through the request data
         for key, value in request.data.items():
             # Check if the key starts with 'items[' to identify item data
-            if key.startswith('items['):
+            if key.startswith("items["):
                 # Parse out the index and the property name
-                _, index, property = key.split('[')
+                _, index, property = key.split("[")
                 index = int(index[:-1])  # Remove the trailing ']' and convert to int
                 property = property[:-1]  # Remove the trailing ']'
 
@@ -37,7 +37,7 @@ class PaymentViewSet(APIView):
         print(parsed_items)
 
         # subtotal = request.data.get('subtotal', 0)
-        items = request.data.get('items', [])
+        items = request.data.get("items", [])
         items = parsed_items
         input_items = []
         for item in items:
@@ -56,11 +56,14 @@ class PaymentViewSet(APIView):
                                 item.get("name", "Unknown Product")
                             ),  # Default name if not provided
                         },
-                        'unit_amount': int(round(float(item.get('amount')))) # Amount in cents
+                        "unit_amount": int(
+                            round(float(item.get("amount")))
+                        ),  # Amount in cents
                     },
-                    'quantity': int(round(float(item.get('quantity', 1)))),})
-        print("input_items:\n",input_items)
-        
+                    "quantity": int(round(float(item.get("quantity", 1)))),
+                }
+            )
+        print("input_items:\n", input_items)
 
         YOUR_DOMAIN = "http://127.0.0.1:3000/"
         try:
@@ -69,7 +72,7 @@ class PaymentViewSet(APIView):
             # amount_subtotal = 2198
             # amount_total = int(subtotal * 100)
             # line_items = []
-            
+
             # # Construct the line_items list by iterating over items
             # for item in items:
             #     line_item = {
@@ -86,7 +89,7 @@ class PaymentViewSet(APIView):
 
             checkout_session = stripe.checkout.Session.create(
                 line_items=input_items,
-                #line_items=  [{'price_data': {'currency': 'cad', 'product_data': {'name': 'Potatoes - Yukon Gold 5 Oz'}, 'unit_amount': 1346}, 'quantity': 1}, {'price_data': {'currency': 'cad', 'product_data': {'name': 'Bite People Cat'}, 'unit_amount': 1000}, 'quantity': 5}],
+                # line_items=  [{'price_data': {'currency': 'cad', 'product_data': {'name': 'Potatoes - Yukon Gold 5 Oz'}, 'unit_amount': 1346}, 'quantity': 1}, {'price_data': {'currency': 'cad', 'product_data': {'name': 'Bite People Cat'}, 'unit_amount': 1000}, 'quantity': 5}],
                 # line_items = [{
                 #     'price_data': {
                 #         'currency': str(item.get('currency', 'cad')),  # Default currency to 'cad' if not provided
