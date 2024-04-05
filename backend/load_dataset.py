@@ -14,9 +14,8 @@ from storefront.settings.dev import DATABASES
 user_limit = 10000
 
 if __name__ == "__main__":
-    meta_table = pd.read_json(
-        path_or_buf="amazon_dataset/meta_CDs_and_Vinyl.jsonl", lines=True
-    )
+    with open('meta_CDs_and_Vinyl.jsonl', 'r') as f:
+        meta_table = pd.read_json(f, lines=True)
     table = json.read_json("amazon_dataset/CDs_and_Vinyl.jsonl")
     table = table.to_pandas()
 
