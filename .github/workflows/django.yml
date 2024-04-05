@@ -28,6 +28,14 @@ jobs:
           distribution: 'mysql'
           root-password: '12345678'
 
+      - name: connect via unix domain socket
+        run: > 
+          mysql 
+          -u root 
+          -p12345678 
+          --socket=${{ steps.setup-mysql.outputs.base-dir }}/tmp/mysql.sock 
+          -e "CREATE DATABASE storefront"
+
       - name: Install Dependencies
         run: |
           cd backend
@@ -41,5 +49,6 @@ jobs:
           cd backend
           pipenv run python manage.py makemigrations
           pipenv run python manage.py test
+          pipenv run python manage.py migrate
           pipenv run pytest --cov-report term-missing --cov=./
           cd ../
