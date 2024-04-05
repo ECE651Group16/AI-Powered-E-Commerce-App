@@ -14,7 +14,7 @@ from storefront.settings.dev import DATABASES
 user_limit = 10000
 
 if __name__ == "__main__":
-    with open('meta_CDs_and_Vinyl.jsonl', 'r') as f:
+    with open("meta_CDs_and_Vinyl.jsonl", "r") as f:
         meta_table = pd.read_json(f, lines=True)
     table = json.read_json("amazon_dataset/CDs_and_Vinyl.jsonl")
     table = table.to_pandas()
@@ -34,10 +34,10 @@ if __name__ == "__main__":
     del table
 
     with MySQLdb.connect(
-            host=DATABASES["default"]["HOST"],
-            user=DATABASES["default"]["USER"],
-            password=DATABASES["default"]["PASSWORD"],
-            database=DATABASES["default"]["NAME"],
+        host=DATABASES["default"]["HOST"],
+        user=DATABASES["default"]["USER"],
+        password=DATABASES["default"]["PASSWORD"],
+        database=DATABASES["default"]["NAME"],
     ) as db:
 
         cur = db.cursor()
@@ -94,7 +94,7 @@ if __name__ == "__main__":
         for i in tqdm(range(len(new_asin_uniques))):
             product = meta_table[
                 meta_table["new_parent_asin"] == new_asin_uniques[i]
-                ].iloc[0]
+            ].iloc[0]
 
             id = f"{i + 1}"
             title = product["title"].encode("ascii", errors="ignore").decode()[:255]
@@ -112,7 +112,7 @@ if __name__ == "__main__":
             inventory = random.randint(1, 1000)
             total_sells = meta_table[
                 meta_table["new_parent_asin"] == new_asin_uniques[i]
-                ].iloc[0]["rating_number"]
+            ].iloc[0]["rating_number"]
             last_update = fake.date_time_this_year()
             collection_id = "1"
             cur.execute(
@@ -133,19 +133,19 @@ if __name__ == "__main__":
         for i in tqdm(range(len(new_asin_uniques))):
             product = meta_table[
                 meta_table["new_parent_asin"] == new_asin_uniques[i]
-                ].iloc[0]
+            ].iloc[0]
 
             id = f"{i + 1}"
             product_id = f"{i + 1}"
 
-            image_url = product["images"][0]['large']
+            image_url = product["images"][0]["large"]
             img_request = requests.get(image_url, stream=True)
-            file_name = urlparse(image_url)[2].rsplit('/', 1)[-1]
+            file_name = urlparse(image_url)[2].rsplit("/", 1)[-1]
             if not img_request.ok:
                 file_name = "IMG_6667.jpeg"
             else:
-                file_path = Path('media') / 'store' / 'images' / file_name
-                with open(file_path, 'wb') as f:
+                file_path = Path("media") / "store" / "images" / file_name
+                with open(file_path, "wb") as f:
                     for block in img_request.iter_content(1024):
                         if not block:
                             break
@@ -153,7 +153,7 @@ if __name__ == "__main__":
             file_name = "store/images/" + file_name
             cur.execute(
                 "INSERT INTO store_productimage(id, image, product_id) VALUES(%s,%s,%s)",
-                (id, file_name, product_id)
+                (id, file_name, product_id),
             )
 
         for i in tqdm(range(len(limit_table))):
@@ -170,7 +170,7 @@ if __name__ == "__main__":
             product_id = limit_table.iloc[i]["new_parent_asin2"]
             product = meta_table[
                 meta_table["new_parent_asin"] == new_asin_uniques[product_id]
-                ].iloc[0]
+            ].iloc[0]
 
             id = f"{i + 1}"
             quantity = 1
