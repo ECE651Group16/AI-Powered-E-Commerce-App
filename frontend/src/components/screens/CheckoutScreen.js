@@ -129,64 +129,71 @@ function CheckoutScreen() {
     // const total = calculateTotal(subtotal, shipping, taxes);
     
     const location = useLocation();
-
+    const cartItemsPayload = cartItems.map(item => ({
+                name: item.name,
+                amount: item.unit_price * 100, // Convert price to cents
+                currency: "cad",
+                quantity: item.qty,
+            }));
+    console.log(cartItemsPayload);        
     //strip checkout
+
     // useEffect(() => {
     //     // Check to see if this is a redirect back from Checkout
-    //     // const query = new URLSearchParams(window.location.search);
-    //     const values = QueryString.parse(location.search);
-    //     if (values.success) { // query.get("success")
+    //     const query = new URLSearchParams(window.location.search);
+    //     //const values = QueryString.parse(location.search);
+    //     if (query.get("success")) { // query.get("success")
     //       console.log("Order placed! You will receive an email confirmation.");
     //     }
     
-    //     if (values.cancled) { //query.get("canceled")
+    //     if (query.get("success")) { //query.get("canceled")
     //       console.log(
     //         "Order canceled -- continue to shop around and checkout when you're ready."
     //       );
     //     }
     //     }, []);
 
-    const handleCheckout = async () => {
-        try {
-        // Prepare the data to send
-        // const subtotal = calculateSubtotal(); // Make sure this function returns the subtotal
-        const cartItemsPayload = cartItems.map(item => ({
-            name: item.name,
-            amount: item.unit_price * 100, // Convert price to cents
-            currency: "cad",
-            quantity: item.qty,
-        }));
-        console.log("Sending POST request to /create-checkout-session/ with payload:", { cartItems: cartItemsPayload });
-        // Send a POST request to your backend
-        const response = await fetch('/api/stripe/create-checkout-session', {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `JWT ${userInfo.accessToken}`,
-            // Include any necessary headers, such as authentication tokens
-            },
-            body: JSON.stringify({
-                items: cartItemsPayload,
-            }),
-        });
+    // const handleCheckout = async () => {
+    //     try {
+    //     // Prepare the data to send
+    //     // const subtotal = calculateSubtotal(); // Make sure this function returns the subtotal
+    //     const cartItemsPayload = cartItems.map(item => ({
+    //         name: item.name,
+    //         amount: item.unit_price * 100, // Convert price to cents
+    //         currency: "cad",
+    //         quantity: item.qty,
+    //     }));
+    //     console.log("Sending POST request to /create-checkout-session/ with payload:", { cartItems: cartItemsPayload });
+    //     // Send a POST request to your backend
+    //     const response = await fetch('/api/stripe/create-checkout-session', {
+    //         method: 'POST',
+    //         headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `JWT ${userInfo.accessToken}`,
+    //         // Include any necessary headers, such as authentication tokens
+    //         },
+    //         body: JSON.stringify({
+    //             items: cartItemsPayload,
+    //         }),
+    //     });
     
-        if (!response.ok) throw new Error('Network response was not ok.');
+    //     if (!response.ok) throw new Error('Network response was not ok.');
     
-        const session = await response.json();
-        console.log("Received response from /create-checkout-session/:", session);
-        // Redirect to Stripe checkout using the session ID
-        const stripe = await stripePromise; // Assuming you've already loaded Stripe.js and created `stripePromise`
-        const { error } = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
+    //     const session = await response.json();
+    //     console.log("Received response from /create-checkout-session/:", session);
+    //     // Redirect to Stripe checkout using the session ID
+    //     const stripe = await stripePromise; // Assuming you've already loaded Stripe.js and created `stripePromise`
+    //     const { error } = await stripe.redirectToCheckout({
+    //         sessionId: session.id,
+    //     });
     
-        if (error) {
-            console.log('Stripe checkout error:', error.message);
-        }
-        } catch (error) {
-        console.error('Error during checkout:', error.message);
-        }
-    };
+    //     if (error) {
+    //         console.log('Stripe checkout error:', error.message);
+    //     }
+    //     } catch (error) {
+    //     console.error('Error during checkout:', error.message);
+    //     }
+    // };
 
     return (
         <div className="d-flex justify-content-center align-items-start">
@@ -384,13 +391,22 @@ function CheckoutScreen() {
                     <h5>$20.00</h5>
                     </div>
                 </div> */}
-                <form action="/api/stripe/create-checkout-session" method="POST">
-                    {/* <button className="checkout-button" type="submit">
-                    Proceed to Payment
-                    </button> */}
-                    <button className="checkout-button" onClick={handleCheckout}>
+                <form action="/api/stripe/create-checkout-session" method="POST"> 
+                {cartItemsPayload.map((item, index) => (
+                <React.Fragment key={item.id}>
+                    <input type="hidden" name={`items[${index}][id]`} value={item.id} />
+                    <input type="hidden" name={`items[${index}][name]`} value={item.name} />
+                    <input type="hidden" name={`items[${index}][amount]`} value={item.amount} />
+                    <input type="hidden" name={`items[${index}][currency]`} value={item.currency} />
+                    <input type="hidden" name={`items[${index}][quantity]`} value={item.quantity} />
+                </React.Fragment>
+                ))}
+                    <button className="checkout-button" type="submit">
                     Proceed to Payment
                     </button>
+                    {/* <button className="checkout-button" onClick={handleCheckout}>
+                    Proceed to Payment
+                    </button> */}
                 </form>
                 </section>
             

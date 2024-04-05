@@ -74,6 +74,31 @@ function CartScreen({ match, location, history }) {
         history.push('/login?redirect=payments')
     }
 
+    // Action to update cart item quantity in the database
+    // const updateCartItemQuantity = (cartId, productId, qty) => async (dispatch, getState) => {
+    //     try {
+    //         const { userInfo } = getState().userLogin;
+    //         const config = {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: `Bearer ${userInfo.token}`,
+    //             },
+    //         };
+
+    //         await axios.put('/api/cart/update-item', { cartId, productId, qty }, config);
+
+    //         dispatch({
+    //             type: CART_UPDATE_ITEM,
+    //             payload: { productId, qty },
+    //         });
+
+    //         // Optionally, refresh the cart details after update
+    //         dispatch(fetchCartDetails(cartId));
+    //     } catch (error) {
+    //         console.error('Failed to update cart item quantity', error);
+    //         // Handle error (e.g., dispatch an error action)
+    //     }
+    // };
     const defaultImage = process.env.PUBLIC_URL + '/images/sample.jpg';
     return (
         <Row className="justify-content-center">
@@ -108,6 +133,19 @@ function CartScreen({ match, location, history }) {
                                             value={item.qty}
                                             onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
                                             >
+
+                                            {/* <Form.Control
+                                                as="select"
+                                                value={item.qty}
+                                                onChange={(e) => dispatch(updateCartItemQuantity(cart.cartId, item.product, Number(e.target.value)))}
+                                            >
+                                                {[...Array(item.countInStock).keys()].map((x) => (
+                                                    <option key={x + 1} value={x + 1}>
+                                                        {x + 1}
+                                                    </option>
+                                                ))}
+                                            </Form.Control> */}
+
                                             {[...Array(item.countInStock).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}>
                                                 {x + 1}

@@ -8,15 +8,37 @@ from django.shortcuts import redirect
 from rest_framework.views import APIView
 
 import stripe
+import json
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class PaymentViewSet(APIView):
     def post(self, request):
-        # subtotal = request.data.get('subtotal', 0)
-        items = request.data.get("items", [])
+        parsed_items = []
 
+        # Iterate through the request data
+        for key, value in request.data.items():
+            # Check if the key starts with 'items[' to identify item data
+            if key.startswith('items['):
+                # Parse out the index and the property name
+                _, index, property = key.split('[')
+                index = int(index[:-1])  # Remove the trailing ']' and convert to int
+                property = property[:-1]  # Remove the trailing ']'
+
+                # Ensure the current index is already represented in the parsed_items list
+                while len(parsed_items) <= index:
+                    parsed_items.append({})
+
+                # Add the property value to the appropriate dictionary
+                parsed_items[index][property] = value
+
+        # At this point, parsed_items contains a list of item dictionaries
+        print(parsed_items)
+
+        # subtotal = request.data.get('subtotal', 0)
+        items = request.data.get('items', [])
+        items = parsed_items
         input_items = []
         for item in items:
             print("currency: ", item.get("currency"))
@@ -34,12 +56,11 @@ class PaymentViewSet(APIView):
                                 item.get("name", "Unknown Product")
                             ),  # Default name if not provided
                         },
-                        "unit_amount": int(item.get("amount")),  # Amount in cents
+                        'unit_amount': int(round(float(item.get('amount')))) # Amount in cents
                     },
-                    "quantity": int(item.get("quantity", 1)),
-                }
-            )
-        print("input_items:\n", input_items)
+                    'quantity': int(round(float(item.get('quantity', 1)))),})
+        print("input_items:\n",input_items)
+        
 
         YOUR_DOMAIN = "http://127.0.0.1:3000/"
         try:
@@ -47,33 +68,25 @@ class PaymentViewSet(APIView):
             # product_image = product.images[0] if product.images.exists() else 'url_to_default_image'
             # amount_subtotal = 2198
             # amount_total = int(subtotal * 100)
-            line_items = []
-
-            # Construct the line_items list by iterating over items
-            for item in items:
-                line_item = {
-                    "price_data": {
-                        "currency": str(
-                            item.get("currency", "cad")
-                        ),  # Default to 'cad' if not provided
-                        "product_data": {
-                            "name": str(
-                                item.get("name", "Unknown Product")
-                            ),  # Default name if not provided
-                        },
-                        "unit_amount": int(
-                            item.get("amount", 0)
-                        ),  # Ensure amount is an int, default to 0
-                    },
-                    "quantity": int(
-                        item.get("quantity", 1)
-                    ),  # Ensure quantity is an int, default to 1
-                }
-                line_items.append(line_item)
+            # line_items = []
+            
+            # # Construct the line_items list by iterating over items
+            # for item in items:
+            #     line_item = {
+            #         'price_data': {
+            #             'currency': str(item.get('currency', 'cad')),  # Default to 'cad' if not provided
+            #             'product_data': {
+            #                 'name': str(item.get('name', 'Unknown Product')),  # Default name if not provided
+            #             },
+            #             'unit_amount': int(item.get('amount', 0)),  # Ensure amount is an int, default to 0
+            #         },
+            #         'quantity': int(item.get('quantity', 1)),  # Ensure quantity is an int, default to 1
+            #     }
+            #     line_items.append(line_item)
 
             checkout_session = stripe.checkout.Session.create(
-                line_items=line_items,
-                # line_items=  [{'price_data': {'currency': 'cad', 'product_data': {'name': 'Potatoes - Yukon Gold 5 Oz'}, 'unit_amount': 1346}, 'quantity': 1}, {'price_data': {'currency': 'cad', 'product_data': {'name': 'Bite People Cat'}, 'unit_amount': 1000}, 'quantity': 5}],
+                line_items=input_items,
+                #line_items=  [{'price_data': {'currency': 'cad', 'product_data': {'name': 'Potatoes - Yukon Gold 5 Oz'}, 'unit_amount': 1346}, 'quantity': 1}, {'price_data': {'currency': 'cad', 'product_data': {'name': 'Bite People Cat'}, 'unit_amount': 1000}, 'quantity': 5}],
                 # line_items = [{
                 #     'price_data': {
                 #         'currency': str(item.get('currency', 'cad')),  # Default currency to 'cad' if not provided
