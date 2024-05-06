@@ -6,7 +6,10 @@ An AI-enhanced e-commerce platform designed to offer an intuitive and efficient 
 with Django and backed by MySQL, this app integrates advanced AI features to cater to both user and business needs.
 ## Demo
 
-[![Watch the video](https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/assets/70932380/385f2f9a-e8c0-4e94-865c-8edbceea8a0a)](https://www.youtube.com/watch?v=rgTJI1pIXT8&t=85s&ab_channel=KevinC)
+<a href="https://www.youtube.com/watch?v=rgTJI1pIXT8&t=85s&ab_channel=KevinC">
+    <img src="https://github.com/ECE651Group16/AI-Powered-E-Commerce-App/assets/70932380/385f2f9a-e8c0-4e94-865c-8edbceea8a0a" alt="Watch the video" width="300" height="200">
+</a>
+
 
 ## 🚀 Getting Started
 
